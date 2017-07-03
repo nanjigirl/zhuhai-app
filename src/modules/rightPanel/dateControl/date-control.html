@@ -1,0 +1,20 @@
+<div class='device-title'>
+    <div class="dateWidget">
+        <span for="start" class="timeLabel">开始时间</span>
+        <input type="datetime" class="laydate-icon timeInput" v-model="queryStartDate" v-bind:class="{error:isDateInvalid}" id="start" v-on:click="start()">
+        <span for="end" class="timeLabel">结束时间</span>
+        <input type="datetime" class="laydate-icon timeInput"  v-model="queryEndDate" id="end" v-bind:class="{error:isDateInvalid}" v-on:click="end()">
+        <div class="quickSearch">
+            <select name="search">
+                <option value="天">天</option>
+                <option value="周">周</option>
+                <option value="月">月</option>
+                <option value="季度">季度</option>
+            </select>
+            <!--<span :class="{quickSearchActive:currentPeroid=='day'}"><a href='#' v-on:click="currentPeroid='day'">天</a></span>-->
+            <!--<span :class="{quickSearchActive:currentPeroid=='week'}"><a href='#' v-on:click="currentPeroid='week'">周</a></span>-->
+            <!--<span :class="{quickSearchActive:currentPeroid=='month'}"><a href='#' v-on:click="currentPeroid='month'">月</a></span>-->
+            <!--<span :class="{quickSearchActive:currentPeroid=='quater'}"><a href='#' v-on:click="currentPeroid='quater'">季度</a></span>-->
+        </div>
+    </div>
+</div>

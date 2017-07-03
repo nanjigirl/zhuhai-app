@@ -1,0 +1,30 @@
+.reservoirContainer{
+    width:100%;
+    height:100%;
+    padding:10px;
+    font-size:12px;
+}
+.reservoirContent{
+    width: inherit;
+    height:90%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+.reservoirItem{
+    width:25%;
+    height:50%;
+    float: left;
+}
+.reservoirItemChart{
+    width:100%;
+    height:100%;
+}
+.marker-box{
+    padding: 2px 5px;
+    background: red;
+    border-radius: 2px;
+    margin-left: 5px;
+    color:#fff;
+}

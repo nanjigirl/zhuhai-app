@@ -24,12 +24,10 @@ define([
     'modules/appPricingDesign',
     'modules/appCharts',
     'modules/appMorris',
-    'modules/appOtherCharts',
     'modules/appProjectDetail',
     'modules/appMediaGallery',
     'modules/appWidgets',
-    'modules/appEcharts',
-], function (appContent, appDemoForm, elementForm, appDemoTable, appDemoChart, appProjectTrack, appHome, appInfo, appOrder, appGrid,arcgisPlugin, appUnknown,appGeneralForm,appFormWizard,appFormUpload,appFormButton,appTables,appAdvancedForm,appGeneralElements,appIcons,appGlyphicons,appTableDynamic,appPricingDesign,appCharts,appMorris,appOtherCharts,appProjectDetail,appMediaGallery,appWidgets,appEcharts) {
+    'modules/appEcharts'], function (appContent, appDemoForm, elementForm, appDemoTable, appDemoChart, appProjectTrack, appHome, appInfo, appOrder, appGrid,arcgisPlugin, appUnknown,appGeneralForm,appFormWizard,appFormUpload,appFormButton,appTables,appAdvancedForm,appGeneralElements,appIcons,appGlyphicons,appTableDynamic,appPricingDesign,appCharts,appMorris,appOtherCharts,appProjectDetail,appMediaGallery,appWidgets,appEcharts) {
     return {
         'app-content': appContent,
         'app-demo-form': appDemoForm,
@@ -56,7 +54,6 @@ define([
         'app-pricing-design':appPricingDesign,
         'app-charts':appCharts,
         'app-morris':appMorris,
-        'app-other-charts':appOtherCharts,
         'app-project-detail':appProjectDetail,
         'app-media-gallery':appMediaGallery,
         'app-widgets':appWidgets,

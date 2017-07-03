@@ -1,0 +1,7 @@
+<div class="part-l" v-bind:class="{ 'part-l-History': !isRealTimeMode}">
+    <weather-report  v-show="isRealTimeMode && facility.facilityTypeName=='RF'"></weather-report>
+    <status-bar ref='statusBar' v-show="isRealTimeMode && facility.facilityTypeName!=='PP'&& facility.facilityTypeName!=='RF'"></status-bar>
+    <pump-station-bar ref='pumpStationBar'
+                      v-show="isRealTimeMode && facility.facilityTypeName=='PP'"></pump-station-bar>
+    <history-panel ref='historyPanel' v-show='!isRealTimeMode'></history-panel>
+</div>

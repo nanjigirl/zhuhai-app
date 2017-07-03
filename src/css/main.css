@@ -6,8 +6,17 @@
 @import "./modules/appTab.css";
 @import "./modules/menu.css";
 @import "./modules/appGrid.css";
+@import "./modules/rightPanel.css";
 @import "./modules/plugin.css";
 @import "./modules/order.css";
+@import "./modules/monitor.css";
+@import "./modules/statistics.css";
+@import "./modules/dateController.css";
+@import "./modules/pumpStationBar.css";
+@import "./modules/pumpStations.css";
+@import "./modules/weatherReport.css";
+@import "./modules/reservior.css";
+@import "./modules/reserviorHistory.css";
 @import "./modules/flexMapLegend.css";
 @import "./modules/appDemoTable.css";
 @import "./modules/flexMapLegend.css";
