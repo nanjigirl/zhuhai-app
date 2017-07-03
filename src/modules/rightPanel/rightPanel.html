@@ -1,0 +1,72 @@
+<transition name="right-panel">
+    <div v-show='rightPanelOpen' class='right-panel'>
+        <div class="goBack"><a href='#' class="el-icon-d-arrow-right" @click="closePanel"></a></div>
+        <div class="panel-header">
+            <span class="facilityImg" v-bind:class="facilityType"></span>
+            <span class="facilityName">{{facilityName}}</span>
+            <el-menu :default-active="activeIndex" class="el-menu-demo menu-full" mode="horizontal" @select="switchMode">
+                <el-menu-item index="1" id="realTimeMode">实时监测</el-menu-item>
+                <el-menu-item index="2" id="historicalMode">历史数据</el-menu-item>
+            </el-menu>
+        </div>
+        <div class="panel-content">
+            <div class="panel-top">
+                <div class="top-r">
+                    <div class="device-title" v-show='isRealTimeMode'>
+                        <span>监控项</span>
+                        <i class="icon iconfont text-danger">&#xe600;</i>
+                        <span class="refreshTime">更新时间：{{lastUpdateTime}}</span>
+                    </div>
+                    <div class="part" v-bind:class="{partHistory:!isRealTimeMode}">
+                        <date-control ref='dateController' v-show='!isRealTimeMode'></date-control>
+                        <div v-show='isRealTimeMode' class="part-Img-Box">
+                            <div class="part-Img">
+                                <img class='facilityPic' :src="facilityPic" alt="设施图">
+                            </div>
+                            <p class="cesc-text-p">实时监控</p>
+                        </div>
+                        <monitor ref='monitorPlugin'></monitor>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-middle">
+                <div class="device-title">
+                    <span>统计图表</span>
+                    <div v-if="facilityType!=='ylz'" class="pull-right">
+                        <span class="gradeTitle">当前等级</span>
+                        <span class="grade" v-bind:class="classObject">{{waterGradeTitle}}</span>
+                    </div>
+                </div>
+                <statistics ref='statisticPlugin'></statistics>
+            </div>
+            <div class="panel-bottom">
+                <div class="device-title" v-show='isRealTimeMode'>
+                    <span>实时视频</span>
+                    <i class="icon iconfont text-muted">&#xe601;</i>
+                </div>
+                <div class="device-title" v-show='!isRealTimeMode'>
+                    <span>数据表格</span>
+                </div>
+                 <div class="device-content">
+                 <video v-show='isRealTimeMode'  width="100%" height="98%" src="http://120.77.246.153:9000/vedio/test.ogg" controls="controls" muted>
+                 您的浏览器不支持 video 标签。
+                 </video>
+                 <div class="table-responsive" v-show='!isRealTimeMode'>
+                     <table class="table table-bordered" >
+                         <thead>
+                         <tr>
+                             <th v-for='head in heads'>{{head.value}}</th>
+                         </tr>
+                         </thead>
+                         <tbody>
+                         <tr v-for='(row,index) in rows'>
+                             <td v-for='head in heads'>{{row[head.key]}}</td>
+                         </tr>
+                         </tbody>
+                     </table>
+                 </div>
+                 </div>
+             </div>
+        </div>
+    </div>
+</transition>

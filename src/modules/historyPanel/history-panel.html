@@ -1,0 +1,97 @@
+<div class='historyPanel'>
+    <div class="historyContent" v-if='paishui'><!-- 排水管道水情站-->
+        <div class='historyGrid'>
+            <div class='historyItem'><h4>积水次数</h4></div>
+            <div class='historyItem'><h4><a href='#' v-on:click='seeperDetail=true;paishui = false'>2次</a></h4></div>
+            <div class='historyItem'><h4>满管次数</h4></div>
+            <div class='historyItem'><h4>14次</h4></div>
+        </div>
+        <div class='historyGrid'>
+            <div class='historyItem big-item'><h4>最高流量</h4></div>
+            <div class='historyItem big-item'><h4>0.02m³/s</h4></div>
+        </div>
+        <div class='historyGrid'>
+            <div class='historyItem big-item'><h4>最大淹没深度</h4></div>
+            <div class='historyItem big-item'><h4>0.15m</h4></div>
+        </div>
+    </div>
+    <div class="historyContent" v-if='yilao'><!-- 易涝水情站-->
+        <div class='historyGrid'>
+            <div class='historyItem big-item'><h4>年积水次数</h4></div>
+            <div class='historyItem big-item'><h4><a href='#' v-on:click='seeperDetail=true;yilao=false'>12次</a></h4>
+            </div>
+        </div>
+        <div class='historyGrid'>
+            <div class='historyItem big-item'><h4>最大积水深度</h4></div>
+            <div class='historyItem big-item'><h4>0.35m</h4></div>
+        </div>
+        <div class='historyGrid'>
+            <div class='historyItem big-item'><h4>最大积水时长</h4></div>
+            <div class='historyItem big-item'><h4>8h</h4></div>
+        </div>
+    </div>
+    <div class="historyContent" v-if='yuliang'><!-- 雨量站-->
+        <div class="historyTitle">
+            <h4>各项水质指标</h4>
+        </div>
+        <div class='historyGrid'>
+            <div class="gridTittle"><h5>最长降雨时长(h)</h5></div>
+            <div class="dataItem"><span class="dataColumn full-column"><em>12</em></span></div>
+            <div class="gridTittle"><h5>降雨天数(次)</h5></div>
+            <div class="dataItem"><span class="dataColumn less-colunm"><em
+                    v-on:click='seeperDetail=true;yuliang = false'>2</em></span></div>
+        </div>
+        <div class='historyGrid'>
+            <div class="gridTittle"><h5>降雨量(mm)</h5></div>
+            <div class="dataItem"><span>累计</span><span class="dataColumn full-column"></span><em>45</em></div>
+            <div class="dataItem"><span>最大</span><span class="dataColumn center-column"></span><em>34</em></div>
+            <div class="dataItem"><span>平均</span><span class="dataColumn less-column"></span><em>20</em></div>
+        </div>
+        <div class='historyGrid'>
+            <div class="gridTittle"><h5>暴雨预警(次)</h5></div>
+            <div class="dataItem dataItemColor-blue"><span>蓝色</span><span
+                    class="dataColumn full-column"></span><em>4</em></div>
+            <div class="dataItem dataItemColor-orange"><span>橙色</span><span
+                    class="dataColumn less-column"></span><em>2</em></div>
+            <div class="dataItem dataItemColor-yellow"><span>黄色</span><span
+                    class="dataColumn full-column"></span><em>4</em></div>
+            <div class="dataItem dataItemColor-red"><span>红色</span><span
+                    class="dataColumn center-column"></span><em>3</em></div>
+        </div>
+        <!--<div  class='historyGrid warningCounter' id="warningCounter">-->
+        <!--</div>-->
+    </div>
+    <div id='seeperDetail' v-if='seeperDetail' class='seeperDetail' @mouseover='showBackButton=true'
+         @mouseleave='showBackButton=false'>
+        <div class='hideSpeerDetail' v-show='showBackButton'><a href='#' class='glyphicon glyphicon-eject'
+         v-on:click='seeperDetail=false;goBack(),hideHistoryChart = false'></a>
+        </div>
+        <div>
+            <table>
+                <thead>
+                <tr>
+                    <th v-for='head in heads'>{{head.value}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr v-for='(row,index) in rows'>
+                    <td v-for='head in heads'>{{row[head.key]}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="historyContent" v-show="bengzhan">
+        <div class='historyGrid'>
+            <div class='historyItem big-item'><h4>闸门开启次数</h4></div>
+            <div class='historyItem big-item'><h4><a href='#' v-on:click='seeperDetail=true;bengzhan=false'>12次</a></h4>
+            </div>
+        </div>
+        <div class='historyChartGrid'>
+            <div class="historyChart"></div>
+        </div>
+    </div>
+    <div class="historyContent" v-show="reservoir">
+        <div class="reservoir-history-chart"></div>
+    </div>
+</div>

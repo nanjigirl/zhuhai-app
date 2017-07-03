@@ -1,0 +1,37 @@
+.statistics-main{
+	height: calc(100% - 43px);
+    width: calc(100% - 12em);
+    display: inline-block;
+    margin-right:0.5em;
+    float:left;
+    min-height: 15em;
+}
+.statistics-view{
+    width:11em;
+    height: calc(100% - 43px);
+    vertical-align: top;
+    display: inline-block;
+    min-height: 15em;
+    max-width: 20em;
+
+}
+.fullStatistics{
+	width: 100%;
+}
+.statistics-main-history{
+    height: calc(100% - 43px);
+    width: 100%;
+    display: inline-block;
+    margin-right:0.5em;
+    min-height: 15em;
+    min-width: 20em;
+}
+.navTitle{
+    width:49.8%;
+    text-align: center;
+    color:black;
+    background: darkgrey;
+}
+.navTitle>a:hover{
+    background-color: #337ab7 !important;
+}

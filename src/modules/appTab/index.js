@@ -43,7 +43,9 @@ var comm = Vue.extend({
                             this.activateTab(this.tabs[1]);
                         }
                     }
-                    this.tabs.splice(i, 1);
+                    if(this.tabs.length >1){//最后必须留下一个tab
+                        this.tabs.splice(i, 1);
+                    }
                 }
             }
         }
