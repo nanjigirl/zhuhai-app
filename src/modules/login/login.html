@@ -1,11 +1,19 @@
-<div class="login">
+<div class="login login-bg-img">
     <!--<div class="goBack"></div>
     <div class="logo"></div>-->
-    <div class="loginBox">
+    <div class="loginBox clearfix">
+        <h2 class="login-header">登入系统</h2>
+        <div class="login-content">
+            <label>用户名:</label>
             <el-input v-model="userName" placeholder="用户名"></el-input>
-        <el-input type = 'password' v-model="password" placeholder="密码"></el-input>
-        <a class="forgetPsd">忘记密码？</a>
-        <div class="login-btn" v-on:click="login">登录</div>
+        </div>
+        <div class="login-content relative">
+            <label>密码:</label>
+            <el-input type = 'password' v-model="password" placeholder="密码"></el-input>
+            <a class="forgetPsd">忘记密码？</a>
+        </div>
+        <el-button type="primary" @click="login">登录</el-button>
+        <el-button type="primary">注册</el-button>
         <!--<div class="registerBox">
             <div class="skip">跳过</div>
             <div class="register">注册</div>

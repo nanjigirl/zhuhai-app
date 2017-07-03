@@ -6,6 +6,13 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            ruleForm10: {
+                name: '',
+                sex:'',
+                eMail:'',
+                telphone:'',
+                date:''
+            },
             password: '123456',
             userName: 'eadmin',
             loginComplete: false
