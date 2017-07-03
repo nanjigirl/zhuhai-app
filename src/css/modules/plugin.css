@@ -1,0 +1,293 @@
+.mainView{
+    height: 100%;
+    width: 100%;
+}
+.mapContainer{
+      height: 100%;
+    width: 100%;
+}
+.mainContent{
+        height: 100%;
+    width: 100%;
+}
+.map .logo-med{
+    display:none;
+}
+#mapDiv {
+    min-height: 46.5em;
+    height: 100%;
+     width: 100%;
+}
+
+/*地图图例*/
+.legend {
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    left: 16.3%;
+    width: 443px;
+    z-index: 2;
+}
+
+.top-legend {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 35px;
+    line-height: 23px;
+    padding: 5px 10px;
+    text-align: center;
+    background: #fff;
+    border: 1px solid #dedede;
+    border-bottom: 0;
+    border-radius: 5px 5px 0 0;
+    z-index: 1;
+}
+
+.top-legend a {
+    color: #666;
+    font-weight: bold;
+}
+
+.top-legend a:hover {
+    color: #06C;
+}
+
+.top-legend a em {
+    width: 16px;
+    height: 16px;
+    float: right;
+    background: url(../../img/public/ico.png) -8px -10px no-repeat;
+}
+
+.content-legend {
+    padding: 5px;
+    position: relative;
+    margin-top: 34px;
+    background: #fff;
+    border: 1px solid #dedede;
+    z-index: 0;
+}
+
+.list-legend {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list-legend li {
+    float: left;
+    width: 200px;
+    margin: 3px;
+    position: relative;
+}
+.list-legend li a {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 5px;
+    border: 1px solid #eee;
+    color: #666;
+}
+
+.list-legend li a img {
+    vertical-align: middle;
+    margin-right: 3px;
+}
+
+.list-legend li a:hover {
+    border: 1px solid #0e9aef;
+    color: #0e9aef;
+}
+
+.list-legend .hover a {
+    border: 1px solid #0e9aef;
+    color: #0e9aef;
+    background: url(../../img/public/hover.png) right bottom no-repeat;
+}
+
+.list-legend li span {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+}
+
+.list-legend li span:hover {
+    cursor: pointer;
+}
+
+.legend-child-container {
+    display: none;
+    height: 108px;
+    overflow-y: scroll;
+    width: 436px
+}
+
+/*图例一级菜单*/
+.list-toptitle {
+    padding: 10px;
+    border-bottom: 1px dashed #cccccc;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.list-toptitle li {
+    display: inline-block;
+    width: 124px;
+    margin: 5px;
+    border-right: 1px dashed orange;
+    font-family: "微软雅黑";
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+.list-toptitle li a {
+    cursor: pointer;
+}
+
+.oneMenu a {
+    color: #CA322A;
+    font-weight: bold;
+}
+
+/*图例二级菜单*/
+
+/*地图工具栏*/
+.tool-box {
+    top: 90px;
+    position: absolute;
+    right: 10px;
+    z-index: 3;
+}
+
+.tool-container {
+    padding: 3px 0;
+    background: #fff;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+}
+
+.tool-container div {
+    float: left;
+    padding: 3px 6px;
+    border-right: 1px solid #f1f1f1;
+}
+
+.tool-container div a {
+    color: #666;
+}
+
+.tool-container .noline {
+    border: 0;
+}
+
+.tool-container em {
+    float: left;
+    width: 16px;
+    height: 16px;
+}
+
+.tool-container a img {
+    float: left;
+    width: 16px;
+    height: 16px;
+}
+
+.tool-container b {
+    float: left;
+    font-weight: normal;
+}
+
+.tool {
+    position: relative;
+    z-index: 3;
+}
+
+.menu-xl {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 100px;
+    background: #fff;
+    border: 1px solid #dedede;
+    border-top: 0;
+    display: none;
+}
+
+.menu-xl li {
+    padding: 5px;
+}
+
+/*地图类型框*/
+#mapType {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    height: 80px;
+    width: 120px;
+    background: rgba(255, 255, 255, 0);
+    z-index: 3;
+    transition-duration: .4s;
+    cursor: pointer;
+}
+
+#mapType .mapTypeCard {
+    height: 60px;
+    width: 86px;
+    position: absolute;
+    border-radius: 2px;
+    top: 10px;
+    right: 15px;
+    box-sizing: border-box;
+    border: 1px solid rgba(153, 153, 153, .42);
+    background: url(../../img/mapType/shadow.png) no-repeat 0 0;
+    transition-duration: .4s;
+}
+
+#mapType .normal {
+    z-index: 0;
+    background-position: 0 0;
+    right: 25px;
+}
+
+#mapType .earth {
+    z-index: 1;
+    background: url("../../img/mapType/maptype.png");
+    background-position: 0 -181px;
+    border-left: 1px solid rgba(153, 153, 153, 1);
+}
+
+#mapType .mapTypeCard.active span, #mapType .mapTypeCard:hover span {
+    background-color: #3385ff;
+}
+
+#mapType .mapTypeCard span {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: inline-block;
+    padding: 3px 3px 2px 4px;
+    font-size: 12px;
+    height: 12px;
+    line-height: 12px;
+    color: #fff;
+    border-top-left-radius: 2px;
+}
+
+.expand #mapType {
+    width: 202px;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+.expand #mapType .mapTypeCard.active {
+    border: 1px solid #3385ff;
+}
+
+.expand #mapType .normal {
+    right: 106px;
+}
+
+.expand #mapType .mapTypeCard {
+    background-image: url("../../img/mapType/maptype.png");
+}

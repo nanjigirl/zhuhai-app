@@ -1,0 +1,30 @@
+<div class="menuPanel" v-show='isLoginSuccess' @mouseover="showToggle = true;" @mouseleave="showToggle = false;">
+    <div class="tertiaryMenu" v-show="showTertiaryMenu">
+        <ul class="menuList">
+            <li v-for="tertiaryMenu in tertiaryMenus">
+                <a href="javascript:void(0);" @click="changeMenu(tertiaryMenu)">
+                    <div class="tertiaryItem"></div>
+                    <p>{{tertiaryMenu.title}}</p></a>
+            </li>
+        </ul>
+    </div>
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section">
+            <ul class="nav side-menu">
+                <li v-for="menu in menuList"><a @click="showTertiaryMenu = false"><i class="fa fa-home"
+                                                                                     :class="menu.icon"></i>
+                    {{menu.title}} <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li v-for="node in menu.nodes">
+                            <a href="javascript:void(0);" @click="openTertiaryMenu($event,node)">{{node.title}}</a>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuMask" v-show="showTertiaryMenu" @mouseover="showTertiaryMenu = false"></div>
+    <div class="menuToggle" v-show="showToggle"><a class='toggleButton' :class='{toggleOff:isMenuToggleOff}'
+                                                   @click="toggleOffMenu"></a></div>
+</div>
+
+

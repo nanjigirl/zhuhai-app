@@ -1,0 +1,18 @@
+@import "./app.css";
+@import "./iconfont/iconfont.css";
+@import "./modules/appDemoForm.css";
+@import "./modules/login.css";
+@import "./modules/loaders.css";
+@import "./modules/appTab.css";
+@import "./modules/menu.css";
+@import "./modules/appGrid.css";
+@import "./modules/plugin.css";
+@import "./modules/order.css";
+@import "./modules/flexMapLegend.css";
+@import "./modules/appDemoTable.css";
+@import "./modules/flexMapLegend.css";
+@import "./modules/appGeneralElements.css";
+:root {
+    --base-color:#105ba3;
+
+}

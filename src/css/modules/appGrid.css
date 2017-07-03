@@ -1,0 +1,46 @@
+.cesc-grid-form.right .cesc-form-item .el-form-item__label{
+    text-align: right;
+}
+.cesc-grid-form .cesc-form-item .el-form-item__label{
+    width: 90px;
+    text-align: left;
+}
+.cesc-grid-form.right .cesc-form-item .el-form-item__label{
+    text-align: right;
+}
+.cesc-grid-form .cesc-form-item .el-form-item__content{
+    width: calc(100% - 90px);
+    float: left;
+}
+.cesc-grid-form .cesc-form-item .cesc-grid-date .el-form-item__content{
+    width: 100%;
+}
+.el-date-editor.el-input.single-date {
+    width: 100%;
+}
+.cesc-grid-form .cesc-form-item .el-select{
+    width: 100%;
+}
+.cesc-grid-form .cesc-form-item .line{
+    text-align: center;
+}
+.w-80{
+    width: 80%;
+}
+.w-90{
+    width: 90%;
+}
+.w-50{
+    width:50%;
+}
+.cesc-grid-form{
+    margin:0 auto;
+    padding: 10px 5px;
+}
+.cesc-form-item>label{
+    width:19%;
+}
+.cesc-grid-form .cesc-form-item .el-checkbox{
+    margin-left: 0;
+    padding-right: 15px;
+}

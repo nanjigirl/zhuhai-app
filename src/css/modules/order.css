@@ -1,0 +1,9 @@
+.priceTag{
+    font-size: 6em;
+    color:red;
+}
+.pricePanel{
+    float: left;
+    width: 45%;
+    margin-top: 40%;
+}
