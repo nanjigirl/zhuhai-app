@@ -1,12 +1,11 @@
 /*rightPanel模板内容*/
 .right-panel {
-    width: 27%;
-    max-width: 35em;
     height: inherit;
     background: #f4f4f4;
     position: absolute;
     right: 0;
-    top: 5%;
+    width: 35em;
+    top: 0;
     z-index: 100;
     -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
     -moz-box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
@@ -22,7 +21,7 @@
 }
 
 .right-panel .goBack {
-    width: 2.5em;
+    width: 2em;
     height: 10em;
     background: #f4f4f4;
     text-align: center;
@@ -229,7 +228,6 @@
 .panel-content {
     width: 100%;
     height: calc(100% - 5.2em);
-    padding: 10px;
 }
 
 .device-title {
@@ -248,9 +246,10 @@
     padding-bottom: 1%;
     border: 1px solid #dcdcdc;
     background: #fbfafa;
-    margin-bottom: 3%;
 }
-
+.panel-top, .panel-middle{
+    margin-bottom: 2%;
+}
 .panel-top {
     height: 25%;
 }
