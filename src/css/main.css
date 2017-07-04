@@ -21,6 +21,7 @@
 @import "./modules/appDemoTable.css";
 @import "./modules/flexMapLegend.css";
 @import "./modules/appGeneralElements.css";
+@import "./modules/appSearch.css";
 :root {
     --base-color:#105ba3;
 

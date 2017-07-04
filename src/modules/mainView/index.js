@@ -3,7 +3,10 @@ var template = require('./main-view.html');
 var eventHelper = require('../../utils/eventHelper');
 var moduleController = require('controllers/moduleController');
 var serviceHelper = require('../../services/serviceHelper');
-var components = {};
+var appSearch = require('modules/appSearch');
+var components = {
+    'app-search':appSearch
+};
 components = $.extend(components, moduleController);
 var userTemplate = '';
 for (var key in moduleController) {
@@ -18,10 +21,14 @@ var comm = Vue.extend({
         return {
             isLoading: false,
             currentView: '',
-            isLoginSuccess: false
+            isLoginSuccess: false,
+            abc: false
         }
     },
     methods: {
+        toggleSearch:function () {debugger
+            search1.abc = true;
+        },
         changeView: function (view) {
           clearTimeout(this.changeViewTimer);
             this.changeViewTimer = setTimeout(function () {
@@ -31,6 +38,9 @@ var comm = Vue.extend({
                     console.log('出错了！！');
                 }
             }.bind(this),100);
+        },
+        toggleSearch:function(){
+
         }
     },
     mounted: function () {
