@@ -3,6 +3,7 @@
     height: 100%;
     background-size: 100% 100%;
     background: url(../../img/login/login-bg.jpg) no-repeat 0 0;
+    position: relative;
 }
 .goBack{
     width:4em;
@@ -14,13 +15,12 @@
 }
 .loginBox{
     background:#fff;
-    width: 380px;
+    width: 400px;
     position: absolute;
-    left: 64%;
-    top: 40%;
+    left: 56.3%;
+    top: 32%;
     z-index: 2;
     border:2px solid #00BAFF;
-    text-align:center;
 }
 .loginBox .login-header{
     line-height: 50px;
@@ -29,6 +29,7 @@
     width: 100%;
     color: #fff;
     background-color: rgba(15,181,244,1);
+    text-align:center;
 }
 .logo{
     font-size: 3em;
@@ -69,9 +70,8 @@
     background-size:100% 100%;
 }
 .login-content .forgetPsd{
-    position: absolute;
     padding:1em 0;
-    margin-bottom:2em;
+    float:right;
 }
 .login-content label{
     width: 4em;
@@ -83,7 +83,7 @@
     position:relative;
 }
 .login-content .el-input{
-    width:inherit;
+    width:224px;
 }
 .login-btn{
     width: 16em;
@@ -100,6 +100,9 @@
 }
 .login-btn:hover,.login-btn:visited{
     background: rgba(36,149,243,0.6);
+}
+.login-container{
+    padding:1em 4em 1em 4em;
 }
 .registerBox{
     width:inherit;
@@ -129,4 +132,21 @@
     border:none;
     vertical-align: middle;
     outline:none;
+}
+.logo-content{
+    position: absolute;
+    top: 20%;
+    right: 18%
+}
+.login-container .btn-grounp{
+    float: right;
+}
+.vertical-mid{
+    display: inline-block;
+    vertical-align: middle;
+}
+.logo-desc{
+    font-size:3em;
+    margin-left:20px;
+    color: #333;
 }
