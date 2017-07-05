@@ -2,7 +2,6 @@ var template = require('./content.html');
 var eventHelper = require('../../utils/eventHelper');
 var appMenuController = require('controllers/appMenuController');
 var menuData = require('services/mockMenu');
-
 // 定义组件
 var comm = Vue.extend({
     template: template,
@@ -55,7 +54,6 @@ var comm = Vue.extend({
                 name: '石灰厂-吊塔视频',
                 status: '在线'
             }],
-            searchEquipment:''
         }
     },
     methods: {
@@ -64,8 +62,14 @@ var comm = Vue.extend({
     mounted: function () {
 
     },
-    computed:function () {
-
+    computed: {
+        //搜索功能（当前是按照名字和性别进行过滤）
+        searchEquipment: function () {//根据名字和性别过滤
+            var that = this;
+            return that.tableData.filter(function (user) {
+                return (user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1 || user.status.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1);
+            })
+        }
     },
     components: {}
 });
