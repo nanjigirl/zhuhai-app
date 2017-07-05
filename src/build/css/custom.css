@@ -254,18 +254,12 @@ body .container.body .right_col {
     background: #F7F7F7;
 }
 
-.nav-md .container.body .right_col {
-    padding: 5px 10px 0;
-}
-
 .nav_title {
     width: 230px;
     float: left;
     background: #172d44;
     border-radius: 0;
     height: 6.7em;
-    padding-top: 1em;
-    opacity: 0.6;
 }
 
 @media (max-width: 991px) {

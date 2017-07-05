@@ -20,6 +20,7 @@
 @import "./modules/flexMapLegend.css";
 @import "./modules/appDemoTable.css";
 @import "./modules/flexMapLegend.css";
+@import "./modules/noticeBox.css";
 @import "./modules/appGeneralElements.css";
 :root {
     --base-color:#105ba3;

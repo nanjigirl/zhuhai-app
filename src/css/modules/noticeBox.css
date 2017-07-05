@@ -1,0 +1,176 @@
+.noticeBox {
+    position: absolute;
+    height: 100%;
+    width: 24.2em;
+    right: 1em;
+    z-index: 2;
+}
+
+.noticeBox .alertBox, .noticeBox .messageBox {
+    background: white;
+    width: 100%;
+    height: 20.7em;
+    border: 1px solid #20a0ff;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.notixeBox .alertBox {
+    top: 3em;
+}
+
+.noticeBox .messageBox {
+    margin-top: 3em;
+}
+
+.noticeBox .el-tabs__nav {
+    width: 100%;
+}
+
+.noticeBox .el-tabs__item {
+    width: 50%;
+    text-align: center;
+    font-size: 1em;
+    height: 30px;
+    line-height: 30px;
+}
+
+.noticeBox .alertType {
+    float: left;
+    display: inline-block;
+    width: 3.4em;
+    height: 84%;
+    padding: 5px 9px;
+    color: white;
+    background: red;
+    border-radius: 2em;
+    margin-top: 4px;
+    margin-right: 1em;
+    margin-left: 0.5em;
+}
+
+.noticeBox .boxTitle {
+    height: 2.5em;
+    background-color: var(--base-color);
+    line-height: 2.5em;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.noticeBox .alertItem {
+    height: 4em;
+    width: 100%;
+    background-color: white;
+    border-bottom: 1px solid black;
+    color: black;
+}
+
+.noticeBox .alertMessage-m, .noticeBox .alertMessage-r {
+    float: left;
+    height: 100%;
+    margin-right: 1em;
+}
+
+.noticeBox .alertMessage-m > div , .noticeBox .alertMessage-r > div {
+    height: 50%;
+}
+
+.noticeBox .alertMessage-r {
+    float: right;
+
+}
+
+.noticeBox .messageItem {
+    height: 2.5em;
+    width: 100%;
+    background-color: white;
+    line-height: 2.5em;
+    border-top: 1px solid gray;
+    border-buttom: 1px solid gray;
+    padding: 0 5px;
+}
+
+.noticeBox .messageItem > a {
+    float: right;
+    margin-right: 0.5em;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+
+.noticeBox .messageDetail {
+    padding: 0 5px;
+    background-color: #ededed;
+}
+
+.noticeBox .el-tabs__header {
+    margin-bottom: 0;
+}
+
+.noticeBox .messageTime {
+    float: right;
+    margin-right: 1em;
+    font-size: 0.8em;
+    color: #b06e51;
+    font-style: italic;
+}
+
+.noticeBox .messageBody {
+    overflow-y: auto;
+    height: 17.6em;
+}
+
+.noticeBox .active {
+    background-color: #ededed !important;
+}
+
+.noticeBox .departmentButton {
+    font-size: 1em;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.noticeBox .el-checkbox-button__inner {
+    width: 99%;
+    border-radius: 0 !important;
+}
+
+.noticeBox .is-checked {
+    border-left: 1px solid #bfcbd9;
+}
+
+.noticeBox .el-checkbox-button:first-child {
+    border-left: 0 !important;
+}
+
+.noticeBox .el-checkbox-button {
+    width: 4em;
+    border-radius: 0 !important;
+    margin-bottom: 1px;
+}
+
+.noticeBox .alertContent {
+    overflow-y: auto;
+    height: 15.4em;
+}
+
+.noticeBox .el-checkbox-group {
+    height: 2.1em;
+}
+.alertItem .caseClose{
+    background:darkgreen;
+}
+.alertItem .unAssign{
+    background:red;
+}
+.alertItem .wip{
+    background:darkorange;
+}
+.message-detail-enter-active{
+    transition: all 0.5s ease
+}
+.message-detail-enter{
+    opacity: 0
+}

@@ -3,7 +3,10 @@ var template = require('./main-view.html');
 var eventHelper = require('../../utils/eventHelper');
 var moduleController = require('controllers/moduleController');
 var serviceHelper = require('../../services/serviceHelper');
-var components = {};
+var appNoticeBox = require('modules/appNoticeBox');
+var components = {
+    'app-notice-box': appNoticeBox
+};
 components = $.extend(components, moduleController);
 var userTemplate = '';
 for (var key in moduleController) {
@@ -23,14 +26,14 @@ var comm = Vue.extend({
     },
     methods: {
         changeView: function (view) {
-          clearTimeout(this.changeViewTimer);
+            clearTimeout(this.changeViewTimer);
             this.changeViewTimer = setTimeout(function () {
                 if (!!components[view]) {
                     this.currentView = view;
                 } else {
                     console.log('出错了！！');
                 }
-            }.bind(this),100);
+            }.bind(this), 100);
         }
     },
     mounted: function () {

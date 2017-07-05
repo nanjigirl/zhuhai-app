@@ -66,8 +66,8 @@
 }
 .vertical-icons{
     height:0%;
-    width:2.6em;
-    left:0.1em;
+    width: 3.49em;
+    left:0;
 }
 .vertical-icons.open {
     height: 16em;

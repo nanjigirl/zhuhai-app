@@ -71,6 +71,14 @@ li {
 .navFix .nav_menu {
     height: 100%;
 }
+.titleBackground{
+    background: url("./images/chengguanLogo.png") no-repeat center center;
+    background-color: #ededed;
+    background-size: 50% 90%;
+    border-right: 1px solid whitesmoke !important;
+    height: 6.8em;
+    border-bottom: 2px solid #105ba3 !important;
+}
 
 ::-webkit-scrollbar {
     width: 8px;

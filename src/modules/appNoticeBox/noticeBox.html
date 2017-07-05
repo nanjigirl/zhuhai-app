@@ -1,0 +1,48 @@
+<div class="noticeBox">
+    <transition name="message-detail">
+        <div class="alertBox" v-show="showAlertBox">
+            <div class="boxTitle">报警栏目</div>
+            <el-checkbox-group v-model="selectedDepartments" size="small" ref="departmentGroup">
+                <el-checkbox-button v-for="dept in departments" :label="dept.name" :key="dept.name">{{dept.name}}
+                </el-checkbox-button>
+            </el-checkbox-group>
+            <div class="alertContent">
+                <div class="alertItem" v-for="item in alertItems">
+                    <div class="alertType unAssign" v-if="item.status==0" title="未分配">{{item.alertType}}</div>
+                    <div class="alertType wip" v-if="item.status==1" title="正在处理">{{item.alertType}}</div>
+                    <div class="alertType caseClose" v-if="item.status==2" title="处理完成">{{item.alertType}}</div>
+                    <div class="alertMessage-m">
+                        <div>{{item.alertDetail}}</div>
+                        <div>{{item.owner}}</div>
+                    </div>
+                    <div class="alertMessage-r">
+                        <div>{{item.alertTitle}}</div>
+                        <div>{{item.alertGrade}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </transition>
+    <transition name="message-detail">
+        <div class="messageBox" v-show="showMessageBox">
+            <div class="boxTitle">消息列表</div>
+            <div class="messageBody">
+                <div class="messageContainer" v-for="message in messageList">
+                    <div class="messageItem" @click="message.showDetail = !message.showDetail">
+                        {{message.title}}
+                        <a>+</a>
+                        <span class="messageTime">一分钟前</span>
+
+                    </div>
+                    <transition name="message-detail">
+                        <div class='messageDetail' v-show="!!message.showDetail">
+                            {{message.detail}}
+                        </div>
+                    </transition>
+
+                </div>
+
+            </div>
+        </div>
+    </transition>
+</div>

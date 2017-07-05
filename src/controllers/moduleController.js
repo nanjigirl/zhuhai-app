@@ -27,7 +27,8 @@ define([
     'modules/appProjectDetail',
     'modules/appMediaGallery',
     'modules/appWidgets',
-    'modules/appEcharts'], function (appContent, appDemoForm, elementForm, appDemoTable, appDemoChart, appProjectTrack, appHome, appInfo, appOrder, appGrid,arcgisPlugin, appUnknown,appGeneralForm,appFormWizard,appFormUpload,appFormButton,appTables,appAdvancedForm,appGeneralElements,appIcons,appGlyphicons,appTableDynamic,appPricingDesign,appCharts,appMorris,appOtherCharts,appProjectDetail,appMediaGallery,appWidgets,appEcharts) {
+    'modules/appEcharts'
+], function (appContent, appDemoForm, elementForm, appDemoTable, appDemoChart, appProjectTrack, appHome, appInfo, appOrder, appGrid,arcgisPlugin, appUnknown,appGeneralForm,appFormWizard,appFormUpload,appFormButton,appTables,appAdvancedForm,appGeneralElements,appIcons,appGlyphicons,appTableDynamic,appPricingDesign,appCharts,appMorris,appOtherCharts,appProjectDetail,appMediaGallery,appWidgets,appEcharts) {
     return {
         'app-content': appContent,
         'app-demo-form': appDemoForm,

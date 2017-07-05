@@ -9,7 +9,14 @@ var comm = Vue.extend({
             message: 'Vue Module Seed'
         }
     },
-    methods: {},
+    methods: {
+        showAlertBox:function () {
+            eventHelper.emit('showAlertBox');
+        },
+        showMessageBox:function () {
+            eventHelper.emit('showMessageBox');
+        }
+    },
     mounted: function () {
     },
     components: {}
