@@ -1,6 +1,16 @@
 <div class="noticeBox">
     <transition name="message-detail">
-        <div class="alertBox" v-show="showAlertBox">
+        <div class="alertSummary" v-show="showAlertBox">
+            <div>
+                <a class="pull-right date">
+                    <p class="month">预警数</p>
+                    <p class="day">23</p>
+                </a>
+            </div>
+        </div>
+    </transition>
+    <transition name="message-detail">
+        <div class="alertBox" v-show="showAlertBoxDetail">
             <div class="boxTitle">报警栏目</div>
             <el-checkbox-group v-model="selectedDepartments" size="small" ref="departmentGroup">
                 <el-checkbox-button v-for="dept in departments" :label="dept.name" :key="dept.name">{{dept.name}}
@@ -12,12 +22,12 @@
                     <div class="alertType wip" v-if="item.status==1" title="正在处理">{{item.alertType}}</div>
                     <div class="alertType caseClose" v-if="item.status==2" title="处理完成">{{item.alertType}}</div>
                     <div class="alertMessage-m">
+                        <div>{{item.alertTitle}}</div>
                         <div>{{item.alertDetail}}</div>
-                        <div>{{item.owner}}</div>
                     </div>
                     <div class="alertMessage-r">
-                        <div>{{item.alertTitle}}</div>
-                        <div>{{item.alertGrade}}</div>
+                        <div>处理单位</div>
+                        <div class="owner">{{item.owner}}</div>
                     </div>
                 </div>
             </div>
