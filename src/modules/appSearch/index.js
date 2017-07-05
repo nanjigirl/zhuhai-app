@@ -24,15 +24,21 @@ var comm = Vue.extend({
                 label: '南宁市交警大队'
             }],
             pollutions: [{
-                value: '石灰厂',
-                label: '石灰厂'
+                value: '建筑工地',
+                label: '建筑工地'
             }, {
-                value: '烧腊档',
-                label: '烧腊档'
+                value: '消纳场',
+                label: '消纳场'
+            }, {
+                value: '采石场',
+                label: '采石场'
+            }, {
+                value: '道路',
+                label: '道路'
             }],
             areas: [{
-                value: '江南区',
-                label: '江南区'
+                value: '青秀区',
+                label: '青秀区'
             }, {
                 value: '兴宁区',
                 label: '兴宁区'
@@ -58,7 +64,11 @@ var comm = Vue.extend({
             }],
         }
     },
-    methods: {},
+    methods: {
+        close:function () {
+            this.showSearch = false;
+        }
+    },
     mounted: function () {
         eventHelper.on('openPointSearch', function () {
             this.showSearch = !this.showSearch;

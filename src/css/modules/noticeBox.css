@@ -27,7 +27,10 @@
 .noticeBox .el-tabs__nav {
     width: 100%;
 }
-
+.alertMessage-r .owner{
+    font-style: italic;
+    color: darkred;
+}
 .noticeBox .el-tabs__item {
     width: 50%;
     text-align: center;
@@ -37,6 +40,7 @@
 }
 
 .noticeBox .alertType {
+    text-align: center;
     float: left;
     display: inline-block;
     width: 3.4em;
@@ -83,7 +87,13 @@
     float: right;
 
 }
-
+.noticeBox .alertSummary{
+    height: 4em;
+    width: 4em;
+    background-color: #ededed;
+    border-radius: 5px;
+    cursor: pointer;
+}
 .noticeBox .messageItem {
     height: 2.5em;
     width: 100%;

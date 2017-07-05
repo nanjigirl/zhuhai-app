@@ -8,30 +8,31 @@ var comm = Vue.extend({
         return {
             isLoginSuccess: false,
             showMessageBox: false,
+            showAlertBoxDetail: false,
             showAlertBox: false,
             activeName: 'first',
-            selectedDepartments: [],
+            selectedDepartments: ['交警','环保','城管','建委','国土','工信委'],
             alertItems: [{
                 status: 0,
-                alertType: '污染报警',
-                alertDetail: 'XXX路PM2.5超标',
+                alertType: '建筑工地',
+                alertDetail: 'XXX路噪声超标',
                 owner: '环保局XXX区分队',
-                alertTitle: '污染程度',
+                alertTitle: '噪声超标',
                 alertGrade: '严重'
             },
                 {
                     status: 1,
-                    alertType: '污染报警',
+                    alertType: '消纳场',
                     alertDetail: 'XXX路PM2.5超标',
                     owner: '环保局XXX区分队',
-                    alertTitle: '污染程度',
+                    alertTitle: 'PM2.5超标',
                     alertGrade: '严重'
                 }, {
                     status: 2,
-                    alertType: '污染报警',
-                    alertDetail: 'XXX路PM2.5超标',
+                    alertType: '采石场',
+                    alertDetail: 'XX采石场违章作业',
                     owner: '环保局XXX区分队',
-                    alertTitle: '污染程度',
+                    alertTitle: '违章作业',
                     alertGrade: '严重'
                 }],
             departments: [{

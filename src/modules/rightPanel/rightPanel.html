@@ -48,23 +48,8 @@
                     <span>数据表格</span>
                 </div>
                  <div class="device-content">
-                 <video v-show='isRealTimeMode'  width="100%" height="98%" src="http://120.77.246.153:9000/vedio/test.ogg" controls="controls" muted>
-                 您的浏览器不支持 video 标签。
-                 </video>
-                 <div class="table-responsive" v-show='!isRealTimeMode'>
-                     <table class="table table-bordered" >
-                         <thead>
-                         <tr>
-                             <th v-for='head in heads'>{{head.value}}</th>
-                         </tr>
-                         </thead>
-                         <tbody>
-                         <tr v-for='(row,index) in rows'>
-                             <td v-for='head in heads'>{{row[head.key]}}</td>
-                         </tr>
-                         </tbody>
-                     </table>
-                 </div>
+                     <object name="OCX" ID="OCX" classid="clsid:BE020CC9-521F-4641-85E1-3B631B7ADDD9" width="500px" height="330px">
+                     </object>
                  </div>
              </div>
         </div>

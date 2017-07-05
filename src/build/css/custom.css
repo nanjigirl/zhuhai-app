@@ -241,7 +241,7 @@
     position: absolute;
     display: -ms-flexbox;
     display: flex;
-    z-index: 2;
+    z-index: 99;
     height: 95%;
 }
 

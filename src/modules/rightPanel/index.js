@@ -7,7 +7,10 @@ var facilityController = require('controllers/facilityController');
 var serviceHelper = require('services/serviceHelper');
 var moment = require('moment');
 var eventHelper = require('utils/eventHelper');
-var detailGridHeader=[{key:'startDate',value:'起始时间'},{key:'deep',value:'最大积水深度'},{key:'period',value:'积水时长'}];
+var detailGridHeader = [{key: 'startDate', value: '起始时间'}, {key: 'deep', value: '最大积水深度'}, {
+    key: 'period',
+    value: '积水时长'
+}];
 var realTimeUpdate = function (self, monitorObj) {
     controller.getMonitorItemCurrentValue(monitorObj, function (result) {
         // self.lastUpdateTime = moment().format('YYYY-MM-DD hh:mm:ss', new Date());
@@ -38,72 +41,72 @@ var comm = Vue.extend({
             selectedMode: '',
             facilityType: '',
             waterGrade: 1,
-            waterGradeTitle:'',
-            heads:detailGridHeader,
-            rows:[{
-                startDate:'2016-10-09',
-                deep:'0.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-19',
-                deep:'0.1m',
-                period:'6h'
-            },{
-                startDate:'2016-11-09',
-                deep:'0.4m',
-                period:'7h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
+            waterGradeTitle: '',
+            heads: detailGridHeader,
+            rows: [{
+                startDate: '2016-10-09',
+                deep: '0.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-19',
+                deep: '0.1m',
+                period: '6h'
+            }, {
+                startDate: '2016-11-09',
+                deep: '0.4m',
+                period: '7h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
+            }, {
+                startDate: '2016-10-29',
+                deep: '1.4m',
+                period: '6h'
             }]
         }
     },
-    computed:{
-        classObject:function(){
-            return{
-                'one':this.waterGrade === 1,
-                'two':this.waterGrade === 2,
-                'three':this.waterGrade === 3,
-                'four':this.waterGrade === 4,
-                'five':this.waterGrade === 5,
-                'six':this.waterGrade === 6
+    computed: {
+        classObject: function () {
+            return {
+                'one': this.waterGrade === 1,
+                'two': this.waterGrade === 2,
+                'three': this.waterGrade === 3,
+                'four': this.waterGrade === 4,
+                'five': this.waterGrade === 5,
+                'six': this.waterGrade === 6
             }
         }
     },
@@ -122,11 +125,65 @@ var comm = Vue.extend({
             this.waterGrade = grade.grade;
             this.waterGradeTitle = grade.title;
         }.bind(this));
-        eventHelper.on('close-right-panel',function () {
+        eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
+        this.initHKVideo();
     },
     methods: {
+        initHKVideo: function () {
+            var ip = "180.139.134.6";
+            var port = "443";
+            var username = "admin";
+            var password = "Wmdx1234";
+            var CameraIndexCodeArray = "001642|001646|001647|001644|001643|001645|001680".split("|");
+
+            function LoginPlat() {
+                //alert("LoginPlat()");
+                var cameraCount = 1;
+                if (CameraIndexCodeArray.length == 1) {
+                    cameraCount = 1;
+                } else if (1 < CameraIndexCodeArray.length && CameraIndexCodeArray.length <= 4) {
+                    cameraCount = 2;
+                } else if (4 < CameraIndexCodeArray.length && CameraIndexCodeArray.length <= 9) {
+                    cameraCount = 3;
+                } else if (9 < CameraIndexCodeArray.length && CameraIndexCodeArray.length <= 16) {
+                    cameraCount = 4;
+                } else if (16 < CameraIndexCodeArray.length && CameraIndexCodeArray.length <= 25) {
+                    cameraCount = 5;
+                } else {
+                    cameraCount = 3;
+                }
+                OCX.SetLayoutType(cameraCount);
+
+                var v1 = "<?xml version=\"1.0\" encoding=\"utf-8\"?><LoginInfo><LoginType>2</LoginType><SynLogin>1</SynLogin><IP>" + ip + "</IP><Port>" + port + "</Port><UserName>" + username + "</UserName><Password>" + password + "</Password></LoginInfo>";
+
+                var v = OCX.LoginPlat(v1);
+                if (v != 0)
+                    alert("登录失败，请查看日志preview.log");
+            }
+
+//新的预览接口，需先登录平台，登录需要耗点时间，稍等（控件自身取Token）
+            function StartPreview() {
+                //alert("StartPreview()");
+                $(CameraIndexCodeArray).each(function (index, item) {
+                    var _param = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Preview><CamIndexCode>" + item + "</CamIndexCode></Preview>";
+                    OCX.StartPreviewByIndex(_param, index);
+                });
+            }
+
+            setTimeout(function () {
+                //alert("mmp");
+                LoginPlat();
+                StartPreview();
+            }, 1000);
+        },
+        initGDVideo: function () {
+
+        },
+        initJJVideo: function () {
+
+        },
         handleSelect: function () {
             console.log('select');
         },
@@ -154,7 +211,7 @@ var comm = Vue.extend({
             this.$nextTick(function () {
                 this.activeIndex = '1';
                 this.facility = facility;
-                if(!!this.$refs.monitorPlugin){
+                if (!!this.$refs.monitorPlugin) {
                     this.$refs.monitorPlugin.$emit('reset');
                 }
                 var facilityID = facility.id.substring(1);
