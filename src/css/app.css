@@ -74,7 +74,7 @@ li {
 .titleBackground{
     background: url("./images/chengguanLogo.png") no-repeat center center;
     background-color: #ededed;
-    background-size: 50% 90%;
+    background-size: 7em 6em;
     border-right: 1px solid whitesmoke !important;
     height: 6.8em;
     border-bottom: 2px solid #105ba3 !important;

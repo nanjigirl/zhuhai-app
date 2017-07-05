@@ -1,8 +1,7 @@
 <div class="mainView" v-if="isLoginSuccess">
     <div class="control-search" >
-        <el-button @click="toggleSearch()" >查询</el-button>
+        <el-button @click="toggleSearch"  icon="search" ></el-button>
     </div>
-    <app-search></app-search>
     <!-- 插入模版-->
     <app-notice-box></app-notice-box>
     <div id='navigatorView' :is="currentView">

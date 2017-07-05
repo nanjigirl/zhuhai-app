@@ -2,8 +2,10 @@
     width: 300px;
     background: #fff;
     position: absolute;
-    z-index: 9999;
-    /*left: -320px;*/
+    z-index: 3;
+    /* left: -320px; */
+    top: 7em;
+    height: calc(100% - 4.3em);
 }
 .cesc-nnyc-table{
     padding: 5px;
@@ -13,6 +15,14 @@
 }
 .control-search{
     position: absolute;
-    z-index: 9999;
+    z-index: 3;
     top: 100px;
+    margin-left:1em;
+}
+.control-search .el-button{
+    background-color: #157dd6;
+    color: white;
+}
+.toggleMenu{
+    margin-left: 298px;
 }

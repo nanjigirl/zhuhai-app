@@ -13,6 +13,7 @@
     border: 1px solid #20a0ff;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    margin-top: 1em;
 }
 
 .notixeBox .alertBox {
@@ -74,7 +75,7 @@
     margin-right: 1em;
 }
 
-.noticeBox .alertMessage-m > div , .noticeBox .alertMessage-r > div {
+.noticeBox .alertMessage-m > div, .noticeBox .alertMessage-r > div {
     height: 50%;
 }
 
@@ -159,18 +160,23 @@
 .noticeBox .el-checkbox-group {
     height: 2.1em;
 }
-.alertItem .caseClose{
-    background:darkgreen;
+
+.alertItem .caseClose {
+    background: darkgreen;
 }
-.alertItem .unAssign{
-    background:red;
+
+.alertItem .unAssign {
+    background: red;
 }
-.alertItem .wip{
-    background:darkorange;
+
+.alertItem .wip {
+    background: darkorange;
 }
-.message-detail-enter-active{
+
+.message-detail-enter-active {
     transition: all 0.5s ease
 }
-.message-detail-enter{
+
+.message-detail-enter {
     opacity: 0
 }

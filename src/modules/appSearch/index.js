@@ -7,12 +7,14 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            datatheads:['设备名称','状态'],
-            form:{
-                name:'',
-                address:[],
-                data:[],
-                pollute:[]
+            showSearch: false,
+            isToggleMenu: false,
+            datatheads: ['设备名称', '状态'],
+            form: {
+                name: '',
+                address: [],
+                data: [],
+                pollute: []
             },
             datas: [{
                 value: '南宁市建设委员会',
@@ -21,14 +23,14 @@ var comm = Vue.extend({
                 value: '南宁市交警大队',
                 label: '南宁市交警大队'
             }],
-            pollutions:[{
+            pollutions: [{
                 value: '石灰厂',
                 label: '石灰厂'
             }, {
                 value: '烧腊档',
                 label: '烧腊档'
             }],
-            areas:[{
+            areas: [{
                 value: '江南区',
                 label: '江南区'
             }, {
@@ -47,20 +49,23 @@ var comm = Vue.extend({
             }, {
                 name: '荣和大地-公园大道-1号门吊塔视频',
                 status: '在线'
-            },{
+            }, {
                 name: '南宁市建设委员会-吊塔视频',
                 status: '在线'
-            },{
+            }, {
                 name: '石灰厂-吊塔视频',
                 status: '在线'
             }],
         }
     },
-    methods: {
-
-    },
+    methods: {},
     mounted: function () {
-
+        eventHelper.on('openPointSearch', function () {
+            this.showSearch = !this.showSearch;
+        }.bind(this));
+        eventHelper.on('toggle-menu', function (flag) {
+            this.isToggleMenu = flag;
+        }.bind(this));
     },
     computed: {
         //搜索功能（当前是按照名字和性别进行过滤）

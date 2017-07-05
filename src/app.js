@@ -12,6 +12,8 @@ var mainView = require('modules/mainView');
 var appLogin = require('modules/login');
 var eventHelper = require('utils/eventHelper');
 var ElementUI = require('element-ui');
+var appSearch = require('modules/appSearch');
+
 Vue.use(ElementUI);
 Vue.use(VueRouter);
 window.eventHelper = eventHelper;
@@ -21,45 +23,45 @@ window.eventHelper = eventHelper;
 // 或者，只是一个组件配置对象。
 // 我们晚点再讨论嵌套路由。
 /*var routes = [{
-    path: '/' ,
-    component: appHome
-}];
-for (var key in moduleController) {
-    routes.push({
-        path: '/' + key,
-        component: moduleController[key]
-    })
-}
+ path: '/' ,
+ component: appHome
+ }];
+ for (var key in moduleController) {
+ routes.push({
+ path: '/' + key,
+ component: moduleController[key]
+ })
+ }
 
 
-// 3. 创建 router 实例，然后传 `routes` 配置
-// 你还可以传别的配置参数, 不过先这么简单着吧。
-var router = new VueRouter({
-    routes // （缩写）相当于 routes: routes
-});
+ // 3. 创建 router 实例，然后传 `routes` 配置
+ // 你还可以传别的配置参数, 不过先这么简单着吧。
+ var router = new VueRouter({
+ routes // （缩写）相当于 routes: routes
+ });
  */
 // 4. 创建和挂载根实例。
 // 记得要通过 router 配置参数注入路由，
 // 从而让整个应用都有路由功能
 var app = new Vue({
-    mounted:function () {
-        eventHelper.on('loginSuccess',function () {
+    mounted: function () {
+        eventHelper.on('loginSuccess', function () {
             this.isLoginSuccess = true;
         }.bind(this));
-        eventHelper.on('loading-start',function () {
+        eventHelper.on('loading-start', function () {
             $('#loadingMask').show();
         });
-        eventHelper.on('loading-end',function () {
+        eventHelper.on('loading-end', function () {
             $('#loadingMask').hide();
         });
-        eventHelper.on('toggle-menu',function (flag) {
+        eventHelper.on('toggle-menu', function (flag) {
             this.isMenuToggleOff = flag;
         }.bind(this));
-    },
-    data:function () {
-        return{
-            isLoginSuccess:false,
-            isMenuToggleOff:false
+    }
+    , data: function () {
+        return {
+            isLoginSuccess: false,
+            isMenuToggleOff: false
         }
     },
     components: {
@@ -69,6 +71,7 @@ var app = new Vue({
         'app-navigator': appNavigator,
         'app-tab': appTab,
         'main-view': mainView,
+        'app-search': appSearch,
         'app-footer': appFooter
     }
 }).$mount('#app');
