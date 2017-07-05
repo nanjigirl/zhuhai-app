@@ -3,8 +3,8 @@
 }
 #toolbar {
     position:absolute;
-    bottom: 3em;
-    left:1em;
+    top: 24px;
+    left: 5em;
 }
 .button {
     width: 1em;
@@ -70,7 +70,7 @@
     left:0;
 }
 .vertical-icons.open {
-    height: 16em;
+    height: 39em;
     padding-top: 2.5em;
 }
 
@@ -106,4 +106,53 @@
     text-align: center;
     font-size:0.2em;
 }
-
+.buliding-video.glyphicon{
+     width: 15px;
+     height: 15px;
+     background:url(../../img/toolbar/point_15px_shex_red.png) no-repeat;
+ }
+.road-video.glyphicon{
+    width: 15px;
+    height: 15px;
+    background:url(../../img/toolbar/point_15px_shex.png) no-repeat;
+}
+.stonePit-video.glyphicon{
+     width: 15px;
+     height: 15px;
+     background:url(../../img/toolbar/point_15px_shex_yellow.png) no-repeat;
+ }
+.jetereting-video.glyphicon{
+      width: 15px;
+      height: 15px;
+      background:url(../../img/toolbar/point_15px_shex_orange.png) no-repeat;
+  }
+.people.glyphicon{
+       width: 24px;
+       height: 24px;
+       background:url(../../img/toolbar/people.png) no-repeat;
+   }
+.car.glyphicon{
+    width: 24px;
+    height: 24px;
+    background:url(../../img/toolbar/FireTruck.png) no-repeat;
+}
+.enfroce-video.glyphicon{
+    width: 15px;
+    height: 15px;
+    background:url(../../img/toolbar/point_15px_bzsp.png) no-repeat;
+}
+.bayonet.glyphicon{
+    width: 15px;
+    height: 15px;
+    background:url(../../img/toolbar/point_15px_kksp.png) no-repeat;
+}
+.reportPoint.glyphicon{
+    width: 15px;
+    height: 15px;
+    background:url(../../img/toolbar/reportPoint.png) no-repeat;
+}
+.consumptive.glyphicon{
+    width: 15px;
+    height: 15px;
+    background:url(../../img/toolbar/point_15px_shex_blue.png) no-repeat;
+}

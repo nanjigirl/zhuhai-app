@@ -13,9 +13,9 @@ var comm = Vue.extend({
             isHorizontal: false,
             isShowSubLegend: false,
             legendList: [{
-                title: '雨量站',
-                facilityTypeName: "RF",
-                icon: 'glyphicon-user',
+                title: '工地视频',
+                facilityTypeName: "BD",
+                icon: 'buliding-video',
                 id: '',
                 showIcon: true,
                 showSub:false,
@@ -94,9 +94,9 @@ var comm = Vue.extend({
                     }
                 ]
             }, {
-                title: '河道',
-                facilityTypeName: "RC",
-                icon: 'glyphicon-globe',
+                title: '道路路面视频',
+                facilityTypeName: "RD",
+                icon: 'road-video',
                 id: '',
                 showIcon: true,
                 showSub:false,
@@ -163,9 +163,583 @@ var comm = Vue.extend({
                     }
                 ]
             }, {
-                title: '窨井',
-                facilityTypeName: "RV",
-                icon: 'glyphicon-send',
+                title: '采石场视频',
+                facilityTypeName: "SP",
+                icon: 'stonePit-video',
+                id: '',
+                showIcon: true,
+                showSub: false,
+                facilitys: [
+                    {
+                        "name": "岭南窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.42536,
+                        "y": 23.176147,
+                        "id": 36
+                    },
+                    {
+                        "name": "天寿路窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.42536,
+                        "y": 23.116147,
+                        "id": 50,
+                        type: 'warn'
+                    },
+                    {
+                        "name": "员村窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.43325642333986,
+                        "y": 23.13755631975802,
+                        "id": 51
+                    },
+                    {
+                        "name": "民主直街窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.92536,
+                        "y": 23.116147,
+                        "id": 52
+                    },
+                    {
+                        "name": "茅岗窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.6,
+                        "y": 23.116147,
+                        "id": 53
+                    },
+                    {
+                        "name": "开发大道窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.21,
+                        "y": 23.116147,
+                        "id": 54
+                    },
+                    {
+                        "name": "建阳路窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.42536,
+                        "y": 23.78,
+                        "id": 55
+                    },
+                    {
+                        "name": "大南路窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.29489735351564,
+                        "y": 23.128629928156457,
+                        "id": 56
+                    },
+                    {
+                        "name": "江燕路窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.26468495117189,
+                        "y": 23.185621505304894,
+                        "id": 57
+                    }
+                ]
+            }, {
+                    title: '消纳场视频',
+                    facilityTypeName: "CP",
+                    icon: 'consumptive',
+                    id: '',
+                    showIcon: true,
+                    showSub:false,
+                    facilitys: [
+                        {
+                            "name": "岭南窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.42536,
+                            "y": 23.176147,
+                            "id": 36
+                        },
+                        {
+                            "name": "天寿路窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.42536,
+                            "y": 23.116147,
+                            "id": 50,
+                            type: 'warn'
+                        },
+                        {
+                            "name": "员村窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.43325642333986,
+                            "y": 23.13755631975802,
+                            "id": 51
+                        },
+                        {
+                            "name": "民主直街窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.92536,
+                            "y": 23.116147,
+                            "id": 52
+                        },
+                        {
+                            "name": "茅岗窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.6,
+                            "y": 23.116147,
+                            "id": 53
+                        },
+                        {
+                            "name": "开发大道窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.21,
+                            "y": 23.116147,
+                            "id": 54
+                        },
+                        {
+                            "name": "建阳路窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.42536,
+                            "y": 23.78,
+                            "id": 55
+                        },
+                        {
+                            "name": "大南路窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.29489735351564,
+                            "y": 23.128629928156457,
+                            "id": 56
+                        },
+                        {
+                            "name": "江燕路窨井",
+                            "icon": "",
+                            "checked":true,
+                            "x": 113.26468495117189,
+                            "y": 23.185621505304894,
+                            "id": 57
+                        }
+                    ]
+                }, {
+                title: '混凝土场视频',
+                facilityTypeName: "JT",
+                icon: 'jetereting-video',
+                id: '',
+                showIcon: true,
+                showSub:false,
+                facilitys: [
+                    {
+                        "name": "岭南窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.176147,
+                        "id": 36
+                    },
+                    {
+                        "name": "天寿路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.116147,
+                        "id": 50,
+                        type: 'warn'
+                    },
+                    {
+                        "name": "员村窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.43325642333986,
+                        "y": 23.13755631975802,
+                        "id": 51
+                    },
+                    {
+                        "name": "民主直街窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.92536,
+                        "y": 23.116147,
+                        "id": 52
+                    },
+                    {
+                        "name": "茅岗窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.6,
+                        "y": 23.116147,
+                        "id": 53
+                    },
+                    {
+                        "name": "开发大道窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.21,
+                        "y": 23.116147,
+                        "id": 54
+                    },
+                    {
+                        "name": "建阳路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.78,
+                        "id": 55
+                    },
+                    {
+                        "name": "大南路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.29489735351564,
+                        "y": 23.128629928156457,
+                        "id": 56
+                    },
+                    {
+                        "name": "江燕路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.26468495117189,
+                        "y": 23.185621505304894,
+                        "id": 57
+                    }
+                ]
+            }, {
+                title: '巡查人员',
+                facilityTypeName: "PO",
+                icon: 'people',
+                id: '',
+                showIcon: true,
+                showSub:false,
+                facilitys: [
+                    {
+                        "name": "岭南窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.176147,
+                        "id": 36
+                    },
+                    {
+                        "name": "天寿路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.116147,
+                        "id": 50,
+                        type: 'warn'
+                    },
+                    {
+                        "name": "员村窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.43325642333986,
+                        "y": 23.13755631975802,
+                        "id": 51
+                    },
+                    {
+                        "name": "民主直街窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.92536,
+                        "y": 23.116147,
+                        "id": 52
+                    },
+                    {
+                        "name": "茅岗窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.6,
+                        "y": 23.116147,
+                        "id": 53
+                    },
+                    {
+                        "name": "开发大道窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.21,
+                        "y": 23.116147,
+                        "id": 54
+                    },
+                    {
+                        "name": "建阳路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.78,
+                        "id": 55
+                    },
+                    {
+                        "name": "大南路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.29489735351564,
+                        "y": 23.128629928156457,
+                        "id": 56
+                    },
+                    {
+                        "name": "江燕路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.26468495117189,
+                        "y": 23.185621505304894,
+                        "id": 57
+                    }
+                ]
+            }, {
+                title: '车辆',
+                facilityTypeName: "CAR",
+                icon: 'car',
+                id: '',
+                showIcon: true,
+                showSub:false,
+                facilitys: [
+                    {
+                        "name": "岭南窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.176147,
+                        "id": 36
+                    },
+                    {
+                        "name": "天寿路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.116147,
+                        "id": 50,
+                        type: 'warn'
+                    },
+                    {
+                        "name": "员村窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.43325642333986,
+                        "y": 23.13755631975802,
+                        "id": 51
+                    },
+                    {
+                        "name": "民主直街窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.92536,
+                        "y": 23.116147,
+                        "id": 52
+                    },
+                    {
+                        "name": "茅岗窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.6,
+                        "y": 23.116147,
+                        "id": 53
+                    },
+                    {
+                        "name": "开发大道窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.21,
+                        "y": 23.116147,
+                        "id": 54
+                    },
+                    {
+                        "name": "建阳路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.78,
+                        "id": 55
+                    },
+                    {
+                        "name": "大南路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.29489735351564,
+                        "y": 23.128629928156457,
+                        "id": 56
+                    },
+                    {
+                        "name": "江燕路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.26468495117189,
+                        "y": 23.185621505304894,
+                        "id": 57
+                    }
+                ]
+            }, {
+                title: '投诉点',
+                facilityTypeName: "RP",
+                icon: 'reportPoint',
+                id: '',
+                showIcon: true,
+                showSub:false,
+                facilitys: [
+                    {
+                        "name": "岭南窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.176147,
+                        "id": 36
+                    },
+                    {
+                        "name": "天寿路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.116147,
+                        "id": 50,
+                        type: 'warn'
+                    },
+                    {
+                        "name": "员村窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.43325642333986,
+                        "y": 23.13755631975802,
+                        "id": 51
+                    },
+                    {
+                        "name": "民主直街窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.92536,
+                        "y": 23.116147,
+                        "id": 52
+                    },
+                    {
+                        "name": "茅岗窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.6,
+                        "y": 23.116147,
+                        "id": 53
+                    },
+                    {
+                        "name": "开发大道窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.21,
+                        "y": 23.116147,
+                        "id": 54
+                    },
+                    {
+                        "name": "建阳路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.78,
+                        "id": 55
+                    },
+                    {
+                        "name": "大南路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.29489735351564,
+                        "y": 23.128629928156457,
+                        "id": 56
+                    },
+                    {
+                        "name": "江燕路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.26468495117189,
+                        "y": 23.185621505304894,
+                        "id": 57
+                    }
+                ]
+            }, {
+                title: '卡口监控',
+                facilityTypeName: "KK",
+                icon: 'bayonet',
+                id: '',
+                showIcon: true,
+                showSub:false,
+                facilitys: [
+                    {
+                        "name": "岭南窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.176147,
+                        "id": 36
+                    },
+                    {
+                        "name": "天寿路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.116147,
+                        "id": 50,
+                        type: 'warn'
+                    },
+                    {
+                        "name": "员村窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.43325642333986,
+                        "y": 23.13755631975802,
+                        "id": 51
+                    },
+                    {
+                        "name": "民主直街窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.92536,
+                        "y": 23.116147,
+                        "id": 52
+                    },
+                    {
+                        "name": "茅岗窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.6,
+                        "y": 23.116147,
+                        "id": 53
+                    },
+                    {
+                        "name": "开发大道窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.21,
+                        "y": 23.116147,
+                        "id": 54
+                    },
+                    {
+                        "name": "建阳路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.42536,
+                        "y": 23.78,
+                        "id": 55
+                    },
+                    {
+                        "name": "大南路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.29489735351564,
+                        "y": 23.128629928156457,
+                        "id": 56
+                    },
+                    {
+                        "name": "江燕路窨井",
+                        "icon": "",
+                        "checked":true,
+                        "x": 113.26468495117189,
+                        "y": 23.185621505304894,
+                        "id": 57
+                    }
+                ]
+            }, {
+                title: '联合执法点',
+                facilityTypeName: "EF",
+                icon: 'enfroce-video',
                 id: '',
                 showIcon: true,
                 showSub:false,
