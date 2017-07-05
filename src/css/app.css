@@ -31,8 +31,8 @@ li {
 
 .rightContainer {
     height: 100%;
-    width: calc(100% - 230px);
-    margin-left: 230px;
+    width: calc(100% - 300px);
+    margin-left: 300px;
 }
 
 .maxContainer {
@@ -41,7 +41,7 @@ li {
 }
 
 .minMenu {
-    margin-left: -225px;
+    margin-left: -298px;
 }
 
 .el-dialog__headerbtn {
@@ -59,7 +59,7 @@ li {
     top: 7em;
     overflow-y: auto;
     height: calc(100% - 7em);
-    width: calc(100% - 230px);
+    width: calc(100% - 300px);
 }
 
 .navFix {

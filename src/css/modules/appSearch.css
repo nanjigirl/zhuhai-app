@@ -1,0 +1,18 @@
+.nnyc-search{
+    width: 300px;
+    background: #fff;
+    position: absolute;
+    z-index: 9999;
+    /*left: -320px;*/
+}
+.cesc-nnyc-table{
+    padding: 5px;
+}
+.nnyc-search .el-form-item {
+    margin-bottom: 10px;
+}
+.control-search{
+    position: absolute;
+    z-index: 9999;
+    top: 100px;
+}

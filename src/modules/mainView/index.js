@@ -4,7 +4,9 @@ var eventHelper = require('../../utils/eventHelper');
 var moduleController = require('controllers/moduleController');
 var serviceHelper = require('../../services/serviceHelper');
 var appNoticeBox = require('modules/appNoticeBox');
+var appSearch = require('modules/appSearch');
 var components = {
+    'app-search':appSearch,
     'app-notice-box': appNoticeBox
 };
 components = $.extend(components, moduleController);
@@ -33,7 +35,7 @@ var comm = Vue.extend({
                 } else {
                     console.log('出错了！！');
                 }
-            }.bind(this), 100);
+            }.bind(this),100);
         }
     },
     mounted: function () {
