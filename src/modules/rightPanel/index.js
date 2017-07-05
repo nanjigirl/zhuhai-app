@@ -1,7 +1,7 @@
 var template = require('./rightPanel.html');
 var controller = require('controllers/rightPanelController');
-var monitor = require('./monitor');
-var statistics = require('./statistics');
+// var monitor = require('./monitor');
+// var statistics = require('./statistics');
 var dateController = require('./dateControl');
 var facilityController = require('controllers/facilityController');
 var serviceHelper = require('services/serviceHelper');
@@ -10,7 +10,7 @@ var eventHelper = require('utils/eventHelper');
 var detailGridHeader=[{key:'startDate',value:'起始时间'},{key:'deep',value:'最大积水深度'},{key:'period',value:'积水时长'}];
 var realTimeUpdate = function (self, monitorObj) {
     controller.getMonitorItemCurrentValue(monitorObj, function (result) {
-        self.lastUpdateTime = moment().format('YYYY-MM-DD hh:mm:ss', new Date());
+        // self.lastUpdateTime = moment().format('YYYY-MM-DD hh:mm:ss', new Date());
         self.$refs.monitorPlugin.$emit('update-monitor', result);
         self.$refs.statisticPlugin.$emit('update-statistic', {
             data: result,
@@ -29,7 +29,7 @@ var comm = Vue.extend({
             isRealTimeMode: true,
             realTimeName: '实时监测',
             historyName: '历史记录',
-            lastUpdateTime: '',
+            // lastUpdateTime: '',
             alarmStatus: 0,
             alertMessage: '',
             activeIndex: '1',
@@ -194,16 +194,16 @@ var comm = Vue.extend({
                             realTimeUpdate(this, monitorIDs);
                         }.bind(this), refreshTime);
                     }
-                    this.$refs.monitorPlugin.$emit('init-monitor', {
-                        facility: facility,
-                        devices: result.devices
-                    });
-                    this.$refs.statisticPlugin.$emit('init-statistic', {
-                        facility: facility,
-                        devices: result.devices
-                    });
+                    // this.$refs.monitorPlugin.$emit('init-monitor', {
+                    //     facility: facility,
+                    //     devices: result.devices
+                    // });
+                    // this.$refs.statisticPlugin.$emit('init-statistic', {
+                    //     facility: facility,
+                    //     devices: result.devices
+                    // });
 
-                    this.lastUpdateTime = result.currentDate;
+                    // this.lastUpdateTime = result.currentDate;
                 }.bind(this));
 
                 facilityController.getAlarmInfoByFacility(facilityID, function (result) {
@@ -235,17 +235,17 @@ var comm = Vue.extend({
                 $('#historicalMode').removeClass('is-active');
                 $('#realTimeMode').addClass('is-active');
             }
-            this.$refs.monitorPlugin.$emit('switchMode', this.isRealTimeMode);
-            this.$refs.statisticPlugin.$emit('switchMode', this.isRealTimeMode);
+            // this.$refs.monitorPlugin.$emit('switchMode', this.isRealTimeMode);
+            // this.$refs.statisticPlugin.$emit('switchMode', this.isRealTimeMode);
             if (!this.isRealTimeMode) {
                 //query by default date
-                this.$refs.dateController.queryByDefaultDate();
+                // this.$refs.dateController.queryByDefaultDate();
             }
         }
     },
     components: {
-        monitor: monitor,
-        statistics: statistics,
+        // monitor: monitor,
+        // statistics: statistics,
         dateControl: dateController
     }
 });
