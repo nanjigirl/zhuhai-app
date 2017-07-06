@@ -17,13 +17,13 @@ var comm = Vue.extend({
                 facilityTypeName: "BD",
                 icon: 'buliding-video',
                 id: '',
-                showIcon: true,
-                showSub:false,
+                showIcon: false,
+                showSub: false,
                 facilitys: [
                     {
                         "name": "火炉山雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.38227299438478,
                         "y": 23.187853103205285,
                         "id": 35
@@ -31,7 +31,7 @@ var comm = Vue.extend({
                     {
                         "name": "天远路雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.3755782006836,
                         "y": 23.12227845720919,
                         "id": 40
@@ -39,7 +39,7 @@ var comm = Vue.extend({
                     {
                         "name": "新村北路雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.403984,
                         "y": 23.170845,
                         "id": 41
@@ -47,7 +47,7 @@ var comm = Vue.extend({
                     {
                         "name": "钟楼村雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.43,
                         "y": 23.006845,
                         "id": 42
@@ -55,7 +55,7 @@ var comm = Vue.extend({
                     {
                         "name": "新田村委雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.4960844873047,
                         "y": 23.047262435480675,
                         "id": 43
@@ -63,7 +63,7 @@ var comm = Vue.extend({
                     {
                         "name": "七星水库雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.133984,
                         "y": 23.076845,
                         "id": 44
@@ -71,7 +71,7 @@ var comm = Vue.extend({
                     {
                         "name": "东沙街雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.33984,
                         "y": 23.076845,
                         "id": 45
@@ -79,7 +79,7 @@ var comm = Vue.extend({
                     {
                         "name": "大夫田村雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.31984,
                         "y": 23.04,
                         "id": 46
@@ -87,7 +87,7 @@ var comm = Vue.extend({
                     {
                         "name": "城郊小学雨量站",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.833984,
                         "y": 23.176845,
                         "id": 47
@@ -99,12 +99,12 @@ var comm = Vue.extend({
                 icon: 'road-video',
                 id: '',
                 showIcon: true,
-                showSub:false,
+                showSub: false,
                 "facilitys": [
                     {
                         "name": "思成河道",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.3477690576172,
                         "y": 23.1803,
                         "id": 37
@@ -112,7 +112,7 @@ var comm = Vue.extend({
                     {
                         "name": "珠江河道",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.0803,
                         "id": 60,
@@ -121,7 +121,7 @@ var comm = Vue.extend({
                     {
                         "name": "车陂河道",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.34124592529297,
                         "y": 23.11146379046114,
                         "id": 61
@@ -129,7 +129,7 @@ var comm = Vue.extend({
                     {
                         "name": "开发大道河道",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.12536,
                         "y": 23.2803,
                         "id": 62,
@@ -138,7 +138,7 @@ var comm = Vue.extend({
                     {
                         "name": "猎德河道",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.12536,
                         "y": 23.1803,
                         "id": 63
@@ -146,7 +146,7 @@ var comm = Vue.extend({
                     {
                         "name": "童心路河道",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.5536,
                         "y": 23.1803,
                         "id": 64,
@@ -155,7 +155,7 @@ var comm = Vue.extend({
                     {
                         "name": "天源路",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.46758869873047,
                         "y": 23.085199599787313,
                         "id": 65,
@@ -245,99 +245,17 @@ var comm = Vue.extend({
                     }
                 ]
             }, {
-                    title: '消纳场视频',
-                    facilityTypeName: "CP",
-                    icon: 'consumptive',
-                    id: '',
-                    showIcon: true,
-                    showSub:false,
-                    facilitys: [
-                        {
-                            "name": "岭南窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.42536,
-                            "y": 23.176147,
-                            "id": 36
-                        },
-                        {
-                            "name": "天寿路窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.42536,
-                            "y": 23.116147,
-                            "id": 50,
-                            type: 'warn'
-                        },
-                        {
-                            "name": "员村窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.43325642333986,
-                            "y": 23.13755631975802,
-                            "id": 51
-                        },
-                        {
-                            "name": "民主直街窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.92536,
-                            "y": 23.116147,
-                            "id": 52
-                        },
-                        {
-                            "name": "茅岗窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.6,
-                            "y": 23.116147,
-                            "id": 53
-                        },
-                        {
-                            "name": "开发大道窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.21,
-                            "y": 23.116147,
-                            "id": 54
-                        },
-                        {
-                            "name": "建阳路窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.42536,
-                            "y": 23.78,
-                            "id": 55
-                        },
-                        {
-                            "name": "大南路窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.29489735351564,
-                            "y": 23.128629928156457,
-                            "id": 56
-                        },
-                        {
-                            "name": "江燕路窨井",
-                            "icon": "",
-                            "checked":true,
-                            "x": 113.26468495117189,
-                            "y": 23.185621505304894,
-                            "id": 57
-                        }
-                    ]
-                }, {
-                title: '混凝土场视频',
-                facilityTypeName: "JT",
-                icon: 'jetereting-video',
+                title: '消纳场视频',
+                facilityTypeName: "CP",
+                icon: 'consumptive',
                 id: '',
                 showIcon: true,
-                showSub:false,
+                showSub: false,
                 facilitys: [
                     {
                         "name": "岭南窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.176147,
                         "id": 36
@@ -345,7 +263,7 @@ var comm = Vue.extend({
                     {
                         "name": "天寿路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.116147,
                         "id": 50,
@@ -354,7 +272,7 @@ var comm = Vue.extend({
                     {
                         "name": "员村窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.43325642333986,
                         "y": 23.13755631975802,
                         "id": 51
@@ -362,7 +280,7 @@ var comm = Vue.extend({
                     {
                         "name": "民主直街窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.92536,
                         "y": 23.116147,
                         "id": 52
@@ -370,7 +288,7 @@ var comm = Vue.extend({
                     {
                         "name": "茅岗窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.6,
                         "y": 23.116147,
                         "id": 53
@@ -378,7 +296,7 @@ var comm = Vue.extend({
                     {
                         "name": "开发大道窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.21,
                         "y": 23.116147,
                         "id": 54
@@ -386,7 +304,7 @@ var comm = Vue.extend({
                     {
                         "name": "建阳路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.78,
                         "id": 55
@@ -394,7 +312,7 @@ var comm = Vue.extend({
                     {
                         "name": "大南路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.29489735351564,
                         "y": 23.128629928156457,
                         "id": 56
@@ -402,7 +320,89 @@ var comm = Vue.extend({
                     {
                         "name": "江燕路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
+                        "x": 113.26468495117189,
+                        "y": 23.185621505304894,
+                        "id": 57
+                    }
+                ]
+            }, {
+                title: '混凝土场视频',
+                facilityTypeName: "JT",
+                icon: 'jetereting-video',
+                id: '',
+                showIcon: true,
+                showSub: false,
+                facilitys: [
+                    {
+                        "name": "岭南窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.42536,
+                        "y": 23.176147,
+                        "id": 36
+                    },
+                    {
+                        "name": "天寿路窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.42536,
+                        "y": 23.116147,
+                        "id": 50,
+                        type: 'warn'
+                    },
+                    {
+                        "name": "员村窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.43325642333986,
+                        "y": 23.13755631975802,
+                        "id": 51
+                    },
+                    {
+                        "name": "民主直街窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.92536,
+                        "y": 23.116147,
+                        "id": 52
+                    },
+                    {
+                        "name": "茅岗窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.6,
+                        "y": 23.116147,
+                        "id": 53
+                    },
+                    {
+                        "name": "开发大道窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.21,
+                        "y": 23.116147,
+                        "id": 54
+                    },
+                    {
+                        "name": "建阳路窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.42536,
+                        "y": 23.78,
+                        "id": 55
+                    },
+                    {
+                        "name": "大南路窨井",
+                        "icon": "",
+                        "checked": true,
+                        "x": 113.29489735351564,
+                        "y": 23.128629928156457,
+                        "id": 56
+                    },
+                    {
+                        "name": "江燕路窨井",
+                        "icon": "",
+                        "checked": true,
                         "x": 113.26468495117189,
                         "y": 23.185621505304894,
                         "id": 57
@@ -414,12 +414,12 @@ var comm = Vue.extend({
                 icon: 'people',
                 id: '',
                 showIcon: true,
-                showSub:false,
+                showSub: false,
                 facilitys: [
                     {
                         "name": "岭南窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.176147,
                         "id": 36
@@ -427,7 +427,7 @@ var comm = Vue.extend({
                     {
                         "name": "天寿路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.116147,
                         "id": 50,
@@ -436,7 +436,7 @@ var comm = Vue.extend({
                     {
                         "name": "员村窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.43325642333986,
                         "y": 23.13755631975802,
                         "id": 51
@@ -444,7 +444,7 @@ var comm = Vue.extend({
                     {
                         "name": "民主直街窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.92536,
                         "y": 23.116147,
                         "id": 52
@@ -452,7 +452,7 @@ var comm = Vue.extend({
                     {
                         "name": "茅岗窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.6,
                         "y": 23.116147,
                         "id": 53
@@ -460,7 +460,7 @@ var comm = Vue.extend({
                     {
                         "name": "开发大道窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.21,
                         "y": 23.116147,
                         "id": 54
@@ -468,7 +468,7 @@ var comm = Vue.extend({
                     {
                         "name": "建阳路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.78,
                         "id": 55
@@ -476,7 +476,7 @@ var comm = Vue.extend({
                     {
                         "name": "大南路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.29489735351564,
                         "y": 23.128629928156457,
                         "id": 56
@@ -484,7 +484,7 @@ var comm = Vue.extend({
                     {
                         "name": "江燕路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.26468495117189,
                         "y": 23.185621505304894,
                         "id": 57
@@ -496,12 +496,12 @@ var comm = Vue.extend({
                 icon: 'car',
                 id: '',
                 showIcon: true,
-                showSub:false,
+                showSub: false,
                 facilitys: [
                     {
                         "name": "岭南窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.176147,
                         "id": 36
@@ -509,7 +509,7 @@ var comm = Vue.extend({
                     {
                         "name": "天寿路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.116147,
                         "id": 50,
@@ -518,7 +518,7 @@ var comm = Vue.extend({
                     {
                         "name": "员村窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.43325642333986,
                         "y": 23.13755631975802,
                         "id": 51
@@ -526,7 +526,7 @@ var comm = Vue.extend({
                     {
                         "name": "民主直街窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.92536,
                         "y": 23.116147,
                         "id": 52
@@ -534,7 +534,7 @@ var comm = Vue.extend({
                     {
                         "name": "茅岗窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.6,
                         "y": 23.116147,
                         "id": 53
@@ -542,7 +542,7 @@ var comm = Vue.extend({
                     {
                         "name": "开发大道窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.21,
                         "y": 23.116147,
                         "id": 54
@@ -550,7 +550,7 @@ var comm = Vue.extend({
                     {
                         "name": "建阳路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.78,
                         "id": 55
@@ -558,7 +558,7 @@ var comm = Vue.extend({
                     {
                         "name": "大南路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.29489735351564,
                         "y": 23.128629928156457,
                         "id": 56
@@ -566,7 +566,7 @@ var comm = Vue.extend({
                     {
                         "name": "江燕路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.26468495117189,
                         "y": 23.185621505304894,
                         "id": 57
@@ -578,12 +578,12 @@ var comm = Vue.extend({
                 icon: 'reportPoint',
                 id: '',
                 showIcon: true,
-                showSub:false,
+                showSub: false,
                 facilitys: [
                     {
                         "name": "岭南窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.176147,
                         "id": 36
@@ -591,7 +591,7 @@ var comm = Vue.extend({
                     {
                         "name": "天寿路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.116147,
                         "id": 50,
@@ -600,7 +600,7 @@ var comm = Vue.extend({
                     {
                         "name": "员村窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.43325642333986,
                         "y": 23.13755631975802,
                         "id": 51
@@ -608,7 +608,7 @@ var comm = Vue.extend({
                     {
                         "name": "民主直街窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.92536,
                         "y": 23.116147,
                         "id": 52
@@ -616,7 +616,7 @@ var comm = Vue.extend({
                     {
                         "name": "茅岗窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.6,
                         "y": 23.116147,
                         "id": 53
@@ -624,7 +624,7 @@ var comm = Vue.extend({
                     {
                         "name": "开发大道窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.21,
                         "y": 23.116147,
                         "id": 54
@@ -632,7 +632,7 @@ var comm = Vue.extend({
                     {
                         "name": "建阳路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.78,
                         "id": 55
@@ -640,7 +640,7 @@ var comm = Vue.extend({
                     {
                         "name": "大南路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.29489735351564,
                         "y": 23.128629928156457,
                         "id": 56
@@ -648,7 +648,7 @@ var comm = Vue.extend({
                     {
                         "name": "江燕路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.26468495117189,
                         "y": 23.185621505304894,
                         "id": 57
@@ -660,12 +660,12 @@ var comm = Vue.extend({
                 icon: 'bayonet',
                 id: '',
                 showIcon: true,
-                showSub:false,
+                showSub: false,
                 facilitys: [
                     {
                         "name": "岭南窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.176147,
                         "id": 36
@@ -673,7 +673,7 @@ var comm = Vue.extend({
                     {
                         "name": "天寿路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.116147,
                         "id": 50,
@@ -682,7 +682,7 @@ var comm = Vue.extend({
                     {
                         "name": "员村窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.43325642333986,
                         "y": 23.13755631975802,
                         "id": 51
@@ -690,7 +690,7 @@ var comm = Vue.extend({
                     {
                         "name": "民主直街窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.92536,
                         "y": 23.116147,
                         "id": 52
@@ -698,7 +698,7 @@ var comm = Vue.extend({
                     {
                         "name": "茅岗窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.6,
                         "y": 23.116147,
                         "id": 53
@@ -706,7 +706,7 @@ var comm = Vue.extend({
                     {
                         "name": "开发大道窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.21,
                         "y": 23.116147,
                         "id": 54
@@ -714,7 +714,7 @@ var comm = Vue.extend({
                     {
                         "name": "建阳路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.78,
                         "id": 55
@@ -722,7 +722,7 @@ var comm = Vue.extend({
                     {
                         "name": "大南路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.29489735351564,
                         "y": 23.128629928156457,
                         "id": 56
@@ -730,7 +730,7 @@ var comm = Vue.extend({
                     {
                         "name": "江燕路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.26468495117189,
                         "y": 23.185621505304894,
                         "id": 57
@@ -742,12 +742,12 @@ var comm = Vue.extend({
                 icon: 'enfroce-video',
                 id: '',
                 showIcon: true,
-                showSub:false,
+                showSub: false,
                 facilitys: [
                     {
                         "name": "岭南窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.176147,
                         "id": 36
@@ -755,7 +755,7 @@ var comm = Vue.extend({
                     {
                         "name": "天寿路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.116147,
                         "id": 50,
@@ -764,7 +764,7 @@ var comm = Vue.extend({
                     {
                         "name": "员村窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.43325642333986,
                         "y": 23.13755631975802,
                         "id": 51
@@ -772,7 +772,7 @@ var comm = Vue.extend({
                     {
                         "name": "民主直街窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.92536,
                         "y": 23.116147,
                         "id": 52
@@ -780,7 +780,7 @@ var comm = Vue.extend({
                     {
                         "name": "茅岗窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.6,
                         "y": 23.116147,
                         "id": 53
@@ -788,7 +788,7 @@ var comm = Vue.extend({
                     {
                         "name": "开发大道窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.21,
                         "y": 23.116147,
                         "id": 54
@@ -796,7 +796,7 @@ var comm = Vue.extend({
                     {
                         "name": "建阳路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.42536,
                         "y": 23.78,
                         "id": 55
@@ -804,7 +804,7 @@ var comm = Vue.extend({
                     {
                         "name": "大南路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.29489735351564,
                         "y": 23.128629928156457,
                         "id": 56
@@ -812,7 +812,7 @@ var comm = Vue.extend({
                     {
                         "name": "江燕路窨井",
                         "icon": "",
-                        "checked":true,
+                        "checked": true,
                         "x": 113.26468495117189,
                         "y": 23.185621505304894,
                         "id": 57
@@ -825,6 +825,18 @@ var comm = Vue.extend({
 
     },
     methods: {
+        init: function (list) {
+            list.forEach(function (type) {
+                this.legendList.push({
+                    title: type.nameCn,
+                    facilityTypeName: type.name,
+                    icon: 'enfroce-video',
+                    id: type.id,
+                    showIcon: false,
+                    showSub: false
+                });
+            }.bind(this));
+        },
         openMapLegend: function () {
             this.isActive = !this.isActive;
             this.isOpen = !this.isOpen;
@@ -842,16 +854,16 @@ var comm = Vue.extend({
 
             }
         },
-        showSub:function(index){
-            if(index+1){
+        showSub: function (index) {
+            if (index + 1) {
                 this.isShowSubLegend = true;
                 this.legendList[index].showSub = true;
-                for(var i = 0;i<this.legendList.length;i++){
-                    if(i != index){
+                for (var i = 0; i < this.legendList.length; i++) {
+                    if (i != index) {
                         this.legendList[i].showSub = false;
                     }
                 }
-            }else{
+            } else {
                 this.isShowSubLegend = false;
             }
         }

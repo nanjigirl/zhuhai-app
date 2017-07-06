@@ -1,17 +1,14 @@
 define(['./serviceHelper','./mock/mock'], function (serviceHelper,mock) {
     return {
         getAllFacility: function (cb) {
-          /*  $.get(serviceHelper.getPath('facilityList'), function (result) {
+            $.get(serviceHelper.getPath('facilityList'), function (result) {
                 console.log(result);
                 if (!!result.success) {
                     cb(result.data);
                     return;
                 }
                 console.log('Error:', result);
-            });*/
-          setTimeout(function(){
-              cb(mock.facilities);
-          },1000);
+            });
         },
         getDeviceDetailByFacility: function (facilityId, cb) {
             setTimeout(function(){

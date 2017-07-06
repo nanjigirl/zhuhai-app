@@ -5,7 +5,6 @@ var eventHelper = require('../../utils/eventHelper');
 var toolBar = require('./plugin/toolBar/toolBar');
 //var arcgisExpand = require('./plugin/arcgisExpand/arcgisExpand');
 var mapType = require('./plugin/mapType/mapType');
-var mapLegend = require('./plugin/mapLegend/mapLegend');
 var flexMapLegend = require('./plugin/flexMapLegend');
 var global = require('./plugin/global');
 var facilityController = require('controllers/facilityController');
@@ -23,12 +22,12 @@ var initBaseMap = function () {
 var initPlugin = function (facilityArr) {
     global.init();
     facilityController.getAllFacility(function (list) {
-        $("#mapLegend").mapLegend({type: 2, data: list});
+        this.$refs.mapLegend.init(list);
         list.forEach(function (station) {
             facilityArr[station.facilityTypeName] = station.facilitys;
             arcgisHelper.createPoints(station);
         })
-    });
+    }.bind(this));
 }
 
 // 定义组件
