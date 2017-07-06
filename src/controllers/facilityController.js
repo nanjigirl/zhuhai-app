@@ -6,8 +6,8 @@ return {
 	});
 
 	},
-	getDeviceDetailByFacility:function(facilityId,cb){
-	facilityService.getDeviceDetailByFacility(facilityId,function(data){
+    getFacilityByType:function(facilityType,cb){
+	facilityService.getFacilityByType(facilityType,function(data){
 		cb(data);
 	});
 	},

@@ -5,7 +5,6 @@ var eventHelper = require('../../utils/eventHelper');
 var toolBar = require('./plugin/toolBar/toolBar');
 //var arcgisExpand = require('./plugin/arcgisExpand/arcgisExpand');
 var mapType = require('./plugin/mapType/mapType');
-var mapLegend = require('./plugin/mapLegend/mapLegend');
 var flexMapLegend = require('./plugin/flexMapLegend');
 var global = require('./plugin/global');
 var facilityController = require('controllers/facilityController');
@@ -21,14 +20,14 @@ var initBaseMap = function () {
     var map = arcgisHelper.tdWmtsServer(layerURL, centerX, centerY);
     return map;
 }
-var initPlugin = function (facilityArr) {
+var initPlugin = function (facilityArr, self) {
     global.init();
     facilityController.getAllFacility(function (list) {
-        $("#mapLegend").mapLegend({type: 2, data: list});
-        list.forEach(function (station) {
-            facilityArr[station.facilityTypeName] = station.facilitys;
-            arcgisHelper.createPoints(station);
-        })
+        self.$refs.mapLegend.init(list);
+        // list.forEach(function (station) {
+        //     facilityArr[station.facilityTypeName] = station.facilitys;
+        //     arcgisHelper.createPoints(station);
+        // })
     });
 }
 
@@ -48,10 +47,16 @@ var comm = Vue.extend({
     },
     mounted: function () {
         this.facilityArr = {};
-        initPlugin(this.facilityArr);
+        initPlugin(this.facilityArr, this);
         var self = this;
         var map = initBaseMap();
-        eventHelper.emit('mapCreated',map);
+        eventHelper.emit('mapCreated', map);
+        this.$on('openMapLegend', function (legend) {
+            console.log(legend);
+            facilityController.getFacilityByType(legend.id, function (subFacilities) {
+                arcgisHelper.createPoints(subFacilities,legend);
+            })
+        });
         eventHelper.on('facility-checked', function (subFacilities) {
             arcgisHelper.createPoints(subFacilities);
             self.facilityArr[subFacilities.facilityTypeName] = subFacilities.facilitys;

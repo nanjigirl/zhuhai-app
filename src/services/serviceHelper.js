@@ -3,14 +3,16 @@ define(['config'], function (config) {
     var basicUrl = config.basicURL;
     var serviceEndpoint = {
         basicPath: basicUrl,
-        login: basicUrl+'/login/loginValid',
-        userMenu:basicUrl + '/user/getMenu',
-        makeOrder: basicUrl+'/orders/save',
-        queryMenu: basicUrl+'/orders/menu',
-        queryEmployee: basicUrl+'/employee',
-        refreshToken:basicUrl+'login/updateToken',
-        queryOrder: basicUrl+'/orders/query',
-        getCarList:basicUrl+'/truck/getTruckList'
+        login: basicUrl + '/login/loginValid',
+        userMenu: basicUrl + '/user/getMenu',
+        makeOrder: basicUrl + '/orders/save',
+        queryMenu: basicUrl + '/orders/menu',
+        queryEmployee: basicUrl + '/employee',
+        refreshToken: basicUrl + 'login/updateToken',
+        queryOrder: basicUrl + '/orders/query',
+        facilityList: basicUrl + '/facility/getAllFacilitysType',
+        getCarList:basicUrl+'/truck/getTruckList',
+        getFacilityByType:basicUrl+'/facility/getOneTypeFacilitys'
 
     }
     return {
