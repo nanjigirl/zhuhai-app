@@ -243,9 +243,9 @@
 
 .panel-top, .panel-summary, .panel-bottom {
     width: 100%;
-    padding-bottom: 1%;
     border: 1px solid #dcdcdc;
     background: #fbfafa;
+    overflow: auto;
 }
 .panel-top{
     margin-bottom: 2%;
@@ -538,6 +538,15 @@
     color: rgb(255, 193, 80);
 }
 .device-content{
-    height:340px;
     overflow: auto;
+}
+.complaint-img{
+    width: 475px;
+    height: 250px;
+}
+.text-center th{
+    text-align: center !important;
+}
+.complaint-type{
+    padding:10px 10px 0 10px;
 }
