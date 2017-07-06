@@ -11,6 +11,7 @@ var global = require('./plugin/global');
 var facilityController = require('controllers/facilityController');
 var arcgisHelper = require('./plugin/arcgisExpand/arcgis-load-map');
 var rightPanel = require('modules/rightPanel');
+var rightPanelComplaint = require('modules/rightPanelComplaint');
 
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
@@ -59,11 +60,12 @@ var comm = Vue.extend({
         eventHelper.on('subFacility-clicked', function (point) {
             console.log(point);
             map.centerAt([point.center[0] + 0.05, point.center[1]]);
-            this.$refs.rightPanel.open(point);
+            this.$refs.rightPanelComplaint.open(point);
         }.bind(this));
     },
     components: {
-        'right-panel': rightPanel,
+        // 'right-panel': rightPanel,
+        'right-panel-complaint': rightPanelComplaint,
         'flex-map-legend':flexMapLegend
     }
 });

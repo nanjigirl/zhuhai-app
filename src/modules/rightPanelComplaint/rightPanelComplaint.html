@@ -1,0 +1,94 @@
+<transition name="right-panel">
+    <div v-show='rightPanelOpen' class='right-panel'>
+        <div class="goBack"><a href='#' class="el-icon-d-arrow-right" @click="closePanel"></a></div>
+        <div class="panel-header">
+            <span class="facilityImg" v-bind:class="facilityType"></span>
+            <span class="facilityName">{{facilityName}}</span>
+            <el-menu :default-active="activeIndex" class="el-menu-demo menu-full" mode="horizontal"
+                     @select="switchMode">
+                <el-menu-item index="1" id="realTimeMode">污染情况</el-menu-item>
+                <el-menu-item index="2" id="historicalMode">违章登记</el-menu-item>
+            </el-menu>
+        </div>
+        <div class="panel-content">
+            <div class="panel-top" v-show='isRealTimeMode'>
+                <div class="device-title">
+                    <span>投诉类型</span>
+                </div>
+                <!--<div class="device-title" v-show='!isRealTimeMode'>-->
+                <!--<span>数据表格</span>-->
+                <!--</div>-->
+                <div class="device-content">
+                    <ul class="" style="padding: 10px;">
+                        <li v-for="message in complaintMsg">
+                            <span>{{message.name}}</span>
+                            <span>{{message.val}}</span>
+                        </li>
+                        <img class="complaint-img" :src="complaintImg" alt="img">
+                    </ul>
+                </div>
+            </div>
+            <div class="panel-bottom" v-show='isRealTimeMode'>
+                <div class="device-title">
+                    <span>统计信息</span>
+                </div>
+                <div class="device-content">
+                    <table id="datatable" class="table table-striped table-bordered text-center" >
+                        <thead>
+                            <tr>
+                                <th v-for="th in datatheads">{{th}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="list in complaintLists">
+                                <td>
+                                    {{list.name}}
+                                </td>
+                                <td>
+                                    {{list.time}}
+                                </td>
+                                <td>
+                                    <img :src="list.videoSrc" alt="video">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="panel-summary" v-show='!isRealTimeMode'>
+                <div class="device-title">
+                    <span>投诉点--违章登记</span>
+                </div>
+                <div class="device-content panel-operation">
+                    <div class="cesc-grid-form x_content">
+                        <el-form :model="register" :rules="rules" ref="register" class="demo-ruleForm">
+                            <el-form-item prop="title" label="违章标题" class="cesc-form-item">
+                                <el-input v-model="register.title"></el-input>
+                            </el-form-item>
+                            <el-form-item prop="content" label="违章内容" class="cesc-form-item">
+                                <el-input v-model="register.content"></el-input>
+                            </el-form-item>
+                            <el-form-item label="登记人" prop="people" class="cesc-form-item">
+                                <el-select v-model="register.people" placeholder="请选择地区" class="cesc-grid-select">
+                                    <el-option label="张三" value="张三"></el-option>
+                                    <el-option label="李四" value="李四"></el-option>
+                                    <el-option label="王五" value="王五"></el-option>
+                                </el-select>
+                            </el-form-item>
+                            <el-form-item label="登记日期" class="cesc-form-item">
+                                <el-form-item prop="date" class="cesc-grid-date">
+                                    <el-date-picker type="date" placeholder="选择日期" v-model="register.date"
+                                                    class="single-date"></el-date-picker>
+                                </el-form-item>
+                            </el-form-item>
+                            <el-form-item>
+                                <el-button type="primary" @click="submitForm('register')">提交</el-button>
+                                <el-button @click="resetForm('register')">重置</el-button>
+                            </el-form-item>
+                        </el-form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</transition>
