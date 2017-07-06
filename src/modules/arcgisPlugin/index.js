@@ -23,10 +23,10 @@ var initPlugin = function (facilityArr, self) {
     global.init();
     facilityController.getAllFacility(function (list) {
         self.$refs.mapLegend.init(list);
-        list.forEach(function (station) {
-            facilityArr[station.facilityTypeName] = station.facilitys;
-            arcgisHelper.createPoints(station);
-        })
+        // list.forEach(function (station) {
+        //     facilityArr[station.facilityTypeName] = station.facilitys;
+        //     arcgisHelper.createPoints(station);
+        // })
     });
 }
 
@@ -52,8 +52,8 @@ var comm = Vue.extend({
         eventHelper.emit('mapCreated', map);
         this.$on('openMapLegend', function (legend) {
             console.log(legend);
-            facilityController.getFacilityByType(legend.facilityTypeName, function (data) {
-                console.log(data);
+            facilityController.getFacilityByType(legend.id, function (subFacilities) {
+                arcgisHelper.createPoints(subFacilities,legend);
             })
         });
         eventHelper.on('facility-checked', function (subFacilities) {

@@ -34,29 +34,12 @@ define(function () {
             deviceModel.createTextSymbol(map);
             return map;
         },
-        createPoints: function (facility) {
-            facility.facilitys.forEach(function (item) {
-                var icon = '';
-                var fid = '';
-                if (facility.facilityTypeName === 'RF') {
-                    icon = './img/mapLegend/huawei-yl.png';
-                    fid = 35;
-                } else if (facility.facilityTypeName === 'RV') {
-                    icon = './img/mapLegend/huawei-xs.png';
-                    if (item.id == 50 || item.id == 52 || item.id == 53 || item.id == 57) {
-                        icon = './img/mapLegend/huawei-xs-red.png';
-                    }
-                    fid = 36;
-                } else if (facility.facilityTypeName === 'RC') {
-                    icon = './img/mapLegend/huawei-hd.png';
-                    fid = 37;
-                    if (item.type == 'warn') {
-                        icon = './img/mapLegend/huawei-hd-yellow.png';
-                    }
-                }
-
+        createPoints: function (facilitys,legend) {
+            facilitys.forEach(function (item) {
+                var icon = './img/toolbar/'+legend.icon+'.png';
+                var fid = legend.id;
                 item.fid = fid;
-                deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '30', facility.facilityTypeName, item);
+                deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
         },
         createDistrict: function (map) {

@@ -129,25 +129,25 @@
 .buliding-video.glyphicon {
     width: 15px;
     height: 15px;
-    background: url(../../img/toolbar/point_15px_shex_red.png) no-repeat;
+    background: url(../../img/toolbar/buliding-video.png) no-repeat;
 }
 
 .road-video.glyphicon {
     width: 15px;
     height: 15px;
-    background: url(../../img/toolbar/point_15px_shex.png) no-repeat;
+    background: url(../../img/toolbar/road-video.png) no-repeat;
 }
 
 .stonePit-video.glyphicon {
     width: 15px;
     height: 15px;
-    background: url(../../img/toolbar/point_15px_shex_yellow.png) no-repeat;
+    background: url(../../img/toolbar/stonePit-video.png) no-repeat;
 }
 
 .jetereting-video.glyphicon {
     width: 15px;
     height: 15px;
-    background: url(../../img/toolbar/point_15px_shex_orange.png) no-repeat;
+    background: url(../../img/toolbar/jetereting-video.png) no-repeat;
 }
 
 .people.glyphicon {
@@ -159,19 +159,19 @@
 .car.glyphicon {
     width: 24px;
     height: 24px;
-    background: url(../../img/toolbar/FireTruck.png) no-repeat;
+    background: url(../../img/toolbar/car.png) no-repeat;
 }
 
 .enfroce-video.glyphicon {
     width: 15px;
     height: 15px;
-    background: url(../../img/toolbar/point_15px_bzsp.png) no-repeat;
+    background: url(../../img/toolbar/enfroce-video.png) no-repeat;
 }
 
 .bayonet.glyphicon {
     width: 15px;
     height: 15px;
-    background: url(../../img/toolbar/point_15px_kksp.png) no-repeat;
+    background: url(../../img/toolbar/bayonet.png) no-repeat;
 }
 
 .reportPoint.glyphicon {
@@ -183,5 +183,5 @@
 .consumptive.glyphicon {
     width: 15px;
     height: 15px;
-    background: url(../../img/toolbar/point_15px_shex_blue.png) no-repeat;
+    background: url(../../img/toolbar/consumptive.png) no-repeat;
 }

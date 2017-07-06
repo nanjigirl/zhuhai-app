@@ -12,7 +12,7 @@ define(['config'], function (config) {
         queryOrder: basicUrl + '/orders/query',
         facilityList: basicUrl + '/facility/getAllFacilitysType',
         getCarList:basicUrl+'/truck/getTruckList',
-        getFacilityByType:'/facility/getOneTypeFacilitys'
+        getFacilityByType:basicUrl+'/facility/getOneTypeFacilitys'
 
     }
     return {

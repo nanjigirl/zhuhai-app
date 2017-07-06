@@ -830,7 +830,7 @@ var comm = Vue.extend({
                 this.legendList.push({
                     title: type.nameCn,
                     facilityTypeName: type.name,
-                    icon: 'enfroce-video',
+                    icon: type.icon,
                     id: type.id,
                     showIcon: false,
                     showSub: false
