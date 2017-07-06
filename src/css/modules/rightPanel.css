@@ -243,7 +243,6 @@
 
 .panel-top, .panel-summary, .panel-bottom {
     width: 100%;
-    padding-bottom: 1%;
     border: 1px solid #dcdcdc;
     background: #fbfafa;
     overflow: auto;
@@ -542,9 +541,12 @@
     overflow: auto;
 }
 .complaint-img{
-    width: 450px;
+    width: 475px;
     height: 250px;
 }
 .text-center th{
     text-align: center !important;
+}
+.complaint-type{
+    padding:10px 10px 0 10px;
 }

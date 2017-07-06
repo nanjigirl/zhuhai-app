@@ -31,9 +31,9 @@ var comm = Vue.extend({
             datatheads:['车辆编号','经过时间','时段录像'],
             complaintImg:'../src/img/reportPic.jpg',
             complaintMsg:[
-                {name:'投诉类型：',val:'路面污染'},
-                {name:'地址：',val:'五合大道中国石化旁'},
-                {name:'投诉时间：',val:'2017-04-05 14:23:21'}
+                {name:'投诉类型',val:'路面污染'},
+                {name:'地址',val:'五合大道中国石化旁'},
+                {name:'投诉时间',val:'2017-04-05 14:23:21'}
                 ],
             complaintLists:[
                 {

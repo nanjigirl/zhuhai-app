@@ -19,21 +19,36 @@
                 <!--<span>数据表格</span>-->
                 <!--</div>-->
                 <div class="device-content">
-                    <ul class="" style="padding: 10px;">
-                        <li v-for="message in complaintMsg">
-                            <span>{{message.name}}</span>
-                            <span>{{message.val}}</span>
-                        </li>
+                    <div class="complaint-type">
+                        <table class="table table-striped table-bordered" >
+                            <tbody>
+                                <tr v-for="message in complaintMsg">
+                                    <td>
+                                        {{message.name}}
+                                    </td>
+                                    <td>
+                                        {{message.val}}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                         <img class="complaint-img" :src="complaintImg" alt="img">
-                    </ul>
+                    </div>
+                    <!--<ul class="" style="padding: 10px;">-->
+                        <!--<li v-for="message in complaintMsg">-->
+                            <!--<span>{{message.name}}</span>-->
+                            <!--<span>{{message.val}}</span>-->
+                        <!--</li>-->
+                        <!--<img class="complaint-img" :src="complaintImg" alt="img">-->
+                    <!--</ul>-->
                 </div>
             </div>
             <div class="panel-bottom" v-show='isRealTimeMode'>
                 <div class="device-title">
-                    <span>统计信息</span>
+                    <span>投诉点--车辆追踪</span>
                 </div>
                 <div class="device-content">
-                    <table id="datatable" class="table table-striped table-bordered text-center" >
+                    <table class="table table-striped table-bordered text-center" >
                         <thead>
                             <tr>
                                 <th v-for="th in datatheads">{{th}}</th>
@@ -56,9 +71,6 @@
                 </div>
             </div>
             <div class="panel-summary" v-show='!isRealTimeMode'>
-                <div class="device-title">
-                    <span>投诉点--违章登记</span>
-                </div>
                 <div class="device-content panel-operation">
                     <div class="cesc-grid-form x_content">
                         <el-form :model="register" :rules="rules" ref="register" class="demo-ruleForm">
