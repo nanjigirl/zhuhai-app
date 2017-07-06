@@ -128,7 +128,7 @@ var comm = Vue.extend({
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
-        this.initHKVideo();
+        // this.initGDVideo();
     },
     methods: {
         initHKVideo: function () {
@@ -179,10 +179,49 @@ var comm = Vue.extend({
             }, 1000);
         },
         initGDVideo: function () {
-
+            var cid = 3301061000036;
+            var ch = 1;
+            if (!ch) ch = 1;
+            setTimeout(function () {
+                OCX.StartView("http://58.59.133.6&ID=" + cid + "&IP=58.59.133.6&port=9000&CH=" + ch + "&username=admin12345&password=admin12345");
+            }, 1000)
         },
         initJJVideo: function () {
+            var nChannel = 0; //通道编号：如果只有一个视频，通道编号是多少？0
+            var chServerIP = "172.32.0.2"; //设备IP地址：设备IP是否都是一样的？通过视频平台播放，所以可能是一样的
+            var nServerPort = "554"; //设备端口号，端口号很多都是一样的？通过视频平台播放，所以可能是一样的
+            var chStreamName = "1001"; //视频流名称：视频流名称哪里获取，是否会影响加载视频？视频流名称为设备编号，如1001
+            var chDevName = ""; //设备名称：设备哪里获取，是否会影响加载视频？额外的显示信息，可以不填
+            var chUser = "admin"; //用户名:用户名密码是否是admin/123，不填也行
+            var chPwd = "123456"; //密码
+            var chProtocol = "RTSP"; //协议类型：协议RTSP
+            var frameSpeed = 25; //帧速
+            var streamNameSmall = ""; //视频子码流名称，视频子码流从哪里获取？可以不填
+            var nStreamFlag = 1; //播放码流标志位：怎么设置？
+//看到平台中有个设备编号，但是该接口没有该编号，IP和端口一样的情况下没有编号是否指定不到设备？
+//ip=172.32.0.28&port=554&cid=4089&status=1
+            function init() {
+                /*	var ip= request("ip");
+                 var port=request("port");
+                 var cid=request("cid");*/
+                var ip = "172.32.0.28";
+                var port = "554";
+                var cid = "4089";
 
+                if (!!ip && !!port && !!cid) {
+                    chServerIP = ip;
+                    nServerPort = port;
+                    chStreamName = cid;
+                }
+                var obj = document.getElementById("videoobj");
+                //obj.SetFrameMode(1,1);alert("SetFrameMode OK");
+                //obj.SetShowMode(0);alert("SetShowMode OK");
+                //videoobj.StartPlay(nChannel, chServerIP, nServerPort, chStreamName, chDevName, chUser, chPwd, chProtocol, frameSpeed, streamNameSmall, nStreamFlag);
+                obj.StartPlay(nChannel, chServerIP, nServerPort, chStreamName, chDevName, chUser, chPwd, chProtocol, frameSpeed, streamNameSmall, nStreamFlag);
+            };
+            setTimeout(function () {
+                init();
+            }, 2000);
         },
         handleSelect: function () {
             console.log('select');
@@ -192,9 +231,13 @@ var comm = Vue.extend({
             this.reset();
         },
         reset: function () {
+            //this.stopJJVideo();
             this.rightPanelOpen = false;
             this.isRealTimeMode = true;
             this.activeIndex = '1';
+        },
+        stopJJVideo:function () {
+            document.getElementById("videoobj").StopPlay(0);
         },
         open: function (facility) {
             eventHelper.emit('isLoading');
@@ -218,15 +261,26 @@ var comm = Vue.extend({
                 if (facilityID == '35') {
                     this.facilityType = 'ylz';
                     this.facilityPic = '../src/img/yuliang.jpg';
+                    this.$nextTick(function () {
+                        this.initHKVideo();
+                    }.bind(this));
+
                 } else if (facilityID == '36') {
                     this.facilityType = 'xs';
                     this.facilityPic = '../src/img/xushui.jpg';
+                    this.$nextTick(function () {
+
+                        this.initJJVideo();
+                    }.bind(this));
                 } else if (facilityID == '37') {
                     this.facilityType = 'hd';
                     this.facilityPic = '../src/img/hedao.jpg';
+                    this.$nextTick(function () {
+                        this.initGDVideo();
+                    }.bind(this));
                 }
                 this.facilityName = facility.item.name;
-                facilityController.getDeviceDetailByFacility(facilityID, function (result) {
+            /*    facilityController.getDeviceDetailByFacility(facilityID, function (result) {
                     console.log(result);
                     if (!!result.pics && result.pics.length > 0) {
                         this.facilityPic = serviceHelper.getPicUrl(result.pics[0].url);
@@ -277,9 +331,8 @@ var comm = Vue.extend({
                             }
                         }.bind(this));
                     }
-                }.bind(this));
+                }.bind(this));*/
             }.bind(this));
-
         },
         switchMode: function (key, keyPath) {
             this.isRealTimeMode = key === '1';

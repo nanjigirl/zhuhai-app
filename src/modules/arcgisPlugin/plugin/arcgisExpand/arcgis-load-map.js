@@ -15,7 +15,7 @@ define(function () {
         tdWmtsServer: function (layerURL, centerX, centerY) {
             map = new Map("mapDiv", {
                 center: [centerX, centerY],
-                zoom: 9
+                zoom: 10
             });
             window.cesc.map=map;
             var basemap = new TDTLayer();

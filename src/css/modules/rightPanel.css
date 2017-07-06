@@ -4,7 +4,7 @@
     background: #f4f4f4;
     position: absolute;
     right: 0;
-    width: 510px;
+    width: 505px;
     top: 0;
     z-index: 100;
     -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
@@ -532,6 +532,6 @@
     color: rgb(255, 193, 80);
 }
 .device-content{
-    height:352px;
+    height:340px;
     overflow: auto;
 }

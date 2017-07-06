@@ -14,8 +14,8 @@ var rightPanel = require('modules/rightPanel');
 
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
-    var centerX = 113.42536;
-    var centerY = 23.1803;
+    var centerX = 108.37267903076172;
+    var centerY = 22.79646516113282;
     var map = arcgisHelper.tdWmtsServer(layerURL, centerX, centerY);
     return map;
 }
