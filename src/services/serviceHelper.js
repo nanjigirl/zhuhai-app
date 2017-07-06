@@ -10,7 +10,8 @@ define(['config'], function (config) {
         queryEmployee: basicUrl + '/employee',
         refreshToken: basicUrl + 'login/updateToken',
         queryOrder: basicUrl + '/orders/query',
-        facilityList: basicUrl + '/facility/getAllFacilitysType'
+        facilityList: basicUrl + '/facility/getAllFacilitysType',
+        getCarList:basicUrl+'/truck/getTruckList'
 
     }
     return {
