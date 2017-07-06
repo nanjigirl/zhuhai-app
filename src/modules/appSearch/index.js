@@ -78,8 +78,8 @@ var comm = Vue.extend({
         }.bind(this));
     },
     computed: {
-        //搜索功能（当前是按照名字和性别进行过滤）
-        searchEquipment: function () {//根据名字和性别过滤
+        //搜索功能（当前是按照名字和在线情况进行过滤）
+        searchEquipment: function () {
             var that = this;
             return that.tableData.filter(function (user) {
                 return (user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1 || user.status.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1);

@@ -241,26 +241,32 @@
     float: right;
 }
 
-.panel-top, .panel-middle, .panel-bottom {
+.panel-top, .panel-summary, .panel-bottom {
     width: 100%;
     padding-bottom: 1%;
     border: 1px solid #dcdcdc;
     background: #fbfafa;
 }
-.panel-top, .panel-middle{
+.panel-top{
     margin-bottom: 2%;
 }
 .panel-top {
-    height: 48%;
+    height: 47%;
 }
 
-.panel-middle {
-    height: 36%;
+.panel-summary{
+    height: 99%;
     min-height: 15em;
 }
-
+.panel-summary .el-button{
+    margin-top: 10px;
+    margin-left: 0;
+}
+.panel-operation{
+    padding: 0 10px;
+}
 .panel-bottom {
-    height: 36%;
+    height: 49%;
 }
 
 .top-l, .middle-l, .bottom-l {

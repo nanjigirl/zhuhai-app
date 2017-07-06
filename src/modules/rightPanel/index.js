@@ -2,7 +2,7 @@ var template = require('./rightPanel.html');
 var controller = require('controllers/rightPanelController');
 // var monitor = require('./monitor');
 // var statistics = require('./statistics');
-var dateController = require('./dateControl');
+// var dateController = require('./dateControl');
 var facilityController = require('controllers/facilityController');
 var serviceHelper = require('services/serviceHelper');
 var moment = require('moment');
@@ -28,6 +28,68 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            msgLists:[
+                {
+                    children:[
+                        {
+                            name: '证号',
+                            value: '201630002'
+                        },
+                        {
+                            name:'临时消纳场名称',
+                            value:'南宁市仙葫经济开发区五合社区消纳场'
+                        }
+                    ]
+                },
+                {
+                    children:[
+                        {
+                            name: '地址',
+                            value: '南宁市仙葫经济开发区蒲旧公路'
+                        },
+                        {
+                            name:'有效期限',
+                            value:'2016.05.20-2017.05.20'
+                        }
+                    ]
+                },
+                {
+                    children:[
+                        {
+                            name: '联系人',
+                            value: '韦绍陆'
+                        },
+                        {
+                            name:'电话',
+                            value:'18878876669'
+                        }
+                    ]
+                },
+                {
+                    children:[
+                        {
+                            name: '行政主管部门',
+                            value: '市城管局'
+                        },
+                        {
+                            name:'分管领导',
+                            value:'李军'
+                        }
+                    ]
+                },
+                {
+                    children:[
+                        {
+                            name: '联系人',
+                            value: '陈明'
+                        },
+                        {
+                            name:'电话',
+                            value:'15177925360'
+                        }
+                    ]
+                }
+            ],
             rightPanelOpen: false,
             isRealTimeMode: true,
             realTimeName: '实时监测',
@@ -43,59 +105,59 @@ var comm = Vue.extend({
             waterGrade: 1,
             waterGradeTitle: '',
             heads: detailGridHeader,
-            rows: [{
-                startDate: '2016-10-09',
-                deep: '0.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-19',
-                deep: '0.1m',
-                period: '6h'
-            }, {
-                startDate: '2016-11-09',
-                deep: '0.4m',
-                period: '7h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }, {
-                startDate: '2016-10-29',
-                deep: '1.4m',
-                period: '6h'
-            }]
+            // rows: [{
+            //     startDate: '2016-10-09',
+            //     deep: '0.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-19',
+            //     deep: '0.1m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-11-09',
+            //     deep: '0.4m',
+            //     period: '7h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }, {
+            //     startDate: '2016-10-29',
+            //     deep: '1.4m',
+            //     period: '6h'
+            // }]
         }
     },
     computed: {
@@ -131,6 +193,9 @@ var comm = Vue.extend({
         // this.initGDVideo();
     },
     methods: {
+        newCarOpen:function () {
+            window.open("http://19.2.81.254:66/Service/dv?device_code=1000001,1000000");
+        },
         initHKVideo: function () {
             var ip = "180.139.134.6";
             var port = "443";
@@ -347,16 +412,16 @@ var comm = Vue.extend({
             }
             // this.$refs.monitorPlugin.$emit('switchMode', this.isRealTimeMode);
             // this.$refs.statisticPlugin.$emit('switchMode', this.isRealTimeMode);
-            if (!this.isRealTimeMode) {
-                //query by default date
-                // this.$refs.dateController.queryByDefaultDate();
-            }
+            // if (!this.isRealTimeMode) {
+            //     //query by default date
+            //     // this.$refs.dateController.queryByDefaultDate();
+            // }
         }
     },
     components: {
         // monitor: monitor,
         // statistics: statistics,
-        dateControl: dateController
+        // dateControl: dateController
     }
 });
 module.exports = comm;

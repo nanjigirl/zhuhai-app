@@ -1,13 +1,11 @@
 #wrapper {
     text-align: center;
 }
-
 #toolbar {
     position: absolute;
     bottom: 1em;
     left: 1em;
 }
-
 .button {
     width: 1em;
     height: 1em;
