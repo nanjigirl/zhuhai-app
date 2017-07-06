@@ -9,7 +9,8 @@ define(['config'], function (config) {
         queryMenu: basicUrl+'/orders/menu',
         queryEmployee: basicUrl+'/employee',
         refreshToken:basicUrl+'login/updateToken',
-        queryOrder: basicUrl+'/orders/query'
+        queryOrder: basicUrl+'/orders/query',
+        getCarList:basicUrl+'/truck/getTruckList'
 
     }
     return {
