@@ -176,7 +176,7 @@ define(['utils/eventHelper'], function (eventHelper) {
 
                 var textSymbol = new esri.symbol.TextSymbol();
                 textSymbol.setText(title);
-                textSymbol.setColor(new Color([255, 0, 0, 1]));
+                textSymbol.setColor(new Color([13, 67, 179, 1]));
                 textSymbol.setFont("12pt");
                 textSymbol.setOffset(30, -25);
 
