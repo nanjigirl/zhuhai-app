@@ -599,6 +599,7 @@ a:hover, a:focus {
 
 .top_nav li a i {
     font-size: 15px;
+    margin-top: 0.4em;
 }
 
 .navbar-static-top {

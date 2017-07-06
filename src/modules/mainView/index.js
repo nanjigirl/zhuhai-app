@@ -4,6 +4,8 @@ var eventHelper = require('../../utils/eventHelper');
 var moduleController = require('controllers/moduleController');
 var serviceHelper = require('../../services/serviceHelper');
 var appNoticeBox = require('modules/appNoticeBox');
+
+var mapHelper = require('utils/maps/mapHelper');
 var components = {
     'app-notice-box': appNoticeBox
 };
@@ -37,12 +39,19 @@ var comm = Vue.extend({
         },
         toggleSearch:function () {
             eventHelper.emit('openPointSearch');
+        },
+        carTrace:function(){
+            mapHelper.drawLine(this.map,[108.34109333740236,22.84727692871094],[108.43310383544923,22.83457398681641]);
         }
     },
     mounted: function () {
         eventHelper.on('loginSuccess', function () {
             this.isLoginSuccess = true;
         }.bind(this));
+        eventHelper.on('mapCreated',function (map) {
+            this.map  = map;
+        }.bind(this));
+
         this.currentView = 'arcgis-plugin';
         eventHelper.on('change-menu', function (model) {
             this.changeView(model.menuurl);

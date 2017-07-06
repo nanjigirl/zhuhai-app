@@ -49,6 +49,7 @@ var comm = Vue.extend({
         initPlugin(this.facilityArr);
         var self = this;
         var map = initBaseMap();
+        eventHelper.emit('mapCreated',map);
         eventHelper.on('facility-checked', function (subFacilities) {
             arcgisHelper.createPoints(subFacilities);
             self.facilityArr[subFacilities.facilityTypeName] = subFacilities.facilitys;

@@ -17,7 +17,7 @@ define(function () {
                 center: [centerX, centerY],
                 zoom: 10
             });
-            window.cesc.map=map;
+            window.cesc.map = map;
             var basemap = new TDTLayer();
             //var tomcatLayer = new TomcatLayer({url:'http://172.17.5.150:8080/shenzhen/ArcgisServerTiles/_alllayers'});
             //console.log(tomcatLayer);
@@ -26,10 +26,10 @@ define(function () {
             map.addLayer(basemap);
             var annolayer = new TDTAnnoLayer();
             map.addLayer(annolayer);
-            var labels = new ArcGISDynamicMapServiceLayer(layerURL,{opacity:0.6});
+            var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6});
             map.addLayer(labels);
             map.on('click', function (event) {
-              console.log(event);
+                console.log(event);
             });
             deviceModel.createTextSymbol(map);
             return map;
@@ -38,25 +38,31 @@ define(function () {
             facility.facilitys.forEach(function (item) {
                 var icon = '';
                 var fid = '';
-                if(facility.facilityTypeName==='RF'){
+                if (facility.facilityTypeName === 'RF') {
                     icon = './img/mapLegend/huawei-yl.png';
                     fid = 35;
-                }else if(facility.facilityTypeName==='RV'){
+                } else if (facility.facilityTypeName === 'RV') {
                     icon = './img/mapLegend/huawei-xs.png';
-                    if(item.id==50 || item.id==52|| item.id==53|| item.id==57){
+                    if (item.id == 50 || item.id == 52 || item.id == 53 || item.id == 57) {
                         icon = './img/mapLegend/huawei-xs-red.png';
                     }
                     fid = 36;
-                }else if(facility.facilityTypeName==='RC'){
+                } else if (facility.facilityTypeName === 'RC') {
                     icon = './img/mapLegend/huawei-hd.png';
                     fid = 37;
-                    if(item.type=='warn'){
+                    if (item.type == 'warn') {
                         icon = './img/mapLegend/huawei-hd-yellow.png';
                     }
                 }
 
                 item.fid = fid;
-                deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '30', facility.facilityTypeName,item);
+                deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '30', facility.facilityTypeName, item);
+            });
+        },
+        createDistrict: function (map) {
+            deviceModel.ssjkCreatePoint(map, 999, 'f999', '兴宁区 1', 'abc', 108.36375263916017, 22.857919934082034, '', './img/mapLegend/district.png', '50', '30', 'abc', {
+                fid: 123,
+                name: 123
             });
         },
         removePoints: function (list) {
