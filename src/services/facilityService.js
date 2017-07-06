@@ -1,4 +1,4 @@
-define(['./serviceHelper','./mock/mock'], function (serviceHelper,mock) {
+define(['./serviceHelper', './mock/mock'], function (serviceHelper, mock) {
     return {
         getAllFacility: function (cb) {
             $.get(serviceHelper.getPath('facilityList'), function (result) {
@@ -10,25 +10,26 @@ define(['./serviceHelper','./mock/mock'], function (serviceHelper,mock) {
                 console.log('Error:', result);
             });
         },
-        getDeviceDetailByFacility: function (facilityId, cb) {
-            setTimeout(function(){
-                if(facilityId==35){
-                    cb({devices:mock.rfDevices});
+        getFacilityByType: function (facilityType, cb) {
+            var parameter = {
+                id: 'getFacilityByType',
+                parameter: {
+                    facilityType: facilityType
                 }
-                else if(facilityId==36){
-                    cb({devices:mock.rvDevices});
+            }
+            $.get(serviceHelper.getPath(parameter), function (result) {
+                console.log(result);
+                if (!!result.success) {
+                    cb(result.data);
+                    return;
                 }
-                else{
-                    cb({devices:mock.rcDevices});
-                }
-
-            },1000);
-
+                console.log('Error:', result);
+            });
         },
-        getAlarmInfoByFacility:function(facilityId,cb,errorcb){
-          setTimeout(function () {
-              cb([]);
-          },1000);
+        getAlarmInfoByFacility: function (facilityId, cb, errorcb) {
+            setTimeout(function () {
+                cb([]);
+            }, 1000);
         }
     }
 

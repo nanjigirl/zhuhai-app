@@ -8,7 +8,7 @@
             @mouseout="showSub(-1)"
         >
             <li v-for="(list,index) in legendList" @mouseover="showSub(index)">
-                <a href="javascript:void(0);" @click="showSubLegend(index)" :class="{'text-open':legendList[index].showIcon}">
+                <a href="javascript:void(0);" @click="showSubLegend(index,list)" :class="{'textOpen':list.showIcon}">
                     <i class="glyphicon" :class="list.icon"></i>
                     <p class="childType">{{list.title}}</p>
                 </a>

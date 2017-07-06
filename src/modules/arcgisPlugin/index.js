@@ -19,15 +19,15 @@ var initBaseMap = function () {
     var map = arcgisHelper.tdWmtsServer(layerURL, centerX, centerY);
     return map;
 }
-var initPlugin = function (facilityArr) {
+var initPlugin = function (facilityArr, self) {
     global.init();
     facilityController.getAllFacility(function (list) {
-        this.$refs.mapLegend.init(list);
+        self.$refs.mapLegend.init(list);
         list.forEach(function (station) {
             facilityArr[station.facilityTypeName] = station.facilitys;
             arcgisHelper.createPoints(station);
         })
-    }.bind(this));
+    });
 }
 
 // 定义组件
@@ -46,10 +46,16 @@ var comm = Vue.extend({
     },
     mounted: function () {
         this.facilityArr = {};
-        initPlugin(this.facilityArr);
+        initPlugin(this.facilityArr, this);
         var self = this;
         var map = initBaseMap();
-        eventHelper.emit('mapCreated',map);
+        eventHelper.emit('mapCreated', map);
+        this.$on('openMapLegend', function (legend) {
+            console.log(legend);
+            facilityController.getFacilityByType(legend.facilityTypeName, function (data) {
+                console.log(data);
+            })
+        });
         eventHelper.on('facility-checked', function (subFacilities) {
             arcgisHelper.createPoints(subFacilities);
             self.facilityArr[subFacilities.facilityTypeName] = subFacilities.facilitys;
@@ -66,7 +72,7 @@ var comm = Vue.extend({
     components: {
         // 'right-panel': rightPanel,
         'right-panel-complaint': rightPanelComplaint,
-        'flex-map-legend':flexMapLegend
+        'flex-map-legend': flexMapLegend
     }
 });
 module.exports = comm;
