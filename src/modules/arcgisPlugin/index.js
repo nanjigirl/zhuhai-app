@@ -11,6 +11,7 @@ var facilityController = require('controllers/facilityController');
 var arcgisHelper = require('./plugin/arcgisExpand/arcgis-load-map');
 var rightPanel = require('modules/rightPanel');
 var rightPanelComplaint = require('modules/rightPanelComplaint');
+var historyDialogSearch = require('modules/historyDialogSearch');
 
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
@@ -84,9 +85,10 @@ var comm = Vue.extend({
         }.bind(this));
     },
     components: {
-        'right-panel': rightPanel,
-        // 'right-panel-complaint': rightPanelComplaint,
-        'flex-map-legend': flexMapLegend
+         'right-panel': rightPanel,
+        //'right-panel-complaint': rightPanelComplaint,
+        'flex-map-legend':flexMapLegend,
+        'history-dialog-search':historyDialogSearch
     }
 });
 module.exports = comm;

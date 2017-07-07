@@ -262,6 +262,9 @@
     margin-top: 10px;
     margin-left: 0;
 }
+.panel-summary .el-button.no-margin{
+    margin:0;
+}
 .panel-operation{
     padding: 0 10px;
 }
@@ -538,7 +541,6 @@
     color: rgb(255, 193, 80);
 }
 .device-content{
-    overflow: auto;
 }
 .complaint-img{
     width: 475px;
