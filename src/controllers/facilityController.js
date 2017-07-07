@@ -11,6 +11,11 @@ return {
 		cb(data);
 	});
 	},
+	getFacilityDetail:function(facilityID,cb){
+	facilityService.getFacilityDetail(facilityID,function(data){
+		cb(data);
+	});
+	},
 	getAlarmInfoByFacility:function(facilityId,cb){
 		facilityService.getAlarmInfoByFacility(facilityId,function(data){
 			cb(data);

@@ -319,11 +319,11 @@ var comm = Vue.extend({
             this.$nextTick(function () {
                 this.activeIndex = '1';
                 this.facility = facility;
-                if (!!this.$refs.monitorPlugin) {
-                    this.$refs.monitorPlugin.$emit('reset');
-                }
-                var facilityID = facility.id.substring(1);
-                if (facilityID == '35') {
+                var facilityID = facility.id;
+                facilityController.getFacilityDetail(facilityID,function (data) {
+                    console.log(data)
+                })
+           /*     if (facilityID == '35') {
                     this.facilityType = 'ylz';
                     this.facilityPic = '../src/img/yuliang.jpg';
                     this.$nextTick(function () {
@@ -343,60 +343,8 @@ var comm = Vue.extend({
                     this.$nextTick(function () {
                         this.initGDVideo();
                     }.bind(this));
-                }
-                this.facilityName = facility.item.name;
-            /*    facilityController.getDeviceDetailByFacility(facilityID, function (result) {
-                    console.log(result);
-                    if (!!result.pics && result.pics.length > 0) {
-                        this.facilityPic = serviceHelper.getPicUrl(result.pics[0].url);
-                    }
-                    if (result.devices.length > 0) {
-                        var monitorIDs = [];
-                        var monitors = [];
-                        result.devices.forEach(function (device) {
-                            device.items.forEach(function (monitor) {
-                                if (monitor.itemTypeName === 'Precipitation') {
-                                    monitorIDs.push(monitor.RainfalldurationID);
-                                }
-                                else if (monitor.itemTypeName === 'waterLevel') {
-                                    self.waterLevelID = monitor.itemID;
-                                }
-                                monitorIDs.push(monitor.itemID);
-                                monitors.push(monitor);
-                            });
-                        });
-                        realTimeUpdate(this, monitorIDs);
-                        currentThread = setInterval(function () {
-                            realTimeUpdate(this, monitorIDs);
-                        }.bind(this), refreshTime);
-                    }
-                    // this.$refs.monitorPlugin.$emit('init-monitor', {
-                    //     facility: facility,
-                    //     devices: result.devices
-                    // });
-                    // this.$refs.statisticPlugin.$emit('init-statistic', {
-                    //     facility: facility,
-                    //     devices: result.devices
-                    // });
-
-                    // this.lastUpdateTime = result.currentDate;
-                }.bind(this));
-
-                facilityController.getAlarmInfoByFacility(facilityID, function (result) {
-                    console.log(result);
-                    if (!!result && result.length > 0) {
-                        result.forEach(function (alarmItem) {
-                            if (!!alarmItem.isAlarm) {
-                                this.$refs.monitorPlugin.$emit('monitor-alarm', {
-                                    facility: facility,
-                                    alarmItem: alarmItem
-                                });
-                                this.alarmStatus = 2;
-                                this.alertMessage = '正在报警';
-                            }
-                        }.bind(this));
-                    }
-                }.bind(this));*/
+                }*/
+                this.facilityName = facility.name;
             }.bind(this));
         },
         switchMode: function (key, keyPath) {

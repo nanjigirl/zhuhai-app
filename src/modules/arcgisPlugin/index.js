@@ -51,10 +51,24 @@ var comm = Vue.extend({
         var map = initBaseMap();
         eventHelper.emit('mapCreated', map);
         this.$on('openMapLegend', function (legend) {
+            eventHelper.emit('loading-start');
             console.log(legend);
-            facilityController.getFacilityByType(legend.id, function (subFacilities) {
-                arcgisHelper.createPoints(subFacilities,legend);
-            })
+            if (!!legend.showIcon) {
+                var cacheFacilities  = self.facilityArr[legend.facilityTypeName];
+                if(!!cacheFacilities && cacheFacilities.length>0){
+                    arcgisHelper.createPoints(cacheFacilities, legend);
+                    eventHelper.emit('loading-end');
+                }else{
+                    facilityController.getFacilityByType(legend.id, function (subFacilities) {
+                        arcgisHelper.createPoints(subFacilities, legend);
+                        self.facilityArr[legend.facilityTypeName] = subFacilities;
+                        eventHelper.emit('loading-end');
+                    });
+                }
+            } else {
+                arcgisHelper.removePoints(self.facilityArr[legend.facilityTypeName]);
+                eventHelper.emit('loading-end');
+            }
         });
         eventHelper.on('facility-checked', function (subFacilities) {
             arcgisHelper.createPoints(subFacilities);
@@ -65,13 +79,13 @@ var comm = Vue.extend({
         });
         eventHelper.on('subFacility-clicked', function (point) {
             console.log(point);
-            map.centerAt([point.center[0] + 0.05, point.center[1]]);
-            this.$refs.rightPanelComplaint.open(point);
+            map.centerAt([parseFloat(point.center[0]) + 0.05, point.center[1]]);
+            this.$refs.rightPanel.open(point.item);
         }.bind(this));
     },
     components: {
-        // 'right-panel': rightPanel,
-        'right-panel-complaint': rightPanelComplaint,
+        'right-panel': rightPanel,
+        // 'right-panel-complaint': rightPanelComplaint,
         'flex-map-legend': flexMapLegend
     }
 });
