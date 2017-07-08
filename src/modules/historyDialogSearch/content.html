@@ -46,9 +46,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="list in carLists">
+                            <tr v-for="(list,index) in carLists" @click="getCoordinate(list)">
                                 <td>
-                                    <el-checkbox></el-checkbox>
+                                    <el-checkbox v-model="list.check"></el-checkbox>
                                 </td>
                                 <td>
                                     {{list.num}}
@@ -93,15 +93,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="list in carLists1">
+                            <tr v-for="car in carLists1">
                                 <td>
-                                    {{list.num}}
+                                    {{car.num}}
                                 </td>
                                 <td>
-                                    {{list.name}}
+                                    {{car.name}}
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-info btn-group-sm">查看回放</button>
+                                    <button type="button" class="btn btn-info btn-group-sm" @click="drawCarHistory(car)">查看回放</button>
                                 </td>
                             </tr>
                             </tbody>

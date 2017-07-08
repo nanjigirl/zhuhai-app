@@ -4,7 +4,7 @@ var eventHelper = require('../../utils/eventHelper');
 var moduleController = require('controllers/moduleController');
 var serviceHelper = require('../../services/serviceHelper');
 var appNoticeBox = require('modules/appNoticeBox');
-
+var arcgisDraw = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 var mapHelper = require('utils/maps/mapHelper');
 var components = {
     'app-notice-box': appNoticeBox
@@ -41,6 +41,7 @@ var comm = Vue.extend({
             eventHelper.emit('openPointSearch');
         },
         carTrace:function(){
+            // arcgisDraw.createDistrict();
             mapHelper.drawLine(this.map,[108.34109333740236,22.84727692871094],[108.43310383544923,22.83457398681641]);
             eventHelper.emit('openHistoryPanel');
         }

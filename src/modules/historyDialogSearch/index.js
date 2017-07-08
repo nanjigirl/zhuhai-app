@@ -5,6 +5,9 @@ var serviceHelper = require('services/serviceHelper');
 var moment = require('moment');
 var eventHelper = require('utils/eventHelper');
 var historySearchServices = require('services/historySearchServices');
+var getCoordinateService = require('services/getCoordinateService');
+var getCarHistoryService = require('services/getCarHistoryService');
+var getCarHistoryCountService = require('services/getCarHistoryCountService');
 var refreshTime = 1000;
 var currentThread;
 // 定义组件
@@ -20,8 +23,10 @@ var comm = Vue.extend({
             },
             carLists:[
                 {
-                    num:'桂AD2375',
-                    name:'南宁泰斗运输信息咨询有限公司（渣土）',
+                    num:'',
+                    name:'',
+                    terminalNum:'',
+                    check:false
                 }
             ],
             datatheads:[' ','车辆编号','车辆公司'],
@@ -30,6 +35,7 @@ var comm = Vue.extend({
                 {
                     num:'桂AD2375',
                     name:'南宁泰斗运输信息咨询有限公司（渣土）',
+                    terminalNum:''
                 }
             ],
             rightPanelOpen: false,
@@ -62,7 +68,6 @@ var comm = Vue.extend({
     },
     mounted: function () {
         this.queryCarData();
-        this.getTerminalNum();
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
@@ -86,22 +91,10 @@ var comm = Vue.extend({
         resetForm(formName) {
             this.$refs[formName].resetFields();
         },
-        getTerminalNum:function(){
-            historySearchServices.getCarListData(function (data) {//获取车辆终端号
-                var terminalNum = [];
-                if (!!data) {
-
-                }
-                data.forEach(function (menu) {
-                    terminalNum.push(menu.terminalNum);
-                });
-                // console.log(terminalNum);
-                return terminalNum;
-            });
-        },
         queryCarData: function () {
             var self = this;
-            historySearchServices.getCarListData(function (data) {//获取后台车辆信息数据
+            //从后台获取车辆信息数据
+            historySearchServices.getCarListData(function (data) {
                 if (!!data) {
                     self.carLists.splice(0);
                     self.carLists1.splice(0);
@@ -109,6 +102,8 @@ var comm = Vue.extend({
                 data.forEach(function (menu) {
                     self.carLists.push({
                         num: menu.truckNum,
+                        terminalNum:menu.terminalNum,
+                        check:false
                     });
                 })
                 // for(var i = 0;i<10;i++){
@@ -118,10 +113,47 @@ var comm = Vue.extend({
                 // }
                 for(var i = 0;i<10;i++){
                     self.carLists1.push({
-                        num:data[i].truckNum
+                        num:data[i].truckNum,
+                        terminalNum:data[i].terminalNum
                     });
                 }
             });
+        },
+        getCoordinate:function(list){//通过点击车辆列表进行获取该车辆的坐标
+            list.check = !list.check;
+            if(list.check ==true){//如果车辆被选中获取该车辆的坐标
+                getCoordinateService.getCoordinateData(list.terminalNum,function (data) {
+                    console.log(data);
+                });
+            }
+        },
+        drawCarHistory:function (car) {
+            var dateStart = this.search.dateStart.getFullYear()+'-'+(this.search.dateStart.getMonth()+1)+'-'+this.search.dateStart.getDate();
+            var dateEnd = this.search.dateEnd.getFullYear()+'-'+(this.search.dateEnd.getMonth()+1)+'-'+this.search.dateEnd.getDate();
+            if(dateStart && dateEnd){
+                getCarHistoryCountService.getCarHistoryCountData(car.terminalNum,dateStart,dateEnd,function(data){
+                    // console.log(data);
+                    var carHistoryCount = parseInt(data.count);
+                    console.log(carHistoryCount);
+                    var pageCount;
+                    if(carHistoryCount%200 !== 0){debugger
+                        pageCount =  parseInt(carHistoryCount/200) + 1;
+                    }else{
+                        pageCount =  parseInt(carHistoryCount/200);
+                    }
+
+                    var pageIndex = 0;
+
+                    for(var i=0;pageIndex<pageCount;){
+
+                        // pageIndex++;
+                        getCarHistoryService.getCarHistoryData(car.terminalNum,dateStart,dateEnd,pageIndex,function(data){
+
+
+                        });
+                    }
+                });
+            }
         },
         handleSelect: function () {
             console.log('select');
@@ -166,75 +198,3 @@ var comm = Vue.extend({
     }
 });
 module.exports = comm;
-// var template = require('./content.html');
-// var eventHelper = require('../../utils/eventHelper');
-// var controller = require('controllers/rightPanelController');
-// var facilityController = require('controllers/facilityController');
-// var serviceHelper = require('services/serviceHelper');
-// var moment = require('moment');
-// var historySearchServices = require('services/historySearchServices');
-//
-// // 定义组件
-// var comm = Vue.extend({
-//     template: template,
-//
-//     data: function () {
-//         return {
-//             rightPanelOpen: false,
-//             carData: {
-//                 num: '',
-//                 type:'',
-//                 dateStart:'',
-//                 dateEnd:''
-//             },
-//             datatheads:['车辆编号','车队名称','驾驶员','定位状态','在线状态','更新时间','查看历史'],
-//             carLists:[
-//                 {
-//                     num:'桂AD2375',
-//                     name:'南宁泰斗运输信息咨询有限公司（渣土）'
-//                     ,driver:'张晓春',
-//                     positionStatus:'定位有效',
-//                     onlineStatus:'在线',
-//                     updateTime:'2017-06-03 10:27:02',
-//                     history:'车辆追踪'
-//                 }
-//             ],
-//             dialogFormVisible: false,
-//         }
-//     },
-//
-//
-//     methods: {
-//         queryCarData: function () {
-//             var self = this;
-//             historySearchServices.getCarListData(function (data) {
-//                 if (!!data) {
-//                     self.carLists.splice(0);
-//                 }
-//                 data.forEach(function (menu) {
-//                     self.carLists.push({
-//                         num: menu.truckNum,
-//                     });
-//                 })
-//             });
-//         },
-//     },
-//     mounted: function () {
-//         eventHelper.on('openHistoryDialog', function () {
-//             this.dialogFormVisible = true;
-//         }.bind(this));
-//         this.queryCarData();
-//         // this.queryOrders();
-//         // this.queryMenus();
-//         // this.queryEmployee();
-//         // this.$refs.selectOnne.$on('change',function (event) {
-//         //     console.log(event);
-//         // })
-//     },
-//     components: {},
-//     computed: {
-//
-//
-//     }
-// });
-// module.exports = comm;

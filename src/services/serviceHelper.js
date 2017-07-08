@@ -14,8 +14,9 @@ define(['config'], function (config) {
         getCarList:basicUrl+'/truck/getTruckList',
         getFacilityByType:basicUrl+'/facility/getOneTypeFacilitys',
         getFacilityDetail:basicUrl+'/facility/getOneFacilityInfo',
-        getCoordinate:basicUrl+'truck/getTruckInfo'
-
+        getCoordinate:basicUrl+'/truck/getTruckInfo',
+        getCarHistory:basicUrl+'/truck/getTruckHistoryTrack',
+        getCarHistoryCount:basicUrl+'/truck/getTruckHistoryTrackCount',
     }
     return {
         setToken: function (token) {
