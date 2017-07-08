@@ -13,7 +13,8 @@ define(['config'], function (config) {
         facilityList: basicUrl + '/facility/getAllFacilitysType',
         getCarList:basicUrl+'/truck/getTruckList',
         getFacilityByType:basicUrl+'/facility/getOneTypeFacilitys',
-        getFacilityDetail:basicUrl+'/facility/getOneFacilityInfo'
+        getFacilityDetail:basicUrl+'/facility/getOneFacilityInfo',
+        getCoordinate:basicUrl+'truck/getTruckInfo'
 
     }
     return {

@@ -62,6 +62,7 @@ var comm = Vue.extend({
     },
     mounted: function () {
         this.queryCarData();
+        this.getTerminalNum();
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
@@ -84,6 +85,19 @@ var comm = Vue.extend({
         },
         resetForm(formName) {
             this.$refs[formName].resetFields();
+        },
+        getTerminalNum:function(){
+            historySearchServices.getCarListData(function (data) {//获取车辆终端号
+                var terminalNum = [];
+                if (!!data) {
+
+                }
+                data.forEach(function (menu) {
+                    terminalNum.push(menu.terminalNum);
+                });
+                // console.log(terminalNum);
+                return terminalNum;
+            });
         },
         queryCarData: function () {
             var self = this;
