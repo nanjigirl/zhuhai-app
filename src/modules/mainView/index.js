@@ -42,7 +42,7 @@ var comm = Vue.extend({
         },
         carTrace:function(){
             // arcgisDraw.createDistrict();
-            mapHelper.drawLine(this.map,[108.34109333740236,22.84727692871094],[108.43310383544923,22.83457398681641]);
+            // mapHelper.drawLine(this.map,[108.34109333740236,22.84727692871094],[108.43310383544923,22.83457398681641]);
             eventHelper.emit('openHistoryPanel');
         }
     },

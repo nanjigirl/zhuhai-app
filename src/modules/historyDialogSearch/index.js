@@ -3,11 +3,14 @@ var controller = require('controllers/rightPanelController');
 var facilityController = require('controllers/facilityController');
 var serviceHelper = require('services/serviceHelper');
 var moment = require('moment');
-var eventHelper = require('utils/eventHelper');
+// var drawPic = require('../arcgisPlugin/plugin/arcgisExpand/arcgis-load-map')
+var eventHelper = require('../../utils/eventHelper');
 var historySearchServices = require('services/historySearchServices');
 var getCoordinateService = require('services/getCoordinateService');
 var getCarHistoryService = require('services/getCarHistoryService');
 var getCarHistoryCountService = require('services/getCarHistoryCountService');
+var arcgisDraw = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
+var mapHelper = require('utils/maps/mapHelper');
 var refreshTime = 1000;
 var currentThread;
 // 定义组件
@@ -71,6 +74,9 @@ var comm = Vue.extend({
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
+        eventHelper.on('mapCreated',function (map) {
+            this.map  = map;
+        }.bind(this));
         eventHelper.on('openHistoryPanel', function () {
            this.rightPanelOpen = true;
         }.bind(this));
@@ -123,37 +129,60 @@ var comm = Vue.extend({
             list.check = !list.check;
             if(list.check ==true){//如果车辆被选中获取该车辆的坐标
                 getCoordinateService.getCoordinateData(list.terminalNum,function (data) {
-                    console.log(data);
+                    arcgisDraw.
                 });
             }
         },
         drawCarHistory:function (car) {
-            var dateStart = this.search.dateStart.getFullYear()+'-'+(this.search.dateStart.getMonth()+1)+'-'+this.search.dateStart.getDate();
-            var dateEnd = this.search.dateEnd.getFullYear()+'-'+(this.search.dateEnd.getMonth()+1)+'-'+this.search.dateEnd.getDate();
-            if(dateStart && dateEnd){
-                getCarHistoryCountService.getCarHistoryCountData(car.terminalNum,dateStart,dateEnd,function(data){
-                    // console.log(data);
-                    var carHistoryCount = parseInt(data.count);
-                    console.log(carHistoryCount);
-                    var pageCount;
-                    if(carHistoryCount%200 !== 0){debugger
-                        pageCount =  parseInt(carHistoryCount/200) + 1;
-                    }else{
-                        pageCount =  parseInt(carHistoryCount/200);
-                    }
+            if(!this.search.dateStart || !this.search.dateEnd){
+                return;
+            }else {
+                var dateStart = this.search.dateStart.getFullYear()+'-'+(this.search.dateStart.getMonth()+1)+'-'+this.search.dateStart.getDate();
+                var dateEnd = this.search.dateEnd.getFullYear()+'-'+(this.search.dateEnd.getMonth()+1)+'-'+this.search.dateEnd.getDate();
+                if(dateStart && dateEnd){
+                    getCarHistoryCountService.getCarHistoryCountData(car.terminalNum,dateStart,dateEnd,function(data){
+                        console.log(data);
+                        var carHistoryCount = parseInt(data.count);
+                        console.log(carHistoryCount);
+                        var pageCount;
+                        if(carHistoryCount%200 !== 0){
+                            pageCount =  parseInt(carHistoryCount/200) + 1;
+                        }else{
+                            pageCount =  parseInt(carHistoryCount/200);
+                        }
+                        getCarHistoryService.getCarHistoryData(car.terminalNum,dateStart,dateEnd,0,function(data){
+                            var coordinateArr = [];
+                            console.log(data)
+                            data.forEach(function(data){
+                                coordinateArr.push({
+                                    x:data.x,
+                                    y:data.y
+                                })
+                            });
+                            // console.log(coordinateArr[0].x);
+                            // console.log(coordinateArr[1].x);
+                            for(var i = 0;i<coordinateArr.length-1;i++){
+                                // console.log(coordinateArr[i].x);
+                                // console.log(coordinateArr[i+1].x);
+                                mapHelper.drawLine(this.map,[coordinateArr[i].x,coordinateArr[i].y],[coordinateArr[i+1].x,coordinateArr[i+1].y]);
+                            }
 
-                    var pageIndex = 0;
+                        }.bind(this));
+                        // var pageIndex = 0;
+                        //
+                        // for(var i=0;pageIndex<pageCount;){
+                        //
+                        //     // pageIndex++;
+                        //     getCarHistoryService.getCarHistoryData(car.terminalNum,dateStart,dateEnd,pageIndex,function(data){
+                        //
+                        //
+                        //     });
+                        // }
+                    }.bind(this));
 
-                    for(var i=0;pageIndex<pageCount;){
-
-                        // pageIndex++;
-                        getCarHistoryService.getCarHistoryData(car.terminalNum,dateStart,dateEnd,pageIndex,function(data){
-
-
-                        });
-                    }
-                });
+                }
             }
+
         },
         handleSelect: function () {
             console.log('select');
