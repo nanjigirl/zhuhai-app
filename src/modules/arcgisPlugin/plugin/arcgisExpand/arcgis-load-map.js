@@ -39,6 +39,7 @@ define(function () {
                 var icon = './img/toolbar/'+legend.icon+'.png';
                 var fid = legend.id;
                 item.fid = fid;
+                //创建地图上图标
                 deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
         },
@@ -48,6 +49,7 @@ define(function () {
                 name: 123
             });
         },
+        //删除地图上图标
         removePoints: function (list) {
             list.forEach(function (item) {
                 map.removeLayer(map.getLayer('f' + item.id));
