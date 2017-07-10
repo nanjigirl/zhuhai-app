@@ -35,7 +35,6 @@
 }
 .control-search{
     position: absolute;
-    z-index: 3;
     top: 100px;
     margin-left:1em;
 }

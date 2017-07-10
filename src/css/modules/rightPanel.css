@@ -13,7 +13,7 @@
 }
 
 .right-panel-enter-active {
-    transition: all .6s ease;
+    transition: all .2s ease;
 }
 
 .right-panel-leave-active {

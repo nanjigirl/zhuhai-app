@@ -11,7 +11,7 @@ var facilityController = require('controllers/facilityController');
 var arcgisHelper = require('./plugin/arcgisExpand/arcgis-load-map');
 var rightPanel = require('modules/rightPanel');
 var rightPanelComplaint = require('modules/rightPanelComplaint');
-var historyDialogSearch = require('modules/historyDialogSearch');
+var appCarMonitor = require('modules/appCarMonitor');
 
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
@@ -55,11 +55,11 @@ var comm = Vue.extend({
             eventHelper.emit('loading-start');
             console.log(legend);
             if (!!legend.showIcon) {
-                var cacheFacilities  = self.facilityArr[legend.facilityTypeName];
-                if(!!cacheFacilities && cacheFacilities.length>0){
+                var cacheFacilities = self.facilityArr[legend.facilityTypeName];
+                if (!!cacheFacilities && cacheFacilities.length > 0) {
                     arcgisHelper.createPoints(cacheFacilities, legend);
                     eventHelper.emit('loading-end');
-                }else{
+                } else {
                     facilityController.getFacilityByType(legend.id, function (subFacilities) {
                         arcgisHelper.createPoints(subFacilities, legend);
                         self.facilityArr[legend.facilityTypeName] = subFacilities;
@@ -85,10 +85,10 @@ var comm = Vue.extend({
         }.bind(this));
     },
     components: {
-         'right-panel': rightPanel,
+        'right-panel': rightPanel,
         //'right-panel-complaint': rightPanelComplaint,
-        'flex-map-legend':flexMapLegend,
-        'history-dialog-search':historyDialogSearch
+        'flex-map-legend': flexMapLegend,
+        'app-car-monitor': appCarMonitor
     }
 });
 module.exports = comm;
