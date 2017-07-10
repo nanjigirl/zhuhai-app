@@ -27,9 +27,9 @@ var comm = Vue.extend({
                 {
                     num: '',
                     name: '',
-                    truckNum:'',
-                    check:false,
-                    id:''
+                    truckNum: '',
+                    check: false,
+                    id: ''
                 }
             ],
             datatheads: [' ', '车辆编号', '车辆公司'],
@@ -59,10 +59,10 @@ var comm = Vue.extend({
             },
             rules: {
                 dateStart: [
-                    { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+                    {type: 'date', required: true, message: '请选择日期', trigger: 'change'}
                 ],
                 dateEnd: [
-                    { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
+                    {type: 'date', required: true, message: '请选择日期', trigger: 'change'}
                 ]
             }
         }
@@ -76,7 +76,7 @@ var comm = Vue.extend({
         eventHelper.on('mapCreated', function (map) {
             this.map = map;
         }.bind(this));
-        eventHelper.on('openHistoryPanel', function () {
+        eventHelper.on('app-car-monitor', function () {
             this.rightPanelOpen = true;
         }.bind(this));
         // this.initGDVideo();
@@ -107,9 +107,9 @@ var comm = Vue.extend({
                 data.forEach(function (menu) {//把后台接口车辆数据加入到数组里
                     self.carLists.push({
                         truckNum: menu.truckNum,
-                        terminalNum:menu.terminalNum,
-                        check:false,
-                        id:menu.id
+                        terminalNum: menu.terminalNum,
+                        check: false,
+                        id: menu.id
                     });
                 })
                 // for(var i = 0;i<10;i++){
@@ -127,22 +127,22 @@ var comm = Vue.extend({
         },
         getCoordinate: function (list) {//通过点击车辆列表进行获取该车辆的坐标
             list.check = !list.check;
-            if(list.check ==true){//如果车辆被选中获取该车辆的坐标
-                historySearchServices.getCoordinateData(list.terminalNum,function (data) {
-                    deviceModel.ssjkCreatePoint(this.map, list.id, 'f'+list.id, list.truckNum, 'abc', data.x, data.y, '', './img/toolbar/car.png', '22', '22', 'abc', {
-                        terminalNum:"62215510",
-                        id:17263,
-                        truckNum:"桂A35721"
+            if (list.check == true) {//如果车辆被选中获取该车辆的坐标
+                historySearchServices.getCoordinateData(list.terminalNum, function (data) {
+                    deviceModel.ssjkCreatePoint(this.map, list.id, 'f' + list.id, list.truckNum, 'abc', data.x, data.y, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                        terminalNum: "62215510",
+                        id: 17263,
+                        truckNum: "桂A35721"
                     });
                 }.bind(this));
-            }else{
-                removePic.removePoints([{id:list.id}])
+            } else {
+                removePic.removePoints([{id: list.id}])
             }
         },
         //点击查看历史轨迹进行调用
-        drawCarHistory:function (car) {
-            var self =this;
-            if(!this.search.dateStart || !this.search.dateEnd){
+        drawCarHistory: function (car) {
+            var self = this;
+            if (!this.search.dateStart || !this.search.dateEnd) {
                 return;
             } else {
                 var dateStart = this.search.dateStart.getFullYear() + '-' + (this.search.dateStart.getMonth() + 1) + '-' + this.search.dateStart.getDate();
@@ -173,8 +173,8 @@ var comm = Vue.extend({
                                     return preDate.isBefore(afterDate);
                                 }
                                 resultArr.sort(dateSort);
-                                for(var i = 0;i<resultArr.length-1;i++){
-                                    mapHelper.drawLine(self.map,[resultArr[i].x,resultArr[i].y],[resultArr[i+1].x,resultArr[i+1].y]);
+                                for (var i = 0; i < resultArr.length - 1; i++) {
+                                    mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y]);
                                 }
                                 // console.log(resultArr);
                             }

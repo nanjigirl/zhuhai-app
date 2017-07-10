@@ -33,18 +33,15 @@ var comm = Vue.extend({
             this.changeViewTimer = setTimeout(function () {
                 if (!!components[view.toLowerCase()]) {
                     this.currentView = view.toLowerCase();
+                    eventHelper.emit('change-menu-success');
                 } else {
+                    eventHelper.emit(view);
                     console.log('出错了！！找不到这个地址[' + view + ']');
                 }
-            }.bind(this), 100);
+            }.bind(this), 10);
         },
         toggleSearch: function () {
             eventHelper.emit('openPointSearch');
-        },
-        carTrace: function () {
-            // arcgisDraw.createDistrict();
-            // mapHelper.drawLine(this.map,[108.34109333740236,22.84727692871094],[108.43310383544923,22.83457398681641]);
-            eventHelper.emit('openHistoryPanel');
         }
     },
     mounted: function () {
