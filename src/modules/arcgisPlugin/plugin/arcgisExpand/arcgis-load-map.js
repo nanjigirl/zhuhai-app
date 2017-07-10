@@ -1,7 +1,6 @@
 define(function () {
     var Map = cesc.require("esri/map"),
         TDTLayer = require('./TDTLayer'),
-        TomcatLayer = require('./TomcatLayer'),
         TDTAnnoLayer = require('./TDTAnnoLayer'),
         ArcGISDynamicMapServiceLayer = cesc.require('esri/layers/ArcGISDynamicMapServiceLayer'),
         deviceModel = require('./deviceModel');

@@ -3,7 +3,7 @@
     height: 17.2em;
     background: var(--base-color);
     float: left;
-    margin-left: 300px;
+    margin-left: 200px;
     box-shadow: rgba(0, 204, 204, 0.498039) 0px 0px 10px;
     position: absolute;
     z-index: 999;
@@ -71,7 +71,7 @@
 
 .menuToggle {
     position: absolute;
-    left: 300px;
+    left: 200px;
     top: calc(50% - 100px);
     width: 200px;
     height: 200px;
