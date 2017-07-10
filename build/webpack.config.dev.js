@@ -6,17 +6,16 @@ module.exports = {
         "app": ['../src/app.js'],
     },
     resolve: {
-        //把src目录添加到require时的根目录
-        root: [path.resolve(__dirname, '../src')],
-        resolve: {
-            //把src目录添加到require时的根目录
-            root: [path.resolve(__dirname, '../src')],
-            alias: {
-                services: path.resolve(__dirname, '../src/services'),
-                controllers: path.resolve(__dirname, '../src/controllers'),
-                utils: path.resolve(__dirname, '../src/utils')
-            }
-        },
+        modules: [
+            path.resolve(__dirname, '../src'),
+            "node_modules"
+        ],
+        alias: {
+            services: path.resolve(__dirname, '../src/services'),
+            controllers: path.resolve(__dirname, '../src/controllers'),
+            utils: path.resolve(__dirname, '../src/utils'),
+            lib: path.resolve(__dirname, '../src/lib')
+        }
     },
     output: {
         path: path.resolve(__dirname, "../release"),//__dirname+'/../release',
@@ -27,22 +26,6 @@ module.exports = {
         'vue': 'Vue'
     },
     module: {
-        //webpack2.0后loaders不再使用，换成rules，rules里面的子节点变化也较大，要注意
-        // loaders: [
-        //     {test: /\.css$/, loader: 'style-loader!css-loader'},
-        //     {test: /\.html$/, loader: 'html-loader'},
-        //     {
-        //         test: /\.js$/,
-        //         exclude: /node_modules/,
-        //         loader: 'babel-loader',
-        //     },
-        //     {test: /\.(png|jpg|jpeg|gif)$/, loader: "url?limit=8192"},
-        //     {
-        //         // 专供iconfont方案使用的，后面会带一串时间戳，需要特别匹配到
-        //         test: /\.(woff|woff2|svg|eot|ttf)\??.*$/,
-        //         loader: 'file?name=./static/fonts/[name].[ext]',
-        //     }
-        // ]
         rules: [
             {
                 test: /\.css$/,
