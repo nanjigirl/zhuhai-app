@@ -1,3 +1,4 @@
+require('./css/main.css');
 var Vue = require('vue');
 var VueRouter = require('vue-router');
 var appMenu = require('modules/appMenu');
