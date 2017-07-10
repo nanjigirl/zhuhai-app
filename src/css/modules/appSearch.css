@@ -1,5 +1,7 @@
 .nnyc-search{
-    width: 300px;
+    width: 345px;
+    height:100%;
+    overflow: auto;
     padding:5px 10px;
     background: #fff;
     position: absolute;
