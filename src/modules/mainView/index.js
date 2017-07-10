@@ -31,9 +31,9 @@ var comm = Vue.extend({
         changeView: function (view) {
             clearTimeout(this.changeViewTimer);
             this.changeViewTimer = setTimeout(function () {
-                if (!!components[view.toLowerCase()]) {
-                    this.currentView = view.toLowerCase();
-                    eventHelper.emit('change-menu-success');
+                if (!!components[view.menuurl.toLowerCase()]) {
+                    this.currentView = view.menuurl.toLowerCase();
+                    eventHelper.emit('change-menu-success', view);
                 } else {
                     eventHelper.emit(view);
                     console.log('出错了！！找不到这个地址[' + view + ']');
@@ -54,10 +54,10 @@ var comm = Vue.extend({
 
         this.currentView = 'arcgis-plugin';
         eventHelper.on('change-menu', function (model) {
-            this.changeView(model.menuurl);
+            this.changeView(model);
         }.bind(this));
         eventHelper.on('active-tab', function (tabID) {
-            this.changeView(tabID);
+            this.changeView({menuurl: tabID});
         }.bind(this));
     },
     components: components
