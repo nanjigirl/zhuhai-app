@@ -35,6 +35,10 @@ define([
     'modules/appSys/dict',
     'modules/appFacilityManager/facilityType',
     'modules/appFacilityManager/facilityManager',
+    'modules/appDemo1/companyDemo',
+    'modules/appDemo1/companyDemoExt',
+    'modules/appDemo1/treeDemo',
+    'modules/appDemo1/treeDemoExt',
 ], function (appContent,
              appDemoForm,
              elementForm,
@@ -70,7 +74,11 @@ define([
              appInterfaceTest,
              dict,
              facilityType,
-             facilityManage) {
+             facilityManage,
+             companyDemo,
+             companyDemoExt,
+             treeDemo,
+             treeDemoExt) {
     return {
         'app-content': appContent,
         'app-demo-form': appDemoForm,
@@ -107,6 +115,10 @@ define([
         'appInterfaceTest': appInterfaceTest,
         'dict': dict,
         'facilityType': facilityType,
-        'facilityManager': facilityManage
+        'facilityManager': facilityManage,
+        'companyDemo': companyDemo,
+        'companyDemoExt': companyDemoExt,
+        'treeDemo': treeDemo,
+        'treeDemoExt': treeDemoExt
     }
 });
