@@ -188,11 +188,11 @@ var comm = crudBase.extend({
         },
         //测站类型跳转到测站类型字段列表
         showFacilityTypeFieldList: function (e, value, row, index) {
-            this.showNextList(row, this.containerMain, this.containerFacilityRelateType, "currentFacilityTypeId");
+            this.showNextList(row, this.containerMain, this.containerFacilityTypeField, "currentFacilityTypeId");
         },
         //测站类型跳转到测站关联类型列表
         showFacilityRelateTypeList: function (e, value, row, index) {
-            this.showNextList(row, this.containerMain, this.containerFacilityTypeField, "currentFacilityTypeId");
+            this.showNextList(row, this.containerMain, this.containerFacilityRelateType, "currentFacilityTypeId");
         },
         //设备类型跳转到监测项类型列表
         showItemTypeList: function (e, value, row, index) {

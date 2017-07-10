@@ -58,7 +58,7 @@ var comm = crudBase.extend({
             title: '验证码'
         }, {
             field: 'limitTime',
-            title: '办理时限（天）'
+            title: '办理时限（小时）'
         }]);
 
         //刷新列表
