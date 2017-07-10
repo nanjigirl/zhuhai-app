@@ -1,27 +1,28 @@
 .nnyc-search{
     width: 300px;
+    padding:5px 10px;
     background: #fff;
     position: absolute;
     z-index: 3;
-     left: -320px;
-    transform: translateX(-320px);
-    -ms-transform: translateX(-320px);		/* IE 9 */
-    -webkit-transform: translateX(-320px);	/* Safari and Chrome */
-    -o-transform: translateX(-320px);		/* Opera */
-    -moz-transform: translateX(-320px);		/* Firefox */
-    transition: transform 1s;
-    -moz-transition:  -moz-transform 1s;
-    -webkit-transition:  -webkit-transform 1s;
-    -o-transition:-o-transform 1s;
-    top: 7em;
+     right: -320px;
+    top:0;
     height: calc(100% - 4.3em);
-}
-.nnyc-search.showSearch{
     transform: translateX(320px);
     -ms-transform: translateX(320px);		/* IE 9 */
     -webkit-transform: translateX(320px);	/* Safari and Chrome */
     -o-transform: translateX(320px);		/* Opera */
     -moz-transform: translateX(320px);		/* Firefox */
+    transition: transform 1s;
+    -moz-transition:  -moz-transform 1s;
+    -webkit-transition:  -webkit-transform 1s;
+    -o-transition:-o-transform 1s;
+}
+.nnyc-search.showSearch{
+    transform: translateX(-320px);
+    -ms-transform: translateX(-320px);		/* IE 9 */
+    -webkit-transform: translateX(-320px);	/* Safari and Chrome */
+    -o-transform: translateX(-320px);		/* Opera */
+    -moz-transform: translateX(-320px);		/* Firefox */
     transition: transform 1s;
     -moz-transition:  -moz-transform 1s;
     -webkit-transition:  -webkit-transform 1s;

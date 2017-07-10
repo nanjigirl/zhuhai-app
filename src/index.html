@@ -78,8 +78,6 @@
 
                 <!-- sidebar menu -->
                 <app-menu></app-menu>
-                <!-- /sidebar menu -->
-                <app-search></app-search>
 
                 <!-- /menu footer buttons -->
                 <app-footer></app-footer>
@@ -95,6 +93,8 @@
         <div class="right_col pageContent" role="main" :class="{maxContainer:isMenuToggleOff}">
             <!--  <router-view></router-view>-->
             <main-view></main-view>
+            <!-- /sidebar menu -->
+            <app-search></app-search>
         </div>
         </div>
         <!-- /page content -->
