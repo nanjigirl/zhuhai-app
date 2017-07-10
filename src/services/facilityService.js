@@ -5,6 +5,7 @@ define(['./serviceHelper', './mock/mock'], function (serviceHelper, mock) {
                 console.log(result);
                 if (!!result.success) {
                     cb(result.data);
+                    console.log('get data');
                     return;
                 }
                 console.log('Error:', result);

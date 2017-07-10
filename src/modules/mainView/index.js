@@ -33,14 +33,14 @@ var comm = Vue.extend({
                 if (!!components[view]) {
                     this.currentView = view;
                 } else {
-                    console.log('出错了！！');
+                    console.log('出错了！！找不到这个地址[' + view + ']');
                 }
-            }.bind(this),100);
+            }.bind(this), 100);
         },
-        toggleSearch:function () {
+        toggleSearch: function () {
             eventHelper.emit('openPointSearch');
         },
-        carTrace:function(){
+        carTrace: function () {
             // arcgisDraw.createDistrict();
             // mapHelper.drawLine(this.map,[108.34109333740236,22.84727692871094],[108.43310383544923,22.83457398681641]);
             eventHelper.emit('openHistoryPanel');
@@ -50,8 +50,8 @@ var comm = Vue.extend({
         eventHelper.on('loginSuccess', function () {
             this.isLoginSuccess = true;
         }.bind(this));
-        eventHelper.on('mapCreated',function (map) {
-            this.map  = map;
+        eventHelper.on('mapCreated', function (map) {
+            this.map = map;
         }.bind(this));
 
         this.currentView = 'arcgis-plugin';
