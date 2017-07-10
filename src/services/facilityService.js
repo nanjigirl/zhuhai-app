@@ -1,4 +1,4 @@
-define(['./serviceHelper', './mock/mock'], function (serviceHelper, mock) {
+define(['./serviceHelper'], function (serviceHelper) {
     return {
         getAllFacility: function (cb) {
             $.get(serviceHelper.getPath('facilityList'), function (result) {

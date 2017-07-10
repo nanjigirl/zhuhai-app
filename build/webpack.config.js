@@ -1,7 +1,9 @@
 var webpack = require('webpack');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 var path = require('path');
-var cssExtract = new ExtractTextPlugin("app.[contenthash:8].css");
+//ExtractTextPlugin更新2.x版本后，格式有变
+// var cssExtract = new ExtractTextPlugin("app.[contenthash:8].css");
+var cssExtract = new ExtractTextPlugin({filename: "app.[contenthash:8].css"});
 module.exports = {
     entry: {
         index: '../src/app.js'
@@ -30,7 +32,13 @@ module.exports = {
     },
     module: {
         loaders: [
-            {test: /\.css$/, loader: cssExtract.extract("style-loader", "css-loader")},
+            {
+                //ExtractTextPlugin更新2.x版本后，格式有变
+                test: /\.css$/, loader: cssExtract.extract({
+                fallback: "style-loader",
+                loader: "css-loader"
+            })
+            },
             {test: /\.html$/, loader: 'html-loader'},
             {
                 test: /\.js$/,

@@ -1,0 +1,138 @@
+<div class="mainContent">
+    <div v-bind:id="mainContentDivId" class="row clearfix">
+        <div class="col-md-6 col-sm-6 col-xs-12 bigPanel">
+            <div class="x_panel">
+                <div class="x_title">
+                    <!--标题-->
+                    <h2>
+                        测站
+                    </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <!--左侧工具栏-->
+                    <div class="btn-group hidden-xs" role="group">
+                        <!--vue的单击事件绑定 v-on:click="xxx"-->
+                        <button type="button" class="btn btn-outline btn-default" title="新增"
+                                v-on:click="containerMain.add">
+                            <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline btn-default" title="删除"
+                                v-on:click="containerMain.del">
+                            <i class="glyphicon glyphicon-remove" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <!--右侧搜索栏-->
+                    <form class="form-inline pull-right">
+                        <!--查询点击事件-->
+                        <button type="button" class="btn btn-default btn-outline" title="查询"
+                                v-on:click="containerMain.search">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </form>
+                    <!--表格控件，控件定义在js-->
+                    <!--一个页面如果有多个这样的table，这里的id要改，容器对应的id也要改-->
+                    <table id="tableMain">
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!--表单（弹窗）-->
+        <!--一个页面如果有多个这样的table，这里的id要改，容器对应的id也要改-->
+        <div id="formMain" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!--标题部分-->
+                        <!--关闭按钮-->
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                        <!--标题-->
+                        <h4 class="modal-title"></h4>
+                        <!--顶部按钮-->
+                        <button type="button" class="btn btn-primary" v-on:click='containerMain.submit'>保存</button>
+                    </div>
+                    <div class="modal-body">
+                        <!--内容部分-->
+                        <form class="form-horizontal">
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">名称：</label>
+                                    <div class="col-sm-9">
+                                        <!--文本类型字段-->
+                                        <!--vue的值与dom对象绑定v-model="xxx"
+                                        表单的值一般是绑定到容器的currentEntity的对应属性-->
+                                        <input type="text" class="form-control"
+                                               v-model="containerMain.currentEntity.name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">测站类型：</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control"
+                                                v-model='containerMain.currentEntity.facilityTypeId'
+                                                v-on:change="containerMain.facilityTypeIdChange">
+                                            <option v-for="option in containerMain.facilityTypeIds"
+                                                    v-bind:value="option.id">
+                                                {{ option.nameCn }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">x：</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control"
+                                               v-model="containerMain.currentEntity.x">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">y：</label>
+                                    <div class="col-sm-9">
+                                        <input type="number" class="form-control"
+                                               v-model="containerMain.currentEntity.y">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--测站字段容器，存放动态字段控件-->
+                            <div id="facilityFieldContainer"></div>
+
+                            <div class="row">
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">图片：</label>
+                                    <div class="col-sm-9">
+                                        <!--文件上传控件-->
+                                        <!--由于上传文件时一定要有id，因此新增时不能上传，不能上传时把控件隐藏-->
+                                        <div class="input-fix" v-show="containerMain.currentEntityHasSave">
+                                            <!--multiple属性是运行一次上传多个文件-->
+                                            <input id="inputUploadPic" type="file" multiple>
+                                        </div>
+                                        <div class="input-fix" v-show="!containerMain.currentEntityHasSave">
+                                            上传文件前请先保存
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!--这里还可以加底部（footer），详见bootstrap官网-->
+                </div>
+            </div>
+        </div>
+
+        <!--由于此功能子表太多，因此除了主表以外的表都封装成组件-->
+
+        <!--设备字段-->
+        <containerDevice ref="containerDevice1"></containerDevice>
+        <!--监测项-->
+        <containerItem ref="containerItem1"></containerItem>
+    </div>
+</div>
