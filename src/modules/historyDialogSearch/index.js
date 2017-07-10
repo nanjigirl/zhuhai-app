@@ -7,9 +7,6 @@ var removePic = require('../arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 
 var eventHelper = require('../../utils/eventHelper');
 var historySearchServices = require('services/historySearchServices');
-var getCoordinateService = require('services/getCoordinateService');
-var getCarHistoryService = require('services/getCarHistoryService');
-var getCarHistoryCountService = require('services/getCarHistoryCountService');
 var deviceModel = require('modules/arcgisPlugin/plugin/arcgisExpand/deviceModel');
 var mapHelper = require('utils/maps/mapHelper');
 var Q = require('q');
@@ -131,7 +128,7 @@ var comm = Vue.extend({
         getCoordinate: function (list) {//通过点击车辆列表进行获取该车辆的坐标
             list.check = !list.check;
             if(list.check ==true){//如果车辆被选中获取该车辆的坐标
-                getCoordinateService.getCoordinateData(list.terminalNum,function (data) {
+                historySearchServices.getCoordinateData(list.terminalNum,function (data) {
                     deviceModel.ssjkCreatePoint(this.map, list.id, 'f'+list.id, list.truckNum, 'abc', data.x, data.y, '', './img/toolbar/car.png', '22', '22', 'abc', {
                         terminalNum:"62215510",
                         id:17263,
@@ -150,7 +147,7 @@ var comm = Vue.extend({
                 var dateStart = this.search.dateStart.getFullYear() + '-' + (this.search.dateStart.getMonth() + 1) + '-' + this.search.dateStart.getDate();
                 var dateEnd = this.search.dateEnd.getFullYear() + '-' + (this.search.dateEnd.getMonth() + 1) + '-' + this.search.dateEnd.getDate();
                 if (dateStart && dateEnd) {
-                    getCarHistoryCountService.getCarHistoryCountData(car.terminalNum, dateStart, dateEnd, function (data) {
+                    historySearchServices.getCarHistoryCountData(car.terminalNum, dateStart, dateEnd, function (data) {
                         console.log(data);
                         var carHistoryCount = parseInt(data.count);
                         console.log(carHistoryCount);

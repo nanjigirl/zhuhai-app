@@ -1,8 +1,8 @@
 define([
     './model/facilityModel',
     'services/facilityService',
-    'services/getCarHistoryService',
-    'utils/maps/mapHelper'], function (facilityModel, facilityService, getCarHistoryService, mapHelper) {
+    'services/historySearchServices',
+    'utils/maps/mapHelper'], function (facilityModel, facilityService, historySearchServices, mapHelper) {
     return {
         getAllFacility: function (cb) {
             facilityService.getAllFacility(function (data) {
@@ -26,7 +26,7 @@ define([
             })
         },
         traceCarHistory: function ( terminalNum, dateStart, dateEnd, pageNumber,resultArr) {
-            getCarHistoryService.getCarHistoryData(terminalNum, dateStart, dateEnd, pageNumber, function (data) {
+            historySearchServices.getCarHistoryData(terminalNum, dateStart, dateEnd, pageNumber, function (data) {
                 resultArr.push(...data);
             }.bind(this));
         }
