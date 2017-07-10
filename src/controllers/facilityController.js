@@ -2,7 +2,7 @@ define([
     './model/facilityModel',
     'services/facilityService',
     'services/historySearchServices',
-    'utils/maps/mapHelper'], function (facilityModel, facilityService, historySearchServices, mapHelper) {
+    'utils/mapHelper'], function (facilityModel, facilityService, historySearchServices, mapHelper) {
     return {
         getAllFacility: function (cb) {
             facilityService.getAllFacility(function (data) {
