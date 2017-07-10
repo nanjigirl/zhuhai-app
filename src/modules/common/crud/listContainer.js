@@ -9,8 +9,8 @@ require('bootstrap-table/dist/bootstrap-table.js');
 require('bootstrap-table/dist/locale/bootstrap-table-zh-CN.js');
 //bootstrap-datetimepicker日期选择控件
 //require('lib/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css');
-require('bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.min.js');
-require('bootstrap-datetimepicker/src/js/locales/bootstrap-datetimepicker.zh-CN.js');
+require('lib/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js');
+require('lib/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js');
 //layui.layer弹窗组件
 require('lib/layer/skin/default/layer.css');
 require('lib/layer/layer.js');
