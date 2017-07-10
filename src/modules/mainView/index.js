@@ -40,9 +40,9 @@ var comm = Vue.extend({
                 }
             }.bind(this), 10);
         },
-        toggleSearch: function () {
-            eventHelper.emit('openPointSearch');
-        }
+        // toggleSearch: function () {
+        //     eventHelper.emit('openPointSearch');
+        // }
     },
     mounted: function () {
         eventHelper.on('loginSuccess', function () {
