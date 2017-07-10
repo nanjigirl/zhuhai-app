@@ -55,6 +55,7 @@ li {
 }
 
 .pageContent {
+    overflow: hidden;;
     position: absolute;
     top: 7em;
     overflow-y: auto;
