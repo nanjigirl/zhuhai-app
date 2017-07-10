@@ -226,6 +226,15 @@ var comm = Vue.extend({
             }
         }
     },
+    computed:{
+        //搜索功能（根据车牌号码进行过滤）
+        queryCarList: function () {
+            var that = this;
+            return that.carLists.filter(function (user) {
+                return (user.truckNum.toLowerCase().indexOf(that.carData.num.toLowerCase()) !== -1 );
+            })
+        },
+    },
     components: {}
 });
 module.exports = comm;

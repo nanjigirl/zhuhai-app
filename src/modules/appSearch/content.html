@@ -6,7 +6,7 @@
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
             <el-form-item label="数据来源" class="cesc-form-item">
-                <el-select v-model="form.data" multiple placeholder="请选择">
+                <el-select v-model="form.data" placeholder="请选择" @change="selectSearch">
                     <el-option
                             v-for="item in datas"
                             :key="item.value"

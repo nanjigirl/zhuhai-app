@@ -13,7 +13,7 @@ var comm = Vue.extend({
             form: {
                 name: '',
                 address: [],
-                data: [],
+                data: '',
                 pollute: []
             },
             datas: [{
@@ -67,6 +67,9 @@ var comm = Vue.extend({
     methods: {
         close:function () {
             this.showSearch = false;
+        },
+        selectSearch:function () {//改变反馈
+            this.form.name = this.form.data;
         }
     },
     mounted: function () {
@@ -81,10 +84,18 @@ var comm = Vue.extend({
         //搜索功能（当前是按照名字和在线情况进行过滤）
         searchEquipment: function () {
             var that = this;
+            var selectVal = that.form.data;
             return that.tableData.filter(function (user) {
                 return (user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1 || user.status.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1);
             })
-        }
+        },
+        // searchEquipment1: function () {
+        //     var that = this;
+        //     var selectVal = that.form.data;
+        //     return that.tableData.filter(function (user) {
+        //         return (user.name.toLowerCase().indexOf(selectVal.toLowerCase()) !== -1);
+        //     })
+        // }
     },
     components: {}
 });
