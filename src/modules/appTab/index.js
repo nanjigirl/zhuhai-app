@@ -60,7 +60,7 @@ var comm = Vue.extend({
         eventHelper.on('close-tab', function (tabID) {
             this.removeTab({id: tabID});
         }.bind(this));
-        eventHelper.on('change-menu', function (menu) {
+        eventHelper.on('change-menu-success', function (menu) {
             var newTab = {
                 id: menu.menuurl,
                 name: menu.title,
