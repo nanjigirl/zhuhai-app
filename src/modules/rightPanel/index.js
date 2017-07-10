@@ -11,6 +11,9 @@ var detailGridHeader = [{key: 'startDate', value: '起始时间'}, {key: 'deep',
     key: 'period',
     value: '积水时长'
 }];
+var getURLParameter = function (str) {
+    return str.substring(str.indexOf('=') + 1, str.length);
+}
 var realTimeUpdate = function (self, monitorObj) {
     controller.getMonitorItemCurrentValue(monitorObj, function (result) {
         // self.lastUpdateTime = moment().format('YYYY-MM-DD hh:mm:ss', new Date());
@@ -28,64 +31,64 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            msgLists:[
+            msgLists: [
                 {
-                    children:[
+                    children: [
                         {
                             name: '证号',
                             value: '201630002'
                         },
                         {
-                            name:'临时消纳场名称',
-                            value:'南宁市仙葫经济开发区五合社区消纳场'
+                            name: '临时消纳场名称',
+                            value: '南宁市仙葫经济开发区五合社区消纳场'
                         }
                     ]
                 },
                 {
-                    children:[
+                    children: [
                         {
                             name: '地址',
                             value: '南宁市仙葫经济开发区蒲旧公路'
                         },
                         {
-                            name:'有效期限',
-                            value:'2016.05.20-2017.05.20'
+                            name: '有效期限',
+                            value: '2016.05.20-2017.05.20'
                         }
                     ]
                 },
                 {
-                    children:[
+                    children: [
                         {
                             name: '联系人',
                             value: '韦绍陆'
                         },
                         {
-                            name:'电话',
-                            value:'18878876669'
+                            name: '电话',
+                            value: '18878876669'
                         }
                     ]
                 },
                 {
-                    children:[
+                    children: [
                         {
                             name: '行政主管部门',
                             value: '市城管局'
                         },
                         {
-                            name:'分管领导',
-                            value:'李军'
+                            name: '分管领导',
+                            value: '李军'
                         }
                     ]
                 },
                 {
-                    children:[
+                    children: [
                         {
                             name: '联系人',
                             value: '陈明'
                         },
                         {
-                            name:'电话',
-                            value:'15177925360'
+                            name: '电话',
+                            value: '15177925360'
                         }
                     ]
                 }
@@ -193,15 +196,16 @@ var comm = Vue.extend({
         // this.initGDVideo();
     },
     methods: {
-        newCarOpen:function () {
+        newCarOpen: function () {
             window.open("http://19.2.81.254:66/Service/dv?device_code=1000001,1000000");
         },
-        initHKVideo: function () {
-            var ip = "180.139.134.6";
-            var port = "443";
-            var username = "admin";
-            var password = "Wmdx1234";
-            var CameraIndexCodeArray = "001642|001646|001647|001644|001643|001645|001680".split("|");
+        initHKVideo: function (videoURL) {
+            var videoFix = videoURL.split('?')[1].split('&');
+            var ip = getURLParameter(videoFix[0]);
+            var port = getURLParameter(videoFix[1]);
+            var username = getURLParameter(videoFix[2]);
+            var password = getURLParameter(videoFix[3]);
+            var CameraIndexCodeArray = getURLParameter(videoFix[4]).split("|");
 
             function LoginPlat() {
                 //alert("LoginPlat()");
@@ -243,15 +247,18 @@ var comm = Vue.extend({
                 StartPreview();
             }, 1000);
         },
-        initGDVideo: function () {
-            var cid = 3301061000036;
-            var ch = 1;
+        initGDVideo: function (videoURL) {
+            var videoFix = videoURL.split('?')[1].split('&');
+            var cid = getURLParameter(videoFix[0]);
+            var ch = getURLParameter(videoFix[1]);
             if (!ch) ch = 1;
             setTimeout(function () {
                 OCX.StartView("http://58.59.133.6&ID=" + cid + "&IP=58.59.133.6&port=9000&CH=" + ch + "&username=admin12345&password=admin12345");
             }, 1000)
         },
-        initJJVideo: function () {
+        initJJVideo: function (videoURL) {
+            var videoFix = videoURL.split('?')[1].split('&');
+
             var nChannel = 0; //通道编号：如果只有一个视频，通道编号是多少？0
             var chServerIP = "172.32.0.2"; //设备IP地址：设备IP是否都是一样的？通过视频平台播放，所以可能是一样的
             var nServerPort = "554"; //设备端口号，端口号很多都是一样的？通过视频平台播放，所以可能是一样的
@@ -269,9 +276,9 @@ var comm = Vue.extend({
                 /*	var ip= request("ip");
                  var port=request("port");
                  var cid=request("cid");*/
-                var ip = "172.32.0.28";
-                var port = "554";
-                var cid = "4089";
+                var ip = getURLParameter(videoFix[0]);
+                var port = getURLParameter(videoFix[1]);
+                var cid = getURLParameter(videoFix[2]);
 
                 if (!!ip && !!port && !!cid) {
                     chServerIP = ip;
@@ -301,10 +308,10 @@ var comm = Vue.extend({
             this.isRealTimeMode = true;
             this.activeIndex = '1';
         },
-        stopJJVideo:function () {
+        stopJJVideo: function () {
             document.getElementById("videoobj").StopPlay(0);
         },
-        open: function (facility) {
+        open: function (facility, facilityTypeName) {
             eventHelper.emit('isLoading');
             var self = this;
             clearInterval(currentThread);
@@ -319,31 +326,46 @@ var comm = Vue.extend({
             this.$nextTick(function () {
                 this.activeIndex = '1';
                 this.facility = facility;
+                this.facilityType = facilityTypeName;
                 var facilityID = facility.id;
-                facilityController.getFacilityDetail(facilityID,function (data) {
-                    console.log(data)
-                })
-           /*     if (facilityID == '35') {
-                    this.facilityType = 'ylz';
-                    this.facilityPic = '../src/img/yuliang.jpg';
-                    this.$nextTick(function () {
-                        this.initHKVideo();
-                    }.bind(this));
+                facilityController.getFacilityDetail(facilityID, function (data) {
+                    console.log(data);
+                    data.devices.forEach(function (device) {
+                        if (device.devName == '视频') {
+                            var videoURL = device.items[0].value;
+                            if (facilityTypeName == 'DS') {
+                                this.initHKVideo(videoURL);
 
-                } else if (facilityID == '36') {
-                    this.facilityType = 'xs';
-                    this.facilityPic = '../src/img/xushui.jpg';
-                    this.$nextTick(function () {
+                            } else if (facilityTypeName == 'CS') {
+                                this.initGDVideo(videoURL);
+                            } else if (facilityTypeName == 'TP') {
+                                this.initJJVideo(videoURL);
+                            }
+                            return;
+                        }
+                    }.bind(this));
+                }.bind(this));
+                /*     if (facilityID == '35') {
+                 this.facilityType = 'ylz';
+                 this.facilityPic = '../src/img/yuliang.jpg';
+                 this.$nextTick(function () {
+                 this.initHKVideo();
+                 }.bind(this));
 
-                        this.initJJVideo();
-                    }.bind(this));
-                } else if (facilityID == '37') {
-                    this.facilityType = 'hd';
-                    this.facilityPic = '../src/img/hedao.jpg';
-                    this.$nextTick(function () {
-                        this.initGDVideo();
-                    }.bind(this));
-                }*/
+                 } else if (facilityID == '36') {
+                 this.facilityType = 'xs';
+                 this.facilityPic = '../src/img/xushui.jpg';
+                 this.$nextTick(function () {
+
+                 this.initJJVideo();
+                 }.bind(this));
+                 } else if (facilityID == '37') {
+                 this.facilityType = 'hd';
+                 this.facilityPic = '../src/img/hedao.jpg';
+                 this.$nextTick(function () {
+                 this.initGDVideo();
+                 }.bind(this));
+                 }*/
                 this.facilityName = facility.name;
             }.bind(this));
         },
