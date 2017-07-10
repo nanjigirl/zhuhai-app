@@ -141,6 +141,7 @@ var comm = Vue.extend({
         },
         //点击查看历史轨迹进行调用
         drawCarHistory:function (car) {
+            var self =this;
             if(!this.search.dateStart || !this.search.dateEnd){
                 return;
             } else {
@@ -172,9 +173,14 @@ var comm = Vue.extend({
                                     return preDate.isBefore(afterDate);
                                 }
                                 resultArr.sort(dateSort);
-                                console.log(resultArr);
+                                for(var i = 0;i<resultArr.length-1;i++){
+                                    mapHelper.drawLine(self.map,[resultArr[i].x,resultArr[i].y],[resultArr[i+1].x,resultArr[i+1].y]);
+                                }
+                                // console.log(resultArr);
                             }
                         }, 100);
+                        // console.log(resultArr);
+                        //
                     }.bind(this));
 
                 }
