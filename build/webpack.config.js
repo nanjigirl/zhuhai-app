@@ -9,12 +9,15 @@ module.exports = {
         index: '../src/app.js'
     },
     resolve: {
-        //把src目录添加到require时的根目录
-        root: [path.resolve(__dirname, '../src')],
+        modules: [
+            path.resolve(__dirname, '../src'),
+            "node_modules"
+        ],
         alias: {
             services: path.resolve(__dirname, '../src/services'),
             controllers: path.resolve(__dirname, '../src/controllers'),
-            utils: path.resolve(__dirname, '../src/utils')
+            utils: path.resolve(__dirname, '../src/utils'),
+            lib: path.resolve(__dirname, '../src/lib')
         }
     },
     output: {
@@ -22,37 +25,36 @@ module.exports = {
         publicPath: "",//TODO 填写生产环境静态文件路径
         filename: 'app.[chunkhash:8].bundle.js'
     },
-    babel: {
-        presets: ['es2015']
-    },
-
     externals: {
         'vue': 'Vue',
         'jquery': 'window.$'
     },
     module: {
-        loaders: [
+        rules: [
             {
-                //ExtractTextPlugin更新2.x版本后，格式有变
-                test: /\.css$/, loader: cssExtract.extract({
-                fallback: "style-loader",
-                loader: "css-loader"
-            })
+                test: /\.css$/,
+                //webpack2.0后use多个时有新格式
+                // use: 'style-loader!css-loader'
+                use: ['style-loader', 'css-loader']
             },
-            {test: /\.html$/, loader: 'html-loader'},
+            {
+                test: /\.html$/,
+                use: 'html-loader'
+            },
             {
                 test: /\.js$/,
                 exclude: /node_modules/,
-                loader: 'babel-loader',
+                use: 'babel-loader',
             },
             {
-                test: /\.(png|jpg)$/,
-                loader: 'url-loader?limit=8192'
+                //webpack2.0后loader不能简写
+                test: /\.(png|jpg|jpeg|gif)$/,
+                use: "url-loader?limit=8192"
             },
             {
                 // 专供iconfont方案使用的，后面会带一串时间戳，需要特别匹配到
                 test: /\.(woff|woff2|svg|eot|ttf)\??.*$/,
-                loader: 'file?name=./static/fonts/[name].[ext]',
+                use: 'file-loader?name=./static/fonts/[name].[ext]',
             }
         ]
     },
@@ -68,6 +70,12 @@ module.exports = {
             jQuery: "jquery",
             "window.jQuery": "jquery"
         }),
-        cssExtract
+        cssExtract,
+        //DllReferencePlugin可以引用一个预先打包好的dll，但这里直接引用的是manifest文件（扩展名json）
+        new webpack.DllReferencePlugin({
+            context: __dirname,
+            //通过manifest文件加载（文件扩展名json）
+            manifest: require('./dist/vendor-manifest.json')
+        }),
     ]
 }
