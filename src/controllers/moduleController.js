@@ -60,7 +60,6 @@ define([
              appPricingDesign,
              appCharts,
              appMorris,
-             appOtherCharts,
              appProjectDetail,
              appMediaGallery,
              appWidgets,

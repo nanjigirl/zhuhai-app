@@ -9,11 +9,12 @@ var mapHelper = require('utils/maps/mapHelper');
 var components = {
     'app-notice-box': appNoticeBox
 };
-components = $.extend(components, moduleController);
+//components = $.extend(components, moduleController);
 var userTemplate = '';
 for (var key in moduleController) {
-    components[key.toLowerCase()] = moduleController[key];
-    userTemplate += '<' + key.toLowerCase() + '>' + '</' + key.toLowerCase() + '>';
+    var newKey = key.toLowerCase();
+    components[newKey] = moduleController[key];
+    userTemplate += '<' + newKey + '>' + '</' + newKey + '>';
 }
 template = template.replace('@@', userTemplate);
 // 定义组件
@@ -30,8 +31,8 @@ var comm = Vue.extend({
         changeView: function (view) {
             clearTimeout(this.changeViewTimer);
             this.changeViewTimer = setTimeout(function () {
-                if (!!components[view]) {
-                    this.currentView = view;
+                if (!!components[view.toLowerCase()]) {
+                    this.currentView = view.toLowerCase();
                 } else {
                     console.log('出错了！！找不到这个地址[' + view + ']');
                 }
