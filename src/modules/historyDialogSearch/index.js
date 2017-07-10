@@ -3,13 +3,14 @@ var controller = require('controllers/rightPanelController');
 var facilityController = require('controllers/facilityController');
 var serviceHelper = require('services/serviceHelper');
 var moment = require('moment');
-// var drawPic = require('../arcgisPlugin/plugin/arcgisExpand/arcgis-load-map')
+var removePic = require('../arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
+
 var eventHelper = require('../../utils/eventHelper');
 var historySearchServices = require('services/historySearchServices');
 var getCoordinateService = require('services/getCoordinateService');
 var getCarHistoryService = require('services/getCarHistoryService');
 var getCarHistoryCountService = require('services/getCarHistoryCountService');
-var arcgisDraw = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
+var deviceModel = require('modules/arcgisPlugin/plugin/arcgisExpand/deviceModel');
 var mapHelper = require('utils/maps/mapHelper');
 var Q = require('q');
 var refreshTime = 1000;
@@ -29,8 +30,9 @@ var comm = Vue.extend({
                 {
                     num: '',
                     name: '',
-                    terminalNum: '',
-                    check: false
+                    truckNum:'',
+                    check:false,
+                    id:''
                 }
             ],
             datatheads: [' ', '车辆编号', '车辆公司'],
@@ -60,10 +62,10 @@ var comm = Vue.extend({
             },
             rules: {
                 dateStart: [
-                    {type: 'date', required: true, message: '请选择日期', trigger: 'change'}
+                    { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
                 ],
                 dateEnd: [
-                    {type: 'date', required: true, message: '请选择日期', trigger: 'change'}
+                    { type: 'date', required: true, message: '请选择日期', trigger: 'change' }
                 ]
             }
         }
@@ -101,15 +103,16 @@ var comm = Vue.extend({
             var self = this;
             //从后台获取车辆信息数据
             historySearchServices.getCarListData(function (data) {
-                if (!!data) {
+                if (!!data) {//初始化数组
                     self.carLists.splice(0);
                     self.carLists1.splice(0);
                 }
-                data.forEach(function (menu) {
+                data.forEach(function (menu) {//把后台接口车辆数据加入到数组里
                     self.carLists.push({
-                        num: menu.truckNum,
-                        terminalNum: menu.terminalNum,
-                        check: false
+                        truckNum: menu.truckNum,
+                        terminalNum:menu.terminalNum,
+                        check:false,
+                        id:menu.id
                     });
                 })
                 // for(var i = 0;i<10;i++){
@@ -127,14 +130,21 @@ var comm = Vue.extend({
         },
         getCoordinate: function (list) {//通过点击车辆列表进行获取该车辆的坐标
             list.check = !list.check;
-            if (list.check == true) {//如果车辆被选中获取该车辆的坐标
-                getCoordinateService.getCoordinateData(list.terminalNum, function (data) {
-
-                });
+            if(list.check ==true){//如果车辆被选中获取该车辆的坐标
+                getCoordinateService.getCoordinateData(list.terminalNum,function (data) {
+                    deviceModel.ssjkCreatePoint(this.map, list.id, 'f'+list.id, list.truckNum, 'abc', data.x, data.y, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                        terminalNum:"62215510",
+                        id:17263,
+                        truckNum:"桂A35721"
+                    });
+                }.bind(this));
+            }else{
+                removePic.removePoints([{id:list.id}])
             }
         },
-        drawCarHistory: function (car) {
-            if (!this.search.dateStart || !this.search.dateEnd) {
+        //点击查看历史轨迹进行调用
+        drawCarHistory:function (car) {
+            if(!this.search.dateStart || !this.search.dateEnd){
                 return;
             } else {
                 var dateStart = this.search.dateStart.getFullYear() + '-' + (this.search.dateStart.getMonth() + 1) + '-' + this.search.dateStart.getDate();
@@ -168,27 +178,6 @@ var comm = Vue.extend({
                                 console.log(resultArr);
                             }
                         }, 100);
-
-                        /*  var deferred = Q.defer()
-                         var abc = function(d) {
-                         console.log(d);
-                         deferred.resolve(d);
-                         return deferred.promise;
-                         }
-
-                         abc(1).then(abc(2)).abc(3);*/
-
-
-                        // var pageIndex = 0;
-                        //
-                        // for(var i=0;pageIndex<pageCount;){
-                        //
-                        //     // pageIndex++;
-                        //     getCarHistoryService.getCarHistoryData(car.terminalNum,dateStart,dateEnd,pageIndex,function(data){
-                        //
-                        //
-                        //     });
-                        // }
                     }.bind(this));
 
                 }
