@@ -45,6 +45,11 @@ var comm = Vue.extend({
             showtools: false
         }
     },
+    methods:{
+        toggleSearch: function () {
+            eventHelper.emit('openPointSearch');
+        }
+    },
     mounted: function () {
         this.facilityArr = {};
         initPlugin(this.facilityArr, this);

@@ -1,6 +1,3 @@
-/**
- * Created by czzou on 2016/1/18.
- */
 var gulp=require("gulp");
 var gutil = require('gulp-util');
 var greplace = require('gulp-replace');
@@ -89,7 +86,9 @@ gulp.task('webpack-build',['concat-lib'],function () {
         .pipe(gulp.dest('../release'));
     });
 });
-
+gulp.task('copy-vendors',function(){
+    gulp.src('../vendors/*/**').pipe(gulp.dest('../release/vendors'));
+});
 gulp.task('upload-source',function(){
     //TODO
     //1.上传刚刚生成的文件到CDN or 线上环境静态服务器
@@ -135,7 +134,7 @@ gulp.task('ZIP',function(){
 })
 gulp.task("default",["webpack-dev"]);
 gulp.task("build",["clean"],function () {
-    runSequence("webpack-build");
+    runSequence("copy-vendors","webpack-build");
 });
 gulp.task("release",["clean","bump-version"],function(){
     runSequence("webpack-build","upload-source","push-version-file","gitPush","tag","ZIP");

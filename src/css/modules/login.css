@@ -5,16 +5,18 @@
     background: url(../../img/login/login-bg.jpg) no-repeat 62% 0;
     position: relative;
 }
-.goBack{
-    width:4em;
-    height:3em;
-    background-size:100% 100%;
+
+.goBack {
+    width: 4em;
+    height: 3em;
+    background-size: 100% 100%;
     position: absolute;
     top: 4em;
-    left:4em;
+    left: 4em;
 }
-.loginBox{
-    background:#fff;
+
+.loginBox {
+    background: #fff;
     width: 400px;
     position: absolute;
     left: 56.3%;
@@ -23,34 +25,39 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-.loginBox .login-header{
+
+.loginBox .login-header {
     line-height: 50px;
     font-size: 1.5em;
     height: 50px;
     width: 100%;
     color: #fff;
-    background-color: rgba(15,181,244,1);
-    text-align:center;
+    background-color: rgba(15, 181, 244, 1);
+    text-align: center;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
+    margin-top: 0;
 }
-.logo{
+
+.logo {
     font-size: 3em;
     color: #333;
     position: absolute;
     top: 4em;
-    left:calc(50% - 3em);
-    width:6em;
-    height:2em;
-    background-size:contain;
+    left: calc(50% - 3em);
+    width: 6em;
+    height: 2em;
+    background-size: contain;
 }
-.userName,.password{
-    width:inherit;
-    height:3em;
-    border-bottom:1px solid #fff;
-    margin-top:3em;
+
+.userName, .password {
+    width: inherit;
+    height: 3em;
+    border-bottom: 1px solid #fff;
+    margin-top: 3em;
 }
-.inputDiv{
+
+.inputDiv {
     display: inline-block;
     font-size: 1.5em;
     width: 14em;
@@ -59,97 +66,117 @@
     outline: none;
     vertical-align: middle;
 }
-.user-icon,.psd-icon{
-    display:inline-block;
+
+.user-icon, .psd-icon {
+    display: inline-block;
     width: 2.5em;
-    height:2.5em;
-    margin:0 1em;
+    height: 2.5em;
+    margin: 0 1em;
     vertical-align: middle;
 }
-.user-icon{
-    background-size:100% 100%;
+
+.user-icon {
+    background-size: 100% 100%;
 }
-.psd-icon{
-    background-size:100% 100%;
+
+.psd-icon {
+    background-size: 100% 100%;
 }
-.login-content .forgetPsd{
-    padding:1em 0;
-    float:right;
+
+.login-content .forgetPsd {
+    padding: 1em 0;
+    float: right;
 }
-.login-content label{
+
+.login-content label {
     width: 4em;
 }
-.login-content{
-    margin-top:2em;
+
+.login-content {
+    margin-top: 2em;
 }
-.login-content.relative{
-    position:relative;
+
+.login-content.relative {
+    position: relative;
 }
-.login-content .el-input{
-    width:224px;
+
+.login-content .el-input {
+    width: 224px;
 }
-.login-btn{
+
+.login-btn {
     width: 16em;
     height: 2.6em;
     clear: both;
-    font-size:20px;
+    font-size: 20px;
     border-radius: 1.3em;
-    background: rgba(36,149,243,0.6);
+    background: rgba(36, 149, 243, 0.6);
     margin: 0 auto;
     text-align: center;
     line-height: 2.6em;
     color: #dcdcdc;
-    cursor:pointer;
+    cursor: pointer;
 }
-.login-btn:hover,.login-btn:visited{
-    background: rgba(36,149,243,0.6);
+
+.login-btn:hover, .login-btn:visited {
+    background: rgba(36, 149, 243, 0.6);
 }
-.login-container{
-    padding:1em 4em 1em 4em;
+
+.login-container {
+    padding: 1em 4em 1em 4em;
 }
-.registerBox{
-    width:inherit;
-    padding:0 2.8em;
-    margin-top:2em;
-    line-height:3.6em;
+
+.registerBox {
+    width: inherit;
+    padding: 0 2.8em;
+    margin-top: 2em;
+    line-height: 3.6em;
 }
-.skip,.register{
-    width:5.6em;
-    height:2.6em;
-    border-radius:1.3em;
-    color:#fff;
-    border:1px solid #fff;
-    font-size:20px;
+
+.skip, .register {
+    width: 5.6em;
+    height: 2.6em;
+    border-radius: 1.3em;
+    color: #fff;
+    border: 1px solid #fff;
+    font-size: 20px;
     text-align: center;
-    cursor:pointer;
+    cursor: pointer;
 }
-.skip{
+
+.skip {
     float: left;
 }
-.register{
+
+.register {
     float: right;
 }
-.textInput{
-    font-size:1.5em;
-    background-color:transparent;
-    border:none;
+
+.textInput {
+    font-size: 1.5em;
+    background-color: transparent;
+    border: none;
     vertical-align: middle;
-    outline:none;
+    outline: none;
 }
-.logo-content{
+
+.logo-content {
     position: absolute;
     top: 15%;
     right: 18%
 }
-.login-container .btn-grounp{
+
+.login-container .btn-grounp {
     float: right;
 }
-.vertical-mid{
+
+.vertical-mid {
     display: inline-block;
     vertical-align: middle;
 }
-.logo-desc{
-    font-size:3em;
-    margin-left:20px;
+
+.logo-desc {
+    font-size: 3em;
+    margin-left: 20px;
     color: #333;
 }

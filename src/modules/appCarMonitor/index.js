@@ -8,7 +8,7 @@ var removePic = require('../arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 var eventHelper = require('../../utils/eventHelper');
 var historySearchServices = require('services/historySearchServices');
 var deviceModel = require('modules/arcgisPlugin/plugin/arcgisExpand/deviceModel');
-var mapHelper = require('utils/maps/mapHelper');
+var mapHelper = require('utils/mapHelper');
 var Q = require('q');
 var refreshTime = 1000;
 var currentThread;

@@ -5,7 +5,7 @@ var moduleController = require('controllers/moduleController');
 var serviceHelper = require('../../services/serviceHelper');
 var appNoticeBox = require('modules/appNoticeBox');
 var arcgisDraw = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
-var mapHelper = require('utils/maps/mapHelper');
+var mapHelper = require('utils/mapHelper');
 var components = {
     'app-notice-box': appNoticeBox
 };
@@ -31,18 +31,18 @@ var comm = Vue.extend({
         changeView: function (view) {
             clearTimeout(this.changeViewTimer);
             this.changeViewTimer = setTimeout(function () {
-                if (!!components[view.toLowerCase()]) {
-                    this.currentView = view.toLowerCase();
-                    eventHelper.emit('change-menu-success');
+                if (!!components[view.menuurl.toLowerCase()]) {
+                    this.currentView = view.menuurl.toLowerCase();
+                    eventHelper.emit('change-menu-success', view);
                 } else {
-                    eventHelper.emit(view);
+                    eventHelper.emit(view.menuurl);
                     console.log('出错了！！找不到这个地址[' + view + ']');
                 }
             }.bind(this), 10);
         },
-        toggleSearch: function () {
-            eventHelper.emit('openPointSearch');
-        }
+        // toggleSearch: function () {
+        //     eventHelper.emit('openPointSearch');
+        // }
     },
     mounted: function () {
         eventHelper.on('loginSuccess', function () {
@@ -54,10 +54,10 @@ var comm = Vue.extend({
 
         this.currentView = 'arcgis-plugin';
         eventHelper.on('change-menu', function (model) {
-            this.changeView(model.menuurl);
+            this.changeView(model);
         }.bind(this));
         eventHelper.on('active-tab', function (tabID) {
-            this.changeView(tabID);
+            this.changeView({menuurl: tabID});
         }.bind(this));
     },
     components: components
