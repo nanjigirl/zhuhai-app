@@ -62,24 +62,24 @@
     display: inline-block;
     width: 64px;
     height: 64px;
-    background: url(../../img/icon/play1.png) center no-repeat;
+    background: url(../../img/icon/player1.png) center no-repeat;
 }
 .icon.icon-play-big1{
     display: inline-block;
     width: 64px;
     height: 64px;
-    background: url(../../img/icon/play2.png) center no-repeat;
+    background: url(../../img/icon/player2.png) center no-repeat;
 }
 .icon.icon-play-move{
     display: inline-block;
     width: 64px;
     height: 64px;
-    background: url(../../img/icon/play3.png) center no-repeat;
+    background: url(../../img/icon/player3.png) center no-repeat;
 }
 .icon.icon-play-pause{
     display: inline-block;
     width: 68px;
     height: 64px;
-    background: url(../../img/icon/play4.png) center no-repeat;
+    background: url(../../img/icon/player4.png) center no-repeat;
 }
 
