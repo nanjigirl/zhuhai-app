@@ -9,6 +9,7 @@ var comm = Vue.extend({
         return {
             showSearch: false,
             isToggleMenu: false,
+            account:6,
             datatheads: ['设备名称', '状态'],
             form: {
                 name: '',
@@ -92,9 +93,15 @@ var comm = Vue.extend({
         searchEquipment: function () {
             // return this.searchFilter();
             var that = this;
+
             var search = that.tableData.filter(function (user) {
-                return (user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1 && user.name.toLowerCase().indexOf(that.form.data.toLowerCase()) !==-1);
+                var addressSearch =user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1;
+                var dataSearch = user.name.toLowerCase().indexOf(that.form.data.toLowerCase()) !==-1;
+                var pollutionSearch = user.name.toLowerCase().indexOf(that.form.pollute.toLowerCase()) !==-1;
+                var areaSearch = user.name.toLowerCase().indexOf(that.form.address.toLowerCase()) !==-1;
+                return (addressSearch && dataSearch && pollutionSearch && areaSearch);
             });
+            that.account = search.length;
             return search;
         }
     },
