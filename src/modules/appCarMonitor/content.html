@@ -18,7 +18,7 @@
                 <div class="device-content">
                     <div class="cesc-grid-form">
                         <el-form :model="carData" ref="register" class="demo-ruleForm">
-                            <el-form-item prop="num" label="车牌号码" class="cesc-form-item">
+                            <el-form-item prop="num" label="车牌查询" class="cesc-form-item">
                                 <el-input v-model="carData.num"></el-input>
                             </el-form-item>
                             <el-form-item label="车辆类型" class="cesc-form-item">
@@ -28,7 +28,7 @@
                                     <el-option label="铲车" value="铲车"></el-option>
                                 </el-select>
                             </el-form-item>
-                            <el-button>查询</el-button>
+                            <!--<el-button @click="selectCar">查询</el-button>-->
                         </el-form>
                     </div>
                 </div>

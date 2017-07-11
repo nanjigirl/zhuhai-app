@@ -65,8 +65,9 @@ var comm = Vue.extend({
         }
     },
     methods: {
-        close:function () {
+        close:function (formName) {
             this.showSearch = false;
+            this.$refs[formName].resetFields();
         },
         selectSearch:function () {//改变反馈
             this.form.name = this.form.data;

@@ -1,11 +1,11 @@
 <transition name="message-detail">
 <div class="nnyc-search"  :class="{toggleMenu:isToggleMenu,showSearch:showSearch}">
     <div class="cesc-grid-form cesc-nnyc-data">
-        <el-form :model="form" class="demo-ruleForm">
+        <el-form :model="form"  ref="form" class="demo-ruleForm">
             <el-form-item prop="name" label="设施地址" class="cesc-form-item">
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
-            <el-form-item label="数据来源" class="cesc-form-item">
+            <el-form-item label="数据来源" prop="data" class="cesc-form-item">
                 <el-select v-model="form.data" placeholder="请选择" @change="selectSearch">
                     <el-option
                             v-for="item in datas"
@@ -15,7 +15,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="污染源" class="cesc-form-item">
+            <el-form-item label="污染源" prop="pollute" class="cesc-form-item">
                 <el-select v-model="form.pollute" multiple placeholder="请选择">
                     <el-option
                             v-for="pollution in pollutions"
@@ -25,7 +25,7 @@
                     </el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="所在区" class="cesc-form-item">
+            <el-form-item label="所在区" prop="address" class="cesc-form-item">
                 <el-select v-model="form.address" multiple placeholder="请选择">
                     <el-option
                             v-for="area in areas"
@@ -58,7 +58,7 @@
         </table>
     </div>
     <div>
-        <el-button @click="close" style="margin-left: 33%;">关闭</el-button>
+        <el-button @click="close('form')" style="margin-left: 33%;">关闭</el-button>
     </div>
 </div>
 </transition>
