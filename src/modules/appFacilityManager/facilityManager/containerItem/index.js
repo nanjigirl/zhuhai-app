@@ -103,27 +103,36 @@ var comm = container.extend({
                             var result = ajaxResult.data;
 
                             var fields = result.fields;
+                            fields = fields || [];
                             //根据监测项类型字段的配置，构建录入表单的字段
                             $('#itemFieldContainer', $("#" + this.vm.mainContentDivId)).empty();
                             for (var i = 0; i < fields.length; i++) {
                                 var field = fields[i];
 
+                                var $input;
+
                                 //不同字段类型使用不用的控件
                                 //字段名写在input的id里，class写入itemFieldInput代表是监测项动态字段
-                                if (field.fieldType == "string") {
-                                    var $input = $('<div class="form-group right-panel-fix">' +
-                                        '<label class="right-panel-label">' + field.nameCn + '</label>' +
-                                        '<div class="input-fix">' +
+                                if (field.fieldType === "string") {
+                                    $input = $('<div class="row">' +
+                                        '<div class="form-group">' +
+                                        '<label class="col-sm-3 control-label">' + field.nameCn + '</label>' +
+                                        '<div class="col-sm-9">' +
                                         '<input type="text" id="' + field.name + '" class="form-control itemFieldInput" >' +
-                                        '</div>' + +'</div>');
-                                } else if (field.fieldType == "double" || field.fieldType == "int") {
-                                    var $input = $('<div class="form-group right-panel-fix">' +
-                                        '<label class="right-panel-label">' + field.nameCn + '</label>' +
-                                        '<div class="input-fix">' +
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>');
+                                } else if (field.fieldType === "double" || field.fieldType === "int") {
+                                    $input = $('<div class="row">' +
+                                        '<div class="form-group">' +
+                                        '<label class="col-sm-3 control-label">' + field.nameCn + '</label>' +
+                                        '<div class="col-sm-9">' +
                                         '<input type="number" id="' + field.name + '" class="form-control itemFieldInput" >' +
-                                        '</div>' + +'</div>');
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>');
                                 }
-                                else if (field.fieldType == "select") {
+                                else if (field.fieldType === "select") {
                                     //select下拉框
                                     //下拉框所有值
                                     var strItem = "";
@@ -136,13 +145,16 @@ var comm = container.extend({
                                         }
                                     }
 
-                                    var $input = $('<div class="form-group right-panel-fix">' +
-                                        '<label class="right-panel-label">' + field.nameCn + '</label>' +
-                                        '<div class="input-fix">' +
-                                        ' <select id="' + field.name + '" class="form-control itemFieldInput">' +
+                                    $input = $('<div class="row">' +
+                                        '<div class="form-group">' +
+                                        '<label class="col-sm-3 control-label">' + field.nameCn + '</label>' +
+                                        '<div class="col-sm-9">' +
+                                        '<select id="' + field.name + '" class="form-control itemFieldInput">' +
                                         strItem +
                                         '</select>' +
-                                        '</div>' + +'</div>');
+                                        '</div>' +
+                                        '</div>' +
+                                        '</div>');
                                 }
                                 else {
                                     alert("不支持的字段类型：" + field.fieldType);
