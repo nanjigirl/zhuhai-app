@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .left_col {
-    background: #0361b1;
+    background: #013448;
 }
 
 .nav-sm .container.body .col-md-3.left_col {
@@ -414,7 +414,7 @@ body .container.body .right_col {
 
 body {
     color: #73879C;
-    background: #0361b1;
+    background: #013448;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -711,7 +711,7 @@ a:hover, a:focus {
 
 .nav.side-menu > li.active > a {
     text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-    background: linear-gradient(#0E59A0, #1968B1), #0361b1;
+    background: linear-gradient(#013448, #3e5e78), #013448;
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
 }
 
@@ -1819,7 +1819,7 @@ span.right {
     padding: 5px 0 0 0;
     position: fixed;
     width: 200px;
-    background: #0361b1;
+    background: #013448;
 }
 
 .sidebar-footer a {

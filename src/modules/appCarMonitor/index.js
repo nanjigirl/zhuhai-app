@@ -4,11 +4,12 @@ var facilityController = require('controllers/facilityController');
 var serviceHelper = require('services/serviceHelper');
 var moment = require('moment');
 var removePic = require('../arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
-
+var mathUtils = require('utils/mathUtils');
 var eventHelper = require('../../utils/eventHelper');
 var historySearchServices = require('services/historySearchServices');
 var deviceModel = require('modules/arcgisPlugin/plugin/arcgisExpand/deviceModel');
 var mapHelper = require('utils/mapHelper');
+var arcgisHelper = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 var Q = require('q');
 var refreshTime = 1000;
 var currentThread;
@@ -32,8 +33,8 @@ var comm = Vue.extend({
                     id: ''
                 }
             ],
-            datatheads: [' ', '车辆编号', '车辆公司'],
-            historyTableHead: ['车辆编号', '车辆公司', '操作'],
+            datatheads: ['实时位置', '车辆编号', '所属公司'],
+            historyTableHead: ['车辆编号', '所属公司', '操作'],
             carLists1: [
                 {
                     num: '桂AD2375',
@@ -79,9 +80,13 @@ var comm = Vue.extend({
         eventHelper.on('app-car-monitor', function () {
             this.rightPanelOpen = true;
         }.bind(this));
-        // this.initGDVideo();
     },
     methods: {
+        stopPlay: function () {
+            clearInterval(this.pointer);
+            this.removeDistance();
+            this.map.removeLayer(this.preLayer);
+        },
         submitForm: function (formName) {
             this.$refs[formName].validate(function (valid) {
                 if (valid) {
@@ -95,6 +100,7 @@ var comm = Vue.extend({
         },
         resetForm: function (formName) {
             this.$refs[formName].resetFields();
+            this.removeDistance();
         },
         queryCarData: function () {
             var self = this;
@@ -112,11 +118,6 @@ var comm = Vue.extend({
                         id: menu.id
                     });
                 })
-                // for(var i = 0;i<10;i++){
-                //     self.carLists.push({
-                //         num:data[i].truckNum
-                //     });
-                // }
                 for (var i = 0; i < 10; i++) {
                     self.carLists1.push({
                         num: data[i].truckNum,
@@ -125,19 +126,42 @@ var comm = Vue.extend({
                 }
             });
         },
+        carTrace: function (points, carNum) {
+            this.preLayer = {};
+            var index = 0;
+            var maxIndex = points.length;
+            this.pointer = setInterval(function () {
+                if (!!this.preLayer) {
+                    this.map.removeLayer(this.preLayer);
+                }
+                if (index == maxIndex) {
+                    clearInterval(this.pointer);
+                }
+                var point = points[index++];
+                this.map.centerAt([parseFloat(point.x), point.y]);
+                var afterPoint = points[index];
+                var angel = mathUtils.getAngle(point.x, point.y, afterPoint.x, afterPoint.y);
+                this.preLayer = mapHelper.createSymbol(this.map, point.x, point.y, './img/car.png', carNum, 30, 40, angel);
+            }.bind(this), 1000);
+        },
         getCoordinate: function (list) {//通过点击车辆列表进行获取该车辆的坐标
             list.check = !list.check;
             if (list.check == true) {//如果车辆被选中获取该车辆的坐标
                 historySearchServices.getCoordinateData(list.terminalNum, function (data) {
                     deviceModel.ssjkCreatePoint(this.map, list.id, 'f' + list.id, list.truckNum, 'abc', data.x, data.y, '', './img/toolbar/car.png', '22', '22', 'abc', {
-                        terminalNum: "62215510",
-                        id: 17263,
-                        truckNum: "桂A35721"
+                        terminalNum: list.terminalNum,
+                        id: list.id,
+                        truckNum: list.truckNum
                     });
                 }.bind(this));
             } else {
-                removePic.removePoints([{id: list.id}])
+                removePic.removePoints({layer: this.map.getLayer('f' + list.id)});
             }
+        },
+        removeDistance: function () {
+            this.cardistanceArr.forEach(function (graphic) {
+                arcgisHelper.removeGraphic(graphic);
+            })
         },
         //点击查看历史轨迹进行调用
         drawCarHistory: function (car) {
@@ -145,6 +169,7 @@ var comm = Vue.extend({
             if (!this.search.dateStart || !this.search.dateEnd) {
                 return;
             } else {
+                self.cardistanceArr = [];
                 var dateStart = this.search.dateStart.getFullYear() + '-' + (this.search.dateStart.getMonth() + 1) + '-' + this.search.dateStart.getDate();
                 var dateEnd = this.search.dateEnd.getFullYear() + '-' + (this.search.dateEnd.getMonth() + 1) + '-' + this.search.dateEnd.getDate();
                 if (dateStart && dateEnd) {
@@ -170,12 +195,14 @@ var comm = Vue.extend({
                                 var dateSort = function (pre, after) {
                                     var preDate = moment(pre.date, 'YYYY-MM-DD hh:mm:ss');
                                     var afterDate = moment(after.date, 'YYYY-MM-DD hh:mm:ss');
-                                    return preDate.isBefore(afterDate);
+                                    return !preDate.isBefore(afterDate);
                                 }
                                 resultArr.sort(dateSort);
                                 for (var i = 0; i < resultArr.length - 1; i++) {
-                                    mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y]);
+                                    var graLayer = mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y]);
+                                    self.cardistanceArr.push(graLayer);
                                 }
+                                self.carTrace(resultArr, car.truckNum);
                                 // console.log(resultArr);
                             }
                         }, 100);
