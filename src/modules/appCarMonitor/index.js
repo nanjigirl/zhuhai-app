@@ -176,6 +176,7 @@ var comm = Vue.extend({
                                 for (var i = 0; i < resultArr.length - 1; i++) {
                                     mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y]);
                                 }
+                                eventHelper.emit('app-car-playback');
                                 // console.log(resultArr);
                             }
                         }, 100);

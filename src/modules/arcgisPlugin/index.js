@@ -12,7 +12,7 @@ var arcgisHelper = require('./plugin/arcgisExpand/arcgis-load-map');
 var rightPanel = require('modules/rightPanel');
 var rightPanelComplaint = require('modules/rightPanelComplaint');
 var appCarMonitor = require('modules/appCarMonitor');
-
+var appCarPlayback = require('modules/appCarPlayback');
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
     var centerX = 108.37267903076172;
@@ -92,6 +92,7 @@ var comm = Vue.extend({
     components: {
         'right-panel': rightPanel,
         //'right-panel-complaint': rightPanelComplaint,
+        'app-car-playback':appCarPlayback,
         'flex-map-legend': flexMapLegend,
         'app-car-monitor': appCarMonitor
     }
