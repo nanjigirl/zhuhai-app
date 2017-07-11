@@ -65,36 +65,21 @@ define(function () {
             this.drawPen.finishDrawing();
             this.drawPen.deactivate();
         },
-        createSymbol: function (baseMap, x, y, type, attributes) {
-            var iconUrl = '';
-            if (type == -1) {
-                iconUrl = 'location.png';
-            }
-            else if (type == 1) {
-                iconUrl = 'pump.png';
-            } else if (type == 4) {
-                iconUrl = 'jing.png';
-            } else {
-                iconUrl = 'handler.png';
-            }
-            var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, 20, 20);
+        createSymbol: function (baseMap, x, y, iconUrl, name, height, width, angel) {
+            var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, width, height);
+            console.log(angel);
+            pictureMarkerSymbol.setAngle(Math.abs(360 - 90 - angel));
             var geometry = new Point(x, y);
             var graphic = new Graphic(geometry, pictureMarkerSymbol);
-            graphic.attributes = attributes;
             var graLayer = new GraphicsLayer();
-            if (!!attributes) {
-                var textSymbol = new TextSymbol();
-                textSymbol.setText(attributes.id);
-                textSymbol.setColor(new Color([255, 0, 0, 1]));
-                textSymbol.setFont("12pt");
-                textSymbol.setOffset(0, -20);
-                var graphic1 = new Graphic(geometry, textSymbol);
-                graLayer.add(graphic1);
-            }
+            var textSymbol = new TextSymbol();
+            textSymbol.setText(name);
+            textSymbol.setColor(new Color([255, 0, 0, 1]));
+            textSymbol.setFont("8pt");
+            textSymbol.setOffset(0, -20);
+            var graphic1 = new Graphic(geometry, textSymbol);
+            graLayer.add(graphic1);
             graLayer.add(graphic);
-            graLayer.on('click', function (evt) {
-                eventHelper.emit('click-pipe', evt);
-            })
             baseMap.addLayer(graLayer);
             return graLayer;
         },
@@ -115,7 +100,7 @@ define(function () {
                 "paths": [[start, end]],
                 "spatialReference": {"wkid": no}
             });
-            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15]), 2);
+            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15]), 1);
             var graphic = new Graphic(line, symbol);
             map.graphics.add(graphic);
             return graphic;
@@ -128,8 +113,8 @@ define(function () {
             });
             var color = new Color([241, 104, 15]);
             if (type == '污水') {
-                color= new Color([236, 7, 229]);
-            }else if(type == '雨水'){
+                color = new Color([236, 7, 229]);
+            } else if (type == '雨水') {
                 color = new Color([7, 109, 236]);
             }
             var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, color, 5);
@@ -137,8 +122,8 @@ define(function () {
             map.graphics.add(graphic);
             return graphic;
         },
-        createPolyon: function (map, points,isHighLight) {
-            var graphic = this.drawPolygon(points,isHighLight);
+        createPolyon: function (map, points, isHighLight) {
+            var graphic = this.drawPolygon(points, isHighLight);
             map.graphics.add(graphic);
             return graphic;
         },
@@ -258,7 +243,7 @@ define(function () {
                 map.centerAndZoom(point, zoom);
             }
             else {
-                map.centerAt(point,15);
+                map.centerAt(point, 15);
             }
         },
         getArcGISTiledMap: function (leftID, rightID, leftUrl, rightUrl) {
@@ -282,8 +267,8 @@ define(function () {
                 //  this.setCenter(50739.47246461394, 27957.80609813794, rightMap);
                 console.log('load');
                 setTimeout(function () {
-                    this.setCenter(44765.005, 24337.384, leftMap,15);
-                }.bind(this),1000);
+                    this.setCenter(44765.005, 24337.384, leftMap, 15);
+                }.bind(this), 1000);
             }.bind(this));
             return {
                 leftMap: leftMap,
