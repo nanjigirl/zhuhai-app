@@ -6,7 +6,7 @@
                 <el-input v-model="form.name"></el-input>
             </el-form-item>
             <el-form-item label="数据来源" prop="data" class="cesc-form-item">
-                <el-select v-model="form.data" placeholder="请选择" @change="selectSearch">
+                <el-select v-model="form.data" placeholder="请选择">
                     <el-option
                             v-for="item in datas"
                             :key="item.value"
@@ -16,7 +16,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="污染源" prop="pollute" class="cesc-form-item">
-                <el-select v-model="form.pollute" multiple placeholder="请选择">
+                <el-select v-model="form.pollute" placeholder="请选择">
                     <el-option
                             v-for="pollution in pollutions"
                             :key="pollution.value"
@@ -26,7 +26,7 @@
                 </el-select>
             </el-form-item>
             <el-form-item label="所在区" prop="address" class="cesc-form-item">
-                <el-select v-model="form.address" multiple placeholder="请选择">
+                <el-select v-model="form.address" placeholder="请选择">
                     <el-option
                             v-for="area in areas"
                             :key="area.value"

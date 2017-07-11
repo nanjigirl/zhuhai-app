@@ -12,11 +12,14 @@ var comm = Vue.extend({
             datatheads: ['设备名称', '状态'],
             form: {
                 name: '',
-                address: [],
+                address: '',
                 data: '',
-                pollute: []
+                pollute: ''
             },
             datas: [{
+                value: '',
+                label: ''
+            }, {
                 value: '南宁市建设委员会',
                 label: '南宁市建设委员会'
             }, {
@@ -24,6 +27,9 @@ var comm = Vue.extend({
                 label: '南宁市交警大队'
             }],
             pollutions: [{
+                value: '',
+                label: ''
+            },{
                 value: '建筑工地',
                 label: '建筑工地'
             }, {
@@ -37,6 +43,9 @@ var comm = Vue.extend({
                 label: '道路'
             }],
             areas: [{
+                value: '',
+                label: ''
+            },{
                 value: '青秀区',
                 label: '青秀区'
             }, {
@@ -69,9 +78,6 @@ var comm = Vue.extend({
             this.showSearch = false;
             this.$refs[formName].resetFields();
         },
-        selectSearch:function () {//改变反馈
-            this.form.name = this.form.data;
-        }
     },
     mounted: function () {
         eventHelper.on('openPointSearch', function () {
@@ -84,19 +90,13 @@ var comm = Vue.extend({
     computed: {
         //搜索功能（当前是按照名字和在线情况进行过滤）
         searchEquipment: function () {
+            // return this.searchFilter();
             var that = this;
-            var selectVal = that.form.data;
-            return that.tableData.filter(function (user) {
-                return (user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1 || user.status.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1);
-            })
-        },
-        // searchEquipment1: function () {
-        //     var that = this;
-        //     var selectVal = that.form.data;
-        //     return that.tableData.filter(function (user) {
-        //         return (user.name.toLowerCase().indexOf(selectVal.toLowerCase()) !== -1);
-        //     })
-        // }
+            var search = that.tableData.filter(function (user) {
+                return (user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1 && user.name.toLowerCase().indexOf(that.form.data.toLowerCase()) !==-1);
+            });
+            return search;
+        }
     },
     components: {}
 });
