@@ -24,6 +24,12 @@
                     </div>
                     <!--右侧搜索栏-->
                     <form class="form-inline pull-right">
+                        <div class="form-group">
+                            <!--查询条件自动绑定到容器的toolbarQueryParam对象的具体属性，查询时会自动传到后台
+                            如果vue的绑定不能满足，可以把查询条件在容器的getCustomQueryParam方法写入-->
+                            <input type="text" class="form-control" placeholder="测站名称"
+                                   v-model="containerMain.toolbarQueryParam.name">
+                        </div>
                         <!--查询点击事件-->
                         <button type="button" class="btn btn-default btn-outline" title="查询"
                                 v-on:click="containerMain.search">

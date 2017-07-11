@@ -220,6 +220,16 @@ var comm = crudBase.extend({
 
                     return formData;
                 },
+
+                //获取自定义查询条件
+                getCustomQueryParam: function () {
+                    //返回结果的类型是object
+                    var formData = {};
+                    //可以通过如下方式添加任意值
+                    formData.name = this.containerMain.toolbarQueryParam.name;
+
+                    return formData;
+                }.bind(this),
             }
         });
     },
