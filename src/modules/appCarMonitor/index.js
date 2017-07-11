@@ -203,6 +203,7 @@ var comm = Vue.extend({
                                     self.cardistanceArr.push(graLayer);
                                 }
                                 self.carTrace(resultArr, car.truckNum);
+                                eventHelper.emit('app-car-playback');
                                 // console.log(resultArr);
                             }
                         }, 100);
@@ -252,6 +253,15 @@ var comm = Vue.extend({
                 $('#realTimeMode').addClass('is-active');
             }
         }
+    },
+    computed:{
+        //搜索功能（根据车牌号码进行过滤）
+        queryCarList: function () {
+            var that = this;
+            return that.carLists.filter(function (user) {
+                return (user.truckNum.toLowerCase().indexOf(that.carData.num.toLowerCase()) !== -1 );
+            })
+        },
     },
     components: {}
 });

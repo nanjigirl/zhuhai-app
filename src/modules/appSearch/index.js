@@ -9,14 +9,18 @@ var comm = Vue.extend({
         return {
             showSearch: false,
             isToggleMenu: false,
+            account:6,
             datatheads: ['设备名称', '状态'],
             form: {
                 name: '',
-                address: [],
-                data: [],
-                pollute: []
+                address: '',
+                data: '',
+                pollute: ''
             },
             datas: [{
+                value: '',
+                label: ''
+            }, {
                 value: '南宁市建设委员会',
                 label: '南宁市建设委员会'
             }, {
@@ -24,6 +28,9 @@ var comm = Vue.extend({
                 label: '南宁市交警大队'
             }],
             pollutions: [{
+                value: '',
+                label: ''
+            },{
                 value: '建筑工地',
                 label: '建筑工地'
             }, {
@@ -37,6 +44,9 @@ var comm = Vue.extend({
                 label: '道路'
             }],
             areas: [{
+                value: '',
+                label: ''
+            },{
                 value: '青秀区',
                 label: '青秀区'
             }, {
@@ -65,9 +75,10 @@ var comm = Vue.extend({
         }
     },
     methods: {
-        close:function () {
+        close:function (formName) {
             this.showSearch = false;
-        }
+            this.$refs[formName].resetFields();
+        },
     },
     mounted: function () {
         eventHelper.on('openPointSearch', function () {
@@ -80,10 +91,18 @@ var comm = Vue.extend({
     computed: {
         //搜索功能（当前是按照名字和在线情况进行过滤）
         searchEquipment: function () {
+            // return this.searchFilter();
             var that = this;
-            return that.tableData.filter(function (user) {
-                return (user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1 || user.status.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1);
-            })
+
+            var search = that.tableData.filter(function (user) {
+                var addressSearch =user.name.toLowerCase().indexOf(that.form.name.toLowerCase()) !== -1;
+                var dataSearch = user.name.toLowerCase().indexOf(that.form.data.toLowerCase()) !==-1;
+                var pollutionSearch = user.name.toLowerCase().indexOf(that.form.pollute.toLowerCase()) !==-1;
+                var areaSearch = user.name.toLowerCase().indexOf(that.form.address.toLowerCase()) !==-1;
+                return (addressSearch && dataSearch && pollutionSearch && areaSearch);
+            });
+            that.account = search.length;
+            return search;
         }
     },
     components: {}

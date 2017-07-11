@@ -16,7 +16,7 @@
                 <div>
                     <div class="cesc-grid-form">
                         <el-form :model="carData" ref="register" class="demo-ruleForm">
-                            <el-form-item prop="num" label="车牌号码" class="cesc-form-item">
+                            <el-form-item prop="num" label="车牌查询" class="cesc-form-item">
                                 <el-input v-model="carData.num"></el-input>
                             </el-form-item>
                             <el-form-item label="车辆类型" class="cesc-form-item">
@@ -45,7 +45,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(list,index) in carLists" @click="getCoordinate(list)">
+                            <tr v-for="(list,index) in queryCarList" @click="getCoordinate(list)">
                                 <td>
                                     <el-checkbox v-model="list.check"></el-checkbox>
                                 </td>
@@ -63,7 +63,7 @@
                 <div class="cesc-pagination">
                     <el-pagination
                             layout="prev, pager, next"
-                            :total="carLists.length">
+                            :total="queryCarList.length">
                     </el-pagination>
                 </div>
             </div>

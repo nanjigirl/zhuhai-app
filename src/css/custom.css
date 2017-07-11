@@ -829,6 +829,10 @@ a:hover, a:focus {
     line-height: 30px;
 }
 
+.main_menu_side.width {
+    width: 200px;
+}
+
 .main_menu_side {
     padding: 0;
 }

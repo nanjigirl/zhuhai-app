@@ -1,0 +1,37 @@
+<transition name="right-panel">
+    <div v-show='carOprationPanel' class='bottom-panel clearfix' style="height: 300px;">
+        <div class="col-md-6 left-car-charts">
+            <div id="myChart" style="width: 350px;height: 300px"></div>
+        </div>
+        <div class="col-md-6 no-padding right-car-data">
+            <div class="clearfix car-oprate-title">
+                <div class="col-md-6 car-detail-title" >车辆信息</div>
+                <div class="col-md-6 car-detail-title">车牌号码</div>
+            </div>
+            <div class="car-detail">
+                <div class="col-md-6" >
+                    <span class="text-detail-title">车主:</span>
+                    <span class="text-blue">张三</span>
+                </div>
+                <div class="col-md-6" >
+                    <span class="text-detail-title">车牌号码：</span>
+                    <span class="text-blue">123456</span>
+                </div>
+            </div>
+            <div class="car-opration">
+                <div class="col-md-3 player-button">
+                    <i class="icon icon-play-big"></i>
+                </div>
+                <div class="col-md-3 player-button">
+                    <i class="icon icon-play-big1"></i>
+                </div>
+                <div class="col-md-3 player-button">
+                    <i class="icon icon-play-move"></i>
+                </div>
+                <div class="col-md-3 player-button">
+                    <i class="icon icon-play-pause"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</transition>
