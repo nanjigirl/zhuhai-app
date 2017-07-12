@@ -13,6 +13,9 @@ var rightPanel = require('modules/rightPanel');
 var rightPanelComplaint = require('modules/rightPanelComplaint');
 var appCarMonitor = require('modules/appCarMonitor');
 var appCarPlayback = require('modules/appCarPlayback');
+var appCarIllegal = require('modules/appCarIllegal');
+var appCarCase = require('modules/appCarCase');
+var appCarPollution = require('modules/appCarPollution');
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
     var centerX = 108.37267903076172;
@@ -48,6 +51,9 @@ var comm = Vue.extend({
     methods: {
         toggleSearch: function () {
             eventHelper.emit('openPointSearch');
+            // eventHelper.emit('app-car-illegal');
+            // eventHelper.emit('app-car-cases');
+            // eventHelper.emit('app-car-pollution');
         }
     },
     mounted: function () {
@@ -88,6 +94,9 @@ var comm = Vue.extend({
     components: {
         'right-panel': rightPanel,
         //'right-panel-complaint': rightPanelComplaint,
+        'app-car-illegal':appCarIllegal,
+        'app-car-case':appCarCase,
+        'app-car-pollution':appCarPollution,
         'app-car-playback':appCarPlayback,
         'flex-map-legend': flexMapLegend,
         'app-car-monitor': appCarMonitor
