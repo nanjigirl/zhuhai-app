@@ -211,8 +211,8 @@
 
 .nav_menu {
     float: left;
-    background: #EDEDED;
-    border-bottom: 1px solid #D9DEE4;
+    background: #20a0ff;
+    border-bottom: 1px solid #013448;
     width: 100%;
     position: relative;
 }
@@ -228,6 +228,8 @@
     display: inline-block;
     padding-top: 0.5em;
     padding-left: 1em;
+    color: whitesmoke;
+
 }
 @media (min-width: 480px) {
     .nav_menu {
@@ -259,7 +261,7 @@ body .container.body .right_col {
     float: left;
     background: #172d44;
     border-radius: 0;
-    height: 6.7em;
+    height: 6.95em;
 }
 
 @media (max-width: 991px) {

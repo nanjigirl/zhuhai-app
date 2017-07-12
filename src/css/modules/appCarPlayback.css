@@ -51,10 +51,10 @@
     border-bottom: 2px solid #ccc;
 }
 .car-opration{
-    height:calc(100% - 15% - 55%);
+    height:calc(100% - 19% - 55%);
 }
 .player-button{
-    background: rgb(16,91,163);
+    background: #105ba3;
     padding-top: 10px;
     height: 100%;
     line-height: 90px;
@@ -62,6 +62,9 @@
     cursor: pointer;
     border-bottom: 2px solid #ccc;
     border-right:2px solid #ccc;
+}
+.player-button:hover{
+    background-color: gainsboro;
 }
 .text-blue{
     color: #1C9AF7;
@@ -71,24 +74,28 @@
     width: 20%;
 }
 .icon.icon-play-big{
+.car-opration .icon{
+    z-index: 2;
+}
+.car-opration .icon.icon-play-big{
     display: inline-block;
     width: 64px;
     height: 64px;
     background: url(../../img/icon/player1.png) center no-repeat;
 }
-.icon.icon-play-big1{
+.car-opration .icon.icon-play-pause{
     display: inline-block;
     width: 64px;
     height: 64px;
     background: url(../../img/icon/player2.png) center no-repeat;
 }
-.icon.icon-play-move{
+.car-opration .icon.icon-play-move{
     display: inline-block;
     width: 64px;
     height: 64px;
     background: url(../../img/icon/player3.png) center no-repeat;
 }
-.icon.icon-play-pause{
+.car-opration .icon.icon-play-replay{
     display: inline-block;
     width: 68px;
     height: 64px;

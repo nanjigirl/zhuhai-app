@@ -1,7 +1,7 @@
 .tertiaryMenu {
     width: 300px;
     height: 17.2em;
-    background: #105ba3;
+    background: #013448;
     float: left;
     margin-left: 200px;
     box-shadow: rgba(0, 204, 204, 0.498039) 0px 0px 10px;
@@ -51,6 +51,10 @@
     margin-top: 0.3em;
 }
 
+.menuList > li > a > p {
+    font-size: 0.8em;
+}
+
 #sidebar-menu {
     z-index: 2;
 }
@@ -69,6 +73,7 @@
     height: calc(100% - 6.8em);
     overflow-y: auto;
 }
+
 .menuToggle {
     position: absolute;
     left: 200px;
