@@ -111,6 +111,7 @@ var comm = Vue.extend({
             closeOprationPanel:function () {
                 this.carOprationPanel = false;
                 eventHelper.emit('app-car-monitor');
+                eventHelper.emit('stop-player');
             }
         },
         computed: {},

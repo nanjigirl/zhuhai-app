@@ -98,6 +98,9 @@ var comm = Vue.extend({
         eventHelper.on('car-trace-replay', function (car) {
             this.isReplay = true;
         }.bind(this));
+        eventHelper.on('stop-player', function () {
+            this.stopPlay();
+        }.bind(this));
     },
     methods: {
         stopPlay: function () {
