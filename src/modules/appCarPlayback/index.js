@@ -10,6 +10,9 @@ var comm = Vue.extend({
     data: function () {
         return {
             carOprationPanel:false,
+            activeIndex: '1',
+            isCarDetail:true,
+            isDriverDetail:false,
         }
     },
     computed: {},
@@ -75,7 +78,26 @@ var comm = Vue.extend({
         },2000);
     },
     methods: {
-
+        reset: function () {
+            this.isCarDetail = true;
+            this.activeIndex = '1';
+        },
+        selectCar:function () {
+            this.isCarDetail = true;
+            this.isDriverDetail = false;
+            $('#driverDetail').removeClass('is-active');
+            $('#carDetail').addClass('is-active');
+        },
+        selectDriver:function () {
+            this.isCarDetail = false;
+            this.isDriverDetail = true;
+            $('#carDetail').removeClass('is-active');
+            $('#driverDetail').addClass('is-active');
+        },
+        closeOprationPanel:function () {
+            this.carOprationPanel = false;
+            eventHelper.emit('app-car-monitor');
+        }
     },
     computed:{
 

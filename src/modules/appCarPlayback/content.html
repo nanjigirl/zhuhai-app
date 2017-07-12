@@ -5,31 +5,58 @@
         </div>
         <div class="col-md-6 no-padding right-car-data">
             <div class="clearfix car-oprate-title">
-                <div class="col-md-6 car-detail-title" >车辆信息</div>
-                <div class="col-md-6 car-detail-title">车牌号码</div>
+                <div class="col-md-6 car-detail-title is-active" id="carDetail" @click="selectCar">车辆信息</div>
+                <div class="col-md-6 car-detail-title" id="driverDetail" @click="selectDriver">驾驶员信息</div>
             </div>
-            <div class="car-detail">
-                <div class="col-md-6" >
-                    <span class="text-detail-title">车主:</span>
-                    <span class="text-blue">张三</span>
+            <div class="car-detail" v-show="isCarDetail">
+                <div class="col-md-6 height100 no-padding">
+                    <img class="img-100" src="../../img/projectDetail/img.jpg" alt="img">
                 </div>
-                <div class="col-md-6" >
-                    <span class="text-detail-title">车牌号码：</span>
-                    <span class="text-blue">123456</span>
+                <div class="col-md-6">
+                    <ul class="text-desc-box">
+                        <li>
+                            <span class="text-detail-title">车牌号码：</span>
+                            <span class="text-blue">123456</span>
+                        </li>
+                        <li>
+                            <span class="text-detail-title">车型：</span>
+                            <span class="text-blue">五菱荣光</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="car-detail" v-show="isDriverDetail">
+                <div class="col-md-6 height100 no-padding">
+                    <img class="img-100" src="../../img/projectDetail/img.jpg" alt="img">
+                </div>
+                <div class="col-md-6">
+                    <ul class="text-desc-box">
+                        <li>
+                            <span class="text-detail-title">姓名：</span>
+                            <span class="text-blue">张三</span>
+                        </li>
+                        <li>
+                            <span class="text-detail-title">驾龄：</span>
+                            <span class="text-blue">5年</span>
+                        </li>
+                    </ul>
                 </div>
             </div>
             <div class="car-opration">
-                <div class="col-md-3 player-button">
+                <div class="col-20 player-button">
                     <i class="icon icon-play-big"></i>
                 </div>
-                <div class="col-md-3 player-button">
+                <div class="col-20 player-button">
                     <i class="icon icon-play-big1"></i>
                 </div>
-                <div class="col-md-3 player-button">
+                <div class="col-20 player-button">
                     <i class="icon icon-play-move"></i>
                 </div>
-                <div class="col-md-3 player-button">
+                <div class="col-20 player-button">
                     <i class="icon icon-play-pause"></i>
+                </div>
+                <div class="col-20 player-button" @click="closeOprationPanel()">
+                    <i class="icon icon-play-stop"></i>
                 </div>
             </div>
         </div>

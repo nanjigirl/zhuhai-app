@@ -204,6 +204,7 @@ var comm = Vue.extend({
                                 }
                                 self.carTrace(resultArr, car.truckNum);
                                 eventHelper.emit('app-car-playback');
+                                self.rightPanelOpen = false;
                                 // console.log(resultArr);
                             }
                         }, 100);
