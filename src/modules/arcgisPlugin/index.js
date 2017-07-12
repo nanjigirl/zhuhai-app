@@ -50,10 +50,10 @@ var comm = Vue.extend({
     },
     methods: {
         toggleSearch: function () {
-            // eventHelper.emit('openPointSearch');
+            eventHelper.emit('openPointSearch');
             // eventHelper.emit('app-car-illegal');
             // eventHelper.emit('app-car-cases');
-            eventHelper.emit('app-car-pollution');
+            // eventHelper.emit('app-car-pollution');
         }
     },
     mounted: function () {
@@ -96,7 +96,7 @@ var comm = Vue.extend({
         //'right-panel-complaint': rightPanelComplaint,
         // 'app-car-illegal':appCarIllegal,
         // 'app-car-case':appCarCase,
-        'app-car-pollution':appCarPollution,
+        // 'app-car-pollution':appCarPollution,
         'app-car-playback':appCarPlayback,
         'flex-map-legend': flexMapLegend,
         'app-car-monitor': appCarMonitor
