@@ -202,7 +202,7 @@ var comm = Vue.extend({
                                     var graLayer = mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y]);
                                     self.cardistanceArr.push(graLayer);
                                 }
-                                self.carTrace(resultArr, car.truckNum);
+                                self.carTrace(resultArr, car.num);
                                 eventHelper.emit('app-car-playback');
                                 // console.log(resultArr);
                             }

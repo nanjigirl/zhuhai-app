@@ -37,13 +37,13 @@
     line-height: 45px;
 }
 .car-detail{
-    height:55%;
+    height:59%;
     padding: 15px 0;
     text-align: center;
     border-bottom: 2px solid #ccc;
 }
 .car-opration{
-    height:calc(100% - 15% - 55%);
+    height:calc(100% - 19% - 55%);
 }
 .player-button{
     background: #93c47d;
