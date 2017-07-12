@@ -12,7 +12,7 @@ var arcgisHelper = require('./plugin/arcgisExpand/arcgis-load-map');
 var rightPanel = require('modules/rightPanel');
 var rightPanelComplaint = require('modules/rightPanelComplaint');
 var appCarMonitor = require('modules/appCarMonitor');
-
+var appCarPlayback = require('modules/appCarPlayback');
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
     var centerX = 108.37267903076172;
@@ -45,7 +45,7 @@ var comm = Vue.extend({
             showtools: false
         }
     },
-    methods:{
+    methods: {
         toggleSearch: function () {
             eventHelper.emit('openPointSearch');
         }
@@ -66,8 +66,11 @@ var comm = Vue.extend({
                     eventHelper.emit('loading-end');
                 } else {
                     facilityController.getFacilityByType(legend.id, function (subFacilities) {
-                        arcgisHelper.createPoints(subFacilities, legend);
-                        self.facilityArr[legend.facilityTypeName] = subFacilities;
+                        var graLayer = arcgisHelper.createPoints(subFacilities, legend);
+                        self.facilityArr[legend.facilityTypeName] = {
+                            data: subFacilities,
+                            layer: graLayer
+                        };
                         eventHelper.emit('loading-end');
                     });
                 }
@@ -76,22 +79,16 @@ var comm = Vue.extend({
                 eventHelper.emit('loading-end');
             }
         });
-        eventHelper.on('facility-checked', function (subFacilities) {
-            arcgisHelper.createPoints(subFacilities);
-            self.facilityArr[subFacilities.facilityTypeName] = subFacilities.facilitys;
-        });
-        eventHelper.on('facility-unchecked', function (subFacilities) {
-            arcgisHelper.removePoints(self.facilityArr[subFacilities.facilityTypeName]);
-        });
         eventHelper.on('subFacility-clicked', function (point) {
             console.log(point);
             map.centerAt([parseFloat(point.center[0]) + 0.05, point.center[1]]);
-            this.$refs.rightPanel.open(point.item,point.facilityTypeName);
+            this.$refs.rightPanel.open(point.item, point.facilityTypeName);
         }.bind(this));
     },
     components: {
         'right-panel': rightPanel,
         //'right-panel-complaint': rightPanelComplaint,
+        'app-car-playback':appCarPlayback,
         'flex-map-legend': flexMapLegend,
         'app-car-monitor': appCarMonitor
     }

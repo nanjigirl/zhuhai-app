@@ -41,6 +41,23 @@ define(['utils/eventHelper'], function (eventHelper) {
                 map.graphics.add(graphic1);
             });
         },
+        createSymbol: function (Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, x, y, iconUrl, item, facilityTypeName) {
+            var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, 20, 20);
+            var geometry = new Point(x, y);
+            var graphic = new Graphic(geometry, pictureMarkerSymbol);
+            var textSymbol = new TextSymbol();
+            textSymbol.setText(item.name);
+            textSymbol.setColor(new Color([255, 0, 0, 1]));
+            textSymbol.setFont("8pt");
+            textSymbol.setOffset(0, -20);
+            var graphic1 = new Graphic(geometry, textSymbol);
+            graLayer.add(graphic1);
+
+            graLayer.add(graphic);
+            graphic.attributes = {facilityTypeName: facilityTypeName, item: item};
+            graphic1.attributes = {facilityTypeName: facilityTypeName, item: item};
+            return graLayer;
+        },
         ssjkCreatePoint: function (map, combId, featureLayreId, title, estType, x, y, content, iconUrl, iconW, iconH, facilityTypeName, item) {
             cesc.require([
                 "esri/geometry/Point",
@@ -125,22 +142,22 @@ define(['utils/eventHelper'], function (eventHelper) {
                         }
                     ]
                 };
-          /*      var infoTitle = "<span class='infoWindow-title'>岭南蓄水池</span><span class='infoWindow-tips'>正常</span><br>" +
-                    "<span class='infoW-txt-l'>当前水位:<span class='small-tips-blue'>0.32m</span></span>" +
-                    "<span class='infoW-txt-r'>电量:<span class='small-tips-orange'>80%</span></span>";
-                var infoTemplate = new InfoTemplate(null, infoTitle);
-                connect.connect(infoTemplate, "onLoad", function (evt) {
-                    //var attributes=evt.graphic.attributes;
-                    //var combId=attributes.combId;
-                    // getMonitorStationByCombId(combId);
-                });
-                var popupTemplate = new PopupTemplate({
-                    // title: "{title}",
-                    // description: "{description}"
-                });
-                popupTemplate.setContent(content);
+                /*      var infoTitle = "<span class='infoWindow-title'>岭南蓄水池</span><span class='infoWindow-tips'>正常</span><br>" +
+                 "<span class='infoW-txt-l'>当前水位:<span class='small-tips-blue'>0.32m</span></span>" +
+                 "<span class='infoW-txt-r'>电量:<span class='small-tips-orange'>80%</span></span>";
+                 var infoTemplate = new InfoTemplate(null, infoTitle);
+                 connect.connect(infoTemplate, "onLoad", function (evt) {
+                 //var attributes=evt.graphic.attributes;
+                 //var combId=attributes.combId;
+                 // getMonitorStationByCombId(combId);
+                 });
+                 var popupTemplate = new PopupTemplate({
+                 // title: "{title}",
+                 // description: "{description}"
+                 });
+                 popupTemplate.setContent(content);
 
-           */
+                 */
                 var featureLayer = null;
                 var labelSymbol = null;
                 featureLayer = new FeatureLayer(featureCollection, {
@@ -148,6 +165,7 @@ define(['utils/eventHelper'], function (eventHelper) {
                     //infoTemplate: popupTemplate
                     //infoTemplate:infoTemplate
                 });
+                featureLayer.id = featureLayreId;
                 map.addLayers([featureLayer]);
                 //	featureLayreOnClickHandler(featureLayer);
 
@@ -199,6 +217,7 @@ define(['utils/eventHelper'], function (eventHelper) {
                     });
                     //event.graphic.getLayer().id
                 });
+                return featureLayer;
             });
         }
     }

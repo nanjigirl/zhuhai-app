@@ -1,5 +1,5 @@
 <transition name="message-detail">
-<div class="nnyc-search"  :class="{toggleMenu:isToggleMenu,showSearch:showSearch}">
+<div class="nnyc-search" v-show="showSearch"  :class="{toggleMenu:isToggleMenu,showSearch:showSearch}">
     <div class="cesc-grid-form cesc-nnyc-data">
         <el-form :model="form"  ref="form" class="demo-ruleForm">
             <el-form-item prop="name" label="设施地址" class="cesc-form-item">
@@ -36,7 +36,7 @@
                 </el-select>
             </el-form-item>
         </el-form>
-        <span>记录总数：12条</span>
+        <span>记录总数：{{account}}条</span>
     </div>
     <div class="cesc-nnyc-table">
         <table class="table table-striped table-bordered" >
@@ -57,8 +57,9 @@
             </tbody>
         </table>
     </div>
-    <div>
-        <el-button @click="close('form')" style="margin-left: 33%;">关闭</el-button>
-    </div>
+    <!--<div>-->
+        <!--<el-button @click="close('form')" style="margin-left: 33%;">关闭</el-button>-->
+    <!--</div>-->
+    <div class="goBack"><a href='#' class="el-icon-d-arrow-right" @click="close('form')"></a></div>
 </div>
 </transition>
