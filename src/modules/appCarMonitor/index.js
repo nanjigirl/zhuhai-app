@@ -12,7 +12,9 @@ var mapHelper = require('utils/mapHelper');
 var arcgisHelper = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 var Q = require('q');
 var refreshTime = 1000;
+var defaultSpeed = 1000;
 var currentThread;
+
 // 定义组件
 var comm = Vue.extend({
     template: template,
@@ -42,12 +44,14 @@ var comm = Vue.extend({
                     terminalNum: ''
                 }
             ],
+            playSpeed: defaultSpeed,
             rightPanelOpen: false,
             isRealTimeMode: true,
             realTimeName: '实时监测',
             historyName: '历史记录',
             // lastUpdateTime: '',
             alarmStatus: 0,
+            isPlay: true,
             alertMessage: '',
             activeIndex: '1',
             facilityPic: '../src/img/combImg.png',
@@ -57,7 +61,8 @@ var comm = Vue.extend({
             search: {
                 dateStart: '',
                 dateEnd: ''
-            },
+            }
+            ,
             rules: {
                 dateStart: [
                     {type: 'date', required: true, message: '请选择日期', trigger: 'change'}
@@ -79,6 +84,19 @@ var comm = Vue.extend({
         }.bind(this));
         eventHelper.on('app-car-monitor', function () {
             this.rightPanelOpen = true;
+        }.bind(this));
+        eventHelper.on('car-trace-play', function (car) {
+            this.isPlay = true;
+            this.playSpeed = defaultSpeed;
+        }.bind(this));
+        eventHelper.on('car-trace-pause', function (car) {
+            this.isPlay = false;
+        }.bind(this));
+        eventHelper.on('car-trace-move', function (car) {
+            this.playSpeed = 200;
+        }.bind(this));
+        eventHelper.on('car-trace-replay', function (car) {
+            this.isReplay = true;
         }.bind(this));
     },
     methods: {
@@ -131,18 +149,25 @@ var comm = Vue.extend({
             var index = 0;
             var maxIndex = points.length;
             this.pointer = setInterval(function () {
-                if (!!this.preLayer) {
-                    this.map.removeLayer(this.preLayer);
+                if (this.isPlay) {
+                    if (!!this.isReplay) {
+                        index = 0;
+                        this.isReplay = false;
+                    }
+                    if (!!this.preLayer) {
+                        this.map.removeLayer(this.preLayer);
+                    }
+                    if (index == maxIndex) {
+                        clearInterval(this.pointer);
+                    }
+                    var point = points[index++];
+                    this.map.centerAt([parseFloat(point.x), point.y]);
+                    var afterPoint = points[index];
+                    var angel = mathUtils.getAngle(point.x, point.y, afterPoint.x, afterPoint.y);
+                    eventHelper.emit('car-speed-change', point);
+                    this.preLayer = mapHelper.createSymbol(this.map, point.x, point.y, './img/car.png', carNum, 30, 40, angel);
                 }
-                if (index == maxIndex) {
-                    clearInterval(this.pointer);
-                }
-                var point = points[index++];
-                this.map.centerAt([parseFloat(point.x), point.y]);
-                var afterPoint = points[index];
-                var angel = mathUtils.getAngle(point.x, point.y, afterPoint.x, afterPoint.y);
-                this.preLayer = mapHelper.createSymbol(this.map, point.x, point.y, './img/car.png', carNum, 30, 40, angel);
-            }.bind(this), 1000);
+            }.bind(this), this.playSpeed);
         },
         getCoordinate: function (list) {//通过点击车辆列表进行获取该车辆的坐标
             list.check = !list.check;
@@ -254,7 +279,7 @@ var comm = Vue.extend({
             }
         }
     },
-    computed:{
+    computed: {
         //搜索功能（根据车牌号码进行过滤）
         queryCarList: function () {
             var that = this;

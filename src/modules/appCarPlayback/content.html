@@ -1,7 +1,7 @@
 <transition name="right-panel">
     <div v-show='carOprationPanel' class='bottom-panel clearfix' style="height: 300px;">
         <div class="col-md-6 left-car-charts">
-            <div id="myChart" style="width: 350px;height: 300px"></div>
+            <div id="myChart" style="width: 370px;height: 300px"></div>
         </div>
         <div class="col-md-6 no-padding right-car-data">
             <div class="clearfix car-oprate-title">
@@ -19,17 +19,17 @@
                 </div>
             </div>
             <div class="car-opration">
-                <div class="col-md-3 player-button">
-                    <i class="icon icon-play-big"></i>
+                <div class="col-md-3 player-button" >
+                    <i class="icon icon-play-big" @click="play"></i>
                 </div>
                 <div class="col-md-3 player-button">
-                    <i class="icon icon-play-big1"></i>
+                    <i class="icon icon-play-pause" @click="pause" ></i>
                 </div>
                 <div class="col-md-3 player-button">
-                    <i class="icon icon-play-move"></i>
+                    <i class="icon icon-play-move" @click="move"></i>
                 </div>
                 <div class="col-md-3 player-button">
-                    <i class="icon icon-play-pause"></i>
+                    <i class="icon icon-play-replay" @click="replay"></i>
                 </div>
             </div>
         </div>
