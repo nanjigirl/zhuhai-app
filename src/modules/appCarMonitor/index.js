@@ -75,7 +75,7 @@ var comm = Vue.extend({
     },
     computed: {},
     mounted: function () {
-        // this.queryCarData();
+        this.queryCarData();
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
@@ -84,7 +84,7 @@ var comm = Vue.extend({
         }.bind(this));
         eventHelper.on('app-car-monitor', function () {
             this.rightPanelOpen = true;
-            this.queryCarData();
+            // this.queryCarData();
         }.bind(this));
         eventHelper.on('car-trace-play', function (car) {
             this.isPlay = true;

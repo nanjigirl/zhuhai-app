@@ -49,7 +49,7 @@ var comm = Vue.extend({
             //         terminalNum: ''
             //     }
             // ],
-            playSpeed: defaultSpeed,
+            // playSpeed: defaultSpeed,
             rightPanelOpen: false,
             isRealTimeMode: true,
             // isPlay: true,
@@ -132,29 +132,29 @@ var comm = Vue.extend({
             this.rightPanelOpen = true;
             this.queryCarData();
         }.bind(this));
-        eventHelper.on('car-trace-play', function (car) {
-            this.isPlay = true;
-            this.playSpeed = defaultSpeed;
-        }.bind(this));
-        eventHelper.on('car-trace-pause', function (car) {
-            this.isPlay = false;
-        }.bind(this));
-        eventHelper.on('car-trace-move', function (car) {
-            this.playSpeed = 200;
-        }.bind(this));
-        eventHelper.on('car-trace-replay', function (car) {
-            this.isReplay = true;
-        }.bind(this));
-        eventHelper.on('stop-player', function () {
-            this.stopPlay();
-        }.bind(this));
+        // eventHelper.on('car-trace-play', function (car) {
+        //     this.isPlay = true;
+        //     this.playSpeed = defaultSpeed;
+        // }.bind(this));
+        // eventHelper.on('car-trace-pause', function (car) {
+        //     this.isPlay = false;
+        // }.bind(this));
+        // eventHelper.on('car-trace-move', function (car) {
+        //     this.playSpeed = 200;
+        // }.bind(this));
+        // eventHelper.on('car-trace-replay', function (car) {
+        //     this.isReplay = true;
+        // }.bind(this));
+        // eventHelper.on('stop-player', function () {
+        //     this.stopPlay();
+        // }.bind(this));
     },
     methods: {
-        stopPlay: function () {
-            clearInterval(this.pointer);
-            this.removeDistance();
-            this.map.removeLayer(this.preLayer);
-        },
+        // stopPlay: function () {
+        //     clearInterval(this.pointer);
+        //     this.removeDistance();
+        //     this.map.removeLayer(this.preLayer);
+        // },
         // submitForm: function (formName) {
         //     this.$refs[formName].validate(function (valid) {
         //         if (valid) {
