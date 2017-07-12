@@ -94,13 +94,13 @@ define(function () {
             }.bind(this));
             baseMap.addLayer(graLayer);
         },
-        drawLine: function (map, start, end) {
+        drawLine: function (map, start, end,lineWidth) {
             var no = generateNo();
             var line = Polyline({
                 "paths": [[start, end]],
                 "spatialReference": {"wkid": no}
             });
-            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15]), 1);
+            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15]), lineWidth);
             var graphic = new Graphic(line, symbol);
             map.graphics.add(graphic);
             return graphic;

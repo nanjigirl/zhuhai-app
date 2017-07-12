@@ -171,6 +171,44 @@ var comm = Vue.extend({
         //     this.removeDistance();
         // },
         queryCarData: function () {
+            var lineArr = [
+                {x:108.27371624694825,y:22.838436367797854},
+                {x:108.31234005676271,y:22.84478783874512},
+                {x: 108.32877663360597,y:22.851697209167483},
+                {x:108.33180216537477,y: 22.857126000213626}];
+            var lineArr2 = [
+                {x: 108.34761646972657,y:22.84727692871094},
+                {x: 108.3654692529297,y: 22.816721203613284},
+                {x: 108.38057545410157,y: 22.783762219238284},
+                {x:108.3932783959961,y: 22.756983044433596}];
+            for(var i=0;i<lineArr2.length-1;i++){
+                mapHelper.drawLine(this.map, [lineArr2[i].x,lineArr2[i].y ], [lineArr2[i+1].x,lineArr2[i+1].y],2);
+            }
+            for(var i=0;i<lineArr.length-1;i++){
+                mapHelper.drawLine(this.map, [lineArr[i].x,lineArr[i].y ], [lineArr[i+1].x,lineArr[i+1].y],2);
+            }
+            deviceModel.ssjkCreatePoint(this.map, 123, 'f' + 123, 123456, 'abc', 108.27371624694825, 22.838436367797854, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 123456,
+                id: 123,
+                truckNum: 123456
+            });
+            deviceModel.ssjkCreatePoint(this.map, 12345, 'f' + 12345, 123456, 'abc', 108.34761646972657, 22.84727692871094, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 123456,
+                id: 123,
+                truckNum: 123456
+            });
+            deviceModel.ssjkCreatePoint(this.map, 1234, 'f' + 1234, 123456, 'abc', 108.29620388732911, 22.82007627137499, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 123456,
+                id: 1234,
+                truckNum: 123456
+            });
+            var lineArr1 = [
+                {x:108.29620388732911,y: 22.82007627137499},
+                {x:108.32289723144532,y:22.786258980115225},
+                {x: 108.32658795104982,y: 22.77312688477831},];
+            for(var i=0;i<lineArr1.length-1;i++){
+                mapHelper.drawLine(this.map, [lineArr1[i].x,lineArr1[i].y ], [lineArr1[i+1].x,lineArr1[i+1].y],2);
+            }
             var self = this;
             //从后台获取车辆信息数据
             historySearchServices.getCarListData(function (data) {

@@ -228,7 +228,7 @@ var comm = Vue.extend({
                                 }
                                 resultArr.sort(dateSort);
                                 for (var i = 0; i < resultArr.length - 1; i++) {
-                                    var graLayer = mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y]);
+                                    var graLayer = mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y],1);
                                     self.cardistanceArr.push(graLayer);
                                 }
                                 self.carTrace(resultArr, car.num);
