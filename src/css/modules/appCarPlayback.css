@@ -19,6 +19,12 @@
 .text-detail-title{
     font-size: 1em;
 }
+.text-count-title.font-bold{
+    font-weight: bold;
+}
+.font-bigger{
+    font-size: 1.5em;
+}
 .car-detail-title{
     font-weight: bold;
     color: #000;

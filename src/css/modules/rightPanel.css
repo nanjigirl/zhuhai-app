@@ -272,6 +272,9 @@
 .panel-top {
     height: 47%;
 }
+.carMonitor  .panel-top.panel-top-middle {
+    height: 30%;
+}
 
 .panel-summary {
     height: 99%;

@@ -103,26 +103,25 @@ var comm = Vue.extend({
                     type:'line',
                     symbol:'none',
                     stack: '总量1',
-                    data:[11, 15, 18, 30, 24, 33, 44, 24,28,38,45,21,16],
+                    data:[24, 18, 22, 30, 24, 33, 40, 34,28,38,45,31,28],
                 },
                 {
                     name:'7月12日',
                     type:'line',
                     symbol:'none',
                     stack: '总量2',
-                    data:[25, 26, 14, 33, 26, 13, 34,40,28,23,41,33,24]
+                    data:[25, 19, 21, 31, 26, 32, 38,33,28,39,41,33,26]
                 },
                 {
                     name:'7月13日',
                     type:'line',
                     symbol:'none',
                     stack: '总量3',
-                    data:[14, 23, 33, 24, 28, 40, 34,44,50,44,41,33,24]
+                    data:[23, 20, 18, 29, 25, 31, 39,31,27,27,41,33,27]
                 }
             ]
         };
         carPolluteLine.setOption(option, true);
-        this.queryCarData();
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
@@ -131,6 +130,7 @@ var comm = Vue.extend({
         }.bind(this));
         eventHelper.on('app-car-pollution', function () {
             this.rightPanelOpen = true;
+            this.queryCarData();
         }.bind(this));
         eventHelper.on('car-trace-play', function (car) {
             this.isPlay = true;

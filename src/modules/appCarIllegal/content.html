@@ -3,21 +3,27 @@
         <div class="goBack"><a href='#' class="el-icon-d-arrow-right" @click="closePanel"></a></div>
         <div class="panel-header single-panel-header">违法行驶车辆统计信息</div>
         <div class="panel-content">
-            <div class="panel-top" v-show='isRealTimeMode'>
+            <div class="panel-top panel-top-middle" v-show='isRealTimeMode'>
                 <div class="col-md-6">
-                    <ul class="text-desc-box">
-                        <li v-for="info in illegalInfo">
-                            <span class="text-detail-title">{{info.name}}</span>
-                            <span class="text-blue">{{info.value}}</span>
-                        </li>
-                    </ul>
                     <div class="text-desc-box">
-                        <span class="text-detail-title">合计：</span>
-                        <span class="text-blue">3辆</span>
+                        <table class="table table-striped table-bordered text-center no-margin">
+                            <thead>
+                            </thead>
+                            <tbody>
+                            <tr v-for="information in illegalInfos">
+                                <td>
+                                    {{information.name}}
+                                </td>
+                                <td>
+                                    {{information.value}}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div id="carData" style="width: 230px;height: 200px"></div>
+                    <div id="carData" style="width: 230px;height: 250px"></div>
                 </div>
             </div>
             <div class="panel-bottom" v-show='isRealTimeMode'>

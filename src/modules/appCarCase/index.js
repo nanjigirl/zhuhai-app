@@ -21,15 +21,19 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            carCases:[{
-                name:'路面泥土撒漏：',
-                value:22
+            tableCaseHead:['预警时间','预警类型','地点'],
+            caseLists:[{
+                date:'2017-4-8',
+                type:'蓝色',
+                address:'青秀区'
             },{
-                name:'PM2.5:',
-                value:8
+                date:'2017-4-9',
+                type:'黄色',
+                address:'兴宁区'
             },{
-                name:'PM10：',
-                value:10
+                date:'2017-4-8',
+                type:'蓝色',
+                address:'金州区'
             }],
             carLists: [
                 {
@@ -66,23 +70,19 @@ var comm = Vue.extend({
         var carCases = echarts.init(document.getElementById('carCases'));
         var option = {
             tooltip : {
-                axisPointer:{
-                    type:'none'
-                },
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
-            // legend: {
-            //     orient: 'vertical',
-            //     left: 'left',
-            //     data: ['泥头车','搅拌车','渣土车']
-            // },
-
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['路面泥土撒漏','PM2.5','PM10']
+            },
             series : [
                 {
-                    name: '案件分类统计信息',
+                    name: '访问来源',
                     type: 'pie',
-                    radius : '95%',
+                    radius : '80%',
                     label:{
                         normal:{
                             show:false ,
@@ -91,25 +91,66 @@ var comm = Vue.extend({
                             show :false
                         }
                     },
-                    // center: ['50%', '60%'],
+                    center: ['50%', '60%'],
                     data:[
                         {value:22, name:'路面泥土撒漏'},
                         {value:8, name:'PM2.5'},
-                        {value:12, name:'PM10'},
+                        {value:12, name:'PM10'}
                     ],
                     itemStyle: {
                         emphasis: {
-                            // shadowBlur: 10,
-                            // shadowOffsetX: 0,
-                            // shadowColor: 'rgba(0, 0, 0, 0.5)'
+                            shadowBlur: 10,
+                            shadowOffsetX: 0,
+                            shadowColor: 'rgba(0, 0, 0, 0.5)'
                         }
-                    },
-
+                    }
                 }
             ]
+            // tooltip : {
+            //     // axisPointer:{
+            //     //     type:'none'
+            //     // },
+            //     trigger: 'item',
+            //     formatter: "{a} <br/>{b} : {c} ({d}%)"
+            // },
+            // legend: {
+            //     orient: 'vertical',
+            //     left: 'left',
+            //     data: ['泥头车','搅拌车','渣土车']
+            // },
+            //
+            // series : [
+            //     {
+            //         name: '案件分类统计信息',
+            //         type: 'pie',
+            //         radius : '95%',
+            //         label:{
+            //             normal:{
+            //                 show:false ,
+            //                 position : 'outside'
+            //             },emphasis:{
+            //                 show :true
+            //             }
+            //         },
+            //         // center: ['50%', '60%'],
+            //         data:[
+            //             {value:22, name:'路面泥土撒漏'},
+            //             {value:8, name:'PM2.5'},
+            //             {value:12, name:'PM10'},
+            //         ],
+            //         itemStyle: {
+            //             emphasis: {
+            //                 // shadowBlur: 10,
+            //                 // shadowOffsetX: 0,
+            //                 // shadowColor: 'rgba(0, 0, 0, 0.5)'
+            //             }
+            //         },
+            //
+            //     }
+            // ]
         };
         carCases.setOption(option, true);
-        this.queryCarData();
+        // this.queryCarData();
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
@@ -118,6 +159,7 @@ var comm = Vue.extend({
         }.bind(this));
         eventHelper.on('app-car-case', function () {
             this.rightPanelOpen = true;
+            this.queryCarData();
         }.bind(this));
         eventHelper.on('car-trace-play', function (car) {
             this.isPlay = true;

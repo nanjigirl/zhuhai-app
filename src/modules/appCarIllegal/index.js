@@ -21,7 +21,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            illegalInfo:[{
+            illegalInfos:[{
                 name:'禁行区域：',
                 value:'凤岭片区'
             },{
@@ -36,6 +36,9 @@ var comm = Vue.extend({
             },{
                 name:'渣土车：',
                 value:'1辆'
+            },{
+                name:'合计：',
+                value:'3辆'
             }],
             carLists: [
                 {
@@ -78,17 +81,17 @@ var comm = Vue.extend({
                 trigger: 'item',
                 formatter: "{a} <br/>{b} : {c} ({d}%)"
             },
-            // legend: {
-            //     orient: 'vertical',
-            //     left: 'left',
-            //     data: ['泥头车','搅拌车','渣土车']
-            // },
+            legend: {
+                orient: 'vertical',
+                left: 'left',
+                data: ['泥头车','搅拌车','渣土车']
+            },
 
             series : [
                 {
                     name: '违规车辆信息',
                     type: 'pie',
-                    radius : '95%',
+                    radius : '90%',
                     label:{
                         normal:{
                             show:false ,
@@ -115,7 +118,6 @@ var comm = Vue.extend({
             ]
         };
         carData.setOption(option, true);
-        this.queryCarData();
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
@@ -124,6 +126,7 @@ var comm = Vue.extend({
         }.bind(this));
         eventHelper.on('app-car-illegal', function () {
             this.rightPanelOpen = true;
+            this.queryCarData();
         }.bind(this));
         eventHelper.on('car-trace-play', function (car) {
             this.isPlay = true;

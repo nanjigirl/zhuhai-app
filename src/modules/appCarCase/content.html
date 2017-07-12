@@ -5,15 +5,29 @@
         <div class="panel-content">
             <div class="panel-top" v-show='isRealTimeMode'>
                 <div class="col-md-6">
-                    <ul class="text-desc-box">
-                        <li v-for="list in carCases">
-                            <span class="text-detail-title">{{list.name}}</span>
-                            <span class="text-blue">{{list.value}}起</span>
-                        </li>
-                    </ul>
+                    <table class="table table-striped table-bordered text-center" style="margin-top: 10px;">
+                        <thead>
+                        <tr>
+                            <th v-for="caseType in tableCaseHead">{{caseType}}</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr v-for="caseList in caseLists">
+                            <td>
+                                {{caseList.date}}
+                            </td>
+                            <td>
+                                {{caseList.type}}
+                            </td>
+                            <td>
+                                {{caseList.address}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
                 <div class="col-md-6">
-                    <div id="carCases" style="width: 230px;height: 200px"></div>
+                    <div id="carCases" style="width: 230px;height: 250px"></div>
                 </div>
             </div>
             <div class="panel-bottom" v-show='isRealTimeMode'>
