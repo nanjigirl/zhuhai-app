@@ -116,7 +116,7 @@ var comm = Vue.extend({
         eventHelper.on('mapCreated', function (map) {
             this.map = map;
         }.bind(this));
-        eventHelper.on('app-car-cases', function () {
+        eventHelper.on('app-car-case', function () {
             this.rightPanelOpen = true;
         }.bind(this));
         eventHelper.on('car-trace-play', function (car) {

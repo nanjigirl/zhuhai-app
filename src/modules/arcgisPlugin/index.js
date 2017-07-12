@@ -94,9 +94,9 @@ var comm = Vue.extend({
     components: {
         'right-panel': rightPanel,
         //'right-panel-complaint': rightPanelComplaint,
-        // 'app-car-illegal':appCarIllegal,
-        // 'app-car-case':appCarCase,
-        // 'app-car-pollution':appCarPollution,
+        'app-car-illegal':appCarIllegal,
+        'app-car-case':appCarCase,
+        'app-car-pollution':appCarPollution,
         'app-car-playback':appCarPlayback,
         'flex-map-legend': flexMapLegend,
         'app-car-monitor': appCarMonitor
