@@ -76,9 +76,9 @@ li {
     background: url("./images/chengguanLogo.png") no-repeat center center !important;
     background-color: #ededed;
     background-size: 7em 6em;
-    border-right: 1px solid whitesmoke !important;
+    border-right: 1px solid black !important;
     height: 6.8em;
-    border-bottom: 2px solid #105ba3 !important;
+    border-bottom: 3px solid black !important;
 }
 
 ::-webkit-scrollbar {

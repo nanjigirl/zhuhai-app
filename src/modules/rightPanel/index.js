@@ -271,26 +271,30 @@ var comm = Vue.extend({
             var streamNameSmall = ""; //视频子码流名称，视频子码流从哪里获取？可以不填
             var nStreamFlag = 1; //播放码流标志位：怎么设置？
 //看到平台中有个设备编号，但是该接口没有该编号，IP和端口一样的情况下没有编号是否指定不到设备？
-//ip=172.32.0.28&port=554&cid=4089&status=1
-            function init() {
-                /*	var ip= request("ip");
-                 var port=request("port");
-                 var cid=request("cid");*/
-                var ip = getURLParameter(videoFix[0]);
-                var port = getURLParameter(videoFix[1]);
-                var cid = getURLParameter(videoFix[2]);
+            /*  //ip=172.32.0.28&port=554&cid=4089&status=1
+             var ip = getURLParameter(videoFix[0]);
+             var port = getURLParameter(videoFix[1]);
+             var cid = getURLParameter(videoFix[2]);*/
 
-                if (!!ip && !!port && !!cid) {
-                    chServerIP = ip;
-                    nServerPort = port;
-                    chStreamName = cid;
-                }
-                var obj = document.getElementById("videoobj");
-                //obj.SetFrameMode(1,1);alert("SetFrameMode OK");
-                //obj.SetShowMode(0);alert("SetShowMode OK");
-                //videoobj.StartPlay(nChannel, chServerIP, nServerPort, chStreamName, chDevName, chUser, chPwd, chProtocol, frameSpeed, streamNameSmall, nStreamFlag);
-                obj.StartPlay(nChannel, chServerIP, nServerPort, chStreamName, chDevName, chUser, chPwd, chProtocol, frameSpeed, streamNameSmall, nStreamFlag);
-            };
+            if (!!ip && !!port && !!cid) {
+                chServerIP = ip;
+                nServerPort = port;
+                chStreamName = cid;
+            }
+            var ip = getURLParameter(videoFix[0]);
+            var port = getURLParameter(videoFix[1]);
+            var cid = getURLParameter(videoFix[2]);
+
+            if (!!ip && !!port && !!cid) {
+                chServerIP = ip;
+                nServerPort = port;
+                chStreamName = cid;
+            }
+            var obj = document.getElementById("videoobj");
+            //obj.SetFrameMode(1,1);alert("SetFrameMode OK");
+            //obj.SetShowMode(0);alert("SetShowMode OK");
+            //videoobj.StartPlay(nChannel, chServerIP, nServerPort, chStreamName, chDevName, chUser, chPwd, chProtocol, frameSpeed, streamNameSmall, nStreamFlag);
+            obj.StartPlay(nChannel, chServerIP, nServerPort, chStreamName, chDevName, chUser, chPwd, chProtocol, frameSpeed, streamNameSmall, nStreamFlag);
             setTimeout(function () {
                 init();
             }, 2000);
@@ -331,7 +335,7 @@ var comm = Vue.extend({
                 facilityController.getFacilityDetail(facilityID, function (data) {
                     console.log(data);
                     data.devices.forEach(function (device) {
-                        if (device.devName == '视频') {
+                        if (device.devName.toUpperCase().indexOf('VIDEO') !== -1) {
                             var videoURL = device.items[0].value;
                             if (facilityTypeName == 'DS') {
                                 this.initHKVideo(videoURL);

@@ -1,6 +1,6 @@
 @charset "UTF-8";
 .left_col {
-    background: #0361b1;
+    background: #013448;
 }
 
 .nav-sm .container.body .col-md-3.left_col {
@@ -211,8 +211,8 @@
 
 .nav_menu {
     float: left;
-    background: #EDEDED;
-    border-bottom: 1px solid #D9DEE4;
+    background: #20a0ff;
+    border-bottom: 1px solid #013448;
     width: 100%;
     position: relative;
 }
@@ -228,6 +228,8 @@
     display: inline-block;
     padding-top: 0.5em;
     padding-left: 1em;
+    color: whitesmoke;
+
 }
 @media (min-width: 480px) {
     .nav_menu {
@@ -259,7 +261,7 @@ body .container.body .right_col {
     float: left;
     background: #172d44;
     border-radius: 0;
-    height: 6.7em;
+    height: 6.95em;
 }
 
 @media (max-width: 991px) {
@@ -414,7 +416,7 @@ body .container.body .right_col {
 
 body {
     color: #73879C;
-    background: #0361b1;
+    background: #013448;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -711,7 +713,7 @@ a:hover, a:focus {
 
 .nav.side-menu > li.active > a {
     text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-    background: linear-gradient(#0E59A0, #1968B1), #0361b1;
+    background: linear-gradient(#013448, #3e5e78), #013448;
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0;
 }
 
@@ -827,6 +829,10 @@ a:hover, a:focus {
 
 .line_30 {
     line-height: 30px;
+}
+
+.main_menu_side.width {
+    width: 200px;
 }
 
 .main_menu_side {
@@ -1819,7 +1825,7 @@ span.right {
     padding: 5px 0 0 0;
     position: fixed;
     width: 200px;
-    background: #0361b1;
+    background: #013448;
 }
 
 .sidebar-footer a {

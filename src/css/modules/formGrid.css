@@ -212,3 +212,10 @@
 .input.input-small{
     width: 35px;
 }
+.cesc-pagination{
+    width: 100%;
+    height: 2.5em;
+}
+.cesc-pagination .el-pagination{
+    float:right
+}

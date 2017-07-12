@@ -4,7 +4,7 @@
     height: 2.8em;
     position: absolute;
     top: 4em;
-    background-color: #ededed;
+    background-color: rgb(32, 160, 255);
     float: left;
 }
 
@@ -26,15 +26,16 @@
 .cescTab {
     width: 10%;
     height: 100%;
-    border: 1px solid #105ba3;
+    border: 1px solid gray;
     float: left;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     margin-top: 5px;
+    background-color: lightgray;
 }
 
 .cescTab:hover {
-    background-color: #8fb7de;
+    background-color: #97aa7c;
     height: 100%;
     margin-top: 0;
 }
@@ -44,31 +45,31 @@
     width: 88%;
     height: 100%;
     text-align: center;
-    padding-top: 7%;
+    line-height: 2.8em;
     font-weight: bold;
     float: left;
     padding-left: 1em;
 }
 
 .cescTab .tabName:hover {
-    color: white;
+    color: whitesmoke;
 
 }
 
 .tabGroups .tabActive {
-    background-color: #105ba3;
+    background-color: white;
     height: 100%;
     margin-top: 0;
 }
 
 .tabGroups .tabActive > a {
-    color: white;
+    color: black;
 }
 
 .cescTab .tabClose {
     float: left;
     top: 3px;
-    color: #ab9797;
+    color: black;
     display: inline-block;
 }
 
@@ -86,6 +87,7 @@
     opacity: 0.7;
     font-size: 1.5em;
 }
-.tabControlLeft, .tabControlRight>a{
+
+.tabControlLeft, .tabControlRight > a {
     cursor: pointer;
 }

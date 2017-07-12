@@ -1,0 +1,119 @@
+.bottom-panel {
+    background: #f4f4f4;
+    position: absolute;
+    right: 50%;
+    margin-right:-250px;
+    bottom: 0;
+    width: 800px;
+    z-index: 100;
+    -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
+    -moz-box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
+    box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
+}
+.car-detail-title + .car-detail-title{
+    border-left:1px solid #ccc;
+}
+.left-car-charts{
+    border-right: 2px solid #ccc;
+}
+.text-detail-title{
+    font-size: 1em;
+}
+.car-detail-title{
+    font-weight: bold;
+    color: #000;
+    font-size: 1em;
+    text-align:center;
+    border-bottom:1px solid #ccc;
+}
+.car-oprate-title{
+    height:10%;
+}
+.bottom-panel .right-car-data{
+    height:100%;
+}
+.car-detail-title{
+    height:100%;
+    line-height: 30px;
+    cursor: pointer;
+}
+.car-detail-title.is-active{
+    background: #20a0ff;
+    color: #fff;
+    border-bottom: none;
+}
+.car-detail-title.isActive{
+    background: rgb(32,160,255);
+}
+.car-detail{
+    height:60%;
+    text-align: center;
+    border-bottom: 2px solid #ccc;
+}
+.car-opration{
+    height:calc(100% - 19% - 55%);
+}
+.player-button{
+    background: #105ba3;
+    padding-top: 10px;
+    height: 100%;
+    line-height: 90px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 2px solid #ccc;
+    border-right:2px solid #ccc;
+}
+.player-button:hover{
+    background-color: gainsboro;
+}
+.text-blue{
+    color: #1C9AF7;
+}
+.car-opration .col-20{
+    float: left;
+    width: 20%;
+}
+.car-opration .icon{
+    z-index: 2;
+}
+.car-opration .icon.icon-play-big{
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background: url(../../img/icon/player1.png) center no-repeat;
+}
+.car-opration .icon.icon-play-pause{
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background: url(../../img/icon/player2.png) center no-repeat;
+}
+.car-opration .icon.icon-play-move{
+    display: inline-block;
+    width: 64px;
+    height: 64px;
+    background: url(../../img/icon/player3.png) center no-repeat;
+}
+.car-opration .icon.icon-play-replay{
+    display: inline-block;
+    width: 68px;
+    height: 64px;
+    background: url(../../img/icon/player4.png) center no-repeat;
+}
+.icon.icon-play-stop{
+    display: inline-block;
+    width: 68px;
+    height: 64px;
+    background: url(../../img/icon/player5.png) center no-repeat;
+}
+.car-detail .img-100{
+    width: 100%;
+    height: 100%;
+}
+.height100{
+    height: 100%;
+}
+.text-desc-box{
+    text-align: left;
+    padding:1em 0;
+}

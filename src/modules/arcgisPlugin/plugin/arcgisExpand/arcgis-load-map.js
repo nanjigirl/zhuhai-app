@@ -1,7 +1,15 @@
 define(function () {
     var Map = cesc.require("esri/map"),
         TDTLayer = require('./TDTLayer'),
+        eventHelper = require('utils/eventHelper'),
         TDTAnnoLayer = require('./TDTAnnoLayer'),
+        FeatureLayer = cesc.require("esri/layers/FeatureLayer"),
+        Graphic = cesc.require("esri/graphic"),
+        Color = cesc.require("esri/Color"),
+        Point = cesc.require('esri/geometry/Point'),
+        GraphicsLayer = cesc.require("esri/layers/GraphicsLayer"),
+        PictureMarkerSymbol = cesc.require("esri/symbols/PictureMarkerSymbol"),
+        TextSymbol = cesc.require("esri/symbols/TextSymbol"),
         ArcGISDynamicMapServiceLayer = cesc.require('esri/layers/ArcGISDynamicMapServiceLayer'),
         deviceModel = require('./deviceModel');
     var map;
@@ -33,14 +41,26 @@ define(function () {
             deviceModel.createTextSymbol(map);
             return map;
         },
-        createPoints: function (facilitys,legend) {
+        createPoints: function (facilitys, legend) {
+            var graLayer = new GraphicsLayer();
             facilitys.forEach(function (item) {
-                var icon = './img/toolbar/'+legend.icon+'.png';
+                var icon = './img/toolbar/' + legend.icon + '.png';
                 var fid = legend.id;
                 item.fid = fid;
+                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item,legend.facilityTypeName);
                 //创建地图上图标
-                deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
+                //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
+            graLayer.on('click', function (evt) {
+                eventHelper.emit('subFacility-clicked', {
+                    id: 'f' + evt.graphic.attributes.item.fid,
+                    item: evt.graphic.attributes.item,
+                    facilityTypeName: evt.graphic.attributes.facilityTypeName,
+                    center: [evt.graphic.geometry.x, evt.graphic.geometry.y]
+                });
+            });
+            map.addLayer(graLayer);
+            return graLayer;
         },
         createDistrict: function (map) {
             deviceModel.ssjkCreatePoint(map, 999, 'f999', '兴宁区 1', 'abc', 108.36375263916017, 22.857919934082034, '', './img/mapLegend/district.png', '50', '30', 'abc', {
@@ -49,10 +69,11 @@ define(function () {
             });
         },
         //删除地图上图标
-        removePoints: function (list) {
-            list.forEach(function (item) {
-                map.removeLayer(map.getLayer('f' + item.id));
-            });
+        removePoints: function (graLayer) {
+            map.removeLayer(graLayer.layer);
+        },
+        removeGraphic:function (graphic) {
+            map.graphics.remove(graphic);
         }
     }
 });

@@ -24,7 +24,9 @@
 @import "./modules/noticeBox.css";
 @import "./modules/appGeneralElements.css";
 @import "./modules/appSearch.css";
+@import "./modules/carMonitor.css";
 @import "./maps/jquery-jvectormap-2.0.3.css";
+@import "./modules/appCarPlayback.css";
 :root {
     --base-color:#105ba3;
 
