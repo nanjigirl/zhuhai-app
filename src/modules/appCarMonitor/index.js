@@ -3,6 +3,7 @@ var controller = require('controllers/rightPanelController');
 var facilityController = require('controllers/facilityController');
 var serviceHelper = require('services/serviceHelper');
 var moment = require('moment');
+var _ = require('underscore');
 var removePic = require('../arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 var mathUtils = require('utils/mathUtils');
 var eventHelper = require('../../utils/eventHelper');
@@ -165,7 +166,8 @@ var comm = Vue.extend({
                         clearInterval(this.pointer);
                     }
                     var point = points[index++];
-                    this.map.centerAt([parseFloat(point.x), point.y]);
+                    point.num = carNum;
+                    this.map.centerAt([parseFloat(point.x), parseFloat(point.y)]);
                     var afterPoint = points[index];
                     var angel = mathUtils.getAngle(point.x, point.y, afterPoint.x, afterPoint.y);
                     eventHelper.emit('car-speed-change', point);
@@ -218,15 +220,23 @@ var comm = Vue.extend({
                         }
                         eventHelper.emit('loading-start');
                         var counter = setInterval(function () {
-                            if (resultArr.length == carHistoryCount) {
+                            if (resultArr.length === carHistoryCount) {
                                 clearInterval(counter);
                                 eventHelper.emit('loading-end');
-                                var dateSort = function (pre, after) {
-                                    var preDate = moment(pre.date, 'YYYY-MM-DD hh:mm:ss');
-                                    var afterDate = moment(after.date, 'YYYY-MM-DD hh:mm:ss');
-                                    return !preDate.isBefore(afterDate);
+                                //  resultArr.sort(dateSort);
+                                var dateSort = function (a, b) {
+                                    return a.date > b.date ? 1 : -1;
                                 }
+                                var dateArr = [];
+                                resultArr.forEach(function (point) {
+                                    dateArr.push(point.date);
+                                })
                                 resultArr.sort(dateSort);
+
+                                var c = 1;
+                                resultArr.forEach(function (a) {
+                                    console.log(c++, a.date);
+                                });
                                 for (var i = 0; i < resultArr.length - 1; i++) {
                                     var graLayer = mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y],1);
                                     self.cardistanceArr.push(graLayer);

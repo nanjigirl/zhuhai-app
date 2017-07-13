@@ -26,7 +26,9 @@ define([
             })
         },
         traceCarHistory: function ( terminalNum, dateStart, dateEnd, pageNumber,resultArr) {
+            console.log('start');
             historySearchServices.getCarHistoryData(terminalNum, dateStart, dateEnd, pageNumber, function (data) {
+                console.log('done');
                 resultArr.push(...data);
             }.bind(this));
         }
