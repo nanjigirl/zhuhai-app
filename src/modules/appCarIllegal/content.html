@@ -18,6 +18,14 @@
                                     {{information.value}}
                                 </td>
                             </tr>
+                            <tr style="font-weight: bold">
+                                <td>
+                                    合计
+                                </td>
+                                <td>
+                                    3辆
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -39,8 +47,8 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(list,index) in carLists" @click="getCoordinate(list)">
-                                <td>
+                            <tr v-for="(list,index) in carLists" >
+                                <td  @click="getCoordinate(list,index)">
                                     <el-checkbox v-model="list.check"></el-checkbox>
                                 </td>
                                 <td>

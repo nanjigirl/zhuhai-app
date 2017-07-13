@@ -39,6 +39,26 @@ define(function () {
             var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([243, 49, 76, 0.8]), 5);
             graphic.setSymbol(symbol);
         },
+        addMarkSymbol: function (map, text, x, y, width,color) {
+            var geometry = new Point(x, y);
+            var textSymbol = new TextSymbol();
+            textSymbol.setText(text);
+            textSymbol.setColor(new Color([255, 0, 0, 1]));
+            textSymbol.setFont("12pt");
+            var offset = -width / 2;
+            console.log(offset);
+          //  textSymbol.setOffset( offset, -offset);
+            var graphic1 = new Graphic(geometry, textSymbol);
+
+            var markSymbol = new SimpleMarkerSymbol(SimpleMarkerSymbol.STYLE_CIRCLE, width,
+                new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID,
+                    new Color([255, 0, 0]), 1),
+                new Color(color));
+            var graphic = new Graphic(geometry, markSymbol);
+            map.graphics.add(graphic);
+            map.graphics.add(graphic1);
+            return [graphic, graphic1];
+        },
         revertLineSymbol: function (graphic) {
             var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15, 0.8]), 2);
             graphic.setSymbol(symbol);
@@ -94,7 +114,10 @@ define(function () {
             }.bind(this));
             baseMap.addLayer(graLayer);
         },
-        drawLine: function (map, start, end,lineWidth) {
+        removeGraphic: function (map, graphic) {
+            map.graphics.remove(graphic);
+        },
+        drawLine: function (map, start, end, lineWidth) {
             var no = generateNo();
             var line = Polyline({
                 "paths": [[start, end]],
@@ -122,9 +145,9 @@ define(function () {
             map.graphics.add(graphic);
             return graphic;
         },
-        createPolyon: function (map, points, isHighLight) {
+        createPolyon: function (points, isHighLight) {
             var graphic = this.drawPolygon(points, isHighLight);
-            map.graphics.add(graphic);
+            this.map.graphics.add(graphic);
             return graphic;
         },
         drawPolygonWithData: function (map, building, isNew) {
@@ -237,7 +260,13 @@ define(function () {
             map.addLayer(leftLayer);
             return map;
         },
+        setMap: function (map) {
+            this.map = map;
+        },
         setCenter: function (x, y, map, zoom) {
+            if (!map) {
+                map = this.map;
+            }
             var point = new Point(x, y, new SpatialReference({wkid: map.spatialReference.wkid}));
             if (!!zoom) {
                 map.centerAndZoom(point, zoom);

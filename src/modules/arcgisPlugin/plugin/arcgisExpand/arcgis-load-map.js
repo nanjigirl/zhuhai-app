@@ -41,13 +41,19 @@ define(function () {
             deviceModel.createTextSymbol(map);
             return map;
         },
+        createPoint: function (item) {
+            var graLayer = new GraphicsLayer();
+            deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, item.icon, item, '');
+            map.addLayer(graLayer);
+            return graLayer;
+        },
         createPoints: function (facilitys, legend) {
             var graLayer = new GraphicsLayer();
             facilitys.forEach(function (item) {
                 var icon = './img/toolbar/' + legend.icon + '.png';
                 var fid = legend.id;
                 item.fid = fid;
-                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item,legend.facilityTypeName);
+                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item, legend.facilityTypeName);
                 //创建地图上图标
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
@@ -72,7 +78,7 @@ define(function () {
         removePoints: function (graLayer) {
             map.removeLayer(graLayer.layer);
         },
-        removeGraphic:function (graphic) {
+        removeGraphic: function (graphic) {
             map.graphics.remove(graphic);
         }
     }
