@@ -39,6 +39,7 @@ define([
     'modules/appDemo1/companyDemoExt',
     'modules/appDemo1/treeDemo',
     'modules/appDemo1/treeDemoExt',
+    'modules/appAlarmManager/alarmType'
 ], function (appContent,
              appDemoForm,
              elementForm,
@@ -78,7 +79,8 @@ define([
              companyDemo,
              companyDemoExt,
              treeDemo,
-             treeDemoExt) {
+             treeDemoExt,
+             alarmType){
     return {
         'app-content': appContent,
         'app-demo-form': appDemoForm,
@@ -119,6 +121,7 @@ define([
         'companyDemo': companyDemo,
         'companyDemoExt': companyDemoExt,
         'treeDemo': treeDemo,
-        'treeDemoExt': treeDemoExt
+        'treeDemoExt': treeDemoExt,
+        'alarmType': alarmType
     }
 });

@@ -76,7 +76,7 @@ var comm = Vue.extend({
     },
     computed: {},
     mounted: function () {
-        this.queryCarData();
+        // this.queryCarData();
         eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
@@ -85,6 +85,7 @@ var comm = Vue.extend({
         }.bind(this));
         eventHelper.on('app-car-monitor', function () {
             this.rightPanelOpen = true;
+            this.queryCarData();
         }.bind(this));
         eventHelper.on('car-trace-play', function (car) {
             this.isPlay = true;
@@ -237,7 +238,7 @@ var comm = Vue.extend({
                                     console.log(c++, a.date);
                                 });
                                 for (var i = 0; i < resultArr.length - 1; i++) {
-                                    var graLayer = mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y]);
+                                    var graLayer = mapHelper.drawLine(self.map, [resultArr[i].x, resultArr[i].y], [resultArr[i + 1].x, resultArr[i + 1].y],1);
                                     self.cardistanceArr.push(graLayer);
                                 }
                                 self.carTrace(resultArr, car.num);

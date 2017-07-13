@@ -43,10 +43,11 @@ var comm = Vue.extend({
             // formData.description = "井盖溢水";
             // //formData.createUser = "张三";
             // formData.alarmId = 6666666;
-            // formData.submitOrNot = "是";
+            //
+            //formData.facilityId = 16170;
 
             //查询案件
-            formData.validCode = "123456";
+            //formData.validCode = "123456";
 
             $.ajax({
                 type: "get",
@@ -78,8 +79,9 @@ var comm = Vue.extend({
                 //url: serviceHelper.getBasicPath() + "/truck/getTruckHistoryTrack",
 
                 //创建案件
-                url: serviceHelper.getBasicPath() + "/case/getCase",
-
+                //url: serviceHelper.getBasicPath() + "/case/getCase",
+                //url: serviceHelper.getBasicPath() + "/facility/getOneFacilityInfo",
+                url: serviceHelper.getBasicPath() + "/alarmType/getAlarmTypeTreeData",
                 data: formData,
                 success: function (ajaxResult) {
                     if (ajaxResult) {
