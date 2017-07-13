@@ -39,9 +39,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(list,index) in carLists" @click="getCoordinate(list)">
+                            <tr v-for="(list,index) in carLists">
                                 <td>
-                                    <el-checkbox v-model="list.check"></el-checkbox>
+                                    <el-button class="table-btn" @click="openFormDialog()">车辆追踪</el-button>
                                 </td>
                                 <td>
                                     {{list.truckNum}}
