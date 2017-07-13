@@ -299,6 +299,54 @@ var comm = Vue.extend({
                 init();
             }, 2000);
         },
+        initDHVideo: function (videoURL) {
+            var videoFix = videoURL.split('?')[1].split('&');
+            var szServerIp = getURLParameter(videoFix[0]),//平台IP
+                nPort = getURLParameter(videoFix[1]),//平台端口（默认9000）
+                szUsername = getURLParameter(videoFix[2]),//登陆用户名
+                szPassword = getURLParameter(videoFix[3]);//登陆密码
+            var CameraIndexCodeArray = getURLParameter(videoFix[4]).split("|");
+
+//平台固化参数
+            var gWndId = 0;
+            var nDirect = -1;
+            var nOper = -1;
+            var gXmlRecords;
+            var gRecordPath;
+            var bLogin = 0;
+            var bIVS = 1;
+            var nStreamType = "1";//流码类型
+            var nMediaType = "1";//媒体类型
+            var nTransType = "1";//传输类型
+            var cameraCount = 4;//屏幕数量
+            if (CameraIndexCodeArray.length == 1) {
+                cameraCount = 1;
+            } else if (1 < CameraIndexCodeArray.length && CameraIndexCodeArray.length <= 4) {
+                cameraCount = 4;
+            } else if (4 < CameraIndexCodeArray.length && CameraIndexCodeArray.length <= 9) {
+                cameraCount = 9;
+            } else if (9 < CameraIndexCodeArray.length && CameraIndexCodeArray.length <= 16) {
+                cameraCount = 16;
+            } else {
+                cameraCount = 4;
+            }
+            setTimeout(function () {
+                var obj = document.getElementById("DPSDK_OCX");
+
+                gWndId = obj.DPSDK_CreateSmartWnd(0, 0, 100, 100);
+                var obj = document.getElementById("DPSDK_OCX");
+                obj.DPSDK_SetWndCount(gWndId, cameraCount);
+                obj.DPSDK_SetSelWnd(gWndId, 0);
+                obj.DPSDK_Login(szServerIp, 9000, szUsername, szPassword);
+
+                obj.DPSDK_AsyncLoadDGroupInfo();
+                var nWndNo = obj.DPSDK_GetSelWnd(gWndId);
+                for (var i = CameraIndexCodeArray.length - 1; i >= 0; i--) {
+                    obj.DPSDK_DirectRealplayByWndNo(gWndId, i, CameraIndexCodeArray[i], 1, 1, 1);
+                }
+            },1000);
+
+        },
         handleSelect: function () {
             console.log('select');
         },
@@ -330,20 +378,25 @@ var comm = Vue.extend({
             this.$nextTick(function () {
                 this.activeIndex = '1';
                 this.facility = facility;
-                this.facilityType = facilityTypeName;
                 var facilityID = facility.id;
                 facilityController.getFacilityDetail(facilityID, function (data) {
                     console.log(data);
                     data.devices.forEach(function (device) {
                         if (device.devName.toUpperCase().indexOf('VIDEO') !== -1) {
                             var videoURL = device.items[0].value;
+                            if (videoURL.indexOf('dh-video' !== -1)) {
+                                facilityTypeName = 'DH';
+                            }
+                            this.facilityType = facilityTypeName;
                             if (facilityTypeName == 'DS') {
                                 this.initHKVideo(videoURL);
-
                             } else if (facilityTypeName == 'CS') {
                                 this.initGDVideo(videoURL);
                             } else if (facilityTypeName == 'TP') {
                                 this.initJJVideo(videoURL);
+                            }
+                            else if (facilityTypeName == 'DH') {
+                                this.initDHVideo(videoURL);
                             }
                             return;
                         }

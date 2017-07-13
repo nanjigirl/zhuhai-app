@@ -1,34 +1,16 @@
 <transition name="right-panel">
     <div v-show='carOprationPanel' class='bottom-panel clearfix' style="height: 300px;">
         <div class="col-md-6 left-car-charts">
-            <div id="myChart" style="width: 370px;height: 300px"></div>
+            <div id="myChart" style="width: 250px;height: 180px;float:left"></div>
+            <div class="timeSpan">
+                <div class="dateSpan">{{updateDate}}</div>
+                <div class="time">{{updateTime}}</div>
+            </div>
+            <div class="carImgSpan"></div>
+            <div class="driveImgSpan"></div>
         </div>
         <div class="col-md-6 no-padding right-car-data">
-            <div class="clearfix car-oprate-title">
-                <div class="col-md-6 car-detail-title is-active" id="carDetail" @click="selectCar">车辆信息</div>
-                <div class="col-md-6 car-detail-title" id="driverDetail" @click="selectDriver">驾驶员信息</div>
-            </div>
-            <div class="car-detail" v-show="isCarDetail">
-                <div class="col-md-6 height100 no-padding">
-                    <img class="img-100" src="../../img/projectDetail/img.jpg" alt="img">
-                </div>
-                <div class="col-md-6">
-                    <ul class="text-desc-box">
-                        <li>
-                            <span class="text-detail-title">车牌号码：</span>
-                            <span class="text-blue">123456</span>
-                        </li>
-                        <li>
-                            <span class="text-detail-title">车型：</span>
-                            <span class="text-blue">五菱荣光</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="car-detail" v-show="isDriverDetail">
-                <div class="col-md-6 height100 no-padding">
-                    <img class="img-100" src="../../img/projectDetail/img.jpg" alt="img">
-                </div>
+            <div class="car-detail">
                 <div class="col-md-6">
                     <ul class="text-desc-box">
                         <li>
@@ -36,18 +18,55 @@
                             <span class="text-blue">张三</span>
                         </li>
                         <li>
+                            <span class="text-detail-title">驾驶证：</span>
+                            <span class="text-blue">4008120120</span>
+                        </li>
+                        <li>
+                            <span class="text-detail-title">身份证：</span>
+                            <span class="text-blue">400812012015555</span>
+                        </li>
+                        <li>
                             <span class="text-detail-title">驾龄：</span>
                             <span class="text-blue">5年</span>
+                        </li>
+                        <li>
+                            <span class="text-detail-title">所属车队：</span>
+                            <span class="text-blue">蓝翔运输公司</span>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="text-desc-box">
+                        <li>
+                            <span class="text-detail-title">车牌号：</span>
+                            <span class="text-blue">{{carNumber}}</span>
+                        </li>
+                        <li>
+                            <span class="text-detail-title">核定载重：</span>
+                            <span class="text-blue">5吨</span>
+                        </li>
+                        <li>
+                            <span class="text-detail-title">本次载重：</span>
+                            <span class="text-blue" style="color:red">5.2吨</span>
+                        </li>
+                        <li>
+                            <span class="text-detail-title">已服务年限：</span>
+                            <span class="text-blue">5年</span>
+                        </li>
+                        <li>
+                            <span class="text-detail-title">所属公司：</span>
+                            <span class="text-blue">天翔运输公司</span>
                         </li>
                     </ul>
                 </div>
             </div>
             <div class="car-opration">
-                <div class="col-20 player-button" >
+                <div class="col-20 player-button">
                     <i class="icon icon-play-big" @click="play"></i>
                 </div>
                 <div class="col-20 player-button">
-                    <i class="icon icon-play-pause" @click="pause" ></i>
+                    <i class="icon icon-play-pause" @click="pause"></i>
                 </div>
                 <div class="col-20 player-button">
                     <i class="icon icon-play-move" @click="move"></i>

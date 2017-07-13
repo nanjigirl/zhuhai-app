@@ -17,27 +17,31 @@
                     <i class="icon iconfont text-muted">&#xe601;</i>
                 </div>
                 <!--<div class="device-title" v-show='!isRealTimeMode'>-->
-                    <!--<span>数据表格</span>-->
+                <!--<span>数据表格</span>-->
                 <!--</div>-->
-                 <div class="device-content">
-                     <!-- 消纳场-->
-                     <object name="OCX" ID="OCX" classid="clsid:BE020CC9-521F-4641-85E1-3B631B7ADDD9" width="500px"
-                             height="330px" v-if="facilityType == 'DS'">
-                     </object>
-                     <object id="videoobj" classid="CLSID:B1A739F2-A8CA-4214-AC65-73E4C9569ACD" width="500px"
-                             height="330px" v-if="facilityType == 'TP'"></object>
-                     <!--工地-->
-                     <object name="OCX" ID="OCX" CLASSID="CLSID:14C9C4EC-61E6-4E4A-AB03-219C8E77857A" width="500px"
-                             height="330px" v-if="facilityType == 'CS'"></object>
+                <div class="device-content">
+                    <!-- 消纳场-->
+                    <object name="OCX" ID="OCX" classid="clsid:BE020CC9-521F-4641-85E1-3B631B7ADDD9" width="500px"
+                            height="330px" v-if="facilityType == 'DS'">
+                    </object>
+                    <object id="videoobj" classid="CLSID:B1A739F2-A8CA-4214-AC65-73E4C9569ACD" width="500px"
+                            height="330px" v-if="facilityType == 'TP'"></object>
+                    <!--工地-->
+                    <object name="OCX" ID="OCX" CLASSID="CLSID:14C9C4EC-61E6-4E4A-AB03-219C8E77857A" width="500px"
+                            height="330px" v-if="facilityType == 'CS'"></object>
+                    <!-- 大华 -->
+                    <object id="DPSDK_OCX" classid="CLSID:D3E383B6-765D-448D-9476-DFD8B499926D"
+                            style="width: 500px; height: 330px" codebase="DpsdkOcx.cab#version=1.0.0.0"
+                            v-if="facilityType == 'DH'"></object>
 
-                 </div>
-             </div>
+                </div>
+            </div>
             <div class="panel-bottom" v-show='isRealTimeMode'>
                 <div class="device-title">
                     <span>详细信息</span>
                 </div>
                 <div class="device-content">
-                    <table id="datatable" class="table table-striped table-bordered" >
+                    <table id="datatable" class="table table-striped table-bordered">
                         <tbody>
                         <tr v-for="list in msgLists">
                             <td v-for="msg in list.children">
@@ -54,10 +58,18 @@
                     <span>操作按钮</span>
                 </div>
                 <div class="device-content panel-operation">
-                    <a href="#" @click="newCarOpen()"><el-button type="primary">现场车辆信息查询</el-button></a>
-                    <a href="#"><el-button type="primary">行驶证信息查询</el-button></a>
-                    <a href="#"> <el-button type="primary">驶证信息查询</el-button></a>
-                    <a href="#"><el-button type="primary">黑名单信息查询</el-button></a>
+                    <a href="#" @click="newCarOpen()">
+                        <el-button type="primary">现场车辆信息查询</el-button>
+                    </a>
+                    <a href="#">
+                        <el-button type="primary">行驶证信息查询</el-button>
+                    </a>
+                    <a href="#">
+                        <el-button type="primary">驶证信息查询</el-button>
+                    </a>
+                    <a href="#">
+                        <el-button type="primary">黑名单信息查询</el-button>
+                    </a>
                     <!--<iframe src="http://19.2.81.254:66/Service/dv?device_code=1000001,1000000"></iframe>-->
                 </div>
             </div>

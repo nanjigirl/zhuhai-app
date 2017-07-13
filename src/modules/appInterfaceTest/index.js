@@ -85,8 +85,6 @@ var comm = Vue.extend({
                     if (ajaxResult) {
                         if (ajaxResult.success == true) {
                             var result = ajaxResult.data;
-                            debugger;
-                            alert("测试完成！！！");
                         } else {
                             //后台操作失败的代码
                             alert(ajaxResult.msg);

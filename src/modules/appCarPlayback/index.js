@@ -9,6 +9,9 @@ var comm = Vue.extend({
         template: template,
         data: function () {
             return {
+                carNumber:'',
+                updateDate:'',
+                updateTime:'',
                 carOprationPanel: false,
                 isCarDetail:true,
                 isDriverDetail:false,
@@ -22,7 +25,7 @@ var comm = Vue.extend({
             this.myChart = echarts.init(document.getElementById('myChart'));
             var option = {
                 tooltip: {
-                    formatter: "{a} <br/>{b} : {c}%"
+                    formatter: "{a} <br/>{c} {b}"
                 },
                 toolbox: {
                     feature: {}
@@ -33,36 +36,41 @@ var comm = Vue.extend({
                         type: 'gauge',
                         z: 3,
                         min: 0,
-                        max: 220,
-                        splitNumber: 11,
+                        max: 160,
+                        splitNumber: 16,
                         radius: '90%',
                         axisLine: {            // 坐标轴线
                             lineStyle: {       // 属性lineStyle控制线条样式
-                                width: 10
+                                width: 6
                             }
                         },
+                        pointer: {
+                            width: 3//指针长度
+                        },
                         axisTick: {            // 坐标轴小标记
-                            length: 15,        // 属性length控制线长
+                            length: 10,        // 属性length控制线长
                             lineStyle: {       // 属性lineStyle控制线条样式
                                 color: 'auto'
                             }
                         },
                         splitLine: {           // 分隔线
-                            length: 20,         // 属性length控制线长
+                            length: 10,         // 属性length控制线长
                             lineStyle: {       // 属性lineStyle（详见lineStyle）控制线条样式
-                                color: 'auto'
+                                color: 'auto',
+                                fontSize:8
                             }
                         },
                         title: {
                             textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
                                 fontWeight: 'bolder',
-                                fontSize: 20,
+                                fontSize: 15,
                                 fontStyle: 'italic'
                             }
                         },
                         detail: {
                             textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
-                                fontWeight: 'bolder'
+                                fontWeight: 'bolder',
+                                fontSize:15
                             }
                         },
                         data: [{value: 0, name: 'km/h'}]
@@ -71,6 +79,10 @@ var comm = Vue.extend({
             };
             eventHelper.on('car-speed-change', function (car) {
                 this.car = car;
+                this.carNumber = car.num;
+                var dateArr = car.date.split(' ');
+                this.updateDate = dateArr[0];//2017-07-01 13:31:52
+                this.updateTime = dateArr[1];
                 option.series[0].data[0].value = parseFloat(car.speed);
                 this.myChart.setOption(option, true);
             }.bind(this));

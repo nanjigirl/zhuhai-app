@@ -15,6 +15,48 @@
 }
 .left-car-charts{
     border-right: 2px solid #ccc;
+    width: 50%;
+    height: 100%;
+    padding-right: 1px;
+    padding-left: 1px;
+    border-bottom: 1px solid;
+}
+.left-car-charts .timeSpan{
+    float: left;
+    width: calc(100% - 250px);
+    height: 50%;
+    border-left: 1px solid;
+}
+.left-car-charts .driveImgSpan{
+    float: left;
+    width: calc(100% - 250px);
+    height: 50%;
+    border-left: 1px solid;
+    margin-top: -30px;
+    background: url("../../img/projectDetail/img.jpg") no-repeat center center;
+    background-size: 100% 100%;
+}
+.left-car-charts .carImgSpan{
+    background: url("../../img/truck.jpg") no-repeat center center;
+    background-size: 100% 100%;
+    margin-top: -30px;
+    width: 250px;
+    height: 150px;
+    float: left;
+}
+.timeSpan .dateSpan{
+    font-size: 1em;
+    background: #20a0ff;
+    color: white;
+    text-align: center;
+    line-height: 25px;
+}
+.timeSpan .time{
+    font-size: 2em;
+    text-align: center;
+    background: gray;
+    color: black;
+    line-height: 125px;
 }
 .text-detail-title{
     font-size: 1em;
@@ -46,7 +88,7 @@
     background: rgb(32,160,255);
 }
 .car-detail{
-    height:60%;
+    height:74%;
     text-align: center;
     border-bottom: 2px solid #ccc;
 }
