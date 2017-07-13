@@ -149,6 +149,9 @@ var comm = Vue.extend({
         }.bind(this));
     },
     methods: {
+        openFormDialog:function () {
+
+        },
         queryCarData: function () {
             var self = this;
             //从后台获取车辆信息数据
