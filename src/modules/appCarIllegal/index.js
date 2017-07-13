@@ -149,7 +149,7 @@ var comm = Vue.extend({
         }.bind(this));
     },
     methods: {
-        openFormDialog:function () {
+        openCheckDialog:function () {
             eventHelper.emit('app-check-dialog');
         },
         queryCarData: function () {
