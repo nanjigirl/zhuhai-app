@@ -17,11 +17,13 @@ var appCarIllegal = require('modules/appCarIllegal');
 var appCarCase = require('modules/appCarCase');
 var appCarPollution = require('modules/appCarPollution');
 var appCheckDialog = require('modules/appCheckDialog');
+var mapHelper = require('utils/mapHelper');
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
     var centerX = 108.37267903076172;
     var centerY = 22.79646516113282;
     var map = arcgisHelper.tdWmtsServer(layerURL, centerX, centerY);
+    mapHelper.setMap(map);
     return map;
 }
 var initPlugin = function (facilityArr, self) {

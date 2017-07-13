@@ -18,6 +18,14 @@
                                     {{information.value}}
                                 </td>
                             </tr>
+                            <tr style="font-weight: bold">
+                                <td>
+                                    合计
+                                </td>
+                                <td>
+                                    3辆
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
@@ -39,9 +47,9 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-for="(list,index) in carLists">
-                                <td>
-                                    <el-button class="table-btn" @click="openFormDialog()">车辆追踪</el-button>
+                            <tr v-for="(list,index) in carLists" >
+                                <td  @click="getCoordinate(list,index)">
+                                    <el-checkbox v-model="list.check"></el-checkbox>
                                 </td>
                                 <td>
                                     {{list.truckNum}}
