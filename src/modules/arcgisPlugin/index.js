@@ -16,6 +16,7 @@ var appCarPlayback = require('modules/appCarPlayback');
 var appCarIllegal = require('modules/appCarIllegal');
 var appCarCase = require('modules/appCarCase');
 var appCarPollution = require('modules/appCarPollution');
+var appCheckDialog = require('modules/appCheckDialog');
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
     var centerX = 108.37267903076172;
@@ -99,7 +100,8 @@ var comm = Vue.extend({
         'app-car-pollution':appCarPollution,
         'app-car-playback':appCarPlayback,
         'flex-map-legend': flexMapLegend,
-        'app-car-monitor': appCarMonitor
+        'app-car-monitor': appCarMonitor,
+        'app-check-dialog':appCheckDialog
     }
 });
 module.exports = comm;
