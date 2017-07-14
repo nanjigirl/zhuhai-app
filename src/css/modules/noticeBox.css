@@ -19,6 +19,9 @@
     padding: 2px 15px;
     cursor: pointer;
 }
+.text-detail-bottom:hover,.text-detail-top:hover{
+    background: #ededed;
+}
 .text-detail-top{
     border-bottom: 1px solid #ddd;
 }

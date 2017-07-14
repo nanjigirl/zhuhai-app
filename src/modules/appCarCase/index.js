@@ -126,11 +126,11 @@ var comm = Vue.extend({
             var symbol3 = [108.33903340087892,22.7489149597168];//良庆区
             var symbol4 = [108.30882099853517, 22.834402325439456];//西乡塘区
             var symbol5 = [108.3376601098633, 22.823415997314456];//西乡塘区
-            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '30', symbol0[0], symbol0[1], 60, [70, 50, 212, 0.6]));
-            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '10', symbol1[0], symbol1[1], 20, [220, 230, 52, 0.6]));
-            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '2', symbol2[0], symbol2[1], 15, [99, 230, 52, 0.6]));
+            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '30', symbol0[0], symbol0[1], 80, [70, 50, 212, 0.6]));
+            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '10', symbol1[0], symbol1[1], 55, [220, 230, 52, 0.6]));
+            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '2', symbol2[0], symbol2[1], 20, [99, 230, 52, 0.6]));
             this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '8', symbol3[0], symbol3[1], 50, [237, 125, 48, 0.8]));
-            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '10', symbol4[0], symbol3[1], 80, [0, 176, 80, 0.8]));
+            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '10', symbol4[0], symbol3[1], 55, [0, 176, 80, 0.8]));
             this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '7', symbol5[0], symbol5[1], 45, [255, 0, 0, 0.6]));
         }.bind(this));
     },
