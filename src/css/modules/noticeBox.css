@@ -5,7 +5,46 @@
     right: 1em;
     z-index: 2;
 }
-
+.notice-box-tips .messageBox.msg-tips-box{
+    margin-top:0;
+}
+.notice-box-tips .msg-item{
+    height: 75px;
+    border-bottom: 1px solid #ccc;
+}
+.mgt10{
+    margin-top: 10px;
+}
+.text-detail-bottom,.text-detail-top{
+    padding: 2px 15px;
+    cursor: pointer;
+}
+.text-detail-top{
+    border-bottom: 1px solid #ddd;
+}
+.notice-box-tips .img-box{
+    width: 20%;
+    height: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-right: 1px solid #ccc;
+    background: #ddd;
+    float: left;
+}
+.notice-box-tips .detail-msg-box{
+    float: left;
+    width: 80%;
+    height: 100%;
+    overflow: auto;
+}
+.width-120{
+    width: 120px;
+}
+.tips-count{
+    float: right;
+    color: rgb(241,65,65);
+    font-size: 1.5em;
+}
 .noticeBox .alertBox, .noticeBox .messageBox {
     background: white;
     width: 100%;
@@ -15,7 +54,14 @@
     border-top-right-radius: 5px;
     margin-top: 1em;
 }
-
+.noticeBox .messageBox.msg-tips-box{
+    height:auto;
+}
+.noticeBox .msg-tips-box .messageBody{
+    max-height: 380px;
+    overflow-y: inherit;
+    height:auto;
+}
 .notixeBox .alertBox {
     top: 3em;
 }
@@ -64,7 +110,9 @@
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-
+.noticeBox .boxTitle.orange{
+    background-color: rgb(243,152,0);
+}
 .noticeBox .alertItem {
     height: 4em;
     width: 100%;

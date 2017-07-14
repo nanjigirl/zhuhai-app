@@ -43,10 +43,12 @@ define(function () {
             var geometry = new Point(x, y);
             var textSymbol = new TextSymbol();
             textSymbol.setText(text);
-            textSymbol.setColor(new Color([255, 0, 0, 1]));
+            textSymbol.setColor(new Color([255, 255, 255, 1]));
             textSymbol.setFont("12pt");
             var offset = -width / 2;
             console.log(offset);
+            // console.log(1);
+            // console.log(textSymbol);
           //  textSymbol.setOffset( offset, -offset);
             var graphic1 = new Graphic(geometry, textSymbol);
 
