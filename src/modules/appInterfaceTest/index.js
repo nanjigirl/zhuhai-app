@@ -113,7 +113,9 @@ var comm = Vue.extend({
                 //登录
                 // url: serviceHelper.getBasicPath() + "/iotDevice/login",
                 //注册设备
-                url: serviceHelper.getBasicPath() + "/iotDevice/registerDevice",
+                // url: serviceHelper.getBasicPath() + "/iotDevice/registerDevice",
+                //获取注册设备
+                url: serviceHelper.getBasicPath() + "/iotDevice/getRegisterDevices",
                 data: formData,
                 success: function (ajaxResult) {
                     if (ajaxResult) {
