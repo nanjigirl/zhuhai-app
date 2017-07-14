@@ -140,9 +140,9 @@ var comm = Vue.extend({
     methods: {
         //去掉车辆logo
         removeCarLogo:function () {
-            removePic.removePoints({layer: this.map.getLayer('f' + 123)});
-            removePic.removePoints({layer: this.map.getLayer('f' + 1234)});
-            removePic.removePoints({layer: this.map.getLayer('f' + 12345)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 1230)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 12340)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 123450)});
         },
         //去掉线路
         removeDistance: function () {
@@ -197,20 +197,20 @@ var comm = Vue.extend({
                 var graLayer1 = mapHelper.drawLine(this.map, [lineArr2[i].x,lineArr2[i].y ], [lineArr2[i+1].x,lineArr2[i+1].y],3);
                 this.cardistanceArr1.push(graLayer1);
             }
-            deviceModel.ssjkCreatePoint(this.map, 123, 'f' + 123, 123456, 'abc', 108.27371624694825, 22.838436367797854, '', './img/toolbar/car.png', '22', '22', 'abc', {
+            deviceModel.ssjkCreatePoint(this.map, 1230, 'f' + 1230, 123456, 'abc', 108.27371624694825, 22.838436367797854, '', './img/toolbar/car.png', '22', '22', 'abc', {
                 terminalNum: 123456,
-                id: 123,
+                id: 1230,
                 truckNum: 123456
             });
-            deviceModel.ssjkCreatePoint(this.map, 12345, 'f' + 12345, 123456, 'abc', 108.29457310424806, 22.820133321854513, '', './img/toolbar/car.png', '22', '22', 'abc', {
-                terminalNum: 123456,
-                id: 123,
-                truckNum: 123456
+            deviceModel.ssjkCreatePoint(this.map, 123450, 'f' + 123450, 223456, 'abc', 108.29457310424806, 22.820133321854513, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 223456,
+                id: 123450,
+                truckNum: 223456
             });
-            deviceModel.ssjkCreatePoint(this.map, 1234, 'f' + 1234, 123456, 'abc', 108.33062199340822, 22.87251115112305, '', './img/toolbar/car.png', '22', '22', 'abc', {
-                terminalNum: 123456,
-                id: 1234,
-                truckNum: 123456
+            deviceModel.ssjkCreatePoint(this.map, 12340, 'f' + 12340, 54321, 'abc', 108.33062199340822, 22.87251115112305, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 54321,
+                id: 12340,
+                truckNum: 54321
             });
             var self = this;
             //从后台获取车辆信息数据

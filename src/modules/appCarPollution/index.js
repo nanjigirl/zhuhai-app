@@ -155,10 +155,10 @@ var comm = Vue.extend({
     methods: {
         //去掉车辆logo
         removeCarLogo:function () {
-            removePic.removePoints({layer: this.map.getLayer('f' + 123)});
-            removePic.removePoints({layer: this.map.getLayer('f' + 1234)});
-            removePic.removePoints({layer: this.map.getLayer('f' + 12345)});
-            removePic.removePoints({layer: this.map.getLayer('f' + 1234567)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 1203)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 12034)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 120345)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 12304567)});
         },
         //去掉线路
         removeDistance: function () {
@@ -196,24 +196,24 @@ var comm = Vue.extend({
                 var graLayer2 = mapHelper.drawLine(this.map, [lineArr[i].x,lineArr[i].y ], [lineArr[i+1].x,lineArr[i+1].y],3);
                 this.cardistanceArr2.push(graLayer2);
             }
-            deviceModel.ssjkCreatePoint(this.map, 123, 'f' + 123, 123456, 'abc', 108.27371624694825, 22.838436367797854, '', './img/toolbar/car.png', '22', '22', 'abc', {
+            deviceModel.ssjkCreatePoint(this.map, 1203, 'f' + 1203, 123405, 'abc', 108.27371624694825, 22.838436367797854, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 123405,
+                id: 1203,
+                truckNum: 123405
+            });
+            deviceModel.ssjkCreatePoint(this.map, 120345, 'f' + 120345, 123450, 'abc', 108.29457310424806, 22.820133321854513, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 123450,
+                id: 120345,
+                truckNum: 123450
+            });
+            deviceModel.ssjkCreatePoint(this.map, 12034, 'f' + 12034, 123456, 'abc', 108.33062199340822, 22.87251115112305, '', './img/toolbar/car.png', '22', '22', 'abc', {
                 terminalNum: 123456,
-                id: 123,
+                id: 12034,
                 truckNum: 123456
             });
-            deviceModel.ssjkCreatePoint(this.map, 12345, 'f' + 12345, 123456, 'abc', 108.29457310424806, 22.820133321854513, '', './img/toolbar/car.png', '22', '22', 'abc', {
+            deviceModel.ssjkCreatePoint(this.map, 12304567, 'f' + 12304567, 123456, 'abc', 108.33079365478517, 22.84126878051758, '', './img/mapLegend/huawei-hd-red.png', '22', '22', 'abc', {
                 terminalNum: 123456,
-                id: 123,
-                truckNum: 123456
-            });
-            deviceModel.ssjkCreatePoint(this.map, 1234, 'f' + 1234, 123456, 'abc', 108.33062199340822, 22.87251115112305, '', './img/toolbar/car.png', '22', '22', 'abc', {
-                terminalNum: 123456,
-                id: 1234,
-                truckNum: 123456
-            });
-            deviceModel.ssjkCreatePoint(this.map, 1234567, 'f' + 1234567, 123456, 'abc', 108.33079365478517, 22.84126878051758, '', './img/mapLegend/huawei-hd-red.png', '22', '22', 'abc', {
-                terminalNum: 123456,
-                id: 1234567,
+                id: 12304567,
                 truckNum: 123456
             });
             var lineArr1 = [
