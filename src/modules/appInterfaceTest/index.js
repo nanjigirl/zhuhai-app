@@ -81,7 +81,10 @@ var comm = Vue.extend({
                 //创建案件
                 //url: serviceHelper.getBasicPath() + "/case/getCase",
                 //url: serviceHelper.getBasicPath() + "/facility/getOneFacilityInfo",
-                url: serviceHelper.getBasicPath() + "/alarmType/getAlarmTypeTreeData",
+                // url: serviceHelper.getBasicPath() + "/alarmType/getAlarmTypeTreeData",
+
+                //登录
+                url: serviceHelper.getBasicPath() + "/iotDevice/login",
                 data: formData,
                 success: function (ajaxResult) {
                     if (ajaxResult) {
