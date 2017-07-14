@@ -21,6 +21,9 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            cardistanceArr1:[],
+            cardistanceArr2:[],
+            cardistanceArr3:[],
             tableCaseHead: ['预警时间', '预警类型', '地点'],
             caseLists: [{
                 date: '2017-4-8',
@@ -135,7 +138,80 @@ var comm = Vue.extend({
         }.bind(this));
     },
     methods: {
+        //去掉车辆logo
+        removeCarLogo:function () {
+            removePic.removePoints({layer: this.map.getLayer('f' + 123)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 1234)});
+            removePic.removePoints({layer: this.map.getLayer('f' + 12345)});
+        },
+        //去掉线路
+        removeDistance: function () {
+            this.cardistanceArr1.forEach(function (graphic) {
+                arcgisHelper.removeGraphic(graphic);
+            });
+            this.cardistanceArr2.forEach(function (graphic) {
+                arcgisHelper.removeGraphic(graphic);
+            });
+            this.cardistanceArr3.forEach(function (graphic) {
+                arcgisHelper.removeGraphic(graphic);
+            })
+        },
         queryCarData: function () {
+            //画线和画车辆logo
+            var lineArr = [
+                {x:108.27371624694825,y:22.838436367797854},
+                {x:108.2882216333008,y:22.834286340285647},
+                {x: 108.30822018371583,y:22.84269774775635},
+                {x:108.29963711486818,y: 22.856258996535647},
+                {x:108.32341221557618,y: 22.861323007155764},
+                {x:108.33225277648928,y: 22.86598801879883},
+                {x:108.35594204650882,y: 22.86598801879883},];
+            var lineArr1 = [
+                {x:108.33062199340822,y: 22.87251115112305},
+                {x:108.33568600402833,y:22.858692410278323},
+                {x: 108.33637264953614,y: 22.856117489624026},
+                {x: 108.3438399194336,y: 22.859121563720706},
+                {x: 108.35834530578614,y: 22.8587782409668},
+                {x: 108.36306599365236,y: 22.86126733093262},
+                {x: 108.37430981384279,y: 22.83328652648926},
+                {x: 108.37482479797364,y: 22.81680703430176},
+                {x: 108.36864498840333,y: 22.807451489257815},
+                {x: 108.35662869201661,y: 22.79929757385254},
+                {x: 108.32418469177247,y: 22.7873671081543}];
+            var lineArr2 = [
+                {x: 108.29457310424806,y:22.820133321854513},
+                {x: 108.29062489257814,y: 22.794126623246115},
+                {x: 108.28916577087404,y: 22.790693395707052},
+                {x:108.3076193688965,y: 22.791294210526388},
+                {x:108.30744770751954,y:22.779878728959005},
+                {x:108.32135227905275,y: 22.785886877152365}];
+            for(var i=0;i<lineArr.length-1;i++){
+                var graLayer2 = mapHelper.drawLine(this.map, [lineArr[i].x,lineArr[i].y ], [lineArr[i+1].x,lineArr[i+1].y],3);
+                this.cardistanceArr2.push(graLayer2);
+            }
+            for(var i=0;i<lineArr1.length-1;i++){
+                var graLayer3 = mapHelper.drawLine(this.map, [lineArr1[i].x,lineArr1[i].y ], [lineArr1[i+1].x,lineArr1[i+1].y],3);
+                this.cardistanceArr3.push(graLayer3);
+            }
+            for(var i=0;i<lineArr2.length-1;i++){
+                var graLayer1 = mapHelper.drawLine(this.map, [lineArr2[i].x,lineArr2[i].y ], [lineArr2[i+1].x,lineArr2[i+1].y],3);
+                this.cardistanceArr1.push(graLayer1);
+            }
+            deviceModel.ssjkCreatePoint(this.map, 123, 'f' + 123, 123456, 'abc', 108.27371624694825, 22.838436367797854, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 123456,
+                id: 123,
+                truckNum: 123456
+            });
+            deviceModel.ssjkCreatePoint(this.map, 12345, 'f' + 12345, 123456, 'abc', 108.29457310424806, 22.820133321854513, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 123456,
+                id: 123,
+                truckNum: 123456
+            });
+            deviceModel.ssjkCreatePoint(this.map, 1234, 'f' + 1234, 123456, 'abc', 108.33062199340822, 22.87251115112305, '', './img/toolbar/car.png', '22', '22', 'abc', {
+                terminalNum: 123456,
+                id: 1234,
+                truckNum: 123456
+            });
             var self = this;
             //从后台获取车辆信息数据
             historySearchServices.getCarListData(function (data) {
@@ -173,6 +249,8 @@ var comm = Vue.extend({
             }.bind(this), 100);
         },
         closePanel: function () {
+            this.removeCarLogo();
+            this.removeDistance();
             eventHelper.emit('right-panel-close');
             this.cacheGraphies.forEach(function (graphic) {
                 mapHelper.removeGraphic(this.map, graphic);
