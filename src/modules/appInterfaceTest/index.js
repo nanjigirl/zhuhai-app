@@ -83,8 +83,37 @@ var comm = Vue.extend({
                 //url: serviceHelper.getBasicPath() + "/facility/getOneFacilityInfo",
                 // url: serviceHelper.getBasicPath() + "/alarmType/getAlarmTypeTreeData",
 
+                //Iot设备管理
                 //登录
                 url: serviceHelper.getBasicPath() + "/iotDevice/login",
+                //注册设备
+                // url: serviceHelper.getBasicPath() + "/iotDevice/registerDevice",
+                data: formData,
+                success: function (ajaxResult) {
+                    if (ajaxResult) {
+                        if (ajaxResult.success == true) {
+                            var result = ajaxResult.data;
+                        } else {
+                            //后台操作失败的代码
+                            alert(ajaxResult.msg);
+                        }
+                    }
+                }.bind(this)
+            });
+        },
+        btnTestClick2: function () {
+            var formData = {};
+            formData.token = serviceHelper.getToken();
+            formData.r = Math.random();
+
+            $.ajax({
+                type: "get",
+                dataType: "json",
+                //Iot设备管理
+                //登录
+                // url: serviceHelper.getBasicPath() + "/iotDevice/login",
+                //注册设备
+                url: serviceHelper.getBasicPath() + "/iotDevice/registerDevice",
                 data: formData,
                 success: function (ajaxResult) {
                     if (ajaxResult) {
