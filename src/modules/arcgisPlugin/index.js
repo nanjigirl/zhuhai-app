@@ -18,8 +18,8 @@ var appCarCase = require('modules/appCarCase');
 var appCarPollution = require('modules/appCarPollution');
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
-    var centerX = 108.37267903076172;
-    var centerY = 22.79646516113282;
+    var centerX = 121.45075120184849;
+    var centerY = 31.25010784918339;
     var map = arcgisHelper.tdWmtsServer(layerURL, centerX, centerY);
     return map;
 }
