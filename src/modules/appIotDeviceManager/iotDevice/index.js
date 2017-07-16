@@ -120,7 +120,10 @@ var comm = crudBase.extend({
                                 if (ajaxResult.success == true) {
                                     var result = ajaxResult.data;
 
-                                    layer.msg(result);
+                                    //消息太长，输出到console方便看
+                                    console.log(result);
+
+                                    layer.msg("此消息同时输出到浏览器的console。" + result);
                                 } else {
                                     //后台操作失败的代码
                                     alert(ajaxResult.msg);
