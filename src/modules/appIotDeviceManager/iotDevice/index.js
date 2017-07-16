@@ -128,6 +128,34 @@ var comm = crudBase.extend({
                             }
                         }.bind(this)
                     });
+                },
+                registerDevice: function (e, value, row, index) {
+                    var formData = {};
+                    formData.token = serviceHelper.getToken();
+                    formData.r = Math.random();
+                    formData.imei = row.imei;
+                    formData.id = row.id;
+
+                    $.ajax({
+                        type: "get",
+                        dataType: "json",
+                        url: serviceHelper.getBasicPath() + this.controllerUrl + "/registerDevice",
+                        data: formData,
+                        success: function (ajaxResult) {
+                            if (ajaxResult) {
+                                if (ajaxResult.success == true) {
+                                    var result = ajaxResult.data;
+
+                                    this.refreshList();
+
+                                    layer.msg("操作成功");
+                                } else {
+                                    //后台操作失败的代码
+                                    alert(ajaxResult.msg);
+                                }
+                            }
+                        }.bind(this)
+                    });
                 }
             }
         });
@@ -169,11 +197,17 @@ var comm = crudBase.extend({
                 'click .modifyDeviceInfo': function (e, value, row, index) {
                     this.modifyDeviceInfo(e, value, row, index);
                 }.bind(this.containerMain),
+                'click .registerDevice': function (e, value, row, index) {
+                    this.registerDevice(e, value, row, index);
+                }.bind(this.containerMain),
             },
             //操作类的内容
             formatter: function (value, row, index) {
                 return [
                     //格式：一个功能是一个a，class必填因为跟点击事件有关
+                    '<a class="registerDevice" href="javascript:;" title="">',
+                    '注册设备',
+                    '</a>  ',
                     '<a class="modifyDeviceInfo" href="javascript:;" title="">',
                     '修改设备信息',
                     '</a>  ',
