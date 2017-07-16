@@ -116,6 +116,8 @@ var comm = Vue.extend({
                 // url: serviceHelper.getBasicPath() + "/iotDevice/registerDevice",
                 //获取注册设备
                 url: serviceHelper.getBasicPath() + "/iotDevice/getRegisterDevices",
+                //删除注册设备
+                // url: serviceHelper.getBasicPath() + "/iotDevice/deleteRegisterDevice",
                 data: formData,
                 success: function (ajaxResult) {
                     if (ajaxResult) {
