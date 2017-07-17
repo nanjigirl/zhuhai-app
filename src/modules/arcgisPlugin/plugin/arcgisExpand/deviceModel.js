@@ -37,13 +37,13 @@ define(['utils/eventHelper'], function (eventHelper) {
             textSymbol.setColor(new Color([255, 0, 0, 1]));
             textSymbol.setFont("8pt");
             textSymbol.setOffset(0, -20);
-            if (!!hideName) {
+            if (!hideName) {
                 var graphic1 = new Graphic(geometry, textSymbol);
                 graLayer.add(graphic1);
+                graphic1.attributes = {facilityTypeName: facilityTypeName, item: item};
             }
             graLayer.add(graphic);
             graphic.attributes = {facilityTypeName: facilityTypeName, item: item};
-            graphic1.attributes = {facilityTypeName: facilityTypeName, item: item};
             return graLayer;
         }
         ,
