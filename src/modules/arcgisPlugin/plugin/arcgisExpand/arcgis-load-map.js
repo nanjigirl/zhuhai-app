@@ -38,7 +38,7 @@ define(function () {
             map.on('click', function (event) {
                 console.log(event);
             });
-            deviceModel.createTextSymbol(map);
+            //  deviceModel.createTextSymbol(map);
             return map;
         },
         createPoint: function (item) {
@@ -47,16 +47,22 @@ define(function () {
             map.addLayer(graLayer);
             return graLayer;
         },
-        createPoints: function (facilitys, legend) {
+        createPoints: function (facilitys, legend, hideName) {
             var graLayer = new GraphicsLayer();
             facilitys.forEach(function (item) {
                 var icon = './img/toolbar/' + legend.icon + '.png';
                 var fid = legend.id;
                 item.fid = fid;
-                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item, legend.facilityTypeName);
+                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item, legend.facilityTypeName, hideName);
                 //创建地图上图标
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
+            graLayer.on('mouseover', function (evt) {
+                if (!!evt.graphic && !!evt.graphic.attributes && !!evt.graphic.attributes.item) {
+                    var name = evt.graphic.attributes.item.name;
+                    deviceModel.createTextSymbol(Graphic, Point, TextSymbol, Color, evt.graphic.geometry, name, graLayer);
+                }
+            })
             graLayer.on('click', function (evt) {
                 eventHelper.emit('subFacility-clicked', {
                     id: 'f' + evt.graphic.attributes.item.fid,

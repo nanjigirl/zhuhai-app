@@ -87,7 +87,7 @@ define(function () {
             this.drawPen.finishDrawing();
             this.drawPen.deactivate();
         },
-        createSymbol: function (baseMap, x, y, iconUrl, name, height, width, angel) {
+        createSymbol: function (baseMap, x, y, iconUrl, name, height, width, angel,hideName) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, width, height);
             console.log(angel);
             pictureMarkerSymbol.setAngle(Math.abs(360 - 90 - angel));
@@ -100,7 +100,9 @@ define(function () {
             textSymbol.setFont("8pt");
             textSymbol.setOffset(0, -20);
             var graphic1 = new Graphic(geometry, textSymbol);
-            graLayer.add(graphic1);
+            if(!!hideName){
+                graLayer.add(graphic1);
+            }
             graLayer.add(graphic);
             baseMap.addLayer(graLayer);
             return graLayer;
