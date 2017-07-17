@@ -58,8 +58,10 @@ define(function () {
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
             graLayer.on('mouseover', function (evt) {
-                var name = evt.graphic.attributes.item.name;
-                deviceModel.createTextSymbol(Graphic, Point, TextSymbol, Color, evt.graphic.geometry, name, graLayer);
+                if (!!evt.graphic && !!evt.graphic.attributes && !!evt.graphic.attributes.item) {
+                    var name = evt.graphic.attributes.item.name;
+                    deviceModel.createTextSymbol(Graphic, Point, TextSymbol, Color, evt.graphic.geometry, name, graLayer);
+                }
             })
             graLayer.on('click', function (evt) {
                 eventHelper.emit('subFacility-clicked', {
