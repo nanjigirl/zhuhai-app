@@ -50,11 +50,6 @@
     padding-left: 1em;
 }
 
-.cescTab .tabName:hover {
-    color: whitesmoke;
-
-}
-
 .tabGroups .tabActive {
     background-color: white;
     height: 100%;

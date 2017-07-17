@@ -384,7 +384,7 @@ var comm = Vue.extend({
                     data.devices.forEach(function (device) {
                         if (device.devName.toUpperCase().indexOf('VIDEO') !== -1) {
                             var videoURL = device.items[0].value;
-                            if (videoURL.indexOf('dh-video' !== -1)) {
+                            if (videoURL.indexOf('dh-video') != -1) {
                                 facilityTypeName = 'DH';
                             }
                             this.facilityType = facilityTypeName;
