@@ -20,6 +20,11 @@ define([
                 cb(data);
             });
         },
+        getMonitorDetailMsg: function (facilityID, cb) {
+            facilityService.getMonitorDetailMsg(facilityID, function (data) {
+                cb(data);
+            });
+        },
         getAlarmInfoByFacility: function (facilityId, cb) {
             facilityService.getAlarmInfoByFacility(facilityId, function (data) {
                 cb(data);

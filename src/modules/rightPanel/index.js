@@ -39,7 +39,7 @@ var comm = Vue.extend({
                             value: '201630002'
                         },
                         {
-                            name: '临时消纳场名称',
+                            name: '所在区',
                             value: '南宁市仙葫经济开发区五合社区消纳场'
                         }
                     ]
@@ -83,7 +83,7 @@ var comm = Vue.extend({
                 {
                     children: [
                         {
-                            name: '联系人',
+                            name: '部门联系人',
                             value: '陈明'
                         },
                         {
@@ -401,6 +401,19 @@ var comm = Vue.extend({
                             return;
                         }
                     }.bind(this));
+                }.bind(this));
+                facilityController.getMonitorDetailMsg(facilityID, function (data) {
+                    console.log(data);
+                    this.msgLists[0].children[0].value = data.licenseNumber;
+                    this.msgLists[0].children[1].value = data.district;
+                    this.msgLists[1].children[0].value = data.location;
+                    this.msgLists[1].children[1].value = data.limitTime;
+                    this.msgLists[2].children[0].value = data.contact;
+                    this.msgLists[2].children[1].value = data.contactPhone;
+                    this.msgLists[3].children[0].value = data.adminDepartment;
+                    this.msgLists[3].children[1].value = data.departmentSupervisor;
+                    this.msgLists[4].children[0].value =data.adminDepartmentContact
+                    this.msgLists[4].children[1].value = data.adminDepartmentPhone;
                 }.bind(this));
                 /*     if (facilityID == '35') {
                  this.facilityType = 'ylz';

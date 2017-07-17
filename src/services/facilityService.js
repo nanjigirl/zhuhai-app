@@ -43,6 +43,22 @@ define(['./serviceHelper'], function (serviceHelper) {
                 console.log('Error:', result);
             });
         },
+        getMonitorDetailMsg:function (facilityId,cb) {
+            var parameter = {
+                id: 'getMonitorDetailMsg',
+                parameter: {
+                    facilityId: facilityId
+                }
+            }
+            $.get(serviceHelper.getPath(parameter), function (result) {
+                console.log(result);
+                if (!!result.success) {
+                    cb(result.data);
+                    return;
+                }
+                console.log('Error:', result);
+            });
+        },
         getAlarmInfoByFacility: function (facilityId, cb, errorcb) {
             setTimeout(function () {
                 cb([]);
