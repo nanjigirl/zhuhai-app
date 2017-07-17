@@ -55,6 +55,10 @@ var comm = crudBase.extend({
                     checkboxValues: [],
                     //radio的绑定值
                     radioValue: "",
+                    //是否分页
+                    pagination: true,
+                    //是否能编辑（影响编辑功能，例如双击编辑功能）
+                    canEdit: true,
                 }
             },
             methods: {
