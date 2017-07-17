@@ -71,11 +71,11 @@ var comm = Vue.extend({
             if (!!legend.showIcon) {
                 var cacheFacilities = self.facilityArr[legend.facilityTypeName];
                 if (!!cacheFacilities && cacheFacilities.length > 0) {
-                    arcgisHelper.createPoints(cacheFacilities, legend);
+                    arcgisHelper.createPoints(cacheFacilities, legend,true);
                     eventHelper.emit('loading-end');
                 } else {
                     facilityController.getFacilityByType(legend.id, function (subFacilities) {
-                        var graLayer = arcgisHelper.createPoints(subFacilities, legend);
+                        var graLayer = arcgisHelper.createPoints(subFacilities, legend,true);
                         self.facilityArr[legend.facilityTypeName] = {
                             data: subFacilities,
                             layer: graLayer
