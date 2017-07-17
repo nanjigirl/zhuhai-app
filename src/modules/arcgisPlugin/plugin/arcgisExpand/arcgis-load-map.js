@@ -44,7 +44,7 @@ define(function () {
         createPoints: function (facilitys, legend) {
             var graLayer = new GraphicsLayer();
             facilitys.forEach(function (item) {
-                var icon = './img/toolbar/' + legend.icon + '.png';
+                var icon = item.icon;
                 var fid = legend.id;
                 item.fid = fid;
                 deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item,legend.facilityTypeName);

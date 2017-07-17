@@ -42,7 +42,7 @@ define(['utils/eventHelper'], function (eventHelper) {
             });
         },
         createSymbol: function (Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, x, y, iconUrl, item, facilityTypeName) {
-            var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, 20, 20);
+            var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, 20, 25);
             var geometry = new Point(x, y);
             var graphic = new Graphic(geometry, pictureMarkerSymbol);
             var textSymbol = new TextSymbol();

@@ -72,6 +72,15 @@ var comm = Vue.extend({
                     eventHelper.emit('loading-end');
                 } else {
                     facilityController.getFacilityByType(legend.id, function (subFacilities) {
+                        if (legend.facilityTypeName == 'WD') {
+                            subFacilities.forEach(function (subFacility) {
+                                subFacility.icon = './css/images/huawei-xs.png'
+                            })
+                        } else if (legend.facilityTypeName == 'WP') {
+                            subFacilities.forEach(function (subFacility) {
+                                subFacility.icon = './css/images/huawei-yl.png'
+                            })
+                        }
                         var graLayer = arcgisHelper.createPoints(subFacilities, legend);
                         self.facilityArr[legend.facilityTypeName] = {
                             data: subFacilities,
@@ -94,10 +103,10 @@ var comm = Vue.extend({
     components: {
         'right-panel': rightPanel,
         //'right-panel-complaint': rightPanelComplaint,
-        'app-car-illegal':appCarIllegal,
-        'app-car-case':appCarCase,
-        'app-car-pollution':appCarPollution,
-        'app-car-playback':appCarPlayback,
+        'app-car-illegal': appCarIllegal,
+        'app-car-case': appCarCase,
+        'app-car-pollution': appCarPollution,
+        'app-car-playback': appCarPlayback,
         'flex-map-legend': flexMapLegend,
         'app-car-monitor': appCarMonitor
     }
