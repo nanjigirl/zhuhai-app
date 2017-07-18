@@ -1,7 +1,7 @@
 <transition name="right-panel">
     <div v-show='rightPanelOpen' class='right-panel'>
-        <div class="goBack"><a href='#' class="el-icon-d-arrow-right" @click="closePanel"></a></div>
         <div class="panel-header">
+            <span class="goBack"><a href='#' class="el-icon-d-arrow-right" @click="closePanel"></a></span>
             <span class="facilityImg" v-bind:class="facilityType"></span>
             <span class="facilityName">{{facilityName}}</span>
             <el-menu :default-active="activeIndex" class="el-menu-demo menu-full" mode="horizontal" @select="switchMode">
@@ -14,7 +14,6 @@
                 <div class="top-r">
                     <div class="device-title" v-show='isRealTimeMode'>
                         <span>监控项</span>
-                        <i class="icon iconfont text-danger">&#xe600;</i>
                         <span class="refreshTime">更新时间：{{lastUpdateTime}}</span>
                     </div>
                     <div class="part" v-bind:class="{partHistory:!isRealTimeMode}">
@@ -30,43 +29,31 @@
                 </div>
             </div>
             <div class="panel-middle">
-                <div class="device-title">
+                <div class="device-title" v-show='isRealTimeMode'>
                     <span>统计图表</span>
-                    <div v-if="facilityType!=='ylz'" class="pull-right">
+                    <div v-if="facilityType!=='ylz'">
                         <span class="gradeTitle">当前等级</span>
-                        <span class="grade" v-bind:class="classObject">{{waterGradeTitle}}</span>
+                        <span class="grade six" title="6" v-bind:class="{currentGrade:waterGrade=='6'}">{{waterGradeTitle}}</span>
+                        <!--<span class="grade six" title="6" v-bind:class="{currentGrade:waterGrade=='6'}"></span>-->
+                        <!--<span class="grade five" title="5" v-bind:class="{currentGrade:waterGrade=='5'}"></span>-->
+                        <!--<span class="grade four" title="4" v-bind:class="{currentGrade:waterGrade=='4'}"></span>-->
+                        <!--<span class="grade three" title="3" v-bind:class="{currentGrade:waterGrade=='3'}"></span>-->
+                        <!--<span class="grade two" title="2" v-bind:class="{currentGrade:waterGrade=='2'}"></span>-->
+                        <!--<span class="grade one " title="1" v-bind:class="{currentGrade:waterGrade=='1'}"></span>-->
                     </div>
                 </div>
                 <statistics ref='statisticPlugin'></statistics>
             </div>
-            <div class="panel-bottom">
-                <div class="device-title" v-show='isRealTimeMode'>
-                    <span>实时视频</span>
-                    <i class="icon iconfont text-muted">&#xe601;</i>
-                </div>
-                <div class="device-title" v-show='!isRealTimeMode'>
-                    <span>数据表格</span>
-                </div>
-                 <div class="device-content">
-                 <video v-show='isRealTimeMode'  width="100%" height="98%" src="http://120.77.246.153:9000/vedio/test.ogg" controls="controls" muted>
+            <!-- <div class="panel-bottom">
+                 <div class="bottom-l">
+                     <span>实时视频<em></em></span>
+                 </div>
+                 <div class="bottom-r">
+                 &lt;!&ndash;<video  width="100%" height="100%" src="http://120.77.246.153:9000/vedio/test.ogg" autoplay="autoplay" loop="loop" controls="controls">
                  您的浏览器不支持 video 标签。
-                 </video>
-                 <div class="table-responsive" v-show='!isRealTimeMode'>
-                     <table class="table table-bordered" >
-                         <thead>
-                         <tr>
-                             <th v-for='head in heads'>{{head.value}}</th>
-                         </tr>
-                         </thead>
-                         <tbody>
-                         <tr v-for='(row,index) in rows'>
-                             <td v-for='head in heads'>{{row[head.key]}}</td>
-                         </tr>
-                         </tbody>
-                     </table>
+                 </video>&ndash;&gt;
                  </div>
-                 </div>
-             </div>
+             </div>-->
         </div>
     </div>
 </transition>
