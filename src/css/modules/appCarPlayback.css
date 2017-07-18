@@ -6,7 +6,7 @@
     width: 23%;
     height:100%;
     overflow: auto;
-    z-index: 99;
+    z-index: 101;
     -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
     -moz-box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
     box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);

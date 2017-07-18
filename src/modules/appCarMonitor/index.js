@@ -46,7 +46,7 @@ var comm = Vue.extend({
                 }
             ],
             playSpeed: defaultSpeed,
-            rightPanelOpen: false,
+            carMonitorPanelOpen: false,
             isRealTimeMode: true,
             realTimeName: '实时监测',
             historyName: '历史记录',
@@ -77,14 +77,14 @@ var comm = Vue.extend({
     computed: {},
     mounted: function () {
         // this.queryCarData();
-        eventHelper.on('close-right-panel', function () {
-            this.closePanel();
-        }.bind(this));
+        // eventHelper.on('close-right-panel', function () {
+        //     this.closePanel();
+        // }.bind(this));
         eventHelper.on('mapCreated', function (map) {
             this.map = map;
         }.bind(this));
         eventHelper.on('app-car-monitor', function () {
-            this.rightPanelOpen = true;
+            this.carMonitorPanelOpen = true;
             this.queryCarData();
         }.bind(this));
         eventHelper.on('car-trace-play', function (car) {
@@ -245,7 +245,7 @@ var comm = Vue.extend({
                                 }
                                 self.carTrace(resultArr, car.num);
                                 eventHelper.emit('app-car-playback');
-                                self.rightPanelOpen = false;
+                                self.carMonitorPanelOpen = false;
                                 // console.log(resultArr);
                             }
                         }, 100);
@@ -262,7 +262,7 @@ var comm = Vue.extend({
         },
         closePanel: function () {
             var self =this;
-            eventHelper.emit('right-panel-close');
+            // eventHelper.emit('right-panel-close');
             this.reset();
             // this.carLists.forEach(function (val) {
             //     val.check = false;
@@ -272,7 +272,7 @@ var comm = Vue.extend({
         },
         reset: function () {
             //this.stopJJVideo();
-            this.rightPanelOpen = false;
+            this.carMonitorPanelOpen = false;
             this.isRealTimeMode = true;
             this.activeIndex = '1';
         },
@@ -287,7 +287,7 @@ var comm = Vue.extend({
                 }.bind(this), 100);
             }
             this.isRealTimeMode = true;
-            this.rightPanelOpen = true;
+            this.carMonitorPanelOpen = true;
         },
         switchMode: function (key, keyPath) {
             this.isRealTimeMode = key === '1';

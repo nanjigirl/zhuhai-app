@@ -40,13 +40,16 @@
     </div>
     <div class="cesc-nnyc-table">
         <table class="table table-striped table-bordered" >
+            <colgroup>
+                <col width="60%">
+            </colgroup>
             <thead>
             <tr>
                 <th v-for="th in datatheads">{{th}}</th>
             </tr>
             </thead>
             <tbody>
-                <tr  v-for="data in searchEquipment">
+                <tr  v-for="data in facilityTableData">
                     <td>
                         {{ data.name }}
                     </td>
