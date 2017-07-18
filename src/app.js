@@ -71,7 +71,7 @@ var app = new Vue({
         'app-navigator': appNavigator,
         'app-tab': appTab,
         'main-view': mainView,
-        'app-search': appSearch,
+        // 'app-search': appSearch,
         'app-footer': appFooter
     }
 }).$mount('#app');

@@ -27,6 +27,25 @@ define(['./serviceHelper'], function (serviceHelper) {
                 console.log('Error:', result);
             });
         },
+        getFacilityLists:function (address,pollutionSource,dataSource,district,cb) {
+            var parameter = {
+                id: 'getFacilityLists',
+                parameter: {
+                    address: address,
+                    pollutionSource:pollutionSource,
+                    dataSource:dataSource,
+                    district:district
+                }
+            }
+            $.get(serviceHelper.getPath(parameter), function (result) {
+                console.log(result);
+                if (!!result.success) {
+                    cb(result.data);
+                    return;
+                }
+                console.log('Error:', result);
+            });
+        },
         getFacilityDetail: function (facilityId, cb) {
             var parameter = {
                 id: 'getFacilityDetail',

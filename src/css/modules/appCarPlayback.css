@@ -6,7 +6,30 @@
     width: 23%;
     height:100%;
     overflow: auto;
-    z-index: 99;
+    z-index: 101;
+    -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
+    -moz-box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
+    box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
+}
+.icon.icon-close{
+    width:16px;
+    height:16px;
+    display: inline-block;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    cursor: pointer;
+    background: url(../../img/icon/close.png) no-repeat;
+}
+.bottom-panel-small{
+    background: #f4f4f4;
+    position: absolute;
+    right: 528px;
+    margin-left: 25%;
+    bottom: 0;
+    width: 500px;
+    margin-left: -500px;
+    z-index: 101;
     -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
     -moz-box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
     box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
@@ -31,6 +54,27 @@
 .left-car-charts .timeSpan{
     width: 100%;
     font-size: 1.5em;
+    color: #333;
+    line-height: 2.5em;
+    text-align: center;
+}
+.bottom-panel-small .carTitle{
+    padding: 0.5em;
+    background: #008BBC;
+    color: #fff;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+.bottom-panel-small .table{
+    margin-bottom: 0;
+}
+.bottom-panel-small .cesc-table th,.bottom-panel-small .cesc-table td{
+    color: #000;
+}
+.bottom-panel-small .left-car-charts .timeSpan{
+    width: 100%;
+    font-size: 1em;
     color: #333;
     line-height: 2.5em;
     text-align: center;
@@ -175,6 +219,10 @@
 .cesc-table tr th,.cesc-table tr td{
     font-size: 18px!important;
     padding: 12px!important;
+}
+.bottom-panel-small .cesc-table tr th,.bottom-panel-small .cesc-table tr td{
+    font-size: 14px!important;
+    padding: 10px!important;
 }
 /*.table-vertical tr th:first-child,.table-vertical tr td:first-child{*/
     /*width: 12em;*/
