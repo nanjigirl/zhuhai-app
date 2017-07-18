@@ -67,32 +67,15 @@ var comm = Vue.extend({
                 value: '高新区',
                 label: '高新区'
             }],
-            facilityTableData: [{
-                name: '荣和悦澜山-吊塔视频',
-                status: '在线'
-            }, {
-                name: '儿童康复中心综合大楼-门口视频',
-                status: '在线'
-            }, {
-                name: '林里苑小区-吊塔视频',
-                status: '在线'
-            }, {
-                name: '荣和大地-公园大道-1号门吊塔视频',
-                status: '在线'
-            }, {
-                name: '南宁市建设委员会-吊塔视频',
-                status: '在线'
-            }, {
-                name: '石灰厂-吊塔视频',
-                status: '在线'
-            }],
+            facilityTableData: [],
         }
     },
     methods: {
         getFacilityTableData:function () {
             var self =this;
-            facilityService.getFacilityLists('','','',' ',function (result) {
+            facilityService.getFacilityLists('','','','',function (result) {
                 console.log(result);
+                self.account = result.facilityList.length;
                 result.facilityList.forEach(function (value) {
                     self.facilityTableData.push({
                         name:value.name,
@@ -105,7 +88,7 @@ var comm = Vue.extend({
             var self = this;
             self.facilityTableData.splice(0);
             facilityService.getFacilityLists(self.form.name,self.form.address,self.form.data,self.form.pollute,function (result) {
-                console.log(result);
+                self.account = result.facilityList.length;
                 result.facilityList.forEach(function (value) {
                     self.facilityTableData.push({
                         name:value.name,
