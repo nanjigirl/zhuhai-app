@@ -37,13 +37,13 @@ define(['utils/eventHelper'], function (eventHelper) {
             textSymbol.setColor(new Color([255, 0, 0, 1]));
             textSymbol.setFont("8pt");
             textSymbol.setOffset(0, -20);
-            if (!!hideName) {
+            if (!hideName) {
                 var graphic1 = new Graphic(geometry, textSymbol);
                 graLayer.add(graphic1);
+                graphic1.attributes = {facilityTypeName: facilityTypeName, item: item};
             }
             graLayer.add(graphic);
             graphic.attributes = {facilityTypeName: facilityTypeName, item: item};
-            graphic1.attributes = {facilityTypeName: facilityTypeName, item: item};
             return graLayer;
         }
         ,
@@ -196,16 +196,16 @@ define(['utils/eventHelper'], function (eventHelper) {
                 features.push(graphic1);
                 featureLayer.add(graphic);
                 featureLayer.add(graphic1);
-                featureLayer.on('click', function (event) {
-                    console.log(event, item);
-                    eventHelper.emit('subFacility-clicked', {
-                        id: 'f' + item.fid,
-                        item: item,
-                        facilityTypeName: facilityTypeName,
-                        center: [event.graphic.geometry.x, event.graphic.geometry.y]
-                    });
-                    //event.graphic.getLayer().id
-                });
+                // featureLayer.on('click', function (event) {
+                //     console.log(event, item);
+                //     eventHelper.emit('subFacility-clicked', {
+                //         id: 'f' + item.fid,
+                //         item: item,
+                //         facilityTypeName: facilityTypeName,
+                //         center: [event.graphic.geometry.x, event.graphic.geometry.y]
+                //     });
+                //     //event.graphic.getLayer().id
+                // });
                 return featureLayer;
             });
         }

@@ -17,6 +17,7 @@ define(['config'], function (config) {
         getCoordinate:basicUrl+'/truck/getTruckInfo',
         getCarHistory:basicUrl+'/truck/getTruckHistoryTrack',
         getCarHistoryCount:basicUrl+'/truck/getTruckHistoryTrackCount',
+        getMonitorDetailMsg:basicUrl+'/facility/getOneFacilityInfo',
     }
     return {
         setToken: function (token) {

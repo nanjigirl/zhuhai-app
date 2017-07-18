@@ -126,6 +126,7 @@ var comm = Vue.extend({
             this.removeDistance();
         },
         queryCarData: function () {
+            eventHelper.emit('loading-start');
             var self = this;
             //从后台获取车辆信息数据
             historySearchServices.getCarListData(function (data) {
@@ -140,7 +141,8 @@ var comm = Vue.extend({
                         check: false,
                         id: menu.id
                     });
-                })
+                });
+                eventHelper.emit('loading-end');
                 for (var i = 0; i < 10; i++) {
                     self.carLists1.push({
                         num: data[i].truckNum,
@@ -259,8 +261,14 @@ var comm = Vue.extend({
             console.log('select');
         },
         closePanel: function () {
+            var self =this;
             eventHelper.emit('right-panel-close');
             this.reset();
+            // this.carLists.forEach(function (val) {
+            //     val.check = false;
+            //     removePic.removePoints({layer: self.map.getLayer('f' + val.id)});
+            // });
+
         },
         reset: function () {
             //this.stopJJVideo();
