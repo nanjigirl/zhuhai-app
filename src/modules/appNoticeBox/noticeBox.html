@@ -4,6 +4,11 @@
             <div class="boxTitle orange">市区扬尘预警</div>
             <div class="messageBody">
                 <div class="messageContainer">
+                    <div class="title-box clearfix">
+                        <div class="img-title">类型</div>
+                        <div class="detail-msg-title">分类</div>
+                        <div class="tips-title">数量</div>
+                    </div>
                     <div class="msg-item" v-for="item in msgItems">
                         <div class="img-box clearfix">
                             <img :src="item.mainImgSrc" alt="img">
@@ -13,13 +18,13 @@
                             <div class="text-detail-top">
                                 <img class="vertical-mid" :src="item.detailImgSrc1" alt="PM2.5">
                                 <p class="vertical-mid mgl-10 width-120">{{item.detailMsg1}}</p>
-                                <span class="tips-count">{{item.detailTips1}}</span>
                             </div>
+                            <div class="tips-count">{{item.detailTips1}}</div>
                             <div class="text-detail-bottom">
                                 <img class="vertical-mid" :src="item.detailImgSrc2" alt="PM10">
                                 <p class="vertical-mid mgl-10 width-120">{{item.detailMsg2}}</p>
-                                <span class="tips-count">{{item.detailTips2}}</span>
                             </div>
+                            <div class="tips-count">{{item.detailTips2}}</div>
                         </div>
                     </div>
                 </div>
