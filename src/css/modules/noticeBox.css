@@ -16,8 +16,11 @@
     margin-top: 10px;
 }
 .text-detail-bottom,.text-detail-top{
-    padding: 2px 15px;
+    width: 80%;
+    padding: 2px 0 2px 15px;
     cursor: pointer;
+    border-right: 1px solid #ddd;
+    float: left;
 }
 .text-detail-bottom:hover,.text-detail-top:hover{
     background: #ededed;
@@ -31,7 +34,7 @@
     text-align: center;
     padding: 10px 0;
     border-right: 1px solid #ccc;
-    background: #ddd;
+    background: #f6f6f6;
     float: left;
 }
 .notice-box-tips .detail-msg-box{
@@ -41,12 +44,17 @@
     overflow: auto;
 }
 .width-120{
-    width: 120px;
+    max-width: 11em;
 }
 .tips-count{
+    width:20%;
     float: right;
     color: rgb(241,65,65);
     font-size: 1.5em;
+    height: 49.7%;
+}
+.detail-msg-box .tips-count:first-child{
+    border-bottom: 1px solid #ccc;
 }
 .noticeBox .alertBox, .noticeBox .messageBox {
     background: white;
@@ -61,7 +69,7 @@
     height:auto;
 }
 .noticeBox .msg-tips-box .messageBody{
-    max-height: 380px;
+    max-height: 418px;
     overflow-y: inherit;
     height:auto;
 }
@@ -240,4 +248,26 @@
 
 .message-detail-enter {
     opacity: 0
+}
+.title-box{
+    width: 100%;
+    text-align: center;
+    background: #E5E5E5;
+}
+.img-title,.detail-msg-title,.tips-title{
+    float: left;
+}
+.detail-msg-title{
+    width:63.6%;
+    padding: 0.5em 0;
+}
+.img-title{
+    width: 20%;
+    padding: 0.5em 0;
+    border-right: 1px solid #ccc;
+}
+.tips-title{
+    width:16.3%;
+    padding: 0.5em 0;
+    border-left: 1px solid #ccc;
 }
