@@ -12,6 +12,7 @@
     <meta http-equiv="Cache" content="no-cache">
     <title>南宁市扬尘治理综合管理系统</title>
     <link rel="stylesheet" href="http://120.77.246.153:9000/element-ui/lib/theme-default/index.css">
+    <link rel="stylesheet" href="../vendors/loaders.css">
 
     <!-- Bootstrap -->
     <link href="http://120.77.246.153:9000/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -452,23 +453,19 @@
          dojo:dojo
      }
  </script>
- <script type="text/javascript" >
-    setTimeout(function(){
-         $.getScript("../release/app.bundle.js",function(){
-             console.log("脚本加载完成");
-         });
-     },3000);//延时3秒
- </script>-->
+ -->
 <!--webpack dll文件-->
 <script src="../build/dist/vendor.dll.js"></script>
-<script type="text/javascript" src="../release/app.bundle.js"></script>
-
+<!--devStart--><script type="text/javascript" src="../release/app.bundle.js"></script><!--devEnd-->
+<!--build <script type="text/javascript" >
+    setTimeout(function(){
+        $.getScript("../release/app.bundle.js",function(){
+            console.log("脚本加载完成");
+                    $('#loadingMask').hide();
+        });
+    },3000);//延时3秒
+</script> build-->
 <!-- Custom Theme Scripts -->
 <script src="../vendors/custom.js"></script>
-<script>
-    $(document).ready(function () {
-        $('#loadingMask').hide();
-    });
-</script>
 </body>
 </html>

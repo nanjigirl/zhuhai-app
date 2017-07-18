@@ -49,7 +49,7 @@ module.exports = {
             {
                 //webpack2.0后loader不能简写
                 test: /\.(png|jpg|jpeg|gif)$/,
-                use: "url-loader?limit=8192"
+                use: "url-loader?limit=1024"
             },
             {
                 // 专供iconfont方案使用的，后面会带一串时间戳，需要特别匹配到
@@ -70,12 +70,6 @@ module.exports = {
             jQuery: "jquery",
             "window.jQuery": "jquery"
         }),
-        cssExtract,
-        //DllReferencePlugin可以引用一个预先打包好的dll，但这里直接引用的是manifest文件（扩展名json）
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            //通过manifest文件加载（文件扩展名json）
-            manifest: require('./dist/vendor-manifest.json')
-        }),
+        cssExtract
     ]
 }
