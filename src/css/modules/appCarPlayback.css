@@ -3,12 +3,16 @@
     position: absolute;
     right: 0;
     top: 0;
-    width: 20%;
-    height:95%;
+    width: 23%;
+    height:100%;
+    overflow: auto;
     z-index: 99;
     -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
     -moz-box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
     box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
+}
+.cesc-table-wrap td{
+    word-wrap: break-word;
 }
 .playBtnGrounp{
     position: absolute;
@@ -26,7 +30,6 @@
 }
 .left-car-charts .timeSpan{
     width: 100%;
-    height: 2.5em;
     font-size: 1.5em;
     color: #333;
     line-height: 2.5em;
@@ -173,9 +176,9 @@
     font-size: 18px!important;
     padding: 12px!important;
 }
-.table-vertical tr th:first-child,.table-vertical tr td:first-child{
-    width: 12em;
-}
+/*.table-vertical tr th:first-child,.table-vertical tr td:first-child{*/
+    /*width: 12em;*/
+/*}*/
 .table-vertical tbody tr td:first-child{
     background: #FAFAFA;
     color: #333;
@@ -195,7 +198,7 @@
     padding:0.5em;
 }
 #myChart{
-    width: 30em;
+    width: 28em;
     height: 14em;
     background: #fff!important;
 }

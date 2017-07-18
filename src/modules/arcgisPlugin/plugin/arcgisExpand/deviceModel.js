@@ -196,16 +196,16 @@ define(['utils/eventHelper'], function (eventHelper) {
                 features.push(graphic1);
                 featureLayer.add(graphic);
                 featureLayer.add(graphic1);
-                featureLayer.on('click', function (event) {
-                    console.log(event, item);
-                    eventHelper.emit('subFacility-clicked', {
-                        id: 'f' + item.fid,
-                        item: item,
-                        facilityTypeName: facilityTypeName,
-                        center: [event.graphic.geometry.x, event.graphic.geometry.y]
-                    });
-                    //event.graphic.getLayer().id
-                });
+                // featureLayer.on('click', function (event) {
+                //     console.log(event, item);
+                //     eventHelper.emit('subFacility-clicked', {
+                //         id: 'f' + item.fid,
+                //         item: item,
+                //         facilityTypeName: facilityTypeName,
+                //         center: [event.graphic.geometry.x, event.graphic.geometry.y]
+                //     });
+                //     //event.graphic.getLayer().id
+                // });
                 return featureLayer;
             });
         }
