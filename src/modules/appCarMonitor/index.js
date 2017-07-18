@@ -139,7 +139,16 @@ var comm = Vue.extend({
                         truckNum: menu.truckNum,
                         terminalNum: menu.terminalNum,
                         check: false,
-                        id: menu.id
+                        id: menu.id,
+                        breakRule:menu.breakRule,
+                        company:menu.company,
+                        display:menu.display,
+                        driver:menu.driver,
+                        inBlackList: menu.inBlackList,
+                        licenseType:menu.licenseType,
+                        truckType:menu.truckType,
+                        x:menu.x,
+                        y:menu.y
                     });
                 });
                 eventHelper.emit('loading-end');
@@ -184,7 +193,16 @@ var comm = Vue.extend({
                     deviceModel.ssjkCreatePoint(this.map, list.id, 'f' + list.id, list.truckNum, 'abc', data.x, data.y, '', './img/toolbar/car.png', '22', '22', 'abc', {
                         terminalNum: list.terminalNum,
                         id: list.id,
-                        truckNum: list.truckNum
+                        truckNum: list.truckNum,
+                        breakRule:list.breakRule,
+                        company:list.company,
+                        display:list.display,
+                        driver:list.driver,
+                        inBlackList: list.inBlackList,
+                        licenseType:list.licenseType,
+                        truckType:list.truckType,
+                        x:list.x,
+                        y:list.y
                     });
                 }.bind(this));
             } else {
