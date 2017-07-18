@@ -57,12 +57,16 @@ define(function () {
                 //创建地图上图标
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
-            graLayer.on('mouseover', function (evt) {
-                if (!!evt.graphic && !!evt.graphic.attributes && !!evt.graphic.attributes.item) {
-                    var name = evt.graphic.attributes.item.name;
-                    deviceModel.createTextSymbol(Graphic, Point, TextSymbol, Color, evt.graphic.geometry, name, graLayer);
-                }
-            })
+            graLayer.on('mouse-over',function (evt) {
+                console.log('over',evt);
+                var attr = evt.graphic.attributes;
+                map.infoWindow.setTitle(attr.facilityTypeName);
+                map.infoWindow.setContent(attr.item.name);
+                map.infoWindow.show(evt.screenPoint);
+            });
+            graLayer.on('mouse-out',function (evt) {
+                map.infoWindow.hide();
+            });
             graLayer.on('click', function (evt) {
                 eventHelper.emit('subFacility-clicked', {
                     id: 'f' + evt.graphic.attributes.item.fid,
