@@ -101,6 +101,19 @@ var comm = Vue.extend({
                 })
             });
         },
+        searchRecord:function () {
+            var self = this;
+            self.facilityTableData.splice(0);
+            facilityService.getFacilityLists(self.form.name,self.form.address,self.form.data,self.form.pollute,function (result) {
+                console.log(result);
+                result.facilityList.forEach(function (value) {
+                    self.facilityTableData.push({
+                        name:value.name,
+                        status:'在线'
+                    })
+                })
+            });
+        },
         close:function (formName) {
             this.showSearch = false;
             // this.$refs[formName].resetFields();

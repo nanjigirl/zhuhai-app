@@ -35,6 +35,9 @@
                     </el-option>
                 </el-select>
             </el-form-item>
+            <el-form-item>
+                <el-button @click="searchRecord()" class="float-right">查询</el-button>
+            </el-form-item>
         </el-form>
         <span>记录总数：{{account}}条</span>
     </div>
