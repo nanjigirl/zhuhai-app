@@ -32,12 +32,12 @@
     background: #ddd;
 }
 .cesc-nnyc-data{
-    height:30%;
+    height:36%;
     overflow: auto;
 }
 .cesc-nnyc-table{
     padding: 5px;
-    height: 70%;
+    height: 64%;
     overflow: auto;
 }
 .nnyc-search .el-form-item {
