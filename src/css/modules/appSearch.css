@@ -28,6 +28,9 @@
     -webkit-transition:  -webkit-transform 1s;
     -o-transition:-o-transform 1s;
 }
+.cesc-search-table .table tbody tr:hover{
+    background: #ddd;
+}
 .cesc-nnyc-data{
     height:30%;
     overflow: auto;
