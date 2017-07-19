@@ -92,7 +92,7 @@ var comm = Vue.extend({
         });
         eventHelper.on('subFacility-clicked', function (point) {
             console.log(point);
-            map.centerAt([parseFloat(point.center[0]) + 0.05, point.center[1]]);
+            map.centerAt([parseFloat(point.center[0]) + 0.005, point.center[1]]);
             this.$refs.rightPanel.open(point.item, point.facilityTypeName);
         }.bind(this));
         eventHelper.on('carDetail-clicked', function (point) {
