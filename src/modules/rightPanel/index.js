@@ -7,7 +7,6 @@ var facilityController = require('controllers/facilityController');
 var serviceHelper = require('services/serviceHelper');
 var moment = require('moment');
 var eventHelper = require('utils/eventHelper');
-var detailGridHeader=[{key:'startDate',value:'起始时间'},{key:'deep',value:'最大积水深度'},{key:'period',value:'积水时长'}];
 var realTimeUpdate = function (self, monitorObj) {
     controller.getMonitorItemCurrentValue(monitorObj, function (result) {
         self.lastUpdateTime = moment().format('YYYY-MM-DD hh:mm:ss', new Date());
@@ -38,73 +37,7 @@ var comm = Vue.extend({
             selectedMode: '',
             facilityType: '',
             waterGrade: 1,
-            waterGradeTitle:'',
-            heads:detailGridHeader,
-            rows:[{
-                startDate:'2016-10-09',
-                deep:'0.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-19',
-                deep:'0.1m',
-                period:'6h'
-            },{
-                startDate:'2016-11-09',
-                deep:'0.4m',
-                period:'7h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            },{
-                startDate:'2016-10-29',
-                deep:'1.4m',
-                period:'6h'
-            }]
-        }
-    },
-    computed:{
-        classObject:function(){
-            return{
-                'one':this.waterGrade === 1,
-                'two':this.waterGrade === 2,
-                'three':this.waterGrade === 3,
-                'four':this.waterGrade === 4,
-                'five':this.waterGrade === 5,
-                'six':this.waterGrade === 6
-            }
+            waterGradeTitle: ''
         }
     },
     mounted: function () {
@@ -122,7 +55,7 @@ var comm = Vue.extend({
             this.waterGrade = grade.grade;
             this.waterGradeTitle = grade.title;
         }.bind(this));
-        eventHelper.on('close-right-panel',function () {
+        eventHelper.on('close-right-panel', function () {
             this.closePanel();
         }.bind(this));
     },
@@ -139,7 +72,7 @@ var comm = Vue.extend({
             this.isRealTimeMode = true;
             this.activeIndex = '1';
         },
-        open: function (facility) {
+        open: function (facility, facilityTypeName) {
             eventHelper.emit('isLoading');
             var self = this;
             clearInterval(currentThread);
@@ -154,21 +87,18 @@ var comm = Vue.extend({
             this.$nextTick(function () {
                 this.activeIndex = '1';
                 this.facility = facility;
-                if(!!this.$refs.monitorPlugin){
+                if (!!this.$refs.monitorPlugin) {
                     this.$refs.monitorPlugin.$emit('reset');
                 }
-                var facilityID = facility.id.substring(1);
-                if (facilityID == '35') {
+                var facilityID = facility.id;
+                if (facilityTypeName == 'WP') {
                     this.facilityType = 'ylz';
                     this.facilityPic = '../src/img/yuliang.jpg';
-                } else if (facilityID == '36') {
+                } else if (facilityTypeName == 'WD') {
                     this.facilityType = 'xs';
                     this.facilityPic = '../src/img/xushui.jpg';
-                } else if (facilityID == '37') {
-                    this.facilityType = 'hd';
-                    this.facilityPic = '../src/img/hedao.jpg';
                 }
-                this.facilityName = facility.item.name;
+                this.facilityName = facility.name;
                 facilityController.getDeviceDetailByFacility(facilityID, function (result) {
                     console.log(result);
                     if (!!result.pics && result.pics.length > 0) {
@@ -194,6 +124,7 @@ var comm = Vue.extend({
                             realTimeUpdate(this, monitorIDs);
                         }.bind(this), refreshTime);
                     }
+                    facility.facilityTypeName = facilityTypeName;
                     this.$refs.monitorPlugin.$emit('init-monitor', {
                         facility: facility,
                         devices: result.devices

@@ -10,7 +10,7 @@ var comm = Vue.extend({
             showSearch: false,
             isToggleMenu: false,
             account:6,
-            datatheads: ['设备名称', '状态'],
+            datatheads: ['测站名称', '状态'],
             form: {
                 name: '',
                 address: '',
@@ -21,11 +21,11 @@ var comm = Vue.extend({
                 value: '',
                 label: ''
             }, {
-                value: '南宁市建设委员会',
-                label: '南宁市建设委员会'
+                value: '易捞点',
+                label: '易捞点'
             }, {
-                value: '南宁市交警大队',
-                label: '南宁市交警大队'
+                value: '窨井',
+                label: '窨井'
             }],
             pollutions: [{
                 value: '',
@@ -47,29 +47,17 @@ var comm = Vue.extend({
                 value: '',
                 label: ''
             },{
-                value: '青秀区',
-                label: '青秀区'
+                value: '静安区',
+                label: '静安区'
             }, {
-                value: '兴宁区',
-                label: '兴宁区'
+                value: '黄埔区',
+                label: '黄埔区'
             }],
             tableData: [{
-                name: '荣和悦澜山-吊塔视频',
+                name: '黄埔区沙井大道监测点',
                 status: '在线'
             }, {
-                name: '儿童康复中心综合大楼-门口视频',
-                status: '在线'
-            }, {
-                name: '林里苑小区-吊塔视频',
-                status: '在线'
-            }, {
-                name: '荣和大地-公园大道-1号门吊塔视频',
-                status: '在线'
-            }, {
-                name: '南宁市建设委员会-吊塔视频',
-                status: '在线'
-            }, {
-                name: '石灰厂-吊塔视频',
+                name: '静安区保盖监测点',
                 status: '在线'
             }],
         }

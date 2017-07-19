@@ -44,13 +44,16 @@ define(function () {
         createPoints: function (facilitys, legend) {
             var graLayer = new GraphicsLayer();
             facilitys.forEach(function (item) {
-                var icon = './img/toolbar/' + legend.icon + '.png';
+                var icon = item.icon;
                 var fid = legend.id;
                 item.fid = fid;
                 deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item,legend.facilityTypeName);
                 //创建地图上图标
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
+          /*  graLayer.on('mouse-over',function (evt) {
+                console.log('over',evt);
+            })*/
             graLayer.on('click', function (evt) {
                 eventHelper.emit('subFacility-clicked', {
                     id: 'f' + evt.graphic.attributes.item.fid,

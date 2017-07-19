@@ -70,12 +70,6 @@ module.exports = {
             jQuery: "jquery",
             "window.jQuery": "jquery"
         }),
-        cssExtract,
-        //DllReferencePlugin可以引用一个预先打包好的dll，但这里直接引用的是manifest文件（扩展名json）
-        new webpack.DllReferencePlugin({
-            context: __dirname,
-            //通过manifest文件加载（文件扩展名json）
-            manifest: require('./dist/vendor-manifest.json')
-        }),
+        cssExtract
     ]
 }
