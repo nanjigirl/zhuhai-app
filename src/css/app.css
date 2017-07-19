@@ -4,7 +4,12 @@ html, body {
     height: 100%;
     overflow: auto;
 }
+body{
+    scrollbar-base-color:#105ba3;
+    scrollbar-track-color:#F5F5F5;
+    scrollbar-shadow-color: #1a5f17;
 
+}
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, pre, code, form, fieldset, legend, input, button, textarea, blockquote, th, td {
     margin: 0;
     padding: 0;
@@ -79,6 +84,11 @@ li {
     border-right: 1px solid black !important;
     height: 6.8em;
     border-bottom: 3px solid black !important;
+}
+scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #105ba3;
 }
 
 ::-webkit-scrollbar {

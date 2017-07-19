@@ -7,8 +7,7 @@
                 </p>
                 <div class="timeSpan">
                     当前时间：&nbsp;&nbsp;
-                    <span class="dateSpan">{{updateDate}}</span>&nbsp;&nbsp;
-                    <span class="time">{{updateTime}}</span>
+                    <span class="dateSpan">{{currentDate}}</span>
                 </div>
                 <div class="car-detail">
                     <table class="table table-bordered cesc-table table-vertical cesc-table-wrap">
@@ -73,20 +72,27 @@
             </div>
         </div>
         <div class="car-opration">
-            <div class="col-20 player-button">
-                <i class="icon icon-play-big" @click="play"></i>
+            <div class="timeBox">
+                当前查看时间：&nbsp;&nbsp;
+                <span class="dateSpan">{{updateDate}}</span>&nbsp;&nbsp;
+                <span class="time">{{updateTime}}</span>
             </div>
-            <div class="col-20 player-button">
-                <i class="icon icon-play-pause" @click="pause"></i>
-            </div>
-            <div class="col-20 player-button">
-                <i class="icon icon-play-move" @click="move"></i>
-            </div>
-            <div class="col-20 player-button">
-                <i class="icon icon-play-replay" @click="replay"></i>
-            </div>
-            <div class="col-20 player-button" @click="closeOprationPanel()">
-                <i class="icon icon-play-stop"></i>
+            <div class="playBtnBox">
+                <div class="col-20 player-button">
+                    <i class="icon icon-play-big" @click="play"></i>
+                </div>
+                <div class="col-20 player-button">
+                    <i class="icon icon-play-pause" @click="pause"></i>
+                </div>
+                <div class="col-20 player-button">
+                    <i class="icon icon-play-move" @click="move"></i>
+                </div>
+                <div class="col-20 player-button">
+                    <i class="icon icon-play-replay" @click="replay"></i>
+                </div>
+                <div class="col-20 player-button" @click="closeOprationPanel()">
+                    <i class="icon icon-play-stop"></i>
+                </div>
             </div>
         </div>
     </div>
