@@ -81,14 +81,9 @@ var comm = Vue.extend({
                 }
             ],
             datatheads: ['历史轨迹', '车辆编号', '所属公司'],
-            rightPanelOpen: false,
-            isRealTimeMode: true,
-            // isPlay: true,
+            carIllegalPanelOpen: false,
             alertMessage: '',
             activeIndex: '1',
-            // facilityPic: '../src/img/combImg.png',
-            facilityName: '',
-            selectedMode: '',
             facilityType: '',
         }
     },
@@ -102,8 +97,9 @@ var comm = Vue.extend({
                     type: 'none'
                 },
                 trigger: 'item',
-                formatter: "{a} <br/>{b} : {c} ({d}%)"
+                formatter: "{a} <br/>{b} : {c}辆 ({d}%)"
             },
+            color:['#5B9BD5','#ED7D31','#7030A0'],
             legend: {
                 orient: 'vertical',
                 left: 'left',
@@ -148,7 +144,7 @@ var comm = Vue.extend({
             this.map = map;
         }.bind(this));
         eventHelper.on('app-car-illegal', function () {
-            this.rightPanelOpen = true;
+            this.carIllegalPanelOpen = true;
             this.queryCarData();
             mapHelper.setCenter(108.336887633667, 22.843255647231448, this.map, 11);
         }.bind(this));
@@ -296,7 +292,6 @@ var comm = Vue.extend({
         closePanel: function () {
             this.removeCarLogo();
             this.removeDistance();
-            eventHelper.emit('right-panel-close');
             mapHelper.removeGraphic(this.map, this.areaPolyon);
             for (var key in this.cacheArr) {
                 arcgisPlugin.removePoints({layer: this.cacheArr[key].point});
@@ -304,7 +299,7 @@ var comm = Vue.extend({
                     mapHelper.removeGraphic(this.map, graphic);
                 }.bind(this))
             }
-            this.rightPanelOpen = false;
+            this.carIllegalPanelOpen = false;
         },
     },
     computed: {},
