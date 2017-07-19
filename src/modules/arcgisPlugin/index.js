@@ -13,11 +13,13 @@ var rightPanel = require('modules/rightPanel');
 var rightPanelComplaint = require('modules/rightPanelComplaint');
 var appCarMonitor = require('modules/appCarMonitor');
 var appCarPlayback = require('modules/appCarPlayback');
+var appCarDetail = require('modules/appCarDetail');
 var appCarIllegal = require('modules/appCarIllegal');
 var appCarCase = require('modules/appCarCase');
 var appCarPollution = require('modules/appCarPollution');
 var appCheckDialog = require('modules/appCheckDialog');
 var mapHelper = require('utils/mapHelper');
+var appSearch = require('modules/appSearch');
 var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
     var centerX = 108.37267903076172;
@@ -93,6 +95,10 @@ var comm = Vue.extend({
             map.centerAt([parseFloat(point.center[0]) + 0.05, point.center[1]]);
             this.$refs.rightPanel.open(point.item, point.facilityTypeName);
         }.bind(this));
+        eventHelper.on('carDetail-clicked', function (point) {
+            console.log(point);
+            this.$refs.carDetail.open(point.item);
+        }.bind(this));
     },
     components: {
         'right-panel': rightPanel,
@@ -103,7 +109,9 @@ var comm = Vue.extend({
         'app-car-playback':appCarPlayback,
         'flex-map-legend': flexMapLegend,
         'app-car-monitor': appCarMonitor,
-        'app-check-dialog':appCheckDialog
+        'app-check-dialog':appCheckDialog,
+        'app-car-detail':appCarDetail,
+        'app-search': appSearch,
     }
 });
 module.exports = comm;

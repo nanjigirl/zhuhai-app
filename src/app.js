@@ -45,6 +45,7 @@ window.eventHelper = eventHelper;
 // 从而让整个应用都有路由功能
 var app = new Vue({
     mounted: function () {
+        $('#loadingMask').hide();
         eventHelper.on('loginSuccess', function () {
             this.isLoginSuccess = true;
         }.bind(this));
@@ -71,7 +72,7 @@ var app = new Vue({
         'app-navigator': appNavigator,
         'app-tab': appTab,
         'main-view': mainView,
-        'app-search': appSearch,
+        // 'app-search': appSearch,
         'app-footer': appFooter
     }
 }).$mount('#app');
