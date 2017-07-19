@@ -53,14 +53,14 @@ define(function () {
                 var icon = './img/toolbar/' + legend.icon + '.png';
                 var fid = legend.id;
                 item.fid = fid;
-                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item, legend.facilityTypeName, hideName);
+                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item, legend, hideName);
                 //创建地图上图标
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
             graLayer.on('mouse-over',function (evt) {
                 console.log('over',evt);
                 var attr = evt.graphic.attributes;
-                map.infoWindow.setTitle(attr.facilityTypeName);
+                map.infoWindow.setTitle(attr.title);
                 map.infoWindow.setContent(attr.item.name);
                 map.infoWindow.show(evt.screenPoint);
             });
