@@ -201,8 +201,6 @@ define(['utils/eventHelper'], function (eventHelper) {
                 featureLayer.add(graphic1);
                 featureLayer.on('mouse-over',function (evt) {
                     console.log('over',evt);
-                    console.log(1234);
-                    console.log(item);
                     var content = '<p><span>'+ '驾驶员：'+'</span>'+item.driver +'</p>'+
                                   '<p><span>'+ '公司：'+'</span>'+item.company +'</p>'+
                                   '<p><span>'+ '车牌号：'+'</span>'+item.truckNum +'</p>';

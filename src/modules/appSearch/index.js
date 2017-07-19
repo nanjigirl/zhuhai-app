@@ -3,6 +3,7 @@ var eventHelper = require('../../utils/eventHelper');
 var appMenuController = require('controllers/appMenuController');
 var menuData = require('services/mockMenu');
 var facilityService = require('services/facilityService');
+var mapHelper = require('utils/mapHelper');
 // var serviceHelper = require('services/serviceHelper');
 // 定义组件
 var comm = Vue.extend({
@@ -12,6 +13,7 @@ var comm = Vue.extend({
             showSearch: false,
             isToggleMenu: false,
             account:6,
+            cacheGraphies:[],
             datatheads: ['设备名称', '状态'],
             form: {
                 name: '',
@@ -71,6 +73,15 @@ var comm = Vue.extend({
         }
     },
     methods: {
+        getThisVideoPlace:function (data) {
+            if(!!this.cacheGraphies){
+                this.cacheGraphies.forEach(function (graphic) {
+                    mapHelper.removeGraphic(this.map, graphic);
+                }.bind(this));
+            }
+            mapHelper.setCenter(data.x, data.y, this.map, 12);
+            this.cacheGraphies.push(...mapHelper.addMarkSymbol(this.map, '', data.x, data.y, 5, [255, 0, 0, 0.8]));
+        },
         getFacilityTableData:function () {
             var self =this;
             facilityService.getFacilityLists('','','','',function (result) {
@@ -79,7 +90,9 @@ var comm = Vue.extend({
                 result.facilityList.forEach(function (value) {
                     self.facilityTableData.push({
                         name:value.name,
-                        status:'在线'
+                        status:'在线',
+                        x:value.x,
+                        y:value.y
                     })
                 })
             });
@@ -103,6 +116,9 @@ var comm = Vue.extend({
         },
     },
     mounted: function () {
+        eventHelper.on('mapCreated', function (map) {
+            this.map = map;
+        }.bind(this));
         this.getFacilityTableData();
         eventHelper.on('openPointSearch', function () {
             this.showSearch = !this.showSearch;

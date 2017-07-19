@@ -41,7 +41,7 @@
         </el-form>
         <span>记录总数：{{account}}条</span>
     </div>
-    <div class="cesc-nnyc-table">
+    <div class="cesc-nnyc-table cesc-search-table">
         <table class="table table-striped table-bordered" >
             <colgroup>
                 <col width="60%">
@@ -52,7 +52,7 @@
             </tr>
             </thead>
             <tbody>
-                <tr  v-for="data in facilityTableData">
+                <tr  v-for="data in facilityTableData" @click="getThisVideoPlace(data)">
                     <td>
                         {{ data.name }}
                     </td>
