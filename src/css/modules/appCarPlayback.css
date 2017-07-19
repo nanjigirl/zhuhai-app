@@ -153,24 +153,38 @@
     border-bottom: 2px solid #ccc;
 }
 .car-opration{
-    height: 6em;
+    height: 10em;
     width: 35em;
     padding: 0 1em;
     position: absolute;
     bottom: 10em;
     left: 50%;
     transform:translate(-50%,0);
-    background: rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: rgba(0,0,0,0.3);
 }
 .text-blue{
     color: #1C9AF7;
 }
 .car-opration .col-20{
     width: 20%;
-    height:100%;
+    height:calc(100% - 2em);
+}
+.timeBox{
+    padding:1em 0 0;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.timeBox>span{
+    color: red;
+}
+.playBtnBox{
+    width: 100%;
+    height:7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .car-opration .icon{
     z-index: 2;
