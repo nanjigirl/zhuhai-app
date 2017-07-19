@@ -60,7 +60,8 @@ define(['utils/eventHelper'], function (eventHelper) {
                 "dojo/_base/connect",
                 "esri/Color",
                 "esri/symbols/Font",
-                "esri/symbols/PictureMarkerSymbol"
+                "esri/symbols/PictureMarkerSymbol",
+                "esri/layers/GraphicsLayer"
             ], function (Point,
                          FeatureLayer,
                          Graphic,
@@ -72,7 +73,8 @@ define(['utils/eventHelper'], function (eventHelper) {
                          connect,
                          Color,
                          Font,
-                         PictureMarkerSymbol) {
+                         PictureMarkerSymbol,
+                         GraphicsLayer) {
 
                 iconW = (iconW == null) ? iconW = 15 : iconW = iconW;
                 iconH = (iconH == null) ? iconH = 15 : iconH = iconH;
@@ -192,10 +194,25 @@ define(['utils/eventHelper'], function (eventHelper) {
                 var geometry = new Point(x, y);
                 var graphic = new Graphic(geometry, textSymbol);
                 var graphic1 = new Graphic(geometry, pictureMarkerSymbol);
+                graphic.attributes = {facilityTypeName: facilityTypeName, item: item};
                 features.push(graphic);
                 features.push(graphic1);
                 featureLayer.add(graphic);
                 featureLayer.add(graphic1);
+                featureLayer.on('mouse-over',function (evt) {
+                    console.log('over',evt);
+                    console.log(1234);
+                    console.log(item);
+                    var content = '<p><span>'+ '驾驶员：'+'</span>'+item.driver +'</p>'+
+                                  '<p><span>'+ '公司：'+'</span>'+item.company +'</p>'+
+                                  '<p><span>'+ '车牌号：'+'</span>'+item.truckNum +'</p>';
+                    map.infoWindow.setContent(content);
+                    map.infoWindow.show(evt.screenPoint);
+                    console.log(evt.screenPoint);
+                });
+                featureLayer.on('mouse-out',function (evt) {
+                    map.infoWindow.hide();
+                });
                 featureLayer.on('click', function (event) {
                     console.log(item);
 
