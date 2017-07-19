@@ -90,7 +90,9 @@ define(function () {
         createSymbol: function (baseMap, x, y, iconUrl, name, height, width, angel,hideName) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, width, height);
             console.log(angel);
-            pictureMarkerSymbol.setAngle(Math.abs(360 - 90 - angel));
+            if(!!angel){
+                pictureMarkerSymbol.setAngle(Math.abs(360 - 90 - angel));
+            }
             var geometry = new Point(x, y);
             var graphic = new Graphic(geometry, pictureMarkerSymbol);
             var graLayer = new GraphicsLayer();
@@ -307,6 +309,14 @@ define(function () {
                 leftMap: leftMap,
                 rightMap: rightMap
             }
+        },
+        removeLayer:function (map,layer) {
+            map.removeLayer(layer);
+        },
+        removeLayers:function (map,layers) {
+            layers.forEach(function (layer) {
+                this.removeLayer(map,layer);
+            }.bind(this));
         },
         splitMap: function () {
             var lineDepartPolygon = function () {

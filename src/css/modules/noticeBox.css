@@ -47,6 +47,7 @@
     max-width: 11em;
 }
 .tips-count{
+    text-align: center;
     width:20%;
     float: right;
     color: rgb(241,65,65);
