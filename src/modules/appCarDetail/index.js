@@ -19,8 +19,8 @@ var comm = Vue.extend({
                     truckType:'',
                     carNumber:'',
                     company:'',
-                    currentCapacity:'5吨',
-                    ratedCapacity:'5吨',
+                    currentCapacity:'50吨',
+                    ratedCapacity:'50吨',
                     inBlackList:'',
                 }
             }
