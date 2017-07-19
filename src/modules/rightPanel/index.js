@@ -388,7 +388,7 @@ var comm = Vue.extend({
                                 facilityTypeName = 'DH';
                             }
                             this.facilityType = facilityTypeName;
-                            if (facilityTypeName == 'DS') {
+                            if (facilityTypeName == 'DS' ||facilityTypeName == 'CMP' ||facilityTypeName == 'SQ' ) {
                                 this.initHKVideo(videoURL);
                             } else if (facilityTypeName == 'CS') {
                                 this.initGDVideo(videoURL);
