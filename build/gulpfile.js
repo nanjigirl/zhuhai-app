@@ -98,6 +98,7 @@ gulp.task('webpack-build',['concat-lib'],function () {
 gulp.task('copy-vendors',function(){
     gulp.src('../vendors/**/**').pipe(gulp.dest('../release/vendors'));
     gulp.src('../build/dist/vendor.dll.js').pipe(gulp.dest('../release'));
+    gulp.src('../startCDN.bat').pipe(gulp.dest('../release'));
     gulp.src('../src/img/**/**').pipe(gulp.dest('../release/img'));
 });
 gulp.task('upload-source',function(){
