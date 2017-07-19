@@ -28,7 +28,7 @@ define(['utils/eventHelper'], function (eventHelper) {
             var graphic1 = new Graphic(geometry, textSymbol);
             layer.add(graphic1);
         },
-        createSymbol: function (Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, x, y, iconUrl, item, facilityTypeName, hideName) {
+        createSymbol: function (Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, x, y, iconUrl, item, legend, hideName) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, 20, 20);
             var geometry = new Point(x, y);
             var graphic = new Graphic(geometry, pictureMarkerSymbol);
@@ -40,10 +40,10 @@ define(['utils/eventHelper'], function (eventHelper) {
             if (!hideName) {
                 var graphic1 = new Graphic(geometry, textSymbol);
                 graLayer.add(graphic1);
-                graphic1.attributes = {facilityTypeName: facilityTypeName, item: item};
+                graphic1.attributes = {facilityTypeName: legend.facilityTypeName, item: item};
             }
             graLayer.add(graphic);
-            graphic.attributes = {facilityTypeName: facilityTypeName, item: item};
+            graphic.attributes = {facilityTypeName: legend.facilityTypeName, title: legend.title, item: item};
             return graLayer;
         }
         ,
