@@ -85,6 +85,7 @@ var comm = Vue.extend({
         getFacilityTableData:function () {
             var self =this;
             facilityService.getFacilityLists('','','','',function (result) {
+                console.log(45678);
                 console.log(result);
                 self.account = result.facilityList.length;
                 result.facilityList.forEach(function (value) {
@@ -105,7 +106,9 @@ var comm = Vue.extend({
                 result.facilityList.forEach(function (value) {
                     self.facilityTableData.push({
                         name:value.name,
-                        status:'在线'
+                        status:'在线',
+                        x:value.x,
+                        y:value.y
                     })
                 })
             });

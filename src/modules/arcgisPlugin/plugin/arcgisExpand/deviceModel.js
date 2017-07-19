@@ -201,6 +201,7 @@ define(['utils/eventHelper'], function (eventHelper) {
                 featureLayer.add(graphic1);
                 featureLayer.on('mouse-over',function (evt) {
                     console.log('over',evt);
+                    map.infoWindow.setTitle('车辆基本信息');
                     var content = '<p><span>'+ '驾驶员：'+'</span>'+item.driver +'</p>'+
                                   '<p><span>'+ '公司：'+'</span>'+item.company +'</p>'+
                                   '<p><span>'+ '车牌号：'+'</span>'+item.truckNum +'</p>';
