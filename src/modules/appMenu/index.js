@@ -8,7 +8,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            menuList: [],
+            menuList: menuData,
             isMenuToggleOff: false,
             isLoginSuccess: false,
             showToggle: false,
@@ -51,13 +51,17 @@ var comm = Vue.extend({
         },
         toggleOffMenu: function () {
             this.isMenuToggleOff = !this.isMenuToggleOff;
-            eventHelper.emit('toggle-menu',this.isMenuToggleOff);
+            eventHelper.emit('toggle-menu', this.isMenuToggleOff);
         },
         openTertiaryMenu: function (event, menu) {
-            this.showTertiaryMenu = true;
-            this.currentMenu = menu;
-            this.tertiaryMenus = this.currentMenu.nodes;
-            $('.tertiaryMenu').css('top', event.clientY - 110);
+            if (!!menu.customid && !!menu.menuurl) {
+                eventHelper.emit('change-menu-success', menu);
+            } else {
+                this.showTertiaryMenu = true;
+                this.currentMenu = menu;
+                this.tertiaryMenus = this.currentMenu.nodes;
+                $('.tertiaryMenu').css('top', event.clientY - 110);
+            }
         },
         initMenu: function () {
             (function ($, sr) {
@@ -182,9 +186,9 @@ var comm = Vue.extend({
                         menu.openSecondary = false;
                     })
                     this.menuList = this.menuList.concat(menus);
-                     this.$nextTick(function () {
-                     this.initMenu(); 
-                     }.bind(this));
+                    this.$nextTick(function () {
+                        this.initMenu();
+                    }.bind(this));
                 }.bind(this));
 
             }.bind(this));
