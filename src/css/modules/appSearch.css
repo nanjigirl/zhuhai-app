@@ -40,6 +40,60 @@
     margin-left:1em;
     z-index: 10;
 }
+.control-draw{
+    position: absolute;
+    top: 140px;
+    margin-left:1em;
+    z-index: 10;
+}
+.control-deleteDraw{
+    position: absolute;
+    top: 140px;
+    margin-left:5em;
+    z-index: 10;
+}
+.control-cancelDraw{
+    position: absolute;
+    top: 140px;
+    margin-left:9em;
+    z-index: 10;
+}
+.control-addLayer{
+    position: absolute;
+    top: 180px;
+    margin-left:1em;
+    z-index: 10;
+}
+.control-addMoreLayer{
+    position: absolute;
+    top: 220px;
+    margin-left:1em;
+    z-index: 10;
+}
+.control-grid{
+    position: absolute;
+    top: 260px;
+    margin-left:1em;
+    z-index: 10;
+}
+.control-center{
+    position: absolute;
+    top: 300px;
+    margin-left:1em;
+    z-index: 10;
+}
+.control-line{
+    position: absolute;
+    top: 340px;
+    margin-left:1em;
+    z-index: 10;
+}
+.control-refresh{
+    position: absolute;
+    top: 380px;
+    margin-left:1em;
+    z-index: 10;
+}
 .control-search .el-button{
     background-color: #157dd6;
     color: white;

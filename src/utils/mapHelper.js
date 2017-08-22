@@ -4,13 +4,16 @@ define(function () {
         ArcGISTiledMapServiceLayer = cesc.require('esri/layers/ArcGISTiledMapServiceLayer'),
         ArcGISDynamicMapServiceLayer = cesc.require('esri/layers/ArcGISDynamicMapServiceLayer'),
         Point = cesc.require('esri/geometry/Point'),
+        Extent = cesc.require("esri/geometry/Extent"),
         SpatialReference = cesc.require('esri/SpatialReference'),
         Polygon = cesc.require("esri/geometry/Polygon"),
         Polyline = cesc.require("esri/geometry/Polyline"),
         Graphic = cesc.require("esri/graphic"),
         Color = cesc.require("esri/Color"),
+        Font = cesc.require("esri/symbols/Font"),
         GraphicsLayer = cesc.require("esri/layers/GraphicsLayer"),
         TextSymbol = cesc.require("esri/symbols/TextSymbol"),
+        CartographicLineSymbol = cesc.require('esri/symbols/CartographicLineSymbol'),
         SimpleMarkerSymbol = cesc.require("esri/symbols/SimpleMarkerSymbol"),
         SimpleLineSymbol = cesc.require("esri/symbols/SimpleLineSymbol"),
         SimpleFillSymbol = cesc.require("esri/symbols/SimpleFillSymbol"),
@@ -43,15 +46,18 @@ define(function () {
             var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15, 0.8]), 2);
             graphic.setSymbol(symbol);
         },
-        drawMap: function (map, cb) {
-            var Draw = cesc.dojo.require("esri/toolbars/draw");
-            this.drawPen = new Draw(map, {
+        //地图编辑画图
+        drawMap: function  (map,lineColor,lineWidth,fillColor,cb) {
+            var DrawMap = cesc.dojo.require("esri/toolbars/draw");
+            this.drawPen = new DrawMap(map, {
                 showTooltips: true
             });
-            this.drawPen.activate(Draw.POLYGON);
+            this.isDrawing = true;
+            this.drawPen.activate(DrawMap.POLYGON);
             this.drawPen.on('draw-end', function (evtObj) {
-                if (this.isSave) {
-                    var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([160, 82, 45]), 2), new Color([0, 191, 255, 0.25]));
+                if (this.isDrawing) {
+                    this.isDrawing = false;
+                    var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color(lineColor), lineWidth), new Color(fillColor));
                     var graphic = new Graphic(evtObj.geometry, symbol);
                     var no = generateNo();
                     graphic.attributes = {facilityType: 'building', no: no};
@@ -60,10 +66,50 @@ define(function () {
                 }
             }.bind(this));
         },
+        //停止绘制
+        stopDraw:function () {
+            this.drawPen.finishDrawing();
+            this.drawPen.deactivate();
+        },
+        //结束画图
         finishDraw: function (isSave) {
             this.isSave = isSave;
             this.drawPen.finishDrawing();
             this.drawPen.deactivate();
+        },
+        //创建一个新的图层，并创建图例符号(传入icon，根据属性判断是否需要文字描述)
+        createSymbolNew: function (baseMap, x, y, iconUrl,pictureWidth,pictureHeight,attributes) {
+            var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, pictureWidth, pictureHeight);
+            var geometry = new Point(x, y);
+            var graphic = new Graphic(geometry, pictureMarkerSymbol);
+            graphic.attributes = attributes;
+            var graLayer = new GraphicsLayer();
+            if (!!attributes) {
+                var textSymbol = new TextSymbol();
+                textSymbol.setText(attributes.id);
+                textSymbol.setColor(new Color([255, 0, 0, 1]));
+                textSymbol.setFont("12pt");
+                textSymbol.setOffset(0, -20);
+                var graphic1 = new Graphic(geometry, textSymbol);
+                graLayer.add(graphic1);
+            }
+            graLayer.add(graphic);
+            graLayer.on('click', function (evt) {
+                console.log(123);
+                console.log(evt.graphic.attributes);
+            })
+            baseMap.addLayer(graLayer);
+            return graLayer;
+        },
+        //删除单个图层
+        removeLayer: function (map, layer) {
+            map.removeLayer(layer);
+        },
+        //删除多个图层
+        removeLayers: function (map, layers) {
+            layers.forEach(function (layer) {
+                this.removeLayer(map, layer);
+            }.bind(this));
         },
         createSymbol: function (baseMap, x, y, iconUrl, name, height, width, angel) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, width, height);
@@ -89,21 +135,32 @@ define(function () {
             features.forEach(function (feature) {
                 var points = JSON.parse(feature.coord);
                 var graphic = this.drawPolygon(points);
+
                 graphic.attributes = {facilityType: 'building', id: feature.id, gridId: map.id};
                 graLayer.add(graphic);
             }.bind(this));
             baseMap.addLayer(graLayer);
         },
-        drawLine: function (map, start, end,lineWidth) {
+        //根据两点坐标进行画线
+        drawLine: function (map, start, end,lineWidth,lineColor,attributes) {
             var no = generateNo();
             var line = Polyline({
                 "paths": [[start, end]],
                 "spatialReference": {"wkid": no}
             });
-            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15]), lineWidth);
+            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color(lineColor), lineWidth);
             var graphic = new Graphic(line, symbol);
-            map.graphics.add(graphic);
-            return graphic;
+            if(!!attributes){
+                graphic.attributes  = attributes;
+            }
+            var graLayer = new GraphicsLayer();
+            graLayer.add(graphic);
+            graLayer.on('click',function (event) {
+                console.log(event.graphic.attributes);
+            });
+            // map.graphics.add(graphic);
+            map.addLayer(graLayer);
+            return graLayer;
         },
         drawAnalyzeLine: function (map, start, end, type) {
             var no = generateNo();
@@ -122,30 +179,57 @@ define(function () {
             map.graphics.add(graphic);
             return graphic;
         },
-        createPolyon: function (map, points, isHighLight) {
-            var graphic = this.drawPolygon(points, isHighLight);
-            map.graphics.add(graphic);
-            return graphic;
-        },
-        drawPolygonWithData: function (map, building, isNew) {
-            var graphic = this.drawPolygon(JSON.parse(building.coord), isNew);
-            graphic.attributes = {building: building, facilityType: 'building'};
-            map.graphics.add(graphic);
-            return graphic;
-        },
-        drawPolygon: function (points, isNew) {
+        // createPolyon: function (map, points, isHighLight) {
+        //     var graphic = this.drawPolygon(points, isHighLight);
+        //     map.graphics.add(graphic);
+        //     return graphic;
+        // },
+        // drawPolygonWithData: function (map, building, isNew) {
+        //     var graphic = this.drawPolygon(JSON.parse(building.coord), isNew);
+        //     graphic.attributes = {building: building, facilityType: 'building'};
+        //     map.graphics.add(graphic);
+        //     return graphic;
+        // },
+        //根据点画图
+        drawPolygon: function (map,points, isNew,lineColor,lineWidth,attributes) {
             var no = generateNo();
             var polygonJson = {
-                "rings": [points], "spatialReference": {"wkid": no}
+                "rings": [points], "spatialReference": {"wkid": 4326}
             };
             var color = newColor;
             if (!!isNew) {
                 color = highLightColor;
             }
             var polygon = new Polygon(polygonJson);
-            var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([160, 82, 45]), 2), color);
+            var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color(lineColor), lineWidth), color);
             var graphic = new Graphic(polygon, symbol);
-            return graphic;
+            if(!!attributes){
+                graphic.attributes = attributes;
+            }
+            var graLayer = new GraphicsLayer();
+            graLayer.add(graphic);
+            graLayer.on("graphic-draw",function (graphic) {
+
+                cesc.dojo.connect(graphic.node, "onclick",{graphic:graphic.graphic}, function(e){
+                    debugger;
+                    console.log(this.graphic.attributes);
+                });
+            });
+            // graLayer.on('click',function (event) {
+            //    console.log(event.graphic.attributes);
+            // });
+            map.addLayer(graLayer);
+            return graLayer;
+        },
+        //删除图解
+        removeGraphic: function (map, graphic) {
+            map.graphics.remove(graphic);
+        },
+        //删除多个图解
+        removeGraphics: function (map, graphics) {
+            graphics.forEach(function (graphic) {
+                map.graphics.remove(graphic);
+            }.bind(this));
         },
         bindMaps: function (leftMap, rightMap) {
             var self = this;
@@ -237,6 +321,7 @@ define(function () {
             map.addLayer(leftLayer);
             return map;
         },
+        //设置地图中心点和地图显示层
         setCenter: function (x, y, map, zoom) {
             var point = new Point(x, y, new SpatialReference({wkid: map.spatialReference.wkid}));
             if (!!zoom) {
