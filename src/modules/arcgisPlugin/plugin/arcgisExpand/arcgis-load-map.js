@@ -38,6 +38,12 @@ define(function () {
             map.on('click', function (event) {
                 console.log(event);
             });
+            map.on('update-end',function () {
+                console.log('地图加载完毕！');
+            });
+            labels.on('update-end',function () {
+                console.log('地图图层加载完毕！');
+            });
             deviceModel.createTextSymbol(map);
             return map;
         },
