@@ -56,13 +56,59 @@ var comm = Vue.extend({
             layer:'',
             layers:[],
             lineLayers:[],
-            drawGraphics:[]
+            drawGraphics:[],
+            drawPointGraphics:[],
+            drawLineGraphics:[]
         }
     },
     methods: {
+        //增加线
+        addLines:function () {
+            var self = this;
+            var lineColor = [160, 82, 45];
+            var lineWidth = 3;
+            mapHelper.drawLineInMap(this.leftMap,lineColor,lineWidth,function (graphic,no) {
+                alert('画图完毕');
+                // var wkt = mapTran.PolygonToWKT(graphic.geometry);
+                // self.drawMapForm.wkt = wkt;
+                // self.drawGraphic = graphic;
+                // this.queryFeatureByWkt();
+                //取消对地图的编辑画图
+                mapHelper.finishDraw(true);
+                self.drawLineGraphics.push(graphic);
+            }.bind(this),{name:'line1',lineWidth:3});
+        },
+        //删除线
+        deleteLines:function () {
+            if (!!this.drawLineGraphics) {
+                mapHelper.removeGraphics(this.leftMap, this.drawLineGraphics);
+                this.drawLineGraphics=[];
+            }
+        },
+        //增加点
+        addPoints:function () {
+            var self = this;
+            mapHelper.drawPointInMap(this.leftMap,'./img/toolbar/car.png',20,20,function (graphic, no) {
+                alert('画图完毕');
+                // var wkt = mapTran.PolygonToWKT(graphic.geometry);
+                // self.drawMapForm.wkt = wkt;
+                // self.drawGraphic = graphic;
+                // this.queryFeatureByWkt();
+                //取消对地图的编辑画图
+                mapHelper.finishDraw(true);
+                self.drawPointGraphics.push(graphic);
+            }.bind(this),{name:'car',weight:'5T'});
+        },
+        //删除点
+        deletePoints:function () {
+            if (!!this.drawPointGraphics) {
+                mapHelper.removeGraphics(this.leftMap, this.drawPointGraphics);
+                this.drawPointGraphics=[];
+            }
+        },
         //刷新地图
         refreshMap:function () {
-
+            mapHelper.refreshLayerById(this.leftMap,'1234');
         },
         //增删线条
         addOrDeleteLine:function () {
@@ -122,13 +168,13 @@ var comm = Vue.extend({
         },
         //删除画图的graphics
         deleteDrawMap:function () {
-            if (this.drawGraphics) {
+            if (!!this.drawGraphics) {
                 mapHelper.removeGraphics(this.leftMap, this.drawGraphics);
                 this.drawGraphics=[];
             }
         },
         //开始绘制地图
-        startDrawMap: function () {
+        drawPolygonInMap: function () {
             var self = this;
             var lineColor = [160, 82, 45];
             var lineWidth = 3;
@@ -158,7 +204,9 @@ var comm = Vue.extend({
         this.facilityArr = {};
         initPlugin(this.facilityArr, this);
         var self = this;
+        //初始化地图
         var map = initBaseMap();
+        //创建地图并把地图对象穿进去
         eventHelper.emit('mapCreated', map);
         this.leftMap = map;
         this.$on('openMapLegend', function (legend) {

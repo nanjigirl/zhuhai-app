@@ -7,7 +7,7 @@
         <el-button @click="toggleSearch"  icon="search" ></el-button>
     </div>
     <div class="control-draw" >
-        <el-button type="primary" icon="edit" @click="startDrawMap"></el-button>
+        <el-button type="primary" icon="edit" @click="drawPolygonInMap"></el-button>
     </div>
     <div class="control-deleteDraw" >
         <el-button type="primary" icon="delete" @click="deleteDrawMap"></el-button>
@@ -32,6 +32,18 @@
     </div>
     <div class="control-refresh" >
         <el-button type="primary" @click="refreshMap">刷新地图</el-button>
+    </div>
+    <div class="control-addPoint" >
+        <el-button type="primary" icon="plus" @click="addPoints">画点</el-button>
+    </div>
+    <div class="control-delPoint" >
+        <el-button type="primary"  @click="deletePoints">删除添加点</el-button>
+    </div>
+    <div class="control-addLine" >
+        <el-button type="primary" icon="plus" @click="addLines">画线</el-button>
+    </div>
+    <div class="control-delLine" >
+        <el-button type="primary"  @click="deleteLines">删除添加线</el-button>
     </div>
     <!-- 右边菜单-->
     <!--right panel start-->

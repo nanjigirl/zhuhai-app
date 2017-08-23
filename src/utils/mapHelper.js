@@ -21,11 +21,20 @@ define(function () {
     var newColor = new Color([0, 191, 255, 0.25]);
     var oldColor = new Color([181, 119, 196, 0.25]);
     var highLightColor = new Color([229, 14, 14, 0.7]);
+    // var drawPointLayer = new GraphicsLayer();
     var generateNo = function () {
         var date = new Date();
         return ('PA' + date.getTime()).substring(5);
     }
     return {
+        //刷新地图图层
+        refreshLayerById:function (currentMap,LayerId) {
+            var graphicsLayer=currentMap.getLayer(LayerId);
+            if(!!graphicsLayer){
+                graphicsLayer.refresh();
+            }
+        },
+        //根据状态改变点的填充颜色
         revertSymbol: function (graphic) {
             var color = newColor;
             if (graphic.attributes.building.status == 1) {
@@ -34,19 +43,21 @@ define(function () {
             var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([160, 82, 45]), 2), color);
             graphic.setSymbol(symbol);
         },
-        changeSymbol: function (graphic) {
-            var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT, new Color([160, 82, 45]), 2), new Color([243, 49, 76, 0.8]));
+        //重新设置symbol的线和填充颜色
+        changeSymbol: function (graphic,lineColor,lineWidth,fillColor) {
+            var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_DASHDOT, new Color(lineColor), lineWidth), new Color(fillColor));
             graphic.setSymbol(symbol);
         },
-        changeLineSymbol: function (graphic) {
-            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([243, 49, 76, 0.8]), 5);
+        //改变线的样式
+        changeLineSymbol: function (graphic,lineColor,lineWidth) {
+            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color(lineColor), lineWidth);
             graphic.setSymbol(symbol);
         },
-        revertLineSymbol: function (graphic) {
-            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15, 0.8]), 2);
-            graphic.setSymbol(symbol);
-        },
-        //地图编辑画图
+        // revertLineSymbol: function (graphic) {
+        //     var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color([241, 104, 15, 0.8]), 2);
+        //     graphic.setSymbol(symbol);
+        // },
+        //地图编辑画面
         drawMap: function  (map,lineColor,lineWidth,fillColor,cb) {
             var DrawMap = cesc.dojo.require("esri/toolbars/draw");
             this.drawPen = new DrawMap(map, {
@@ -63,6 +74,56 @@ define(function () {
                     graphic.attributes = {facilityType: 'building', no: no};
                     cb(graphic, no);
                     map.graphics.add(graphic);
+                }
+            }.bind(this));
+        },
+        //画点
+        drawPointInMap: function  (map,iconUrl,pictureWidth,pictureHeight,cb,attributes) {
+            var DrawMap = cesc.dojo.require("esri/toolbars/draw");
+            this.drawPen = new DrawMap(map, {
+                showTooltips: true
+            });
+            this.isDrawing = true;
+            this.drawPen.activate(DrawMap.POINT);
+            this.drawPen.on('draw-end', function (evtObj) {
+                if (this.isDrawing) {
+                    this.isDrawing = false;
+                    var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, pictureWidth, pictureHeight);
+                    var graphic = new Graphic(evtObj.geometry, pictureMarkerSymbol);
+                    var no = generateNo();
+                    if(!!attributes){
+                        graphic.attributes = attributes;
+                    }
+                    cb(graphic, no);
+                    map.graphics.add(graphic);
+                    map.graphics.on('click',function (event) {
+                       console.log(event.graphic.attributes);
+                    });
+                }
+            }.bind(this));
+        },
+        //画线
+        drawLineInMap: function  (map,lineColor,lineWidth,cb,attributes) {
+            var DrawMap = cesc.dojo.require("esri/toolbars/draw");
+            this.drawPen = new DrawMap(map, {
+                showTooltips: true
+            });
+            this.isDrawing = true;
+            this.drawPen.activate(DrawMap.POLYLINE);
+            this.drawPen.on('draw-end', function (evtObj) {
+                if (this.isDrawing) {
+                    this.isDrawing = false;
+                    var lineSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color(lineColor), lineWidth);
+                    var graphic = new Graphic(evtObj.geometry, lineSymbol);
+                    var no = generateNo();
+                    if(!!attributes){
+                        graphic.attributes = attributes;
+                    }
+                    cb(graphic, no);
+                    map.graphics.add(graphic);
+                    map.graphics.on('click',function (event) {
+                        console.log(event.graphic.attributes);
+                    });
                 }
             }.bind(this));
         },
@@ -162,23 +223,23 @@ define(function () {
             map.addLayer(graLayer);
             return graLayer;
         },
-        drawAnalyzeLine: function (map, start, end, type) {
-            var no = generateNo();
-            var line = Polyline({
-                "paths": [[start, end]],
-                "spatialReference": {"wkid": no}
-            });
-            var color = new Color([241, 104, 15]);
-            if (type == '污水') {
-                color = new Color([236, 7, 229]);
-            } else if (type == '雨水') {
-                color = new Color([7, 109, 236]);
-            }
-            var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, color, 5);
-            var graphic = new Graphic(line, symbol);
-            map.graphics.add(graphic);
-            return graphic;
-        },
+        // drawAnalyzeLine: function (map, start, end, type) {
+        //     var no = generateNo();
+        //     var line = Polyline({
+        //         "paths": [[start, end]],
+        //         "spatialReference": {"wkid": no}
+        //     });
+        //     var color = new Color([241, 104, 15]);
+        //     if (type == '污水') {
+        //         color = new Color([236, 7, 229]);
+        //     } else if (type == '雨水') {
+        //         color = new Color([7, 109, 236]);
+        //     }
+        //     var symbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, color, 5);
+        //     var graphic = new Graphic(line, symbol);
+        //     map.graphics.add(graphic);
+        //     return graphic;
+        // },
         // createPolyon: function (map, points, isHighLight) {
         //     var graphic = this.drawPolygon(points, isHighLight);
         //     map.graphics.add(graphic);

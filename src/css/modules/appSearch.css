@@ -94,6 +94,30 @@
     margin-left:1em;
     z-index: 10;
 }
+.control-addPoint{
+    position: absolute;
+    top: 420px;
+    margin-left:1em;
+    z-index: 10;
+}
+.control-delPoint{
+    position: absolute;
+    top: 420px;
+    margin-left:8em;
+    z-index: 10;
+}
+.control-addLine{
+    position: absolute;
+    top: 460px;
+    margin-left:1em;
+    z-index: 10;
+}
+.control-delLine{
+    position: absolute;
+    top: 460px;
+    margin-left:8em;
+    z-index: 10;
+}
 .control-search .el-button{
     background-color: #157dd6;
     color: white;

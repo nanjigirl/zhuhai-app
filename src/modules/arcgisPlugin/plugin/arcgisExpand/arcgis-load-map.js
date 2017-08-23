@@ -33,7 +33,7 @@ define(function () {
             map.addLayer(basemap);
             var annolayer = new TDTAnnoLayer();
             map.addLayer(annolayer);
-            var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6});
+            var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6,id:'1234'});
             map.addLayer(labels);
             map.on('click', function (event) {
                 console.log(event);
