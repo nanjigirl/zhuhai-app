@@ -22,7 +22,8 @@ var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
     var centerX = 121.45075120184849;
     var centerY = 31.25010784918339;
-    var map = mapHelper.tdWmtsServer(layerURL, centerX, centerY);
+    var zoom = 10;
+    var map = mapHelper.initTDWmtsServer(layerURL, centerX, centerY,zoom);
     return map;
 }
 var initPlugin = function (facilityArr, self) {
@@ -135,9 +136,9 @@ var comm = Vue.extend({
             this.isCreatePolygon = !this.isCreatePolygon;
             var points = [[121.41470231268835,31.346409881654097],[121.38963975165319,31.317227447572066],[121.46002091620397, 31.322720611634566]];
             if(this.isCreatePolygon){
-                this.graLayer = mapHelper.drawPolygon(this.leftMap,points,false,'[160, 82, 45]',3,{facilityType: 'liang', id: 11, gridId: 121});
+                this.graphic = mapHelper.drawPolygon(this.leftMap,points,false,'[160, 82, 45]',3,{facilityType: 'liang', id: 11, gridId: 121});
             }else {
-                mapHelper.removeLayer(this.leftMap,this.graLayer);
+                mapHelper.removeGraphic(this.leftMap,this.graphic);
             }
         },
         //增删单个图层

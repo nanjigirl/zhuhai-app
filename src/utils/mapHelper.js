@@ -23,6 +23,7 @@ define(function () {
     var newColor = new Color([0, 191, 255, 0.25]);
     var oldColor = new Color([181, 119, 196, 0.25]);
     var highLightColor = new Color([229, 14, 14, 0.7]);
+    var map;
     var generateNo = function () {
         var date = new Date();
         return ('PA' + date.getTime()).substring(5);
@@ -31,19 +32,19 @@ define(function () {
         /**
          * 天地图WMTS
          **/
-        tdWmtsServer: function (layerURL, centerX, centerY) {
+        initTDWmtsServer: function (layerURL, centerX, centerY,zoom) {//传入地图图层服务路径以及中心点位置
             map = new Map("mapDiv", {
                 center: [centerX, centerY],
-                zoom: 10
+                zoom: zoom
             });
             window.cesc.map = map;
-            var basemap = new TDTLayer();
+            var basemap = new TDTLayer();//基本地图图层
             //var tomcatLayer = new TomcatLayer({url:'http://172.17.5.150:8080/shenzhen/ArcgisServerTiles/_alllayers'});
             //console.log(tomcatLayer);
             //map.addLayer(tomcatLayer);
             //console.log(basemap);
             map.addLayer(basemap);
-            var annolayer = new TDTAnnoLayer();
+            var annolayer = new TDTAnnoLayer();//文字注解图层
             map.addLayer(annolayer);
             var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6,id:'1234'});
             map.addLayer(labels);
@@ -245,7 +246,7 @@ define(function () {
             }.bind(this));
             baseMap.addLayer(graLayer);
         },
-        //根据两点坐标进行画线
+        //根据两点坐标进行画线（直接生成）
         drawLine: function (map, start, end,lineWidth,lineColor,attributes) {
             var no = generateNo();
             var line = Polyline({
@@ -311,19 +312,16 @@ define(function () {
                 graphic.attributes = attributes;
             }
             var graLayer = new GraphicsLayer();
-            graLayer.add(graphic);
-            graLayer.on("graphic-draw",function (graphic) {
-
-                cesc.dojo.connect(graphic.node, "onclick",{graphic:graphic.graphic}, function(e){
-                    debugger;
-                    console.log(this.graphic.attributes);
-                });
-            });
-            // graLayer.on('click',function (event) {
-            //    console.log(event.graphic.attributes);
+            map.graphics.add(graphic);
+            // graLayer.on("graphic-draw",function (graphic) {
+            //     cesc.dojo.connect(graphic.node, "onclick",{graphic:graphic.graphic}, function(e){
+            //         console.log(this.graphic.attributes);
+            //     });
             // });
-            map.addLayer(graLayer);
-            return graLayer;
+            map.graphics.on('click',function (event) {
+               console.log(event.graphic.attributes);
+            });
+            return graphic;
         },
         //删除图解
         removeGraphic: function (map, graphic) {
