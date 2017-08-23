@@ -89,7 +89,7 @@ define(function () {
         //     graphic.setSymbol(symbol);
         // },
         //地图编辑画面
-        drawPolygonInMap: function  (map,lineColor,lineWidth,fillColor,cb) {
+        drawPolygonInMap: function  (map,lineColor,lineWidth,fillColor,cb,attributes) {
             var DrawPolygonInMap = cesc.dojo.require("esri/toolbars/draw");
             this.drawPolygonPen = new DrawPolygonInMap(map, {
                 showTooltips: true
@@ -102,9 +102,12 @@ define(function () {
                     var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color(lineColor), lineWidth), new Color(fillColor));
                     var graphic = new Graphic(evtObj.geometry, symbol);
                     var no = generateNo();
-                    graphic.attributes = {facilityType: 'building', no: no};
+                    graphic.attributes = attributes;
                     cb(graphic, no);
                     map.graphics.add(graphic);
+                    map.graphics.on('click',function (event) {
+                        console.log(event.graphic.attributes);
+                    });
                 }
             }.bind(this));
         },

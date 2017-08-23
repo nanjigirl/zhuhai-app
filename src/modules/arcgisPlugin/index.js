@@ -58,7 +58,8 @@ var comm = Vue.extend({
             lineLayers:[],
             drawGraphics:[],
             drawPointGraphics:[],
-            drawLineGraphics:[]
+            drawLineGraphics:[],
+            polygonId:1,
         }
     },
     methods: {
@@ -179,13 +180,14 @@ var comm = Vue.extend({
             var lineColor = [160, 82, 45];
             var lineWidth = 3;
             var fillColor = [0, 191, 255, 0.1];
+            this.polygonId++;
             //编辑地图画图
             mapHelper.drawPolygonInMap(this.leftMap,lineColor,lineWidth,fillColor, function (graphic, no) {
                 alert('画图完毕');
                 //取消对地图的编辑画图
                 mapHelper.finishDraw(true,'polygon');
                 self.drawGraphics.push(graphic);
-            }.bind(this));
+            }.bind(this),{facilityType: 'building',id:this.polygonId});
             this.isDrawing = true;
             this.drawCounter = 4;
         },
