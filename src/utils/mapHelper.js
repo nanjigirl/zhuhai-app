@@ -3,6 +3,8 @@ define(function () {
         eventHelper = require('utils/eventHelper'),
         ArcGISTiledMapServiceLayer = cesc.require('esri/layers/ArcGISTiledMapServiceLayer'),
         ArcGISDynamicMapServiceLayer = cesc.require('esri/layers/ArcGISDynamicMapServiceLayer'),
+        TDTAnnoLayer = require('modules/arcgisPlugin/plugin/arcgisExpand/TDTAnnoLayer'),
+        TDTLayer = require('modules/arcgisPlugin/plugin/arcgisExpand/TDTLayer'),
         Point = cesc.require('esri/geometry/Point'),
         Extent = cesc.require("esri/geometry/Extent"),
         SpatialReference = cesc.require('esri/SpatialReference'),
@@ -21,12 +23,41 @@ define(function () {
     var newColor = new Color([0, 191, 255, 0.25]);
     var oldColor = new Color([181, 119, 196, 0.25]);
     var highLightColor = new Color([229, 14, 14, 0.7]);
-    // var drawPointLayer = new GraphicsLayer();
     var generateNo = function () {
         var date = new Date();
         return ('PA' + date.getTime()).substring(5);
     }
     return {
+        /**
+         * 天地图WMTS
+         **/
+        tdWmtsServer: function (layerURL, centerX, centerY) {
+            map = new Map("mapDiv", {
+                center: [centerX, centerY],
+                zoom: 10
+            });
+            window.cesc.map = map;
+            var basemap = new TDTLayer();
+            //var tomcatLayer = new TomcatLayer({url:'http://172.17.5.150:8080/shenzhen/ArcgisServerTiles/_alllayers'});
+            //console.log(tomcatLayer);
+            //map.addLayer(tomcatLayer);
+            //console.log(basemap);
+            map.addLayer(basemap);
+            var annolayer = new TDTAnnoLayer();
+            map.addLayer(annolayer);
+            var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6,id:'1234'});
+            map.addLayer(labels);
+            map.on('click', function (event) {
+                console.log(event);
+            });
+            map.on('update-end',function () {
+                console.log('地图加载完毕！');
+            });
+            labels.on('update-end',function () {
+                console.log('地图图层加载完毕！');
+            });
+            return map;
+        },
         //刷新地图图层
         refreshLayerById:function (currentMap,LayerId) {
             var graphicsLayer=currentMap.getLayer(LayerId);
@@ -58,14 +89,14 @@ define(function () {
         //     graphic.setSymbol(symbol);
         // },
         //地图编辑画面
-        drawMap: function  (map,lineColor,lineWidth,fillColor,cb) {
-            var DrawMap = cesc.dojo.require("esri/toolbars/draw");
-            this.drawPen = new DrawMap(map, {
+        drawPolygonInMap: function  (map,lineColor,lineWidth,fillColor,cb) {
+            var DrawPolygonInMap = cesc.dojo.require("esri/toolbars/draw");
+            this.drawPolygonPen = new DrawPolygonInMap(map, {
                 showTooltips: true
             });
             this.isDrawing = true;
-            this.drawPen.activate(DrawMap.POLYGON);
-            this.drawPen.on('draw-end', function (evtObj) {
+            this.drawPolygonPen.activate(DrawPolygonInMap.POLYGON);
+            this.drawPolygonPen.on('draw-end', function (evtObj) {
                 if (this.isDrawing) {
                     this.isDrawing = false;
                     var symbol = new SimpleFillSymbol(SimpleFillSymbol.STYLE_SOLID, new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color(lineColor), lineWidth), new Color(fillColor));
@@ -79,13 +110,13 @@ define(function () {
         },
         //画点
         drawPointInMap: function  (map,iconUrl,pictureWidth,pictureHeight,cb,attributes) {
-            var DrawMap = cesc.dojo.require("esri/toolbars/draw");
-            this.drawPen = new DrawMap(map, {
+            var DrawPointInMap = cesc.dojo.require("esri/toolbars/draw");
+            this.drawPointPen = new DrawPointInMap(map, {
                 showTooltips: true
             });
             this.isDrawing = true;
-            this.drawPen.activate(DrawMap.POINT);
-            this.drawPen.on('draw-end', function (evtObj) {
+            this.drawPointPen.activate(DrawPointInMap.POINT);
+            this.drawPointPen.on('draw-end', function (evtObj) {
                 if (this.isDrawing) {
                     this.isDrawing = false;
                     var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, pictureWidth, pictureHeight);
@@ -104,13 +135,13 @@ define(function () {
         },
         //画线
         drawLineInMap: function  (map,lineColor,lineWidth,cb,attributes) {
-            var DrawMap = cesc.dojo.require("esri/toolbars/draw");
-            this.drawPen = new DrawMap(map, {
+            var DrawLineInMap = cesc.dojo.require("esri/toolbars/draw");
+            this.drawLinePen = new DrawLineInMap(map, {
                 showTooltips: true
             });
             this.isDrawing = true;
-            this.drawPen.activate(DrawMap.POLYLINE);
-            this.drawPen.on('draw-end', function (evtObj) {
+            this.drawLinePen.activate(DrawLineInMap.POLYLINE);
+            this.drawLinePen.on('draw-end', function (evtObj) {
                 if (this.isDrawing) {
                     this.isDrawing = false;
                     var lineSymbol = new SimpleLineSymbol(SimpleLineSymbol.STYLE_SOLID, new Color(lineColor), lineWidth);
@@ -127,16 +158,25 @@ define(function () {
                 }
             }.bind(this));
         },
-        //停止绘制
+        //停止polygon绘制
         stopDraw:function () {
-            this.drawPen.finishDrawing();
-            this.drawPen.deactivate();
+            this.drawPolygonPen.finishDrawing();
+            this.drawPolygonPen.deactivate();
         },
         //结束画图
-        finishDraw: function (isSave) {
+        finishDraw: function (isSave,type) {
             this.isSave = isSave;
-            this.drawPen.finishDrawing();
-            this.drawPen.deactivate();
+            if(type ==='point'){
+                this.drawPointPen.finishDrawing();
+                this.drawPointPen.deactivate();
+            }else if(type === 'line'){
+                this.drawLinePen.finishDrawing();
+                this.drawLinePen.deactivate();
+            }else if(type === 'polygon'){
+                this.drawPolygonPen.finishDrawing();
+                this.drawPolygonPen.deactivate();
+            }
+
         },
         //创建一个新的图层，并创建图例符号(传入icon，根据属性判断是否需要文字描述)
         createSymbolNew: function (baseMap, x, y, iconUrl,pictureWidth,pictureHeight,attributes) {

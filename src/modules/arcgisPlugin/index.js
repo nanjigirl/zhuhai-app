@@ -22,7 +22,7 @@ var initBaseMap = function () {
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
     var centerX = 121.45075120184849;
     var centerY = 31.25010784918339;
-    var map = arcgisHelper.tdWmtsServer(layerURL, centerX, centerY);
+    var map = mapHelper.tdWmtsServer(layerURL, centerX, centerY);
     return map;
 }
 var initPlugin = function (facilityArr, self) {
@@ -74,7 +74,7 @@ var comm = Vue.extend({
                 // self.drawGraphic = graphic;
                 // this.queryFeatureByWkt();
                 //取消对地图的编辑画图
-                mapHelper.finishDraw(true);
+                mapHelper.finishDraw(true,'line');
                 self.drawLineGraphics.push(graphic);
             }.bind(this),{name:'line1',lineWidth:3});
         },
@@ -95,7 +95,7 @@ var comm = Vue.extend({
                 // self.drawGraphic = graphic;
                 // this.queryFeatureByWkt();
                 //取消对地图的编辑画图
-                mapHelper.finishDraw(true);
+                mapHelper.finishDraw(true,'point');
                 self.drawPointGraphics.push(graphic);
             }.bind(this),{name:'car',weight:'5T'});
         },
@@ -180,14 +180,10 @@ var comm = Vue.extend({
             var lineWidth = 3;
             var fillColor = [0, 191, 255, 0.1];
             //编辑地图画图
-            mapHelper.drawMap(this.leftMap,lineColor,lineWidth,fillColor, function (graphic, no) {
+            mapHelper.drawPolygonInMap(this.leftMap,lineColor,lineWidth,fillColor, function (graphic, no) {
                 alert('画图完毕');
-                // var wkt = mapTran.PolygonToWKT(graphic.geometry);
-                // self.drawMapForm.wkt = wkt;
-                // self.drawGraphic = graphic;
-                // this.queryFeatureByWkt();
                 //取消对地图的编辑画图
-                mapHelper.finishDraw(true);
+                mapHelper.finishDraw(true,'polygon');
                 self.drawGraphics.push(graphic);
             }.bind(this));
             this.isDrawing = true;
