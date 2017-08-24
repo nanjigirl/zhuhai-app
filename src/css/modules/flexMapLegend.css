@@ -5,7 +5,7 @@
     position: absolute;
     bottom: 1em;
     left: 1.2em;
-    z-index: 99;
+    z-index: 2;
 }
 .button {
     width: 1em;
@@ -81,7 +81,6 @@
 }
 
 .vertical-icons.open {
-    max-height: 35em;
     min-height: 1em;
     padding-top: 2.5em;
 }
@@ -125,35 +124,34 @@
     text-align: center;
     font-size: 0.8em;
 }
-
-.buliding-video.glyphicon {
+.vertical-icons>li>a>i{
     width: 15px;
     height: 15px;
-    background: url(../../img/toolbar/buliding-video.png) no-repeat;
+}
+.buliding-video.glyphicon {
+    background: url(../../img/toolbar/buliding-video.png) center center no-repeat;
+    background-size: 100% 100%;
+
 }
 
 .road-video.glyphicon {
-    width: 15px;
-    height: 15px;
-    background: url(../../img/toolbar/road-video.png) no-repeat;
+    background: url(../../img/toolbar/road-video.png)  center center no-repeat;
+    background-size: 100% 100%;
 }
 
 .stonePit-video.glyphicon {
-    width: 15px;
-    height: 15px;
-    background: url(../../img/toolbar/stonePit-video.png) no-repeat;
+    background: url(../../img/toolbar/stonePit-video.png)  center center no-repeat;
+    background-size: 100% 100%;
 }
 
 .jetereting-video.glyphicon {
-    width: 15px;
-    height: 15px;
-    background: url(../../img/toolbar/jetereting-video.png) no-repeat;
+    background: url(../../img/toolbar/jetereting-video.png)  center center no-repeat;
+    background-size: 100% 100%;
 }
 
 .people.glyphicon {
-    width: 24px;
-    height: 24px;
-    background: url(../../img/toolbar/people.png) no-repeat;
+    background: url(../../img/toolbar/people.png)  center center no-repeat;
+    background-size: 100% 100%;
 }
 
 .car.glyphicon {
@@ -163,25 +161,21 @@
 }
 
 .enfroce-video.glyphicon {
-    width: 15px;
-    height: 15px;
-    background: url(../../img/toolbar/enfroce-video.png) no-repeat;
+    background: url(../../img/toolbar/enfroce-video.png)  center center no-repeat;
+    background-size: 100% 100%;
 }
 
 .bayonet.glyphicon {
-    width: 15px;
-    height: 15px;
-    background: url(../../img/toolbar/bayonet.png) no-repeat;
+    background: url(../../img/toolbar/bayonet.png)  center center no-repeat;
+    background-size: 100% 100%;
 }
 
 .reportPoint.glyphicon {
-    width: 15px;
-    height: 15px;
-    background: url(../../img/toolbar/reportPoint.png) no-repeat;
+    background: url(../../img/toolbar/reportPoint.png)  center center no-repeat;
+    background-size: 100% 100%;
 }
 
 .consumptive.glyphicon {
-    width: 15px;
-    height: 15px;
-    background: url(../../img/toolbar/consumptive.png) no-repeat;
+    background: url(../../img/toolbar/consumptive.png)  center center no-repeat;
+    background-size: 100% 100%;
 }

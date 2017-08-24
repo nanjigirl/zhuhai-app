@@ -13,12 +13,21 @@ var rightPanel = require('modules/rightPanel');
 var rightPanelComplaint = require('modules/rightPanelComplaint');
 var appCarMonitor = require('modules/appCarMonitor');
 var appCarPlayback = require('modules/appCarPlayback');
+var appCarDetail = require('modules/appCarDetail');
 var appCarIllegal = require('modules/appCarIllegal');
 var appCarCase = require('modules/appCarCase');
 var appCarPollution = require('modules/appCarPollution');
+var appCheckDialog = require('modules/appCheckDialog');
 var mapHelper = require('utils/mapHelper');
-var mapTran = require('../../../vendors/map-wkt/mapTran');
-
+var appSearch = require('modules/appSearch');
+var initBaseMap = function () {
+    var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
+    var centerX = 108.37267903076172;
+    var centerY = 22.79646516113282;
+    var map = arcgisHelper.tdWmtsServer(layerURL, centerX, centerY);
+    mapHelper.setMap(map);
+    return map;
+}
 var initPlugin = function (facilityArr, self) {
     global.init();
     facilityController.getAllFacility(function (list) {
@@ -228,20 +237,11 @@ var comm = Vue.extend({
             if (!!legend.showIcon) {
                 var cacheFacilities = self.facilityArr[legend.facilityTypeName];
                 if (!!cacheFacilities && cacheFacilities.length > 0) {
-                    arcgisHelper.createPoints(cacheFacilities, legend);
+                    arcgisHelper.createPoints(cacheFacilities, legend,true);
                     eventHelper.emit('loading-end');
                 } else {
                     facilityController.getFacilityByType(legend.id, function (subFacilities) {
-                        if (legend.facilityTypeName == 'WD') {
-                            subFacilities.forEach(function (subFacility) {
-                                subFacility.icon = './css/images/huawei-xs.png'
-                            })
-                        } else if (legend.facilityTypeName == 'WP') {
-                            subFacilities.forEach(function (subFacility) {
-                                subFacility.icon = './css/images/huawei-yl.png'
-                            })
-                        }
-                        var graLayer = arcgisHelper.createPoints(subFacilities, legend);
+                        var graLayer = arcgisHelper.createPoints(subFacilities, legend,true);
                         self.facilityArr[legend.facilityTypeName] = {
                             data: subFacilities,
                             layer: graLayer
@@ -256,8 +256,12 @@ var comm = Vue.extend({
         });
         eventHelper.on('subFacility-clicked', function (point) {
             console.log(point);
-            map.centerAt([parseFloat(point.center[0]) + 0.05, point.center[1]]);
+            map.centerAt([parseFloat(point.center[0]) + 0.005, point.center[1]]);
             this.$refs.rightPanel.open(point.item, point.facilityTypeName);
+        }.bind(this));
+        eventHelper.on('carDetail-clicked', function (point) {
+            console.log(point);
+            this.$refs.carDetail.open(point.item);
         }.bind(this));
     },
     components: {
@@ -268,7 +272,10 @@ var comm = Vue.extend({
         'app-car-pollution': appCarPollution,
         'app-car-playback': appCarPlayback,
         'flex-map-legend': flexMapLegend,
-        'app-car-monitor': appCarMonitor
+        'app-car-monitor': appCarMonitor,
+        'app-check-dialog':appCheckDialog,
+        'app-car-detail':appCarDetail,
+        'app-search': appSearch,
     }
 });
 module.exports = comm;

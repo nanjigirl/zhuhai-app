@@ -47,19 +47,22 @@ define(function () {
             deviceModel.createTextSymbol(map);
             return map;
         },
-        createPoints: function (facilitys, legend) {
+        createPoint: function (item) {
+            var graLayer = new GraphicsLayer();
+            deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, item.icon, item, '');
+            map.addLayer(graLayer);
+            return graLayer;
+        },
+        createPoints: function (facilitys, legend, hideName) {
             var graLayer = new GraphicsLayer();
             facilitys.forEach(function (item) {
                 var icon = item.icon;
                 var fid = legend.id;
                 item.fid = fid;
-                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item,legend.facilityTypeName);
+                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item, legend, hideName);
                 //创建地图上图标
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });
-          /*  graLayer.on('mouse-over',function (evt) {
-                console.log('over',evt);
-            })*/
             graLayer.on('click', function (evt) {
                 eventHelper.emit('subFacility-clicked', {
                     id: 'f' + evt.graphic.attributes.item.fid,
@@ -81,7 +84,7 @@ define(function () {
         removePoints: function (graLayer) {
             map.removeLayer(graLayer.layer);
         },
-        removeGraphic:function (graphic) {
+        removeGraphic: function (graphic) {
             map.graphics.remove(graphic);
         }
     }

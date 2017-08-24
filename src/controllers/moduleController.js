@@ -40,8 +40,7 @@ define([
     'modules/appDemo1/treeDemo',
     'modules/appDemo1/treeDemoExt',
     'modules/appAlarmManager/alarmType',
-    'modules/appIotDeviceManager/iotDevice',
-    'modules/appIotDeviceManager/iotPlatformDevice'
+    'modules/appAlarmManager/alarm'
 ], function (appContent,
              appDemoForm,
              elementForm,
@@ -83,8 +82,7 @@ define([
              treeDemo,
              treeDemoExt,
              alarmType,
-             iotDevice,
-             iotPlatformDevice) {
+             alarm){
     return {
         'app-content': appContent,
         'app-demo-form': appDemoForm,
@@ -127,7 +125,6 @@ define([
         'treeDemo': treeDemo,
         'treeDemoExt': treeDemoExt,
         'alarmType': alarmType,
-        'iotDevice': iotDevice,
-        'iotPlatformDevice': iotPlatformDevice
+        'alarm':alarm
     }
 });

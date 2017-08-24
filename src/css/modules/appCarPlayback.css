@@ -1,62 +1,117 @@
 .bottom-panel {
     background: #f4f4f4;
     position: absolute;
-    right: 50%;
-    margin-right:-250px;
-    bottom: 0;
-    width: 800px;
-    z-index: 100;
+    right: 0;
+    top: 0;
+    width: 23%;
+    height:100%;
+    overflow: auto;
+    z-index: 101;
     -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
     -moz-box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
     box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
+}
+.icon.icon-close{
+    width:16px;
+    height:16px;
+    display: inline-block;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    cursor: pointer;
+    background: url(../../img/icon/close.png) no-repeat;
+}
+.bottom-panel-small{
+    background: #f4f4f4;
+    position: absolute;
+    right: 528px;
+    margin-left: 25%;
+    bottom: 0;
+    width: 500px;
+    margin-left: -500px;
+    z-index: 101;
+    -webkit-box-shadow: 0 0 15px 3px rgba(0, 0, 0, .2);
+    -moz-box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
+    box-shadow:  0 0 15px 3px rgba(0, 0, 0, .2);
+}
+.cesc-table-wrap td{
+    word-wrap: break-word;
+}
+.playBtnGrounp{
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    z-index: 100;
 }
 .car-detail-title + .car-detail-title{
     border-left:1px solid #ccc;
 }
 .left-car-charts{
-    border-right: 2px solid #ccc;
-    width: 50%;
+    width: 100%;
     height: 100%;
-    padding-right: 1px;
-    padding-left: 1px;
-    border-bottom: 1px solid;
+    background: #E5E5E5;
 }
 .left-car-charts .timeSpan{
-    float: left;
-    width: calc(100% - 250px);
-    height: 50%;
-    border-left: 1px solid;
+    width: 100%;
+    font-size: 1.5em;
+    color: #333;
+    line-height: 2.5em;
+    text-align: center;
 }
-.left-car-charts .driveImgSpan{
+.bottom-panel-small .carTitle{
+    padding: 0.5em;
+    background: #008BBC;
+    color: #fff;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+}
+.bottom-panel-small .table{
+    margin-bottom: 0;
+}
+.bottom-panel-small .cesc-table th,.bottom-panel-small .cesc-table td{
+    color: #000;
+}
+.bottom-panel-small .left-car-charts .timeSpan{
+    width: 100%;
+    font-size: 1em;
+    color: #333;
+    line-height: 2.5em;
+    text-align: center;
+}
+.imgBox{
+    width:100%;
+    height: 12em;
+    padding:0.5em;
+    background: #fff;
+}
+.imgBox .driveImgBox{
     float: left;
-    width: calc(100% - 250px);
-    height: 50%;
-    border-left: 1px solid;
-    margin-top: -30px;
+    width: 10em;
+    height: 100%;
+    margin-right:0.5em;
+}
+.imgBox .carImgBox{
+    width: calc(100% - 10.5em);
+    height: 100%;
+    float: left;
+}
+.driveImgSpan,.carImgSpan{
+    width:100%;
+    height:calc(100% - 2em);
+}
+.driveImgBox>p,.carImgBox>p,.chartBox>p{
+    height:2em;
+    line-height:2em;
+    color: #333;
+}
+.driveImgSpan{
     background: url("../../img/projectDetail/img.jpg") no-repeat center center;
     background-size: 100% 100%;
 }
-.left-car-charts .carImgSpan{
+.carImgSpan{
     background: url("../../img/truck.jpg") no-repeat center center;
     background-size: 100% 100%;
-    margin-top: -30px;
-    width: 250px;
-    height: 150px;
-    float: left;
-}
-.timeSpan .dateSpan{
-    font-size: 1em;
-    background: #20a0ff;
-    color: white;
-    text-align: center;
-    line-height: 25px;
-}
-.timeSpan .time{
-    font-size: 2em;
-    text-align: center;
-    background: gray;
-    color: black;
-    line-height: 125px;
 }
 .text-detail-title{
     font-size: 1em;
@@ -94,64 +149,62 @@
     background: rgb(32,160,255);
 }
 .car-detail{
-    height:74%;
     text-align: center;
     border-bottom: 2px solid #ccc;
 }
 .car-opration{
-    height:calc(100% - 19% - 55%);
-}
-.player-button{
-    background: #105ba3;
-    padding-top: 10px;
-    height: 100%;
-    line-height: 90px;
-    text-align: center;
-    cursor: pointer;
-    border-bottom: 2px solid #ccc;
-    border-right:2px solid #ccc;
-}
-.player-button:hover{
-    background-color: gainsboro;
+    height: 10em;
+    width: 35em;
+    padding: 0 1em;
+    position: absolute;
+    bottom: 10em;
+    left: 50%;
+    transform:translate(-50%,0);
+    background: rgba(0,0,0,0.3);
 }
 .text-blue{
     color: #1C9AF7;
 }
 .car-opration .col-20{
-    float: left;
     width: 20%;
+    height:calc(100% - 2em);
+}
+.timeBox{
+    padding:1em 0 0;
+    color: #333;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+.timeBox>span{
+    color: red;
+}
+.playBtnBox{
+    width: 100%;
+    height:7em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .car-opration .icon{
     z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 .car-opration .icon.icon-play-big{
-    display: inline-block;
-    width: 64px;
-    height: 64px;
     background: url(../../img/icon/player1.png) center no-repeat;
 }
 .car-opration .icon.icon-play-pause{
-    display: inline-block;
-    width: 64px;
-    height: 64px;
     background: url(../../img/icon/player2.png) center no-repeat;
 }
 .car-opration .icon.icon-play-move{
-    display: inline-block;
-    width: 64px;
-    height: 64px;
     background: url(../../img/icon/player3.png) center no-repeat;
 }
 .car-opration .icon.icon-play-replay{
-    display: inline-block;
-    width: 68px;
-    height: 64px;
     background: url(../../img/icon/player4.png) center no-repeat;
 }
 .icon.icon-play-stop{
-    display: inline-block;
-    width: 68px;
-    height: 64px;
     background: url(../../img/icon/player5.png) center no-repeat;
 }
 .car-detail .img-100{
@@ -164,4 +217,50 @@
 .text-desc-box{
     text-align: left;
     padding:1em 0;
+}
+.cesc-table{
+    font-size:18px;
+    background: #fff;
+}
+.cesc-table th,.cesc-table td{
+    text-align: left;
+    color: #169AE8;
+    font-weight: bold;
+}
+.cesc-table {
+    table-layout:fixed;
+}
+.cesc-table tr th,.cesc-table tr td{
+    font-size: 18px!important;
+    padding: 12px!important;
+}
+.bottom-panel-small .cesc-table tr th,.bottom-panel-small .cesc-table tr td{
+    font-size: 14px!important;
+    padding: 10px!important;
+}
+/*.table-vertical tr th:first-child,.table-vertical tr td:first-child{*/
+    /*width: 12em;*/
+/*}*/
+.table-vertical tbody tr td:first-child{
+    background: #FAFAFA;
+    color: #333;
+    text-align: justify!important;
+}
+.carTitle{
+    padding: 0.5em;
+    background: #008BBC;
+    color: #fff;
+    text-align: center;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.chartBox{
+    background: #fff;
+    margin-top: 1em;
+    padding:0.5em;
+}
+#myChart{
+    width: 28em;
+    height: 14em;
+    background: #fff!important;
 }

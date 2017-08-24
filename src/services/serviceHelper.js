@@ -18,6 +18,8 @@ define(['config'], function (config) {
         deviceDetail:basicUrl+'/device/getDeviceInfosByFacilityId',
         monitorRealTimeValue:basicUrl+'dataReal/getDataRealByItemIds',
         getCarHistoryCount:basicUrl+'/truck/getTruckHistoryTrackCount',
+        getMonitorDetailMsg:basicUrl+'/facility/getOneFacilityInfo',
+        getFacilityLists:basicUrl+'/facility/filterFacility',
     }
     return {
         setToken: function (token) {

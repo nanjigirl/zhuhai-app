@@ -1,17 +1,69 @@
 var template = require('./noticeBox.html');
 var eventHelper = require('../../utils/eventHelper');
-
+var mapHelper = require('utils/mapHelper');
+var points = [[108.30710438476564, 22.887789013671878],
+    [108.24873951660157, 22.789255383300784],
+    [108.45644978271486, 22.74839997558594],
+    [108.3709624169922, 22.730547192382815],
+    [108.32598713623048, 22.79955506591797],
+    [108.4475233911133, 22.740846875000003]];
 // 定义组件
 var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            msgItems: [{
+                mainImgSrc: 'img/icon/pollution.png',
+                detailImgSrc1: 'img/icon/PM2.5.png',
+                detailImgSrc2: 'img/icon/PM10.png',
+                title: '环保',
+                detailMsg1: 'PM2.5超标',
+                detailMsg2: 'PM10超标',
+                detailTips1: '2',
+                detailTips2: '1',
+            }, {
+                mainImgSrc: 'img/icon/info.png',
+                detailImgSrc1: 'img/icon/overweight.png',
+                detailImgSrc2: 'img/icon/blackmenu.png',
+                title: '源头',
+                detailMsg1: '车辆超载',
+                detailMsg2: '黑名单上路',
+                detailTips1: '3',
+                detailTips2: '1',
+            }, {
+                mainImgSrc: 'img/icon/bus.png',
+                detailImgSrc1: 'img/icon/speedCar.png',
+                detailImgSrc2: 'img/icon/overline.png',
+                title: '运输线路',
+                detailMsg1: '车辆超速',
+                detailMsg2: '线路偏离',
+                detailTips1: '5',
+                detailTips2: '1',
+            }, {
+                mainImgSrc: 'img/icon/notice.png',
+                detailImgSrc1: 'img/icon/wifi.png',
+                detailImgSrc2: 'img/icon/over.png',
+                title: '末端',
+                detailMsg1: '消纳场超范围弃土',
+                detailMsg2: '消纳场超负荷',
+                detailTips1: '3',
+                detailTips2: '1',
+            }, {
+                mainImgSrc: 'img/icon/music.png',
+                detailImgSrc1: 'img/icon/dute.png',
+                detailImgSrc2: 'img/icon/road.png',
+                title: '巡查上报',
+                detailMsg1: '车身带泥',
+                detailMsg2: '路面撒漏',
+                detailTips1: '5',
+                detailTips2: '3',
+            },],
             isLoginSuccess: false,
             showMessageBox: false,
             showAlertBoxDetail: false,
             showAlertBox: false,
             activeName: 'first',
-            selectedDepartments: ['交警','环保','城管','建委','国土','工信委'],
+            selectedDepartments: ['交警', '环保', '城管', '建委', '国土', '工信委'],
             alertItems: [{
                 status: 0,
                 alertType: '建筑工地',
@@ -110,8 +162,30 @@ var comm = Vue.extend({
         eventHelper.on('showMessageBox', function () {
             this.showMessageBox = !this.showMessageBox;
         }.bind(this));
+        eventHelper.on('mapCreated', function (map) {
+            this.map = map;
+        }.bind(this));
+        this.layerArr = [];
         eventHelper.on('showAlertBox', function () {
             this.showAlertBox = !this.showAlertBox;
+            var size = 30;
+            if (!this.showAlertBox) {
+                mapHelper.removeLayers(this.map, this.layerArr);
+                clearInterval(this.showPointer);
+                clearInterval(this.hidePointer);
+            } else {
+                this.showPointer = setInterval(function () {
+                    this.layerArr.push(mapHelper.createSymbol(this.map, points[0][0], points[0][1], './img/icon/PM2.5.png', '', size, size, false, true));
+                    this.layerArr.push(mapHelper.createSymbol(this.map, points[1][0], points[1][1], './img/icon/speedCar.png', '', size, size, false, true));
+                    this.layerArr.push(mapHelper.createSymbol(this.map, points[2][0], points[2][1], './img/icon/road.png', '', size, size, false, true));
+                    this.layerArr.push(mapHelper.createSymbol(this.map, points[3][0], points[3][1], './img/icon/overweight.png', '', size, size, false, true));
+                    this.layerArr.push(mapHelper.createSymbol(this.map, points[4][0], points[4][1], './img/icon/overline.png', '', size, size, false, true));
+                    this.layerArr.push(mapHelper.createSymbol(this.map, points[5][0], points[5][1], './img/icon/dute.png', '', size, size, false, true));
+                }.bind(this), 900);
+                this.hidePointer = setInterval(function () {
+                    mapHelper.removeLayers(this.map, this.layerArr);
+                }.bind(this), 2000);
+            }
         }.bind(this));
 
         this.$refs.departmentGroup.$on('change', function () {

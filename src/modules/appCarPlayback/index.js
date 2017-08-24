@@ -12,6 +12,7 @@ var comm = Vue.extend({
                 carNumber:'',
                 updateDate:'',
                 updateTime:'',
+                currentDate:moment().format('YYYY-MM-DD HH:mm:ss'),
                 carOprationPanel: false,
                 isCarDetail:true,
                 isDriverDetail:false,
@@ -81,8 +82,8 @@ var comm = Vue.extend({
                 this.car = car;
                 this.carNumber = car.num;
                 var dateArr = car.date.split(' ');
-                this.updateDate = dateArr[0];//2017-07-01 13:31:52
-                this.updateTime = dateArr[1];
+                 this.updateDate = dateArr[0];//2017-07-01 13:31:52
+                 this.updateTime = dateArr[1];
                 option.series[0].data[0].value = parseFloat(car.speed);
                 this.myChart.setOption(option, true);
             }.bind(this));

@@ -49,7 +49,7 @@ module.exports = {
             {
                 //webpack2.0后loader不能简写
                 test: /\.(png|jpg|jpeg|gif)$/,
-                use: "url-loader?limit=8192"
+                use: "url-loader?limit=1024"
             },
             {
                 // 专供iconfont方案使用的，后面会带一串时间戳，需要特别匹配到

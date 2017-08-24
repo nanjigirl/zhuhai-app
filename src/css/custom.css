@@ -692,7 +692,7 @@ a:hover, a:focus {
 .nav > li > a {
     position: relative;
     display: block;
-    padding: 13px 15px 12px;
+    padding: 13px 10px 12px;
 }
 
 .nav.side-menu > li.current-page, .nav.side-menu > li.active {
@@ -832,7 +832,7 @@ a:hover, a:focus {
 }
 
 .main_menu_side.width {
-    width: 200px;
+    width: 180px;
 }
 
 .main_menu_side {

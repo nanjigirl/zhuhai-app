@@ -46,7 +46,7 @@ var comm = Vue.extend({
                 }
             ],
             playSpeed: defaultSpeed,
-            rightPanelOpen: false,
+            carMonitorPanelOpen: false,
             isRealTimeMode: true,
             realTimeName: '实时监测',
             historyName: '历史记录',
@@ -77,14 +77,14 @@ var comm = Vue.extend({
     computed: {},
     mounted: function () {
         // this.queryCarData();
-        eventHelper.on('close-right-panel', function () {
-            this.closePanel();
-        }.bind(this));
+        // eventHelper.on('close-right-panel', function () {
+        //     this.closePanel();
+        // }.bind(this));
         eventHelper.on('mapCreated', function (map) {
             this.map = map;
         }.bind(this));
         eventHelper.on('app-car-monitor', function () {
-            this.rightPanelOpen = true;
+            this.carMonitorPanelOpen = true;
             this.queryCarData();
         }.bind(this));
         eventHelper.on('car-trace-play', function (car) {
@@ -126,6 +126,7 @@ var comm = Vue.extend({
             this.removeDistance();
         },
         queryCarData: function () {
+            eventHelper.emit('loading-start');
             var self = this;
             //从后台获取车辆信息数据
             historySearchServices.getCarListData(function (data) {
@@ -138,9 +139,19 @@ var comm = Vue.extend({
                         truckNum: menu.truckNum,
                         terminalNum: menu.terminalNum,
                         check: false,
-                        id: menu.id
+                        id: menu.id,
+                        breakRule:menu.breakRule,
+                        company:menu.company,
+                        display:menu.display,
+                        driver:menu.driver,
+                        inBlackList: menu.inBlackList,
+                        licenseType:menu.licenseType,
+                        truckType:menu.truckType,
+                        x:menu.x,
+                        y:menu.y
                     });
-                })
+                });
+                eventHelper.emit('loading-end');
                 for (var i = 0; i < 10; i++) {
                     self.carLists1.push({
                         num: data[i].truckNum,
@@ -182,7 +193,16 @@ var comm = Vue.extend({
                     deviceModel.ssjkCreatePoint(this.map, list.id, 'f' + list.id, list.truckNum, 'abc', data.x, data.y, '', './img/toolbar/car.png', '22', '22', 'abc', {
                         terminalNum: list.terminalNum,
                         id: list.id,
-                        truckNum: list.truckNum
+                        truckNum: list.truckNum,
+                        breakRule:list.breakRule,
+                        company:list.company,
+                        display:list.display,
+                        driver:list.driver,
+                        inBlackList: list.inBlackList,
+                        licenseType:list.licenseType,
+                        truckType:list.truckType,
+                        x:list.x,
+                        y:list.y
                     });
                 }.bind(this));
             } else {
@@ -243,7 +263,7 @@ var comm = Vue.extend({
                                 }
                                 self.carTrace(resultArr, car.num);
                                 eventHelper.emit('app-car-playback');
-                                self.rightPanelOpen = false;
+                                self.carMonitorPanelOpen = false;
                                 // console.log(resultArr);
                             }
                         }, 100);
@@ -259,12 +279,18 @@ var comm = Vue.extend({
             console.log('select');
         },
         closePanel: function () {
-            eventHelper.emit('right-panel-close');
+            var self =this;
+            // eventHelper.emit('right-panel-close');
             this.reset();
+            // this.carLists.forEach(function (val) {
+            //     val.check = false;
+            //     removePic.removePoints({layer: self.map.getLayer('f' + val.id)});
+            // });
+
         },
         reset: function () {
             //this.stopJJVideo();
-            this.rightPanelOpen = false;
+            this.carMonitorPanelOpen = false;
             this.isRealTimeMode = true;
             this.activeIndex = '1';
         },
@@ -279,7 +305,7 @@ var comm = Vue.extend({
                 }.bind(this), 100);
             }
             this.isRealTimeMode = true;
-            this.rightPanelOpen = true;
+            this.carMonitorPanelOpen = true;
         },
         switchMode: function (key, keyPath) {
             this.isRealTimeMode = key === '1';

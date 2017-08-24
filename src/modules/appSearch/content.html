@@ -25,18 +25,24 @@
                     </el-option>
                 </el-select>
             </el-form-item>
+            <el-form-item>
+                <el-button @click="searchRecord()" class="float-right">查询</el-button>
+            </el-form-item>
         </el-form>
         <span>记录总数：{{account}}条</span>
     </div>
-    <div class="cesc-nnyc-table">
+    <div class="cesc-nnyc-table cesc-search-table">
         <table class="table table-striped table-bordered" >
+            <colgroup>
+                <col width="60%">
+            </colgroup>
             <thead>
             <tr>
                 <th v-for="th in datatheads">{{th}}</th>
             </tr>
             </thead>
             <tbody>
-                <tr  v-for="data in searchEquipment">
+                <tr  v-for="data in facilityTableData" @click="getThisVideoPlace(data)">
                     <td>
                         {{ data.name }}
                     </td>

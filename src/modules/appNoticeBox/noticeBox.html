@@ -1,13 +1,44 @@
-<div class="noticeBox" v-show="showAlertBox || showAlertBoxDetail" >
+<div class="noticeBox notice-box-tips" v-show="showAlertBox || showAlertBoxDetail" >
     <transition name="message-detail">
-        <div class="alertSummary" v-show="showAlertBox">
-            <div>
-                <a class="pull-right date">
-                    <p class="month">预警数</p>
-                    <p class="day">23</p>
-                </a>
+        <div class="messageBox msg-tips-box" v-show="showAlertBox">
+            <div class="boxTitle orange">市区扬尘预警</div>
+            <div class="messageBody">
+                <div class="messageContainer">
+                    <div class="title-box clearfix">
+                        <div class="img-title">类型</div>
+                        <div class="detail-msg-title">分类</div>
+                        <div class="tips-title">数量</div>
+                    </div>
+                    <div class="msg-item" v-for="item in msgItems">
+                        <div class="img-box clearfix">
+                            <img :src="item.mainImgSrc" alt="img">
+                            <p class="mgt10">{{item.title}}</p>
+                        </div>
+                        <div class="detail-msg-box">
+                            <div class="text-detail-top">
+                                <img class="vertical-mid" :src="item.detailImgSrc1" alt="PM2.5">
+                                <p class="vertical-mid mgl-10 width-120">{{item.detailMsg1}}</p>
+                            </div>
+                            <div class="tips-count">{{item.detailTips1}}</div>
+                            <div class="text-detail-bottom">
+                                <img class="vertical-mid" :src="item.detailImgSrc2" alt="PM10">
+                                <p class="vertical-mid mgl-10 width-120">{{item.detailMsg2}}</p>
+                            </div>
+                            <div class="tips-count">{{item.detailTips2}}</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
+        <!--<div class="alertSummary" v-show="showAlertBox">-->
+            <!--<div>-->
+                <!--<a class="pull-right date">-->
+                    <!--<p class="month">预警数</p>-->
+                    <!--<p class="day">23</p>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
     </transition>
     <transition name="message-detail">
         <div class="alertBox" v-show="showAlertBoxDetail">

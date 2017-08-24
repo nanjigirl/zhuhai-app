@@ -35,7 +35,6 @@
 }
 
 .cescTab:hover {
-    background-color: #97aa7c;
     height: 100%;
     margin-top: 0;
 }
@@ -49,11 +48,6 @@
     font-weight: bold;
     float: left;
     padding-left: 1em;
-}
-
-.cescTab .tabName:hover {
-    color: whitesmoke;
-
 }
 
 .tabGroups .tabActive {
@@ -82,8 +76,6 @@
 .tabControlLeft, .tabControlRight {
     width: 1.2em;
     float: left;
-    background: url('../images/arror.png') no-repeat center center;
-    background-size: 100% 100%;
     opacity: 0.7;
     font-size: 1.5em;
 }

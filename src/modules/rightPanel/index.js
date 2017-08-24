@@ -24,6 +24,68 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            msgLists: [
+                {
+                    children: [
+                        {
+                            name: '证号',
+                            value: '201630002'
+                        },
+                        {
+                            name: '所在区',
+                            value: '南宁市仙葫经济开发区五合社区消纳场'
+                        }
+                    ]
+                },
+                {
+                    children: [
+                        {
+                            name: '地址',
+                            value: '南宁市仙葫经济开发区蒲旧公路'
+                        },
+                        {
+                            name: '有效期限',
+                            value: '2016.05.20-2017.05.20'
+                        }
+                    ]
+                },
+                {
+                    children: [
+                        {
+                            name: '联系人',
+                            value: '韦绍陆'
+                        },
+                        {
+                            name: '电话',
+                            value: '18878876669'
+                        }
+                    ]
+                },
+                {
+                    children: [
+                        {
+                            name: '行政主管部门',
+                            value: '市城管局'
+                        },
+                        {
+                            name: '分管领导',
+                            value: '李军'
+                        }
+                    ]
+                },
+                {
+                    children: [
+                        {
+                            name: '部门联系人',
+                            value: '陈明'
+                        },
+                        {
+                            name: '电话',
+                            value: '15177925360'
+                        }
+                    ]
+                }
+            ],
             rightPanelOpen: false,
             isRealTimeMode: true,
             realTimeName: '实时监测',
@@ -91,69 +153,43 @@ var comm = Vue.extend({
                     this.$refs.monitorPlugin.$emit('reset');
                 }
                 var facilityID = facility.id;
-                if (facilityTypeName == 'WP') {
-                    this.facilityType = 'ylz';
-                    this.facilityPic = '../src/img/yuliang.jpg';
-                } else if (facilityTypeName == 'WD') {
-                    this.facilityType = 'xs';
-                    this.facilityPic = '../src/img/xushui.jpg';
-                }
-                this.facilityName = facility.name;
-                facilityController.getDeviceDetailByFacility(facilityID, function (result) {
-                    console.log(result);
-                    if (!!result.pics && result.pics.length > 0) {
-                        this.facilityPic = serviceHelper.getPicUrl(result.pics[0].url);
-                    }
-                    if (result.devices.length > 0) {
-                        var monitorIDs = [];
-                        var monitors = [];
-                        result.devices.forEach(function (device) {
-                            device.items.forEach(function (monitor) {
-                                if (monitor.itemTypeName === 'Precipitation') {
-                                    monitorIDs.push(monitor.RainfalldurationID);
-                                }
-                                else if (monitor.itemTypeName === 'waterLevel') {
-                                    self.waterLevelID = monitor.itemID;
-                                }
-                                monitorIDs.push(monitor.itemID);
-                                monitors.push(monitor);
-                            });
-                        });
-                        realTimeUpdate(this, monitorIDs);
-                        currentThread = setInterval(function () {
-                            realTimeUpdate(this, monitorIDs);
-                        }.bind(this), refreshTime);
-                    }
-                    facility.facilityTypeName = facilityTypeName;
-                    this.$refs.monitorPlugin.$emit('init-monitor', {
-                        facility: facility,
-                        devices: result.devices
-                    });
-                    this.$refs.statisticPlugin.$emit('init-statistic', {
-                        facility: facility,
-                        devices: result.devices
-                    });
-
-                    this.lastUpdateTime = result.currentDate;
-                }.bind(this));
-
-                facilityController.getAlarmInfoByFacility(facilityID, function (result) {
-                    console.log(result);
-                    if (!!result && result.length > 0) {
-                        result.forEach(function (alarmItem) {
-                            if (!!alarmItem.isAlarm) {
-                                this.$refs.monitorPlugin.$emit('monitor-alarm', {
-                                    facility: facility,
-                                    alarmItem: alarmItem
-                                });
-                                this.alarmStatus = 2;
-                                this.alertMessage = '正在报警';
+                facilityController.getFacilityDetail(facilityID, function (data) {
+                    console.log(data);
+                    data.devices.forEach(function (device) {
+                        if (device.devName.toUpperCase().indexOf('VIDEO') !== -1) {
+                            var videoURL = device.items[0].value;
+                            if (videoURL.indexOf('dh-video') != -1) {
+                                facilityTypeName = 'DH';
                             }
-                        }.bind(this));
-                    }
+                            this.facilityType = facilityTypeName;
+                            if (facilityTypeName == 'DS' || facilityTypeName == 'CMP' || facilityTypeName == 'SQ') {
+                                this.initHKVideo(videoURL);
+                            } else if (facilityTypeName == 'CS') {
+                                this.initGDVideo(videoURL);
+                            } else if (facilityTypeName == 'TP') {
+                                this.initJJVideo(videoURL);
+                            }
+                            else if (facilityTypeName == 'DH') {
+                                this.initDHVideo(videoURL);
+                            }
+                            return;
+                        }
+                    }.bind(this));
+                }.bind(this));
+                facilityController.getMonitorDetailMsg(facilityID, function (data) {
+                    console.log(data);
+                    this.msgLists[0].children[0].value = data.licenseNumber;
+                    this.msgLists[0].children[1].value = data.district;
+                    this.msgLists[1].children[0].value = data.location;
+                    this.msgLists[1].children[1].value = data.limitTime;
+                    this.msgLists[2].children[0].value = data.contact;
+                    this.msgLists[2].children[1].value = data.contactPhone;
+                    this.msgLists[3].children[0].value = data.adminDepartment;
+                    this.msgLists[3].children[1].value = data.departmentSupervisor;
+                    this.msgLists[4].children[0].value = data.adminDepartmentContact
+                    this.msgLists[4].children[1].value = data.adminDepartmentPhone;
                 }.bind(this));
             }.bind(this));
-
         },
         switchMode: function (key, keyPath) {
             this.isRealTimeMode = key === '1';

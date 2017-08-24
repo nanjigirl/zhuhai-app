@@ -86,8 +86,12 @@ gulp.task('webpack-build',['concat-lib'],function () {
         .pipe(greplace('../lib','http://120.77.246.153:9000'))
         .pipe(greplace('../lib','http://120.77.246.153:9000'))
         .pipe(greplace('../vendors','./vendors'))
+        .pipe(greplace('<!--build',''))
+        .pipe(greplace('build-->',''))
+        .pipe(greplace('devStart-->',''))
+        .pipe(greplace('<!--devEnd',''))
       //  .pipe(greplace(originPath,newPath))
-        .pipe(greplace('../build/dist/vendor.dll.js','vendor.dll.js'))
+        .pipe(greplace('../build/dist/vendor.dll.js',''))
         .pipe(greplace('./css/main.css',cssName))
          .pipe(greplace('app.bundle.js',jsName))
         .pipe(gulp.dest('../release'));
@@ -96,6 +100,8 @@ gulp.task('webpack-build',['concat-lib'],function () {
 gulp.task('copy-vendors',function(){
     gulp.src('../vendors/**/**').pipe(gulp.dest('../release/vendors'));
     gulp.src('../build/dist/vendor.dll.js').pipe(gulp.dest('../release'));
+    gulp.src('../startCDN.bat').pipe(gulp.dest('../release'));
+    gulp.src('../src/img/**/**').pipe(gulp.dest('../release/img'));
 });
 gulp.task('upload-source',function(){
     //TODO

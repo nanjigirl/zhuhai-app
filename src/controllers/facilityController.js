@@ -20,6 +20,16 @@ define([
                 cb(data);
             });
         },
+        getMonitorDetailMsg: function (facilityID, cb) {
+            facilityService.getMonitorDetailMsg(facilityID, function (data) {
+                cb(data);
+            });
+        },
+        // getFacilityLists: function (address,pollutionSource,dataSource,district, cb) {
+        //     facilityService.getFacilityLists(address,pollutionSource,dataSource,district, function (data) {
+        //         cb(data);
+        //     });
+        // },
         getAlarmInfoByFacility: function (facilityId, cb) {
             facilityService.getAlarmInfoByFacility(facilityId, function (data) {
                 cb(data);
