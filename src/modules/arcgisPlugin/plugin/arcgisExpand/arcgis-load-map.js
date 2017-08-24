@@ -33,12 +33,18 @@ define(function () {
             map.addLayer(basemap);
             var annolayer = new TDTAnnoLayer();
             map.addLayer(annolayer);
-            var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6});
+            var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6,id:'1234'});
             map.addLayer(labels);
             map.on('click', function (event) {
                 console.log(event);
             });
-            //  deviceModel.createTextSymbol(map);
+            map.on('update-end',function () {
+                console.log('地图加载完毕！');
+            });
+            labels.on('update-end',function () {
+                console.log('地图图层加载完毕！');
+            });
+            deviceModel.createTextSymbol(map);
             return map;
         },
         createPoint: function (item) {
@@ -50,22 +56,12 @@ define(function () {
         createPoints: function (facilitys, legend, hideName) {
             var graLayer = new GraphicsLayer();
             facilitys.forEach(function (item) {
-                var icon = './img/toolbar/' + legend.icon + '.png';
+                var icon = item.icon;
                 var fid = legend.id;
                 item.fid = fid;
                 deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, graLayer, item.x, item.y, icon, item, legend, hideName);
                 //创建地图上图标
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
-            });
-            graLayer.on('mouse-over',function (evt) {
-                console.log('over',evt);
-                var attr = evt.graphic.attributes;
-                map.infoWindow.setTitle(attr.title);
-                map.infoWindow.setContent(attr.item.name);
-                map.infoWindow.show(evt.screenPoint);
-            });
-            graLayer.on('mouse-out',function (evt) {
-                map.infoWindow.hide();
             });
             graLayer.on('click', function (evt) {
                 eventHelper.emit('subFacility-clicked', {

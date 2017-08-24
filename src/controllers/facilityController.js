@@ -35,6 +35,11 @@ define([
                 cb(data);
             })
         },
+        getDeviceDetailByFacility:function(facilityId,cb){
+            facilityService.getDeviceDetailByFacility(facilityId,function(data){
+                cb(data);
+            });
+        },
         traceCarHistory: function ( terminalNum, dateStart, dateEnd, pageNumber,resultArr) {
             console.log('start');
             historySearchServices.getCarHistoryData(terminalNum, dateStart, dateEnd, pageNumber, function (data) {

@@ -25,8 +25,8 @@ var comm = Vue.extend({
                 value: '',
                 label: ''
             }, {
-                value: '南宁市建设委员会',
-                label: '南宁市建设委员会'
+                value: '易捞点',
+                label: '易捞点'
             }, {
                 value: '南宁市交警支队',
                 label: '南宁市交警支队'
@@ -51,8 +51,8 @@ var comm = Vue.extend({
                 value: '',
                 label: ''
             },{
-                value: '青秀区',
-                label: '青秀区'
+                value: '静安区',
+                label: '静安区'
             }, {
                 value: '兴宁区',
                 label: '兴宁区'

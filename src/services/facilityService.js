@@ -10,6 +10,22 @@ define(['./serviceHelper'], function (serviceHelper) {
                 console.log('Error:', result);
             });
         },
+        getDeviceDetailByFacility: function (facilityId, cb) {
+            var param = {
+                id:'deviceDetail',
+                parameter:{
+                    facilityId:facilityId
+                }
+            };
+            $.get(serviceHelper.getPath(param),function(result){
+                if(!!result.success){
+                    cb(result.data);
+                    return;
+                }
+                console.log('Error:',result);
+            });
+
+        },
         getFacilityByType: function (facilityType, cb) {
             var parameter = {
                 id: 'getFacilityByType',

@@ -79,6 +79,8 @@ gulp.task('webpack-build',['concat-lib'],function () {
                 jsName = file;
             }
         }
+        var originPath = 'src="../release/app.bundle.js">';
+        var newPath = '123';
         gulp.src('../src/index.html')
         .pipe(greplace('../release/','./'))
         .pipe(greplace('../lib','http://120.77.246.153:9000'))

@@ -1,13 +1,13 @@
 <transition name="right-panel">
     <div v-show='rightPanelOpen' class='right-panel'>
-        <div class="goBack"><a href='#' class="el-icon-d-arrow-right" @click="closePanel"></a></div>
         <div class="panel-header">
+            <span class="goBack"><a href='#' class="el-icon-d-arrow-right" @click="closePanel"></a></span>
             <span class="facilityImg" v-bind:class="facilityType"></span>
             <span class="facilityName">{{facilityName}}</span>
             <el-menu :default-active="activeIndex" class="el-menu-demo menu-full" mode="horizontal"
                      @select="switchMode">
                 <el-menu-item index="1" id="realTimeMode">实时监测</el-menu-item>
-                <el-menu-item index="2" id="historicalMode">数据汇总</el-menu-item>
+                <el-menu-item index="2" id="historicalMode">历史数据</el-menu-item>
             </el-menu>
         </div>
         <div class="panel-content">
@@ -33,46 +33,34 @@
                     <object id="DPSDK_OCX" classid="CLSID:D3E383B6-765D-448D-9476-DFD8B499926D"
                             style="width: 500px; height: 330px" codebase="DpsdkOcx.cab#version=1.0.0.0"
                             v-if="facilityType == 'DH'"></object>
-
                 </div>
             </div>
-            <div class="panel-bottom" v-show='isRealTimeMode'>
-                <div class="device-title">
-                    <span>详细信息</span>
+            <div class="panel-middle">
+                <div class="device-title" v-show='isRealTimeMode'>
+                    <span>统计图表</span>
+                    <div v-if="facilityType!=='ylz'">
+                        <span class="gradeTitle">当前等级</span>
+                        <span class="grade six" title="6" v-bind:class="{currentGrade:waterGrade=='6'}">{{waterGradeTitle}}</span>
+                        <!--<span class="grade six" title="6" v-bind:class="{currentGrade:waterGrade=='6'}"></span>-->
+                        <!--<span class="grade five" title="5" v-bind:class="{currentGrade:waterGrade=='5'}"></span>-->
+                        <!--<span class="grade four" title="4" v-bind:class="{currentGrade:waterGrade=='4'}"></span>-->
+                        <!--<span class="grade three" title="3" v-bind:class="{currentGrade:waterGrade=='3'}"></span>-->
+                        <!--<span class="grade two" title="2" v-bind:class="{currentGrade:waterGrade=='2'}"></span>-->
+                        <!--<span class="grade one " title="1" v-bind:class="{currentGrade:waterGrade=='1'}"></span>-->
+                    </div>
                 </div>
-                <div class="device-content">
-                    <table id="datatable" class="table table-striped table-bordered">
-                        <tbody>
-                        <tr v-for="list in msgLists">
-                            <td v-for="msg in list.children">
-                                <p>{{msg.name}}</p>
-                                <p class="text-blue">{{msg.value}}</p>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <statistics ref='statisticPlugin'></statistics>
             </div>
-            <div class="panel-summary" v-show='!isRealTimeMode'>
-                <div class="device-title">
-                    <span>操作按钮</span>
-                </div>
-                <div class="device-content panel-operation">
-                    <a href="#" @click="newCarOpen()">
-                        <el-button type="primary">现场车辆信息查询</el-button>
-                    </a>
-                    <a href="#">
-                        <el-button type="primary">行驶证信息查询</el-button>
-                    </a>
-                    <a href="#">
-                        <el-button type="primary">驶证信息查询</el-button>
-                    </a>
-                    <a href="#">
-                        <el-button type="primary">黑名单信息查询</el-button>
-                    </a>
-                    <!--<iframe src="http://19.2.81.254:66/Service/dv?device_code=1000001,1000000"></iframe>-->
-                </div>
-            </div>
+            <!-- <div class="panel-bottom">
+                 <div class="bottom-l">
+                     <span>实时视频<em></em></span>
+                 </div>
+                 <div class="bottom-r">
+                 &lt;!&ndash;<video  width="100%" height="100%" src="http://120.77.246.153:9000/vedio/test.ogg" autoplay="autoplay" loop="loop" controls="controls">
+                 您的浏览器不支持 video 标签。
+                 </video>&ndash;&gt;
+                 </div>
+             </div>-->
         </div>
     </div>
 </transition>
