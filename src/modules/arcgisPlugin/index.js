@@ -18,14 +18,7 @@ var appCarCase = require('modules/appCarCase');
 var appCarPollution = require('modules/appCarPollution');
 var mapHelper = require('utils/mapHelper');
 var mapTran = require('../../../vendors/map-wkt/mapTran');
-var initBaseMap = function () {
-    var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
-    var centerX = 121.45075120184849;
-    var centerY = 31.25010784918339;
-    var zoom = 10;
-    var map = mapHelper.initTDWmtsServer(layerURL, centerX, centerY,zoom);
-    return map;
-}
+
 var initPlugin = function (facilityArr, self) {
     global.init();
     facilityController.getAllFacility(function (list) {
@@ -64,11 +57,21 @@ var comm = Vue.extend({
         }
     },
     methods: {
+        //初始化地图
+        initBaseMap : function () {
+            var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
+            var centerX = 121.45075120184849;
+            var centerY = 31.25010784918339;
+            var zoom = 10;
+            var map = mapHelper.initTDWmtsServer(layerURL, centerX, centerY,zoom);
+            return map;
+        },
         //增加线
         addLines:function () {
             var self = this;
             var lineColor = [160, 82, 45];
             var lineWidth = 3;
+            var attributes = {name:'line1',lineWidth:3};
             mapHelper.drawLineInMap(this.leftMap,lineColor,lineWidth,function (graphic,no) {
                 alert('画图完毕');
                 // var wkt = mapTran.PolygonToWKT(graphic.geometry);
@@ -78,7 +81,7 @@ var comm = Vue.extend({
                 //取消对地图的编辑画图
                 mapHelper.finishDraw(true,'line');
                 self.drawLineGraphics.push(graphic);
-            }.bind(this),{name:'line1',lineWidth:3});
+            }.bind(this),attributes);
         },
         //删除线
         deleteLines:function () {
@@ -90,7 +93,11 @@ var comm = Vue.extend({
         //增加点
         addPoints:function () {
             var self = this;
-            mapHelper.drawPointInMap(this.leftMap,'./img/toolbar/car.png',20,20,function (graphic, no) {
+            var iconUrl = './img/toolbar/car.png';
+            var iconWidth = 20;
+            var iconHeight = 20;
+            var attributes = {name:'car',weight:'5T'};
+            mapHelper.drawPointInMap(this.leftMap,iconUrl,iconWidth,iconHeight,function (graphic, no) {
                 alert('画图完毕');
                 // var wkt = mapTran.PolygonToWKT(graphic.geometry);
                 // self.drawMapForm.wkt = wkt;
@@ -99,7 +106,7 @@ var comm = Vue.extend({
                 //取消对地图的编辑画图
                 mapHelper.finishDraw(true,'point');
                 self.drawPointGraphics.push(graphic);
-            }.bind(this),{name:'car',weight:'5T'});
+            }.bind(this),attributes);
         },
         //删除点
         deletePoints:function () {
@@ -110,7 +117,8 @@ var comm = Vue.extend({
         },
         //刷新地图
         refreshMap:function () {
-            mapHelper.refreshLayerById(this.leftMap,'1234');
+            var layerId = '1234';
+            mapHelper.refreshLayerById(this.leftMap,layerId);
         },
         //增删线条
         addOrDeleteLine:function () {
@@ -149,7 +157,6 @@ var comm = Vue.extend({
             }else{
                 mapHelper.removeLayer(this.leftMap,this.layer);
             }
-
         },
         //增删多个图层
         addOrDeleteMoreLayer:function () {
@@ -189,8 +196,6 @@ var comm = Vue.extend({
                 mapHelper.finishDraw(true,'polygon');
                 self.drawGraphics.push(graphic);
             }.bind(this),{facilityType: 'building',id:this.polygonId});
-            this.isDrawing = true;
-            this.drawCounter = 4;
         },
         toggleSearch: function () {
             eventHelper.emit('openPointSearch');
@@ -204,7 +209,7 @@ var comm = Vue.extend({
         initPlugin(this.facilityArr, this);
         var self = this;
         //初始化地图
-        var map = initBaseMap();
+        var map = this.initBaseMap();
         //创建地图并把地图对象穿进去
         eventHelper.emit('mapCreated', map);
         this.leftMap = map;
