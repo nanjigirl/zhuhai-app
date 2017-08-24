@@ -73,7 +73,10 @@ var comm = Vue.extend({
             var lineWidth = 3;
             var attributes = {name:'line1',lineWidth:3};
             mapHelper.drawLineInMap(this.leftMap,lineColor,lineWidth,function (graphic,no) {
-                alert('画图完毕');
+                this.$message({
+                    message: '画图完毕！！',
+                    type: 'success'
+                });
                 // var wkt = mapTran.PolygonToWKT(graphic.geometry);
                 // self.drawMapForm.wkt = wkt;
                 // self.drawGraphic = graphic;
@@ -98,7 +101,10 @@ var comm = Vue.extend({
             var iconHeight = 20;
             var attributes = {name:'car',weight:'5T'};
             mapHelper.drawPointInMap(this.leftMap,iconUrl,iconWidth,iconHeight,function (graphic, no) {
-                alert('画图完毕');
+                this.$message({
+                    message: '画图完毕！！',
+                    type: 'success'
+                });
                 // var wkt = mapTran.PolygonToWKT(graphic.geometry);
                 // self.drawMapForm.wkt = wkt;
                 // self.drawGraphic = graphic;
@@ -191,7 +197,10 @@ var comm = Vue.extend({
             this.polygonId++;
             //编辑地图画图
             mapHelper.drawPolygonInMap(this.leftMap,lineColor,lineWidth,fillColor, function (graphic, no) {
-                alert('画图完毕');
+                this.$message({
+                    message: '画图完毕！！',
+                    type: 'success'
+                });
                 //取消对地图的编辑画图
                 mapHelper.finishDraw(true,'polygon');
                 self.drawGraphics.push(graphic);
