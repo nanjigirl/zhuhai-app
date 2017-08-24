@@ -181,6 +181,9 @@ var comm = Vue.extend({
             this.isLoginSuccess = true;
             this.$nextTick(function () {
                 appMenuController.getAppMenuByUser(token, function (menus) {
+                    if (!menus || menus.length < 1) {
+                        this.$message.error('无法获取菜单');
+                    }
                     console.log(menus);
                     menus.forEach(function (menu) {
                         menu.openSecondary = false;
