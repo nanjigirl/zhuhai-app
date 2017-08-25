@@ -134,35 +134,35 @@ var comm = Vue.extend({
             tableData7: [{
                 date: '1',
                 name: '王小虎1',
-                address: '上海市普陀区金沙江路 1518 弄'
+                address: '上海市普陀区金沙江路 1510 弄'
             }, {
                 date: '2',
                 name: '王小虎2',
-                address: '上海市普陀区金沙江路 1518 弄'
+                address: '上海市普陀区金沙江路 1511 弄'
             }, {
                 date: '3',
                 name: '王小虎3',
-                address: '上海市普陀区金沙江路 1518 弄'
+                address: '上海市普陀区金沙江路 1512 弄'
             }, {
                 date: '4',
                 name: '王小虎4',
-                address: '上海市普陀区金沙江路 1518 弄'
+                address: '上海市普陀区金沙江路 1513 弄'
             }, {
                 date: '5',
                 name: '王小虎5',
-                address: '上海市普陀区金沙江路 1518 弄'
+                address: '上海市普陀区金沙江路 1514 弄'
             }, {
                 date: '6',
                 name: '王小虎6',
-                address: '上海市普陀区金沙江路 1518 弄'
+                address: '上海市普陀区金沙江路 1515 弄'
             }, {
                 date: '7',
                 name: '王小虎7',
-                address: '上海市普陀区金沙江路 1518 弄'
+                address: '上海市普陀区金沙江路 1516 弄'
             }, {
                 date: '8',
                 name: '王小虎8',
-                address: '上海市普陀区金沙江路 1518 弄'
+                address: '上海市普陀区金沙江路 1517 弄'
             }, {
                 date: '9',
                 name: '王小虎9',
@@ -172,30 +172,27 @@ var comm = Vue.extend({
                 name: '王小虎10',
                 address: '上海市普陀区金沙江路 1518 弄'
             }],
-            currentPage4: 1,
+            currentPage4: 4,
             pageSize: 1,
             totalPage: 0,
             tableSearch: '',
             displayData: [],
-            pageSizes: [1, 2, 3, 4]
+            pageSizes: [1, 2, 3, 4],
         }
     },
 
 
     methods: {
-        filterTableMethod: function (obj) {
-            //查询内容
-            return JSON.stringify(obj).indexOf((this.tableSearch)) > -1;
-        },
+        //点击搜索触发
         search: function () {
-            if (!this.tableSearch) {
-                this.handleCurrentPageChange(this.currentPage4);
-            }
-            else {
-                var tempArr = this.displayData.slice(0);
-                this.displayData.splice(0);
-                this.displayData.push(...tempArr.filter(this.filterTableMethod));
-            }
+            // //通过过滤条件返回搜索后的数组对象(this.dataBySearch是指经过过滤后的数据集合)
+            // //item => (~item.name.indexOf(this.tableSearch) || ~item.date.indexOf(this.tableSearch) || ~item.address.indexOf(this.tableSearch))这个是根据字段返回过滤结果
+            // this.dataBySearch = this.tableData7.filter( item => (~item.name.indexOf(this.tableSearch) || ~item.date.indexOf(this.tableSearch) || ~item.address.indexOf(this.tableSearch)));
+            // this.totalPage = this.dataBySearch.length;
+            // //初始化展示的数据
+            // this.displayData.splice(0);
+            //
+            // this.displayData.push(...this.dataBySearch.slice((this.currentPage4 - 1) * this.pageSize, (this.currentPage4) * this.pageSize));
         },
         handleSizeChange: function (size) {
             console.log(size);
@@ -203,12 +200,21 @@ var comm = Vue.extend({
             this.currentPage4 = 1;
 
             this.displayData.splice(0);
-            this.displayData.push(...this.tableData7.slice(0, size));
+            if(!!this.dataBySearch){
+                this.displayData.push(...this.dataBySearch.slice(0, size));
+            }else {
+                this.displayData.push(...this.tableData7.slice(0, size));
+            }
         },
+        //改变页码进行选择，用slice方法对table数据进行对应截取数据
         handleCurrentPageChange: function (currentPage) {
             this.currentPage4 = currentPage;
             this.displayData.splice(0);
-            this.displayData.push(...this.tableData7.slice((currentPage - 1) * this.pageSize, (currentPage) * this.pageSize));
+            if(!!this.dataBySearch){
+                this.displayData.push(...this.dataBySearch.slice((currentPage - 1) * this.pageSize, (currentPage) * this.pageSize));
+            }else{
+                this.displayData.push(...this.tableData7.slice((currentPage - 1) * this.pageSize, (currentPage) * this.pageSize));
+            }
         },
         initTable: function () {
             this.totalPage = this.tableData7.length / this.pageSize;
@@ -289,6 +295,20 @@ var comm = Vue.extend({
     mounted: function () {
         this.initTable();
 
+    },
+    watch: {
+        tableSearch: function(item, oldVal){
+            //通过过滤条件返回搜索后的数组对象(this.dataBySearch是指经过过滤后的数据集合)
+            //item => (~item.name.indexOf(this.tableSearch) || ~item.date.indexOf(this.tableSearch) || ~item.address.indexOf(this.tableSearch))这个是根据字段返回过滤结果
+            this.dataBySearch = this.tableData7.filter( item => (~item.name.indexOf(this.tableSearch) || ~item.date.indexOf(this.tableSearch) || ~item.address.indexOf(this.tableSearch)));
+            this.totalPage = this.dataBySearch.length;
+            this.currentPage4 = 1;
+            //初始化展示的数据
+            this.displayData.splice(0);
+
+            this.displayData.push(...this.dataBySearch.slice((this.currentPage4 - 1) * this.pageSize, (this.currentPage4) * this.pageSize));
+
+        }
     },
     components: {},
     computed: {}
