@@ -1,18 +1,13 @@
 require('./css/main.css');
 var Vue = require('vue');
 var VueRouter = require('vue-router');
-var appMenu = require('modules/appMenu');
-var appProfile = require('modules/appProfile');
-var appNavigator = require('modules/appNavigator');
-var appFooter = require('modules/appFooter');
 var moduleController = require('controllers/moduleController');
-var appHome = require('modules/appHome');
-var appTab = require('modules/appTab');
 var mainView = require('modules/mainView');
 var appLogin = require('modules/login');
+var appNav = require('modules/appNav');
+var mainContent = require('modules/mainContent');
 var eventHelper = require('utils/eventHelper');
 var ElementUI = require('element-ui');
-var appSearch = require('modules/appSearch');
 
 Vue.use(ElementUI);
 Vue.use(VueRouter);
@@ -66,13 +61,9 @@ var app = new Vue({
         }
     },
     components: {
-        'app-menu': appMenu,
         'app-login': appLogin,
-        'app-profile': appProfile,
-        'app-navigator': appNavigator,
-        'app-tab': appTab,
         'main-view': mainView,
-        // 'app-search': appSearch,
-        'app-footer': appFooter
+        'app-nav': appNav,
+        'main-content' : mainContent
     }
 }).$mount('#app');
