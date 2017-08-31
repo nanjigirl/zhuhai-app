@@ -2,7 +2,6 @@ require('./css/main.css');
 var Vue = require('vue');
 var VueRouter = require('vue-router');
 var moduleController = require('controllers/moduleController');
-var mainView = require('modules/mainView');
 var appLogin = require('modules/login');
 var appNav = require('modules/appNav');
 var mainContent = require('modules/mainContent');
@@ -62,7 +61,6 @@ var app = new Vue({
     },
     components: {
         'app-login': appLogin,
-        'main-view': mainView,
         'app-nav': appNav,
         'main-content' : mainContent
     }
