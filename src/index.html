@@ -1,4 +1,5 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -20,8 +21,6 @@
     <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- iCheck -->
     <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <!-- Switchery -->
-    <link href="../vendors/switchery/dist/switchery.min.css" rel="stylesheet">
     <!-- bootstrap-progressbar -->
     <link href="../vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <!-- FullCalendar -->
@@ -81,8 +80,6 @@
 </script>
 <!-- FastClick -->
 <!--<script src="../vendors/fastclick/lib/fastclick.js"></script>-->
-<!-- Chart.js -->
-<script src="../vendors/Chart.js/dist/Chart.min.js"></script>
 <!-- gauge.js -->
 <script src="../vendors/bernii/gauge.js/dist/gauge.min.js"></script>
 <!-- bootstrap-progressbar -->
@@ -103,12 +100,15 @@
 <script src="../vendors/utils/flot/jquery.flot.spline.js"></script>
 <script src="../vendors/utils/flot/curvedLines.js"></script>
 <script src="../vendors/utils/validator/validator.js"></script>
-
+<script src="http://api.map.baidu.com/api?v=2.0&ak=UnSSwv0Kqa9OK2rPKwHBYGkXF7OBsKGY"></script>
+<!-- 引入百度地图扩展 -->
+<script src="./utils/bmap.min.js"></script>
 
 <script src="../vendors/gridly/javascripts/jquery.gridly.js"></script>
 <!--webpack dll文件-->
 <script src="../build/dist/vendor.dll.js"></script>
-<!--devStart--><script type="text/javascript" src="../release/app.bundle.js"></script><!--devEnd-->
+<!--devStart-->
+<script type="text/javascript" src="../release/app.bundle.js"></script><!--devEnd-->
 <!--build <script type="text/javascript" >
     setTimeout(function(){
         $.getScript("../release/app.bundle.js",function(){
