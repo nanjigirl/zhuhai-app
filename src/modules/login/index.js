@@ -8,10 +8,10 @@ var comm = Vue.extend({
         return {
             ruleForm10: {
                 name: '',
-                sex:'',
-                eMail:'',
-                telphone:'',
-                date:''
+                sex: '',
+                eMail: '',
+                telphone: '',
+                date: ''
             },
             password: '123456',
             userName: 'eadmin',
@@ -30,7 +30,8 @@ var comm = Vue.extend({
         }
     },
     mounted: function () {
-        var cache = window.sessionStorage.getItem('cescToken');
+        // var cache = window.sessionStorage.getItem('cescToken');
+        var cache = '1234567';
         if (!!cache) {
             this.$nextTick(function () {
                 loginCtrl.setToken(cache);
