@@ -7,67 +7,58 @@
     position: relative;
 }
 
-.viewContent:before {
-    content: '';
-    display: block;
-    width: 24em;
-    height: 8em;
-    position: absolute;
-    top: -5.6em;
-    left: 50%;
-    margin-left: -12em;
-    border-left: 3px solid #127bd1;
-    border-right: 2px solid #127bd1;
-    border-top: 4px solid #127bd1;
-    transform: perspective(24em) rotate3d(1, 0, 0, 70deg);
-}
+/*.viewContent:before {*/
+    /*content: '';*/
+    /*display: block;*/
+    /*width: 24em;*/
+    /*height: 8em;*/
+    /*position: absolute;*/
+    /*top: -5.6em;*/
+    /*left: 50%;*/
+    /*margin-left: -12em;*/
+    /*border-left: 3px solid #127bd1;*/
+    /*border-right: 2px solid #127bd1;*/
+    /*border-top: 4px solid #127bd1;*/
+    /*transform: perspective(24em) rotate3d(1, 0, 0, 70deg);*/
+/*}*/
 
 .containTop {
     position: relative;
 }
 
 .mainTitle {
-    width: 24em;
-    height: 9em;
+    width: 29em;
     line-height: 4em;
     position: absolute;
-    top: -2.5em;
+    top: -3.5em;
     left: 50%;
     transform: translate(-50%,0);
-    background: linear-gradient(145deg, transparent 1.5em, rgba(53,116,221,0.2) 0) top left, linear-gradient(-145deg, transparent 1.5em, rgba(53,116,221,0.2) 0) top right, linear-gradient(-35deg, transparent 1.5em, rgba(53,116,221,0.2) 0) bottom right, linear-gradient(35deg, transparent 1.5em, rgba(53,116,221,0.2) 0) bottom left;
-    background-size: 50.2% 50.2%;
-    background-repeat: no-repeat;
+    z-index: 10;
 }
 .main-text{
-    width: 110%;
-    height: 1.2em;
-    line-height: 1.2em;
-    position: absolute;
-    top: calc(50% - 0.6em);
-    left: -5%;
-    /* background: #127bd1; */
     color: #2de8ef;
     text-align: center;
-    font-size: 3em;
+    font-size: 2.5em;
     text-shadow: 0px 1px 10px;
+    vertical-align: middle;
 }
-.mainTitle:after{
-    content: '';
-    display: block;
-    width: 22em;
-    height: 9em;
-    position: absolute;
-    bottom: -4.5em;
-    left: 50%;
-    margin-left: -11em;
-    border-left: 4px solid #127bd1;
-    border-right: 4px solid #127bd1;
-    border-top: 8px solid #127bd1;
-    transform: perspective(24em) rotate3d(1, 0, 0, 107deg);
-}
+/*.mainTitle:after{*/
+    /*content: '';*/
+    /*display: block;*/
+    /*width: 22em;*/
+    /*height: 9em;*/
+    /*position: absolute;*/
+    /*bottom: -4.5em;*/
+    /*left: 50%;*/
+    /*margin-left: -11em;*/
+    /*border-left: 4px solid #127bd1;*/
+    /*border-right: 4px solid #127bd1;*/
+    /*border-top: 8px solid #127bd1;*/
+    /*transform: perspective(24em) rotate3d(1, 0, 0, 107deg);*/
+/*}*/
 
 .notice-left, .notice-right {
-    width: calc(50% - 14em);
+    width: calc(50% - 16em);
     height: 4em;
     line-height: 4em;
     background: #051e48;
@@ -88,23 +79,23 @@
 .notice-left:before{
     content: '';
     display: block;
-    width: calc(100% + 12px);
-    height: 1px;
-    background: #127bd1;
+    width: calc(100% + 28px);
+    height: 2px;
+    background: #2de8ef;
     position: absolute;
     top: -10px;
     left: -12px;
 }
 
 .notice-right:before{
-     content: '';
-     display: block;
-     width: calc(100% + 12px);
-     height: 1px;
-     background: #127bd1;
-     position: absolute;
-     top: -10px;
-     right: -12px;
+    content: '';
+    display: block;
+    width: calc(100% + 28px);
+    height: 2px;
+    background: #2de8ef;
+    position: absolute;
+    top: -10px;
+    right: -12px;
  }
 .notice-left:after{
     content: '';
@@ -254,7 +245,7 @@
     height: 1px;
     background: #127bd1;
     position: absolute;
-    top: -1px;
+    top: 0;
     right: 1.4em;
 }
 
@@ -287,7 +278,7 @@
     height: 1px;
     background: #127bd1;
     position: absolute;
-    top: -1px;
+    top: 0;
     left: 1.4em;
 }
 
@@ -396,7 +387,7 @@
 }
 
 .displayTable {
-    width: 100%;
+    width: calc(100% - 1em);
 }
 
 .displayTable thead > tr > th, .displayTable tbody > tr > td {
@@ -540,6 +531,7 @@
     height: 3em;
     top: -2.8em;
     left: 1.4em;
+    background: rgba(5,33,79,0.9);
     transform-origin: bottom center 0;
     transform: perspective(4em) rotate3d(1, 0, 0, 70deg);
     box-shadow: 2px -2px 2px 1px #2de8ef, -2px -2px 2px 1px #2de8ef, 0 -20px 2px 1px #2de8ef;
@@ -598,6 +590,7 @@
     height: 3em;
     top: -2.8em;
     right: 1.4em;
+    background: rgba(5,33,79,0.9);
     transform-origin: bottom center 0;
     transform: perspective(4em) rotate3d(1, 0, 0, 70deg);
     box-shadow: 2px -2px 2px 1px #2de8ef, -2px -2px 2px 1px #2de8ef, 0 -20px 2px 1px #2de8ef;

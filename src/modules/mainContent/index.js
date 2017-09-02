@@ -11,7 +11,7 @@ var comm = Vue.extend({
     data: function () {
         return {
             message: 'Vue Module Seed',
-            show: false
+            show:false
         }
     },
     methods: {},
@@ -210,6 +210,114 @@ var comm = Vue.extend({
                 //get BMap entity
                 var bmap = myChart.getModel().getComponent('bmap').getBMap();
               //  bmap.addControl(new BMap.MapTypeControl());
+
+                var option1 = {
+                    color: ['#2de8ef'],
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                            shadowStyle:{
+                                color:'rgba(255,255,255,0.5)'
+                            }
+                        }
+                    },
+                    grid: {
+                        left: '8%',
+                        right: '8%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['中心城区', '白云区', '花都区', '番禺区', '南沙区', '从化区', '增城区'],
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#2de8ef'
+                                }
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            name:'日生产量(万m3/d)',
+                            type : 'value',
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#2de8ef'
+                                }
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'日生产量',
+                            type:'bar',
+                            barWidth: '60%',
+                            data:[445,19, 32.5, 128, 48, 31.6, 73.2]
+                        }
+                    ]
+                };
+                var option2 = {
+                    color: ['#2de8ef'],
+                    tooltip : {
+                        trigger: 'axis',
+                        axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                            type : 'shadow',        // 默认为直线，可选为：'line' | 'shadow'
+                            shadowStyle:{
+                                color:'rgba(255,255,255,0.5)'
+                            }
+                        }
+                    },
+                    grid: {
+                        left: '8%',
+                        right: '8%',
+                        bottom: '3%',
+                        containLabel: true
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['猎德', '京溪', '大坦沙', '沥滘', '西朗', '龙归', '竹料','大沙地','江高-石井'],
+                            axisTick: {
+                                alignWithLabel: true
+                            },
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#2de8ef'
+                                }
+                            }
+                        }
+                    ],
+                    yAxis : [
+                        {
+                            name:'日生产量(万m3/d)',
+                            type : 'value',
+                            max:150,
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#2de8ef'
+                                }
+                            }
+                        }
+                    ],
+                    series : [
+                        {
+                            name:'日生产量',
+                            type:'bar',
+                            barWidth: '60%',
+                            data:[120, 10, 55, 50, 20, 14, 6,20,15]
+                        }
+                    ]
+                };
+                var leftChart = echarts.init($('.chartContain')[0]);
+                leftChart.setOption(option1);
+                var rightChart = echarts.init($('.chartContain')[1]);
+                rightChart.setOption(option2);
             }.bind(this));
         }.bind(this), 500);
     },

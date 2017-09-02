@@ -17,7 +17,7 @@
     width: 2.4em;
     height: 2em;
     line-height: 2em;
-    margin: 0 1em;
+    margin: 0 0.2em;
     /*background: rgba(53,116,221,0.35);*/
     background: linear-gradient(120deg, transparent 0.5em, rgba(53,116,221,0.35) 0) top left,
     linear-gradient(-120deg, transparent 0.5em, rgba(53,116,221,0.35) 0) top right,
