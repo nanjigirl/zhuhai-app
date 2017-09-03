@@ -8,18 +8,18 @@
 }
 
 /*.viewContent:before {*/
-    /*content: '';*/
-    /*display: block;*/
-    /*width: 24em;*/
-    /*height: 8em;*/
-    /*position: absolute;*/
-    /*top: -5.6em;*/
-    /*left: 50%;*/
-    /*margin-left: -12em;*/
-    /*border-left: 3px solid #127bd1;*/
-    /*border-right: 2px solid #127bd1;*/
-    /*border-top: 4px solid #127bd1;*/
-    /*transform: perspective(24em) rotate3d(1, 0, 0, 70deg);*/
+/*content: '';*/
+/*display: block;*/
+/*width: 24em;*/
+/*height: 8em;*/
+/*position: absolute;*/
+/*top: -5.6em;*/
+/*left: 50%;*/
+/*margin-left: -12em;*/
+/*border-left: 3px solid #127bd1;*/
+/*border-right: 2px solid #127bd1;*/
+/*border-top: 4px solid #127bd1;*/
+/*transform: perspective(24em) rotate3d(1, 0, 0, 70deg);*/
 /*}*/
 
 .containTop {
@@ -32,30 +32,32 @@
     position: absolute;
     top: -3.5em;
     left: 50%;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     z-index: 10;
     cursor: pointer;
 }
-.main-text{
+
+.main-text {
     color: #2de8ef;
     text-align: center;
     font-size: 2.5em;
     text-shadow: 0px 1px 10px;
     vertical-align: middle;
 }
+
 /*.mainTitle:after{*/
-    /*content: '';*/
-    /*display: block;*/
-    /*width: 22em;*/
-    /*height: 9em;*/
-    /*position: absolute;*/
-    /*bottom: -4.5em;*/
-    /*left: 50%;*/
-    /*margin-left: -11em;*/
-    /*border-left: 4px solid #127bd1;*/
-    /*border-right: 4px solid #127bd1;*/
-    /*border-top: 8px solid #127bd1;*/
-    /*transform: perspective(24em) rotate3d(1, 0, 0, 107deg);*/
+/*content: '';*/
+/*display: block;*/
+/*width: 22em;*/
+/*height: 9em;*/
+/*position: absolute;*/
+/*bottom: -4.5em;*/
+/*left: 50%;*/
+/*margin-left: -11em;*/
+/*border-left: 4px solid #127bd1;*/
+/*border-right: 4px solid #127bd1;*/
+/*border-top: 8px solid #127bd1;*/
+/*transform: perspective(24em) rotate3d(1, 0, 0, 107deg);*/
 /*}*/
 
 .notice-left, .notice-right {
@@ -67,17 +69,20 @@
     padding: 0 1em;
     position: relative;
 }
-.notice-left{
-    border-left:none;
+
+.notice-left {
+    border-left: none;
     border-top: none;
     box-shadow: 2px 2px 2px #2de8ef inset;
 }
-.notice-right{
-    border-right:none;
+
+.notice-right {
+    border-right: none;
     border-top: none;
     box-shadow: -2px 2px 2px #2de8ef inset;
 }
-.notice-left:before{
+
+.notice-left:before {
     content: '';
     display: block;
     width: calc(100% + 28px);
@@ -88,7 +93,7 @@
     left: -12px;
 }
 
-.notice-right:before{
+.notice-right:before {
     content: '';
     display: block;
     width: calc(100% + 28px);
@@ -97,27 +102,28 @@
     position: absolute;
     top: -10px;
     right: -12px;
- }
+}
+
 /*.notice-left:after{*/
-    /*content: '';*/
-    /*display: block;*/
-    /*width: calc(100% + 4px);*/
-    /*height: 4px;*/
-    /*background: #127bd1;*/
-    /*position: absolute;*/
-    /*bottom: -26px;*/
-    /*left: -2px;*/
+/*content: '';*/
+/*display: block;*/
+/*width: calc(100% + 4px);*/
+/*height: 4px;*/
+/*background: #127bd1;*/
+/*position: absolute;*/
+/*bottom: -26px;*/
+/*left: -2px;*/
 /*}*/
 
 /*.notice-right:after {*/
-    /*content: '';*/
-    /*display: block;*/
-    /*width: calc(100% + 4px);*/
-    /*height: 4px;*/
-    /*background: #127bd1;*/
-    /*position: absolute;*/
-    /*bottom: -26px;*/
-    /*right: -2px;*/
+/*content: '';*/
+/*display: block;*/
+/*width: calc(100% + 4px);*/
+/*height: 4px;*/
+/*background: #127bd1;*/
+/*position: absolute;*/
+/*bottom: -26px;*/
+/*right: -2px;*/
 /*}*/
 
 .mapContain {
@@ -167,7 +173,7 @@
     justify-content: space-between;
     align-content: space-between;
     flex-wrap: wrap;
-    z-index:2;
+    z-index: 2;
 }
 
 .displayItem {
@@ -183,11 +189,12 @@
     height: 48.5%;
     position: relative;
 }
-.itemLeft{
-    background: linear-gradient(135deg, rgba(5,33,79,0.9) 0, rgba(5,33,79,0.9) 0) top left,
-    linear-gradient(-135deg, transparent 1em, rgba(5,33,79,0.9) 0) top right,
-    linear-gradient(-45deg, rgba(5,33,79,0.9) 0, rgba(5,33,79,0.9) 0) bottom right,
-    linear-gradient(45deg, transparent 1em, rgba(5,33,79,0.9) 0) bottom left;
+
+.itemLeft {
+    background: linear-gradient(135deg, rgba(5, 33, 79, 0.9) 0, rgba(5, 33, 79, 0.9) 0) top left,
+    linear-gradient(-135deg, transparent 1em, rgba(5, 33, 79, 0.9) 0) top right,
+    linear-gradient(-45deg, rgba(5, 33, 79, 0.9) 0, rgba(5, 33, 79, 0.9) 0) bottom right,
+    linear-gradient(45deg, transparent 1em, rgba(5, 33, 79, 0.9) 0) bottom left;
     background-size: 50.2% 50.2%;
     background-repeat: no-repeat;
 }
@@ -264,11 +271,11 @@
     border-right: 1px solid #127bd1;
 }
 
-.itemRight{
-    background: linear-gradient(135deg, transparent 1em, rgba(5,33,79,0.9) 0) top left,
-    linear-gradient(-135deg, rgba(5,33,79,0.9) 0, rgba(5,33,79,0.9) 0) top right,
-    linear-gradient(-45deg, transparent 1em, rgba(5,33,79,0.9) 0) bottom right,
-    linear-gradient(45deg, rgba(5,33,79,0.9) 0, rgba(5,33,79,0.9) 0) bottom left;
+.itemRight {
+    background: linear-gradient(135deg, transparent 1em, rgba(5, 33, 79, 0.9) 0) top left,
+    linear-gradient(-135deg, rgba(5, 33, 79, 0.9) 0, rgba(5, 33, 79, 0.9) 0) top right,
+    linear-gradient(-45deg, transparent 1em, rgba(5, 33, 79, 0.9) 0) bottom right,
+    linear-gradient(45deg, rgba(5, 33, 79, 0.9) 0, rgba(5, 33, 79, 0.9) 0) bottom left;
     background-size: 50.2% 50.2%;
     background-repeat: no-repeat;
 }
@@ -381,8 +388,9 @@
     left: 0.5em;
     top: 0.6em;
 }
-.systemBody{
-    height:calc(100% - 5em);
+
+.systemBody {
+    height: calc(100% - 5em);
     overflow: hidden;
     position: relative;
     z-index: 1;
@@ -394,7 +402,28 @@
 
 .displayTable thead > tr > th, .displayTable tbody > tr > td {
     text-align: center;
-    font-size:1.3em;
+    font-size: 1.3em;
+}
+
+.displayTable .alert thead > tr > th, .displayTable tbody > tr > td {
+    text-align: center;
+    font-size: 1.3em;
+}
+
+.tableContainer {
+    height: 10em;
+    padding: 0 1em;
+}
+
+.tableContainer > table > tbody > tr > td {
+    text-align: left;
+}
+.tableContainer > table > tbody > tr > td:nth-child(2){
+    text-align: center !important;
+}
+
+.tableContainer > table {
+    width: 100% !important;
 }
 
 .displayTable thead > tr > th {
@@ -516,12 +545,12 @@
     box-shadow: -2px -2px 2px #2de8ef inset;
 }
 
-.itemBottom-l{
-    border-right:1px solid #127bd1;
-    background: linear-gradient(135deg, transparent 1em, rgba(5,33,79,0.9) 0) top left,
-    linear-gradient(-135deg, rgba(5,33,79,0.9) 0, rgba(5,33,79,0.9) 0) top right,
-    linear-gradient(-45deg, rgba(5,33,79,0.9) 0, rgba(5,33,79,0.9) 0) bottom right,
-    linear-gradient(45deg, transparent 1em, rgba(5,33,79,0.9) 0) bottom left;
+.itemBottom-l {
+    border-right: 1px solid #127bd1;
+    background: linear-gradient(135deg, transparent 1em, rgba(5, 33, 79, 0.9) 0) top left,
+    linear-gradient(-135deg, rgba(5, 33, 79, 0.9) 0, rgba(5, 33, 79, 0.9) 0) top right,
+    linear-gradient(-45deg, rgba(5, 33, 79, 0.9) 0, rgba(5, 33, 79, 0.9) 0) bottom right,
+    linear-gradient(45deg, transparent 1em, rgba(5, 33, 79, 0.9) 0) bottom left;
     background-size: 50.2% 50.2%;
     background-repeat: no-repeat;
 }
@@ -534,7 +563,7 @@
     height: 3em;
     top: -2.8em;
     left: 1.4em;
-    background: rgba(5,33,79,0.9);
+    background: rgba(5, 33, 79, 0.9);
     transform-origin: bottom center 0;
     transform: perspective(4em) rotate3d(1, 0, 0, 70deg);
     box-shadow: 2px -2px 2px 1px #2de8ef, -2px -2px 2px 1px #2de8ef, 0 -20px 2px 1px #2de8ef;
@@ -575,12 +604,12 @@
     background: #127bd1;
 }
 
-.itemBottom-r{
-    border-left:1px solid #127bd1;
-    background: linear-gradient(135deg, rgba(5,33,79,0.9) 0, rgba(5,33,79,0.9) 0) top left,
-    linear-gradient(-135deg, transparent 1em, rgba(5,33,79,0.9) 0) top right,
-    linear-gradient(-45deg, transparent 1em, rgba(5,33,79,0.9) 0) bottom right,
-    linear-gradient(45deg, rgba(5,33,79,0.9) 0, rgba(5,33,79,0.9) 0) bottom left;
+.itemBottom-r {
+    border-left: 1px solid #127bd1;
+    background: linear-gradient(135deg, rgba(5, 33, 79, 0.9) 0, rgba(5, 33, 79, 0.9) 0) top left,
+    linear-gradient(-135deg, transparent 1em, rgba(5, 33, 79, 0.9) 0) top right,
+    linear-gradient(-45deg, transparent 1em, rgba(5, 33, 79, 0.9) 0) bottom right,
+    linear-gradient(45deg, rgba(5, 33, 79, 0.9) 0, rgba(5, 33, 79, 0.9) 0) bottom left;
     background-size: 50.2% 50.2%;
     background-repeat: no-repeat;
 }
@@ -593,7 +622,7 @@
     height: 3em;
     top: -2.8em;
     right: 1.4em;
-    background: rgba(5,33,79,0.9);
+    background: rgba(5, 33, 79, 0.9);
     transform-origin: bottom center 0;
     transform: perspective(4em) rotate3d(1, 0, 0, 70deg);
     box-shadow: 2px -2px 2px 1px #2de8ef, -2px -2px 2px 1px #2de8ef, 0 -20px 2px 1px #2de8ef;
@@ -671,57 +700,67 @@
     right: -2em;
     bottom: 0;
 }
-.chartContain{
-    width:100%;
-    height:100%;
+
+.chartContain {
+    width: 100%;
+    height: 100%;
 }
 
 #mainMap {
     width: 100%;
     height: calc(100% - 3em);
 }
-.inform-text{
+
+.inform-text {
     padding: 1em;
     font-size: 1.3em;
     text-indent: 2em;
     color: #ccc;
 }
-.chartPie{
-    width:60%;
-    height:100%;
-    margin-left:5px;
+
+.chartPie {
+    width: 60%;
+    height: 100%;
+    margin-left: 5px;
 }
-.chartList{
+
+.chartList {
     width: calc(40% - 10px);
     max-height: 10em;
     position: absolute;
     right: 5px;
     top: 50%;
-    transform: translate(0,-50%);
+    transform: translate(0, -50%);
     border: 1px solid #ccc;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-.subChartList{
+
+.subChartList {
     width: 100%;
     height: calc(100% - 3em);
     overflow: auto;
 }
-.chartList>li,.subChartList>li{
+
+.chartList > li, .subChartList > li {
     padding: 0.5em 0;
     text-align: center;
-    border-bottom:1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
-.subChartList>li:last-child{
-    border-bottom:none;
+
+.subChartList > li:last-child {
+    border-bottom: none;
 }
-.subChartList>li>a{
+
+.subChartList > li > a {
     color: #fff;
 }
-.listTitle{
+
+.listTitle {
     background: #ccc;
 }
-.listTitle>a{
-    color: #333!important;
+
+.listTitle > a {
+    color: #333 !important;
     font-weight: bold;
 }

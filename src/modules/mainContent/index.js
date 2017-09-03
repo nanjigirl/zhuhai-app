@@ -4,6 +4,15 @@ var data = require('services/mock/PS_PIPE_ZY.json');
 var infoWindow = require('modules/infoWindow');
 var echarts = require('echarts');
 require('utils/bmap.min');
+var complaintPointLeft = {
+    lat: 23.129947,
+    lng: 113.388409
+};
+var complaintPointRight = {
+    lat: 23.130117,
+    lng: 113.3929
+};
+
 //var BMap = require('utils/bmap.min');
 // 定义组件
 var comm = Vue.extend({
@@ -113,7 +122,7 @@ var comm = Vue.extend({
                         monitor.water = parseFloat((monitor.water + Math.random() * 0.1).toFixed(2));
                         monitor.flow = parseFloat((monitor.flow + Math.random() * 0.1).toFixed(2));
                     }
-                    else if (monitor.water > 2 ||monitor.water ==2 ) {
+                    else if (monitor.water > 2 || monitor.water == 2) {
                         monitor.water = parseFloat((monitor.water - Math.random() - 1).toFixed(2));
                         monitor.flow = parseFloat((monitor.flow - Math.random() - 1).toFixed(2));
                     }
@@ -166,7 +175,7 @@ var comm = Vue.extend({
                     {
                         title: '水位报警',
                         content: this.rightMonitors[0].water,
-                        type:'warn'
+                        type: 'warn'
 
                     }
                 ];
@@ -198,7 +207,7 @@ var comm = Vue.extend({
                     {
                         title: '压力报警',
                         content: this.leftMonitors[0].water,
-                        type:'warn'
+                        type: 'warn'
 
                     }
                 ];
@@ -421,6 +430,35 @@ var comm = Vue.extend({
                 });
                 this.map = bmap;
                 //  bmap.addControl(new BMap.MapTypeControl());
+                var pt = new BMap.Point(113.388409, 23.129947);
+                var myIcon = new BMap.Icon("./img/cpLeft.png", new BMap.Size(20, 20));
+                myIcon.imageSize = new BMap.Size(20, 20);
+
+                var marker1 = new BMap.Marker(pt, {icon: myIcon});  // 创建标注
+                marker1.setTitle('供水投诉点');
+
+                var pt1 = new BMap.Point(113.3929, 23.130117);
+                var myIcon1 = new BMap.Icon("./img/cpRight.png", new BMap.Size(20, 20));
+                myIcon1.imageSize = new BMap.Size(20, 20);
+                var marker2 = new BMap.Marker(pt1, {icon: myIcon1});  // 创建标注
+                marker2.setTitle('净水投诉点');
+
+                bmap.addOverlay(marker1);              // 将标注添加到地图中
+                bmap.addOverlay(marker2);              // 将标注添加到地图中
+                //$('#complatinBox').scroll();
+                /*  var ptL = new BMap.Point(complaintPointLeft.lat, complaintPointLeft.lng);
+                 var ptR = new BMap.Point(complaintPointRight.lat, complaintPointRight.lng);
+
+                 var left = new BMap.Icon("./img/rainPipe.png", new BMap.Size(20, 20));
+                 left.imageSize = new BMap.Size(20, 20);
+                 var right = new BMap.Icon("./img/rainPipe.png", new BMap.Size(20, 20));
+                 right.imageSize = new BMap.Size(20, 20);
+
+
+                 var cpMarkLeft = new BMap.Marker(ptL, {icon: left});  // 创建标注
+                 var cpMarkRight = new BMap.Marker(ptR, {icon: right});  // 创建标注
+                 this.map.addOverlay(cpMarkLeft);
+                 this.map.addOverlay(cpMarkRight);*/
 
                 //柱状图
                 var option1 = {
