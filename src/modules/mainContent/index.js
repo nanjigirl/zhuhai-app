@@ -1,17 +1,15 @@
 var template = require('./content.html');
 var eventHelper = require('../../utils/eventHelper');
-var echarts = require('echarts');
-
 var data = require('services/mock/PS_PIPE_ZY.json');
 var echarts = require('echarts');
 require('utils/bmap.min');
+//var BMap = require('utils/bmap.min');
 // 定义组件
 var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            message: 'Vue Module Seed',
-            show:false
+            show: false
         }
     },
     methods: {},
@@ -41,8 +39,8 @@ var comm = Vue.extend({
                 var option = {
                     //map setting
                     bmap: {
-                        center: [113.374, 23.140],
-                        zoom: 16,
+                        center: [113.390259, 23.130512],
+                        zoom: 18,
                         roam: true,
                         mapStyle: {
                             'styleJson': [
