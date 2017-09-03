@@ -25,7 +25,7 @@ var updateStatus = function (self, result) {
         var realTimeValue = newValue.dValue.toFixed(2);
         console.log('realTimeval', realTimeValue);
         realTimeValues[newValue.itemId] = realTimeValue;
-        self.monitors.forEach(function (monitor) {
+        self.rightMonitors.forEach(function (monitor) {
             if (monitor.itemID === newValue.itemId) {
                 if (!!monitor.highAlert) {
                     var newWidth = realTimeValue / monitor.highAlert;
@@ -81,7 +81,7 @@ var comm = Vue.extend({
     data: function () {
         return {
             rightPanelOpen: true,
-            monitors: [],
+            rightMonitors: [],
             realTimeValueList: [],
             realTimeValueListBar: [],
             highWarnStyles: [],
@@ -107,7 +107,7 @@ var comm = Vue.extend({
                         var newWidth = item.lowWarning / item.lowAlert * 15;
                         self.lowWarnStyles[item.itemID] = 'bottom:' + newWidth + '%';
                     }
-                    this.monitors.push(item);
+                    this.rightMonitors.push(item);
                     this.realTimeValueList[item.itemID] =0;
                 }
             }.bind(this));
@@ -122,7 +122,7 @@ var comm = Vue.extend({
             console.log(id);
         },
         reset: function () {
-            this.monitors = [];
+            this.rightMonitors = [];
             this.realTimeValueList = [];
             this.realTimeValueListBar = [];
             this.highWarnStyles = [];

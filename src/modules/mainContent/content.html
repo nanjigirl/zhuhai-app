@@ -54,55 +54,12 @@
                                 <col width="24%">
                             </colgroup>
                             <tbody>
-                            <tr>
-                                <td>中山大道001-骏北街</td>
-                                <td>0.46</td>
-                                <td>0.56</td>
-                            </tr>
-                            <tr>
-                                <td>中山大道002-骏南街</td>
-                                <td>0.48</td>
-                                <td>0.58</td>
-                            </tr>
-                            <tr>
-                                <td>中山大道003-骏中街</td>
-                                <td>0.52</td>
-                                <td>0.62</td>
-                            </tr>
-                            <tr>
-                                <td>中山大道004-稚乐街</td>
-                                <td>0.45</td>
-                                <td style="color:red;">1.55</td>
-                            </tr>
-                            <tr>
-                                <td>中山大道005-绿茵路</td>
-                                <td>0.51</td>
-                                <td>0.62</td>
-                            </tr>
-                            <tr>
-                                <td>中山大道006-科新路</td>
-                                <td>0.53</td>
-                                <td>0.63</td>
-                            </tr>
-                            <tr>
-                                <td>中山大道007-员村五横路</td>
-                                <td>0.48</td>
-                                <td style="color:red;">1.58</td>
-                            </tr>
-                            <tr>
-                                <td>车陂路001</td>
-                                <td>0.55</td>
-                                <td>0.65</td>
-                            </tr>
-                            <tr>
-                                <td>瑞华路001</td>
-                                <td>0.53</td>
-                                <td>0.64</td>
-                            </tr>
-                            <tr>
-                                <td>中山大道西001-棠东东南路</td>
-                                <td>0.50</td>
-                                <td>0.60</td>
+                            <tr v-for="leftMonitor in leftMonitors">
+                                <td>{{leftMonitor.name}}</td>
+                                <td>{{leftMonitor.flow}}</td>
+                                <td v-if="leftMonitor.water<0.2" style="color:red">{{leftMonitor.water}}</td>
+                                <td v-if="leftMonitor.water>0.2 || leftMonitor.water==0.2">
+                                    {{leftMonitor.water}}
                             </tr>
                             </tbody>
                         </table>
@@ -217,7 +174,7 @@
                     <div class="rightConner-b"></div>
                 </div>
                 <div class="systemTitle">
-                    <span class="system-text">净水管网实时监测</span>
+                    <span class="system-text">污水管网实时监测</span>
                     <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
                 </div>
                 <div class="systemBody">
@@ -246,55 +203,12 @@
                                 <col width="24%">
                             </colgroup>
                             <tbody>
-                            <tr>
-                                <td>猎德涌001-平江路</td>
-                                <td>2.84</td>
-                                <td>0.56</td>
-                            </tr>
-                            <tr>
-                                <td>猎德涌002-马场路</td>
-                                <td>1.46</td>
-                                <td style="color:red;">1.50</td>
-                            </tr>
-                            <tr>
-                                <td>猎德涌003-海清路</td>
-                                <td>2.45</td>
-                                <td>0.42</td>
-                            </tr>
-                            <tr>
-                                <td>猎德涌004-西浦大街</td>
-                                <td>1.96</td>
-                                <td>0.48</td>
-                            </tr>
-                            <tr>
-                                <td>猎德涌005-冼村路</td>
-                                <td>2.25</td>
-                                <td style="color:red;">1.52</td>
-                            </tr>
-                            <tr>
-                                <td>猎德涌006-马场路金穗路</td>
-                                <td>2.56</td>
-                                <td>0.53</td>
-                            </tr>
-                            <tr>
-                                <td>猎德涌007-新快报</td>
-                                <td>3.02</td>
-                                <td>0.49</td>
-                            </tr>
-                            <tr>
-                                <td>沙河涌001-东侧截污管</td>
-                                <td>3.56</td>
-                                <td>0.48</td>
-                            </tr>
-                            <tr>
-                                <td>沙河涌002-西侧截污管</td>
-                                <td>0.52</td>
-                                <td>0.46</td>
-                            </tr>
-                            <tr>
-                                <td>沙河涌003-12号闸</td>
-                                <td>4.25</td>
-                                <td>0.51</td>
+                            <tr v-for="monitor in rightMonitors">
+                                <td>{{monitor.name}}</td>
+                                <td>{{monitor.flow}}</td>
+                                <td v-if="monitor.water<1.5">{{monitor.water}}</td>
+                                <td v-if="monitor.water>1.5 || monitor.water==1.5" style="color:red">{{monitor.water}}
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -471,4 +385,5 @@
             </div>
         </div>
     </transition>
+    <info-window></info-window>
 </div>

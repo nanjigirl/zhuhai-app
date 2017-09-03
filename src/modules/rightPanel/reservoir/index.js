@@ -26,7 +26,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            monitors: []
+            rightMonitors: []
         }
     },
     methods: {
@@ -51,7 +51,7 @@ var comm = Vue.extend({
 
         },
         init: function (monitors) {
-            this.monitors = monitors;
+            this.rightMonitors = monitors;
             this.charts = {};
             this.chartOptions = {};
             this.$nextTick(function () {

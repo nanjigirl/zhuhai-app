@@ -301,7 +301,7 @@ var comm = Vue.extend({
                     }
                     if (result.devices.length > 0) {
                         var monitorIDs = [];
-                        var monitors = [];
+                        var rightMonitors = [];
                         result.devices.forEach(function (device) {
                             device.items.forEach(function (monitor) {
                                 if (monitor.itemTypeName === 'Precipitation') {
@@ -311,7 +311,7 @@ var comm = Vue.extend({
                                     self.waterLevelID = monitor.itemID;
                                 }
                                 monitorIDs.push(monitor.itemID);
-                                monitors.push(monitor);
+                                rightMonitors.push(monitor);
                             });
                         });
                         realTimeUpdate(this, monitorIDs);
