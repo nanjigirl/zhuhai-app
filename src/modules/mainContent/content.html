@@ -1,560 +1,474 @@
 <div class="viewContent">
-   <div class="containTop clearfix">
-      <div class="notice-left pull-left">
-         <span class="notice-tips notice-bj">报警</span>
-         <span class="notice-title">气象预警&nbsp;&nbsp;:</span>
-         <marquee class="notice-text">根据我市天气预报预测，我市将在今天中午12:00到晚间今天中午12:00到晚间今天中午12:00到晚间</marquee>
-      </div>
-      <div class="mainTitle pull-left">
-         <img src="../../img/titleLeft.png" alt="">
-         <span class="main-text">智慧水务一张图</span>
-         <img src="../../img/titleRight.png" alt="">
-      </div>
-      <div class="notice-right pull-right">
-         <span class="notice-tips notice-dt pull-right">动态</span>
-         <span class="notice-title pull-right">:&nbsp;&nbsp;新闻动态</span>
-         <marquee class="notice-text pull-left">广州水投集团女职工在广州市天河区举行了全体员工运举行了全体员工运举行了全体员工运</marquee>
-      </div>
-   </div>
-   <div id="mainMap"></div>
-   <transition enter-active-class="bounceInLeft">
-      <div v-show="show" class="displayBox-l animated">
-         <div class="itemLeft">
-            <div class="displayItem">
-               <div class="leftConner-t"></div>
-               <div class="leftConner-b"></div>
+    <div class="containTop clearfix">
+        <div class="notice-left pull-left">
+            <span class="notice-tips notice-bj">报警</span>
+            <span class="notice-title">气象预警&nbsp;&nbsp;:</span>
+            <marquee class="notice-text">根据我市天气预报预测，我市将在今天中午12:00到晚间今天中午12:00到晚间今天中午12:00到晚间</marquee>
+        </div>
+        <div class="mainTitle pull-left">
+            <img src="../../img/titleLeft.png" alt="">
+            <span class="main-text" @click="closePanel">智慧水务一张图</span>
+            <img src="../../img/titleRight.png" alt="">
+        </div>
+        <div class="notice-right pull-right">
+            <span class="notice-tips notice-dt pull-right">动态</span>
+            <span class="notice-title pull-right">:&nbsp;&nbsp;新闻动态</span>
+            <marquee class="notice-text pull-left">广州水投集团女职工在广州市天河区举行了全体员工运举行了全体员工运举行了全体员工运</marquee>
+        </div>
+    </div>
+    <div id="mainMap"></div>
+    <transition enter-active-class="bounceInLeft" leave-active-class="bounceOutLeft">
+        <div v-show="show" class="displayBox-l animated">
+            <div class="itemLeft">
+                <div class="displayItem">
+                    <div class="leftConner-t"></div>
+                    <div class="leftConner-b"></div>
+                </div>
+                <div class="systemTitle">
+                    <span class="system-text">供水管网实时监测</span>
+                    <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
+                </div>
+                <div class="systemBody">
+                    <div>
+                        <table class="displayTable">
+                            <colgroup>
+                                <col width="50%">
+                                <col width="24%">
+                                <col width="24%">
+                                <col width="2%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>监测点</th>
+                                <th>流量(m3/s)</th>
+                                <th>压力(MPa)</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div style="height: 18em;overflow: auto;">
+                        <table class="displayTable">
+                            <colgroup>
+                                <col width="50%">
+                                <col width="24%">
+                                <col width="24%">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>中山大道001-骏北街</td>
+                                <td>0.46</td>
+                                <td>0.56</td>
+                            </tr>
+                            <tr>
+                                <td>中山大道002-骏南街</td>
+                                <td>0.48</td>
+                                <td>0.58</td>
+                            </tr>
+                            <tr>
+                                <td>中山大道003-骏中街</td>
+                                <td>0.52</td>
+                                <td>0.62</td>
+                            </tr>
+                            <tr>
+                                <td>中山大道004-稚乐街</td>
+                                <td>0.45</td>
+                                <td style="color:red;">1.55</td>
+                            </tr>
+                            <tr>
+                                <td>中山大道005-绿茵路</td>
+                                <td>0.51</td>
+                                <td>0.62</td>
+                            </tr>
+                            <tr>
+                                <td>中山大道006-科新路</td>
+                                <td>0.53</td>
+                                <td>0.63</td>
+                            </tr>
+                            <tr>
+                                <td>中山大道007-员村五横路</td>
+                                <td>0.48</td>
+                                <td style="color:red;">1.58</td>
+                            </tr>
+                            <tr>
+                                <td>车陂路001</td>
+                                <td>0.55</td>
+                                <td>0.65</td>
+                            </tr>
+                            <tr>
+                                <td>瑞华路001</td>
+                                <td>0.53</td>
+                                <td>0.64</td>
+                            </tr>
+                            <tr>
+                                <td>中山大道西001-棠东东南路</td>
+                                <td>0.50</td>
+                                <td>0.60</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="systemTitle">
-               <span class="system-text">供水厂产能</span>
-               <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
+            <div class="itemLeft">
+                <div class="displayItem">
+                    <div class="leftConner-t"></div>
+                    <div class="leftConner-b"></div>
+                </div>
+                <div class="systemTitle">
+                    <span class="system-text">自来水厂出厂水质预警</span>
+                    <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
+                </div>
+                <div class="systemBody clearfix">
+                    <div class="chartPie pull-left"></div>
+                    <ul class="chartList pull-right">
+                        <li class="listTitle"><a>未达标</a></li>
+                        <ul class="subChartList">
+                            <li><a>西村水厂</a></li>
+                            <li><a>石门水厂</a></li>
+                        </ul>
+                    </ul>
+                    <!--<div>-->
+                    <!--<table class="displayTable">-->
+                    <!--<colgroup>-->
+                    <!--<col width="50%">-->
+                    <!--<col width="20%">-->
+                    <!--<col width="28%">-->
+                    <!--<col width="2%">-->
+                    <!--</colgroup>-->
+                    <!--<thead>-->
+                    <!--<tr>-->
+                    <!--<th>厂名</th>-->
+                    <!--<th>是否达标</th>-->
+                    <!--<th>超标项</th>-->
+                    <!--</tr>-->
+                    <!--</thead>-->
+                    <!--</table>-->
+                    <!--</div>-->
+                    <!--<div style="height: 18em;overflow: auto;">-->
+                    <!--<table class="displayTable">-->
+                    <!--<colgroup>-->
+                    <!--<col width="50%">-->
+                    <!--<col width="20%">-->
+                    <!--<col width="28%">-->
+                    <!--</colgroup>-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                    <!--<td>西村水厂</td>-->
+                    <!--<td style="color:red">未达标</td>-->
+                    <!--<td>COD</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>江村水厂</td>-->
+                    <!--<td style="color:green">已达标</td>-->
+                    <!--<td>&#45;&#45;</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>新塘水厂</td>-->
+                    <!--<td style="color:red">未达标</td>-->
+                    <!--<td>COD</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>石门水厂</td>-->
+                    <!--<td style="color:green">已达标</td>-->
+                    <!--<td>&#45;&#45;</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>西洲水厂</td>-->
+                    <!--<td style="color:green">已达标</td>-->
+                    <!--<td>&#45;&#45;</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>南洲水厂</td>-->
+                    <!--<td style="color:green">已达标</td>-->
+                    <!--<td>&#45;&#45;</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>穗云水厂</td>-->
+                    <!--<td style="color:green">已达标</td>-->
+                    <!--<td>&#45;&#45;</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>穗北水厂</td>-->
+                    <!--<td style="color:green">已达标</td>-->
+                    <!--<td>&#45;&#45;</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>人和水厂</td>-->
+                    <!--<td style="color:green">已达标</td>-->
+                    <!--<td>&#45;&#45;</td>-->
+                    <!--</tr>-->
+                    <!--<tr>-->
+                    <!--<td>秀全水厂</td>-->
+                    <!--<td style="color:green">已达标</td>-->
+                    <!--<td>&#45;&#45;</td>-->
+                    <!--</tr>-->
+                    <!--</tbody>-->
+                    <!--</table>-->
+                    <!--</div>-->
+                </div>
             </div>
-            <div class="systemBody">
-               <div class="chartContain"></div>
+        </div>
+    </transition>
+    <transition enter-active-class="bounceInRight" leave-active-class="bounceOutRight">
+        <div v-show="show" class="displayBox-r animated">
+            <div class="itemRight">
+                <div class="displayItem">
+                    <div class="rightConner-t"></div>
+                    <div class="rightConner-b"></div>
+                </div>
+                <div class="systemTitle">
+                    <span class="system-text">净水管网实时监测</span>
+                    <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
+                </div>
+                <div class="systemBody">
+                    <div>
+                        <table class="displayTable">
+                            <colgroup>
+                                <col width="50%">
+                                <col width="24%">
+                                <col width="24%">
+                                <col width="2%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>监测点</th>
+                                <th>流量(m3/s)</th>
+                                <th>水位(m)</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div style="height: 18em;overflow: auto;">
+                        <table class="displayTable">
+                            <colgroup>
+                                <col width="50%">
+                                <col width="24%">
+                                <col width="24%">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>猎德涌001-平江路</td>
+                                <td>2.84</td>
+                                <td>0.56</td>
+                            </tr>
+                            <tr>
+                                <td>猎德涌002-马场路</td>
+                                <td>1.46</td>
+                                <td style="color:red;">1.50</td>
+                            </tr>
+                            <tr>
+                                <td>猎德涌003-海清路</td>
+                                <td>2.45</td>
+                                <td>0.42</td>
+                            </tr>
+                            <tr>
+                                <td>猎德涌004-西浦大街</td>
+                                <td>1.96</td>
+                                <td>0.48</td>
+                            </tr>
+                            <tr>
+                                <td>猎德涌005-冼村路</td>
+                                <td>2.25</td>
+                                <td style="color:red;">1.52</td>
+                            </tr>
+                            <tr>
+                                <td>猎德涌006-马场路金穗路</td>
+                                <td>2.56</td>
+                                <td>0.53</td>
+                            </tr>
+                            <tr>
+                                <td>猎德涌007-新快报</td>
+                                <td>3.02</td>
+                                <td>0.49</td>
+                            </tr>
+                            <tr>
+                                <td>沙河涌001-东侧截污管</td>
+                                <td>3.56</td>
+                                <td>0.48</td>
+                            </tr>
+                            <tr>
+                                <td>沙河涌002-西侧截污管</td>
+                                <td>0.52</td>
+                                <td>0.46</td>
+                            </tr>
+                            <tr>
+                                <td>沙河涌003-12号闸</td>
+                                <td>4.25</td>
+                                <td>0.51</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-         </div>
-         <div class="itemLeft">
-            <div class="displayItem">
-               <div class="leftConner-t"></div>
-               <div class="leftConner-b"></div>
+            <div class="itemRight">
+                <div class="displayItem">
+                    <div class="rightConner-t"></div>
+                    <div class="rightConner-b"></div>
+                </div>
+                <div class="systemTitle">
+                    <span class="system-text">净水厂进厂水质预警</span>
+                    <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
+                </div>
+                <div class="systemBody">
+                    <div class="chartPie pull-left"></div>
+                    <ul class="chartList pull-right">
+                        <li class="listTitle"><a>未达标</a></li>
+                        <ul class="subChartList">
+                            <li><a>猎德污水处理厂</a></li>
+                            <li><a>沥滘污水处理厂</a></li>
+                        </ul>
+                    </ul>
+                </div>
             </div>
-            <div class="systemTitle">
-               <span class="system-text">自来水厂出厂水质预警</span>
-               <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
+        </div>
+    </transition>
+    <transition enter-active-class="bounceInUp" leave-active-class="bounceOutDown">
+        <div v-show="show" class="displayBox-b animated">
+            <div class="displayItem-b itemBottom-l">
+                <div class="bottomConner-t"></div>
+                <div class="bottomConner-b"></div>
+                <div class="systemTitle">
+                    <span class="system-text">供水厂产能</span>
+                </div>
+                <div class="systemBody">
+                    <div class="chartContain"></div>
+                </div>
             </div>
-            <div class="systemBody">
-               <div>
-                  <table class="displayTable">
-                     <colgroup>
-                        <col width="50%">
-                        <col width="20%">
-                        <col width="28%">
-                        <col width="2%">
-                     </colgroup>
-                     <thead>
-                     <tr>
-                        <th>厂名</th>
-                        <th>是否达标</th>
-                        <th>超标项</th>
-                     </tr>
-                     </thead>
-                  </table>
-               </div>
-               <div style="height: 12em;overflow: auto;">
-                  <table class="displayTable">
-                     <colgroup>
-                        <col width="50%">
-                        <col width="20%">
-                        <col width="28%">
-                     </colgroup>
-                     <tbody>
-                     <tr>
-                        <td>西村水厂</td>
-                        <td style="color:red">未达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>江村水厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>新塘水厂</td>
-                        <td style="color:red">未达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>石门水厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>西洲水厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>南洲水厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>穗云水厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>穗北水厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>人和水厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>秀全水厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     </tbody>
-                  </table>
-               </div>
+            <div class="displayItem-b itemBottom">
+                <div class="topConner"></div>
+                <div class="systemTitle">
+                    <span class="system-text">供水投诉与解决</span>
+                </div>
+                <div class="systemBody">
+                    <div>
+                        <table class="displayTable">
+                            <colgroup>
+                                <col width="70%">
+                                <col width="28%">
+                                <col width="2%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span class="pull-left" style="margin-left:5em;">投诉</span></th>
+                                <th>进度</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div style="height: 10em;overflow: auto;">
+                        <table class="displayTable">
+                            <colgroup>
+                                <col width="70%">
+                                <col width="28%">
+                                <col width="2%">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>接到天河区凤凰街道居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            <tr>
+                                <td style="color:red">接到天河区车陂街道居民投诉...</td>
+                                <td style="color:red">待解决</td>
+                            </tr>
+                            <tr>
+                                <td>接到海珠区凤凰新村居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            <tr>
+                                <td style="color:orange">接到海珠区海珠广场居民投诉...</td>
+                                <td style="color:orange">已解决</td>
+                            </tr>
+                            <tr>
+                                <td>接到白云区永泰街道居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            <tr>
+                                <td>接到天河区凤凰街道居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            <tr>
+                                <td>接到天河区凤凰街道居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-   </transition>
-   <transition enter-active-class="bounceInRight">
-      <div v-show="show" class="displayBox-r animated">
-         <div class="itemRight">
-            <div class="displayItem">
-               <div class="rightConner-t"></div>
-               <div class="rightConner-b"></div>
+            <div class="displayItem-b itemBottom">
+                <div class="topConner"></div>
+                <div class="systemTitle">
+                    <span class="system-text">净水投诉与解决</span>
+                </div>
+                <div class="systemBody">
+                    <div>
+                        <table class="displayTable">
+                            <colgroup>
+                                <col width="70%">
+                                <col width="28%">
+                                <col width="2%">
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th><span class="pull-left" style="margin-left:5em;">投诉</span></th>
+                                <th>进度</th>
+                            </tr>
+                            </thead>
+                        </table>
+                    </div>
+                    <div style="height: 10em;overflow: auto;">
+                        <table class="displayTable">
+                            <colgroup>
+                                <col width="70%">
+                                <col width="28%">
+                                <col width="2%">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <td>接到天河区凤凰街道居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            <tr>
+                                <td style="color:red">接到天河区车陂街道居民投诉...</td>
+                                <td style="color:red">待解决</td>
+                            </tr>
+                            <tr>
+                                <td>接到海珠区凤凰新村居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            <tr>
+                                <td style="color:orange">接到海珠区海珠广场居民投诉...</td>
+                                <td style="color:orange">已解决</td>
+                            </tr>
+                            <tr>
+                                <td>接到白云区永泰街道居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            <tr>
+                                <td>接到天河区凤凰街道居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            <tr>
+                                <td>接到天河区凤凰街道居民投诉...</td>
+                                <td style="color:green">已解决</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <div class="systemTitle">
-               <span class="system-text">净水厂产能</span>
-               <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
+            <div class="displayItem-b itemBottom-r">
+                <div class="bottomConner-t"></div>
+                <div class="bottomConner-b"></div>
+                <div class="systemTitle">
+                    <span class="system-text">净水厂产能</span>
+                </div>
+                <div class="systemBody">
+                    <div class="chartContain"></div>
+                </div>
             </div>
-            <div class="systemBody">
-               <div class="chartContain"></div>
-            </div>
-         </div>
-         <div class="itemRight">
-            <div class="displayItem">
-               <div class="rightConner-t"></div>
-               <div class="rightConner-b"></div>
-            </div>
-            <div class="systemTitle">
-               <span class="system-text">净水厂进厂水质预警</span>
-               <!--<i class="glyphicon glyphicon-remove-circle"></i>-->
-            </div>
-            <div class="systemBody">
-               <div>
-                  <table class="displayTable">
-                     <colgroup>
-                        <col width="50%">
-                        <col width="20%">
-                        <col width="28%">
-                        <col width="2%">
-                     </colgroup>
-                     <thead>
-                     <tr>
-                        <th>厂名</th>
-                        <th>是否达标</th>
-                        <th>超标项</th>
-                     </tr>
-                     </thead>
-                  </table>
-               </div>
-               <div style="height: 12em;overflow: auto;">
-                  <table class="displayTable">
-                     <colgroup>
-                        <col width="50%">
-                        <col width="20%">
-                        <col width="28%">
-                     </colgroup>
-                     <tbody>
-                     <tr>
-                        <td>西村水厂</td>
-                        <td style="color:red">未达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>猎德污水处理厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>京溪污水处理厂</td>
-                        <td style="color:red">未达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>大坦沙污水处理厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>沥滘污水处理厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>西朗污水处理厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>龙归污水处理厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>竹料污水处理厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>大沙地污水处理厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     <tr>
-                        <td>江高-石井污水处理厂</td>
-                        <td style="color:green">已达标</td>
-                        <td>COD</td>
-                     </tr>
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-      </div>
-   </transition>
-   <transition enter-active-class="bounceInUp">
-      <div v-show="show" class="displayBox-b animated">
-         <div class="displayItem-b itemBottom-l">
-            <div class="bottomConner-t"></div>
-            <div class="bottomConner-b"></div>
-            <div class="systemTitle">
-               <span class="system-text">供水管网实时监测</span>
-            </div>
-            <div class="systemBody">
-               <div>
-                  <table class="displayTable">
-                     <colgroup>
-                        <col width="30%">
-                        <col width="10%">
-                        <col width="15%">
-                        <col width="13%">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="2%">
-                     </colgroup>
-                     <thead>
-                     <tr>
-                        <th>监测点</th>
-                        <th>长度</th>
-                        <th>水位</th>
-                        <th>流量</th>
-                        <th>水质</th>
-                        <th>状态</th>
-                     </tr>
-                     </thead>
-                  </table>
-               </div>
-               <div style="height: 10em;overflow: auto;">
-                  <table class="displayTable">
-                     <colgroup>
-                        <col width="30%">
-                        <col width="10%">
-                        <col width="15%">
-                        <col width="13%">
-                        <col width="10%">
-                        <col width="10%">
-                     </colgroup>
-                     <tbody>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-         <div class="displayItem-b itemBottom">
-            <div class="topConner"></div>
-            <div class="systemTitle">
-               <span class="system-text">系统通知</span>
-            </div>
-            <div class="systemBody">
-               <p style="color:#fff;padding: 1em;">通知......</p>
-            </div>
-         </div>
-         <div class="displayItem-b itemBottom">
-            <div class="topConner"></div>
-            <div class="systemTitle">
-               <span class="system-text">投诉与解决</span>
-            </div>
-            <div class="systemBody">
-               <div>
-                  <table class="displayTable">
-                     <thead>
-                     <tr>
-                        <th>监测点</th>
-                        <th>长度</th>
-                        <th>水位</th>
-                        <th>流量</th>
-                        <th>水质</th>
-                        <th>状态</th>
-                     </tr>
-                     </thead>
-                  </table>
-               </div>
-               <div style="height: 10em;overflow: auto;">
-                  <table class="displayTable">
-                     <tbody>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-         <div class="displayItem-b itemBottom-r">
-            <div class="bottomConner-t"></div>
-            <div class="bottomConner-b"></div>
-            <div class="systemTitle">
-               <span class="system-text">净水管网实时监测</span>
-            </div>
-            <div class="systemBody">
-               <div>
-                  <table class="displayTable">
-                     <colgroup>
-                        <col width="30%">
-                        <col width="10%">
-                        <col width="15%">
-                        <col width="13%">
-                        <col width="10%">
-                        <col width="10%">
-                        <col width="2%">
-                     </colgroup>
-                     <thead>
-                     <tr>
-                        <th>监测点</th>
-                        <th>长度</th>
-                        <th>水位</th>
-                        <th>流量</th>
-                        <th>水质</th>
-                        <th>状态</th>
-                        <th></th>
-                     </tr>
-                     </thead>
-                  </table>
-               </div>
-               <div style="height: 10em;overflow: auto;">
-                  <table class="displayTable">
-                     <colgroup>
-                        <col width="30%">
-                        <col width="10%">
-                        <col width="15%">
-                        <col width="13%">
-                        <col width="10%">
-                        <col width="10%">
-                     </colgroup>
-                     <tbody>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     <tr>
-                        <td>西濠涌泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:red">运行</td>
-                     </tr>
-                     <tr>
-                        <td>林和东泵站</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td>123</td>
-                        <td style="color:green">停止</td>
-                     </tr>
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-      </div>
-   </transition>
+        </div>
+    </transition>
 </div>

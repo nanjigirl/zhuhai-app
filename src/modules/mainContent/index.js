@@ -12,7 +12,11 @@ var comm = Vue.extend({
             show: false
         }
     },
-    methods: {},
+    methods: {
+        closePanel:function(){
+            this.show = !this.show;
+        }
+    },
     mounted: function () {
         setTimeout(function () {
             this.show = true;
@@ -209,6 +213,7 @@ var comm = Vue.extend({
                 var bmap = myChart.getModel().getComponent('bmap').getBMap();
               //  bmap.addControl(new BMap.MapTypeControl());
 
+                //柱状图
                 var option1 = {
                     color: ['#2de8ef'],
                     tooltip : {
@@ -223,7 +228,8 @@ var comm = Vue.extend({
                     grid: {
                         left: '8%',
                         right: '8%',
-                        bottom: '3%',
+                        bottom: 0,
+                        top:'3%',
                         containLabel: true
                     },
                     xAxis : [
@@ -274,7 +280,8 @@ var comm = Vue.extend({
                     grid: {
                         left: '8%',
                         right: '8%',
-                        bottom: '3%',
+                        bottom: 0,
+                        top:'3%',
                         containLabel: true
                     },
                     xAxis : [
@@ -316,6 +323,66 @@ var comm = Vue.extend({
                 leftChart.setOption(option1);
                 var rightChart = echarts.init($('.chartContain')[1]);
                 rightChart.setOption(option2);
+                var option3 = {
+                    tooltip: {
+                        trigger: 'item',
+                        formatter: "{a} <br/>{b} : {c} ({d}%)"
+                    },
+                    legend: {
+                        top: 0,
+                        left:0,
+                        orient: 'horizontal',
+                        data: ['已达标', '未达标'],
+                        textStyle:{
+                            color:'#fff'
+                        }
+                    },
+                    series: [{
+                        name: '达标情况',
+                        type: 'pie',
+                        radius: '68%',
+                        center: ['50%', '50%'],
+                        clockwise: false,
+                        data: [{
+                            value: 8,
+                            name: '已达标',
+                            selected:true
+                        }, {
+                            value: 2,
+                            name: '未达标'
+                        }],
+                        label: {
+                            normal: {
+                                show:false,
+                                textStyle: {
+                                    color: '#2de8ef',
+                                    fontSize: '16',
+                                }
+                            }
+                        },
+                        labelLine: {
+                            normal: {
+                                show: false,
+                                length:0.001
+                            }
+                        },
+                        itemStyle: {
+                            normal: {
+                                shadowBlur: 10,
+                                shadowColor: 'rgba(255, 255, 255, 0.5)'
+                            }
+                        }
+                    }],
+                    color: [
+                        '#2de8ef',
+                        '#cccccc'
+                    ]
+                };
+                //饼图
+                var leftPie = echarts.init($('.chartPie')[0]);
+                leftPie.setOption(option3);
+                var rightPie = echarts.init($('.chartPie')[1]);
+                rightPie.setOption(option3);
             }.bind(this));
         }.bind(this), 500);
     },
