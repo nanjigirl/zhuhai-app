@@ -1,4 +1,6 @@
 require('./css/main.css');
+require('vue-ydui/dist/ydui.rem.css');
+require('mint-ui/lib/style.css');
 var Vue = require('vue');
 var VueRouter = require('vue-router');
 var moduleController = require('controllers/moduleController');
@@ -7,8 +9,14 @@ var appNav = require('modules/appNav');
 var mainContent = require('modules/mainContent');
 var eventHelper = require('utils/eventHelper');
 var ElementUI = require('element-ui');
+var MintUi = require('mint-ui');
+var YDUI = require('vue-ydui');
+require('vue-ydui/dist/ydui.flexible.js');
+
 
 Vue.use(ElementUI);
+Vue.use(YDUI);
+Vue.use(MintUi);
 Vue.use(VueRouter);
 window.eventHelper = eventHelper;
 // 2. 定义路由

@@ -1,10 +1,6 @@
 .viewContent {
     width: 100%;
     height: calc(100% - 2.5em - 20px);
-    border: 1px solid #127bd1;
-    border-top: none;
-    padding: 10px;
-    position: relative;
 }
 
 /*.viewContent:before {*/

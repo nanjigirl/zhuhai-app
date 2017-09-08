@@ -415,9 +415,6 @@ body .container.body .right_col {
 }
 
 body {
-    color: #73879C;
-    background: url("./images/bg.jpg")no-repeat center center;
-    background-size:100% 100%;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 14px;
     font-weight: 400;
