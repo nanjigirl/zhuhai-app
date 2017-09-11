@@ -15,10 +15,13 @@ var comm = Vue.extend({
     },
     methods: {
         test:function(){
-            alert(1);
+
         }
     },
     mounted: function () {
+        eventHelper.on('openUploadBtn',function(){
+            console.log(123);
+        });
     },
     components: {
         'arcgis-plugin':arcgisPlugin

@@ -57,6 +57,9 @@ define(function () {
             //   map.addLayer(labels); 海绵体
             map.on('click', function (event) {
                 console.log(event);
+                if(event.graphic.attributes.id === 'graphic'){
+                    eventHelper.emit('openUploadBtn');
+                }
             });
             //  deviceModel.createTextSymbol(map); 海绵体
             return map;

@@ -216,12 +216,13 @@ define(function () {
                 this.removeLayer(map, layer);
             }.bind(this));
         },
-        createSymbol: function (baseMap, x, y, iconUrl, name, height, width, angel) {
+        createSymbol: function (baseMap, x, y, iconUrl, name, height, width, angel,attributes) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(iconUrl, width, height);
             console.log(angel);
             pictureMarkerSymbol.setAngle(Math.abs(360 - 90 - angel));
             var geometry = new Point(x, y);
             var graphic = new Graphic(geometry, pictureMarkerSymbol);
+            graphic.attributes=attributes;
             var graLayer = new GraphicsLayer();
             var textSymbol = new TextSymbol();
             textSymbol.setText(name);
