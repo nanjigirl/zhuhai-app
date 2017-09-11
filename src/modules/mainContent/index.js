@@ -1,4 +1,5 @@
 var template = require('./content.html');
+var mainView = require('modules/mainView');
 
 // 定义组件
 var comm = Vue.extend({
@@ -6,7 +7,7 @@ var comm = Vue.extend({
     data: function () {
         return {
             selected:'work',
-            openUploadBtn:false,
+            showUpLoadBtn:false,
             footerArr:[
                 {
                     id:'work',

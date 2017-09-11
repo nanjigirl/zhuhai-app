@@ -10,14 +10,18 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-
+            showUpLoadBtn:false
         }
     },
     methods: {
-
+        updateNew:function(){
+            eventHelper.emit('change-menu','new-question');
+        }
     },
     mounted: function () {
-
+        eventHelper.on('openUploadBtn',function(){
+            this.showUpLoadBtn = true;
+        }.bind(this));
     },
     components: {
         'arcgis-plugin':arcgisPlugin
