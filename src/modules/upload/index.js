@@ -10,18 +10,14 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            message: 'Vue Module Seed'
-        }
-    },
-    methods: {
-        test:function(){
 
         }
     },
+    methods: {
+
+    },
     mounted: function () {
-        eventHelper.on('openUploadBtn',function(){
-            console.log(123);
-        });
+
     },
     components: {
         'arcgis-plugin':arcgisPlugin
