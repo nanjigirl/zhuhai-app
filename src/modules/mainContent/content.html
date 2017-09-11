@@ -1,9 +1,10 @@
 <div class="viewContent">
-    <el-button type="primary" @click="sheetVisible = true">Mint UI</el-button>
-    <el-button type="primary" @click="show1 = true">YDUI</el-button>
-    <yd-actionsheet :items="myItems1" v-model="show1" cancel="取消"></yd-actionsheet>
-    <mt-actionsheet
-            :actions="actions"
-            v-model="sheetVisible">
-    </mt-actionsheet>
+    <mt-header title="问题上报"></mt-header>
+    <main-view></main-view>
+    <mt-tabbar v-model="selected">
+        <mt-tab-item v-for="item in footerArr" :id="item.id">
+            <img slot="icon" :src="item.img">
+            {{ item.text }}
+        </mt-tab-item>
+    </mt-tabbar>
 </div>

@@ -3,11 +3,20 @@ var template = require('./main-view.html');
 var eventHelper = require('../../utils/eventHelper');
 var moduleController = require('controllers/moduleController');
 var serviceHelper = require('../../services/serviceHelper');
-var appNoticeBox = require('modules/appNoticeBox');
+//引入组件
+var work= require('modules/work');
+var upload= require('modules/upload');
+var analyze= require('modules/analyze');
+var user= require('modules/user');
+//加载地图组件
 var arcgisDraw = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 var mapHelper = require('utils/mapHelper');
+//注册组件
 var components = {
-    'app-notice-box': appNoticeBox
+    'work': work,
+    'upload':upload,
+    'analyze':analyze,
+    'user':user
 };
 //components = $.extend(components, moduleController);
 var userTemplate = '';
@@ -29,16 +38,17 @@ var comm = Vue.extend({
     },
     methods: {
         changeView: function (view) {
-            clearTimeout(this.changeViewTimer);
-            this.changeViewTimer = setTimeout(function () {
-                if (!!components[view.menuurl.toLowerCase()]) {
-                    this.currentView = view.menuurl.toLowerCase();
-                    eventHelper.emit('change-menu-success', view);
-                } else {
-                    eventHelper.emit(view.menuurl);
-                    console.log('出错了！！找不到这个地址[' + view + ']');
-                }
-            }.bind(this), 10);
+            this.currentView = view;
+            // clearTimeout(this.changeViewTimer);
+            // this.changeViewTimer = setTimeout(function () {
+            //     if (!!components[view.menuurl.toLowerCase()]) {
+            //         this.currentView = view.menuurl.toLowerCase();
+            //         eventHelper.emit('change-menu-success', view);
+            //     } else {
+            //         eventHelper.emit(view.menuurl);
+            //         console.log('出错了！！找不到这个地址[' + view + ']');
+            //     }
+            // }.bind(this), 10);
         },
         // toggleSearch: function () {
         //     eventHelper.emit('openPointSearch');
@@ -52,7 +62,7 @@ var comm = Vue.extend({
             this.map = map;
         }.bind(this));
 
-        this.currentView = 'arcgis-plugin';
+        this.currentView = 'work';
         eventHelper.on('change-menu', function (model) {
             this.changeView(model);
         }.bind(this));

@@ -5,14 +5,16 @@ var Vue = require('vue');
 var VueRouter = require('vue-router');
 var moduleController = require('controllers/moduleController');
 var appLogin = require('modules/login');
-var appNav = require('modules/appNav');
 var mainContent = require('modules/mainContent');
 var eventHelper = require('utils/eventHelper');
 var ElementUI = require('element-ui');
 var MintUi = require('mint-ui');
 var YDUI = require('vue-ydui');
 require('vue-ydui/dist/ydui.flexible.js');
-
+// require('vue-ydui/dist/ydui.px.css');
+// require('vue-ydui/dist/ydui.rem.css');
+// require('vue-ydui/dist/ydui.base.css');
+import 'vue-ydui/dist/ydui.base.css'
 
 Vue.use(ElementUI);
 Vue.use(YDUI);
@@ -69,7 +71,6 @@ var app = new Vue({
     },
     components: {
         'app-login': appLogin,
-        'app-nav': appNav,
         'main-content' : mainContent
     }
 }).$mount('#app');

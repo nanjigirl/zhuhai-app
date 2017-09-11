@@ -1,45 +1,79 @@
 var template = require('./content.html');
-
+var eventHelper = require('../../utils/eventHelper');
+var mainView = require('modules/mainView');
 // 定义组件
 var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            sheetVisible: false,
-            actions: [
-                {name:'天假',method:function () {
-                    alert(1)
-                }},
-                {name:'天假2',method:function () {
-                    alert(2)
-                }}
-            ],
-            show1: false,
-            myItems1: [
+            selected:'work',
+            footerArr:[
                 {
-                    label: '拍照',
-                    callback: () => {
-                        this.$dialog.toast({mes: '咔擦，此人太帅！'});
-                        /* 注意： callback: function() {} 和 callback() {}  这样是无法正常使用当前this的 */
-                    }
-                },
-                {
-                    label: '从相册中偷取',
-                    callback: () => {
-                        this.$dialog.toast({mes: '看到了不该看到的东西！'});
-                    }
+                    id:'work',
+                    img:'img/icon/highLight-work.png',
+                    text:'日常工作'
+                },{
+                    id:'upload',
+                    img:'img/icon/icon-upload.png',
+                    text:'问题上传'
+                },{
+                    id:'analyze',
+                    img:'img/icon/icon-data.png',
+                    text:'数据分析'
+                },{
+                    id:'user',
+                    img:'img/icon/icon-user.png',
+                    text:'我的'
                 }
             ]
         }
     },
-    methods: {
-        closePanel: function () {
-            this.show = !this.show;
+    watch:{
+        selected:function(data,oldData){
+            this.footerArr.forEach(function(value){
+                if(value.id === data){
+                    switch(value.id){
+                        case 'work':
+                            value.img = 'img/icon/highLight-work.png';
+                            break;
+                        case 'upload':
+                            value.img = 'img/icon/highLight-upload.png';
+                            break;
+                        case 'data':
+                            value.img = 'img/icon/highLight-data.png';
+                            break;
+                        case 'user':
+                            value.img = 'img/icon/highLight-user.png';
+                            break;
+                    }
+                }
+                if(value.id === oldData){
+                    switch(value.id){
+                        case 'work':
+                            value.img = 'img/icon/icon-work.png';
+                            break;
+                        case 'upload':
+                            value.img = 'img/icon/icon-upload.png';
+                            break;
+                        case 'data':
+                            value.img = 'img/icon/icon-data.png';
+                            break;
+                        case 'user':
+                            value.img = 'img/icon/icon-user.png';
+                            break;
+                    }
+                }
+            }.bind(this));
+            eventHelper.emit('change-menu',data);
         }
+    },
+    methods: {
     },
     mounted: function () {
 
     },
-    components: {}
+    components: {
+        'main-view':mainView
+    }
 });
 module.exports = comm;

@@ -57,9 +57,8 @@
     </div>
     <app-login v-show="!isLoginSuccess"></app-login>
 
-    <div class="container body conGap" v-show="isLoginSuccess">
+    <div class="container body" v-show="isLoginSuccess">
         <!-- page content -->
-        <app-nav></app-nav>
         <main-content></main-content>
         <!--<main-view></main-view>-->
         <!-- /page content -->

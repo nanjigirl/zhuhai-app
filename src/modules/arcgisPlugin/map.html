@@ -1,0 +1,20 @@
+<div class='mapContainer'>
+    <div id = "mapDiv"></div>
+    <div id="toolBar" v-show="showtools"></div>
+    <div id="mapType" v-show="showtools"></div>
+    <flex-map-legend ref="mapLegend"></flex-map-legend>
+    <div class="control-search" >
+        <el-button @click="toggleSearch"  icon="search" ></el-button>
+    </div>
+    <!-- 右边菜单-->
+    <!--right panel start-->
+    <right-panel ref='rightPanel'></right-panel>
+<!--    <right-panel-complaint ref='rightPanelComplaint'></right-panel-complaint>-->
+    <!--right panel end-->
+    <!--dialog start-->
+    <app-car-pollution></app-car-pollution>
+    <app-car-case></app-car-case>
+    <app-car-illegal></app-car-illegal>
+    <app-car-monitor></app-car-monitor>
+    <app-car-playback></app-car-playback>
+   </div>

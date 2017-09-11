@@ -1,6 +1,6 @@
 .viewContent {
     width: 100%;
-    height: calc(100% - 2.5em - 20px);
+    height: 100%;
 }
 
 /*.viewContent:before {*/
