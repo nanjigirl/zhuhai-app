@@ -52,7 +52,7 @@ define(['./serviceHelper'],function(serviceHelper){
 			}
 			}
 			else{
-				errorCb();
+				console.error(result);
 			}
 		});
 		}

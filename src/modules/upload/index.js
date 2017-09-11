@@ -1,5 +1,9 @@
 var template = require('./content.html');
 var eventHelper = require('../../utils/eventHelper');
+var moduleController = require('controllers/moduleController');
+//加载地图组件
+var arcgisPlugin = require('modules/arcgisPlugin');
+var mapHelper = require('utils/mapHelper');
 
 // 定义组件
 var comm = Vue.extend({
@@ -9,9 +13,15 @@ var comm = Vue.extend({
             message: 'Vue Module Seed'
         }
     },
-    methods: {},
+    methods: {
+        test:function(){
+            alert(1);
+        }
+    },
     mounted: function () {
     },
-    components: {}
+    components: {
+        'arcgis-plugin':arcgisPlugin
+    }
 });
 module.exports = comm;

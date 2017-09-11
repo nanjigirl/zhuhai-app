@@ -5,16 +5,16 @@ var eventHelper = require('../../utils/eventHelper');
 var toolBar = require('./plugin/toolBar/toolBar');
 //var arcgisExpand = require('./plugin/arcgisExpand/arcgisExpand');
 var mapType = require('./plugin/mapType/mapType');
-var flexMapLegend = require('./plugin/flexMapLegend');
 var global = require('./plugin/global');
 var facilityController = require('controllers/facilityController');
 var arcgisHelper = require('./plugin/arcgisExpand/arcgis-load-map');
 var rightPanel = require('modules/rightPanel');
-var appCarMonitor = require('modules/appCarMonitor');
-var appCarPlayback = require('modules/appCarPlayback');
-var appCarIllegal = require('modules/appCarIllegal');
-var appCarCase = require('modules/appCarCase');
-var appCarPollution = require('modules/appCarPollution');
+// var flexMapLegend = require('./plugin/flexMapLegend');
+// var appCarMonitor = require('modules/appCarMonitor');
+// var appCarPlayback = require('modules/appCarPlayback');
+// var appCarIllegal = require('modules/appCarIllegal');
+// var appCarCase = require('modules/appCarCase');
+// var appCarPollution = require('modules/appCarPollution');
 var initBaseMap = function () {
     //init map
     var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
@@ -102,12 +102,12 @@ var comm = Vue.extend({
     },
     components: {
         'right-panel': rightPanel,
-        'app-car-illegal': appCarIllegal,
-        'app-car-case': appCarCase,
-        'app-car-pollution': appCarPollution,
-        'app-car-playback': appCarPlayback,
-        'flex-map-legend': flexMapLegend,
-        'app-car-monitor': appCarMonitor
+        // 'flex-map-legend': flexMapLegend,
+        // 'app-car-illegal': appCarIllegal,
+        // 'app-car-case': appCarCase,
+        // 'app-car-pollution': appCarPollution,
+        // 'app-car-playback': appCarPlayback,
+        // 'app-car-monitor': appCarMonitor
     }
 });
 module.exports = comm;

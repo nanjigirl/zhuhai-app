@@ -17,15 +17,11 @@ var updateStatus = function (self, result) {
     console.log('get real time value', result);
     var realTimeValues = {};
     var realTimeValuesBar = {};
-    result.push({
-        dValue:0.8,
-        itemId:'mock'
-    });
     result.forEach(function (newValue) {
         var realTimeValue = newValue.dValue.toFixed(2);
         console.log('realTimeval', realTimeValue);
         realTimeValues[newValue.itemId] = realTimeValue;
-        self.rightMonitors.forEach(function (monitor) {
+        self.monitors.forEach(function (monitor) {
             if (monitor.itemID === newValue.itemId) {
                 if (!!monitor.highAlert) {
                     var newWidth = realTimeValue / monitor.highAlert;
@@ -81,7 +77,7 @@ var comm = Vue.extend({
     data: function () {
         return {
             rightPanelOpen: true,
-            rightMonitors: [],
+            monitors: [],
             realTimeValueList: [],
             realTimeValueListBar: [],
             highWarnStyles: [],
@@ -92,9 +88,7 @@ var comm = Vue.extend({
     mounted: function () {
         this.$on('init-status-bar', function (monitors) {
             this.reset();
-            console.log('init status bar');
             var self = this;
-            monitors.push(mockvoltageRatio);
             monitors.forEach(function (item) {
                 if (!!item.visiable) {
                     item.status = 0;
@@ -107,7 +101,7 @@ var comm = Vue.extend({
                         var newWidth = item.lowWarning / item.lowAlert * 15;
                         self.lowWarnStyles[item.itemID] = 'bottom:' + newWidth + '%';
                     }
-                    this.rightMonitors.push(item);
+                    this.monitors.push(item);
                     this.realTimeValueList[item.itemID] =0;
                 }
             }.bind(this));
@@ -122,7 +116,7 @@ var comm = Vue.extend({
             console.log(id);
         },
         reset: function () {
-            this.rightMonitors = [];
+            this.monitors = [];
             this.realTimeValueList = [];
             this.realTimeValueListBar = [];
             this.highWarnStyles = [];

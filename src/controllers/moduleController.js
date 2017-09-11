@@ -1,5 +1,5 @@
 define([
-    'modules/appWidgets',
+    'modules/appWidgets'
 ], function (
              appWidgets){
     return {
