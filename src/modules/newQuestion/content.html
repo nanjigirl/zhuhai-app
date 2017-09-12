@@ -3,8 +3,16 @@
       <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
    </mt-header>
    <div>
-      <mt-cell title="标题文字" is-link>
-         <span style="color: green">这里是元素</span>
+      <a class="mint-cell cell-top">
+         <div class="mint-cell-wrapper">
+            <div class="mint-cell-title">
+               <img src="../../img/icon/icon-question.png" width="24" height="24">
+               <span class="mint-cell-text">常见问题</span>
+            </div>
+         </div>
+      </a>
+      <mt-cell v-for="item in updateNewArr" :title=item.title>
+         <el-button type="primary" size="small" @click="openDetail(item.title)">快速上报</el-button>
       </mt-cell>
    </div>
    <div class="upLoadBtn">
