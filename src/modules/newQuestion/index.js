@@ -1,11 +1,14 @@
 var template = require('./content.html');
 var eventHelper = require('../../utils/eventHelper');
+var detailInfo = require('modules/detailInfo');
+
 
 // 定义组件
 var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            showDetailInfo:false,
             updateNewArr:[
                 {
                     id:1,
@@ -29,11 +32,24 @@ var comm = Vue.extend({
             eventHelper.emit('closeUploadBtn');
         },
         openDetail:function(title){
-            eventHelper.emit('change-menu','detail-info');
+            this.showDetailInfo = true;
+            eventHelper.emit('openDetailInfo',title);
         }
     },
     mounted: function () {
+        eventHelper.on('returnBack',function(){
+            this.showDetailInfo = false;
+        }.bind(this));
+        eventHelper.on('setNormalQues',function(itemTitle){
+            var itemId = this.updateNewArr.length + 1;
+            this.updateNewArr.push({
+                id:itemId,
+                title:itemTitle
+            });
+        }.bind(this));
     },
-    components: {}
+    components: {
+        'detail-info':detailInfo
+    }
 });
 module.exports = comm;

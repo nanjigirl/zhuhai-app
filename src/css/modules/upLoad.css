@@ -99,3 +99,22 @@
     width:100%;
     margin-bottom:0.35rem;
 }
+.recordBox{
+    width: 30%;
+    padding: 0.5rem 0;
+    text-align: center;
+    margin: 0 auto;
+}
+.recordBox>img{
+    margin:0 auto;
+    width:3em;
+    height:3em;
+}
+.record-text{
+    font-size:1.2em;
+    color: #A3A3A3!important;
+}
+.content{
+    max-height:100%;
+    overflow: auto;
+}
