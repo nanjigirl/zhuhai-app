@@ -1,0 +1,35 @@
+<div class="mainContent">
+   <mt-header title="新增问题">
+      <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
+      <mt-button slot="right" @click="returnMain">取消</mt-button>
+   </mt-header>
+   <div>
+      <!--<a class="mint-cell cell-input">-->
+         <!--<div class="mint-cell-wrapper">-->
+            <!--<div class="mint-cell-title">-->
+               <!--<span class="mint-cell-text">常见问题:</span>-->
+               <!---->
+            <!--</div>-->
+            <!--<div class="mint-cell-value">-->
+               <!--<el-button type="primary" size="small">小型按钮</el-button>-->
+            <!--</div>-->
+         <!--</div>-->
+      <!--</a>-->
+      <mt-cell>
+         <mt-field label="问题类型" placeholder="请输入问题"></mt-field>
+         <div class="cell-right">
+            <el-button type="primary" size="small">设为常见问题</el-button>
+         </div>
+      </mt-cell>
+      <mt-cell>
+         <mt-field label="地点" placeholder="海珠区南边路"></mt-field>
+         <div class="cell-right">
+            <span class="locationBtn"><img src="../../img/icon/icon-question.png" width="24" height="24"><span>重新定位</span></span>
+         </div>
+      </mt-cell>
+   </div>
+   <div class="upLoadBtn">
+      <img src="../../img/icon/icon-add.png" alt="">
+      <span class="upload-text">上报新问题</span>
+   </div>
+</div>

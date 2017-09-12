@@ -28,3 +28,25 @@
     vertical-align: middle;
     font-size: 1.8em;
 }
+.cell-top{
+    background: #F2F2F2!important;
+    color: #A3A3A3!important;
+}
+.cell-top .mint-cell-title>img{
+    vertical-align: middle;
+    display: inline-block;
+}
+.cell-right{
+    width:7em;
+    height:100%;
+}
+.locationBtn{
+    color: #ECB000;
+}
+.locationBtn>img{
+    vertical-align: middle;
+    display: inline-block;
+}
+.locationBtn>span{
+    vertical-align: middle;
+}

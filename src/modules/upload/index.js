@@ -22,6 +22,9 @@ var comm = Vue.extend({
         eventHelper.on('openUploadBtn',function(){
             this.showUpLoadBtn = true;
         }.bind(this));
+        eventHelper.on('closeUploadBtn',function(){
+            this.showUpLoadBtn = false;
+        }.bind(this));
     },
     components: {
         'arcgis-plugin':arcgisPlugin
