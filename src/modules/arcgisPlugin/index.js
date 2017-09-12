@@ -14,7 +14,7 @@ var rightPanel = require('modules/rightPanel');
 
 var initBaseMap = function () {
     //init map
-    var layerURL = 'http://112.74.51.12:6080/arcgis/rest/services/hwShow201705/MapServer';
+    var layerURL = 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer';
     var centerX = 120.50464819480258;
     var centerY = 31.505256080886113;
     var map = arcgisHelper.tdWmtsServer(layerURL, centerX, centerY);

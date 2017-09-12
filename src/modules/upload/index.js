@@ -14,17 +14,28 @@ var comm = Vue.extend({
         }
     },
     methods: {
-        test:function(){
+        test: function () {
 
         }
     },
     mounted: function () {
-        eventHelper.on('openUploadBtn',function(){
+        eventHelper.on('openUploadBtn', function () {
             console.log(123);
         });
+        this.map = mapHelper.getArcGISTiledMap('mainMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
+        this.map.on('load', function () {
+            mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, 'img/dirtyPipe.png', {facilityType: 'CP'});
+        }.bind(this));
+        this.map.on('click', function (evt) {
+            if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
+                this.$toast({
+                    message: '提示',
+                    position: 'middle',
+                    duration: 5000
+                });
+            }
+        }.bind(this));
     },
-    components: {
-        'arcgis-plugin':arcgisPlugin
-    }
+    components: {}
 });
 module.exports = comm;
