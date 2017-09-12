@@ -10,16 +10,32 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            showUpLoadBtn:false
+            showUpLoadBtn: false
         }
     },
     methods: {
-        updateNew:function(){
-            eventHelper.emit('change-menu','new-question');
+        addNewPoint: function () {
+            this.$toast({
+                message: '请点击问题点',
+                position: 'middle',
+                duration: 1000
+            });
+            this.showUpLoadBtn = true;
+            this.isAddingPoint = true;
+        },
+        query: function () {
+            this.$toast({
+                message: '查看问题点',
+                position: 'middle',
+                duration: 1000
+            });
+        },
+        updateNew: function () {
+            eventHelper.emit('change-menu', 'new-question');
         }
     },
     mounted: function () {
-        eventHelper.on('openUploadBtn',function(){
+        eventHelper.on('openUploadBtn', function () {
             this.showUpLoadBtn = true;
         }.bind(this));
         this.map = mapHelper.getArcGISTiledMap('mainMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
@@ -35,11 +51,14 @@ var comm = Vue.extend({
                 });
                 this.showUpLoadBtn = true;
                 eventHelper.emit('openUploadBtn');
+            } else if (!!this.isAddingPoint) {
+                mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, 'img/dirtyPipe.png', {facilityType: 'CP'});
+                this.isAddingPoint = false;
             }
         }.bind(this));
     },
     components: {
-        'arcgis-plugin':arcgisPlugin
+        'arcgis-plugin': arcgisPlugin
     }
 });
 module.exports = comm;
