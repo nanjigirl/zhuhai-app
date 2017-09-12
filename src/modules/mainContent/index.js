@@ -1,12 +1,13 @@
 var template = require('./content.html');
-var eventHelper = require('../../utils/eventHelper');
 var mainView = require('modules/mainView');
+
 // 定义组件
 var comm = Vue.extend({
     template: template,
     data: function () {
         return {
             selected:'work',
+            showUpLoadBtn:false,
             footerArr:[
                 {
                     id:'work',
@@ -70,7 +71,9 @@ var comm = Vue.extend({
     methods: {
     },
     mounted: function () {
-
+        eventHelper.on('openUploadBtn',function(){
+            this.showUpLoadBtn = true;
+        }.bind(this));
     },
     components: {
         'main-view':mainView

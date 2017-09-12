@@ -10,18 +10,18 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            message: 'Vue Module Seed'
+            showUpLoadBtn:false
         }
     },
     methods: {
-        test: function () {
-
+        updateNew:function(){
+            eventHelper.emit('change-menu','new-question');
         }
     },
     mounted: function () {
-        eventHelper.on('openUploadBtn', function () {
-            console.log(123);
-        });
+        eventHelper.on('openUploadBtn',function(){
+            this.showUpLoadBtn = true;
+        }.bind(this));
         this.map = mapHelper.getArcGISTiledMap('mainMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
         this.map.on('load', function () {
             mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, 'img/dirtyPipe.png', {facilityType: 'CP'});
@@ -33,9 +33,12 @@ var comm = Vue.extend({
                     position: 'middle',
                     duration: 5000
                 });
+                this.showUpLoadBtn = true;
             }
         }.bind(this));
     },
-    components: {}
+    components: {
+        'arcgis-plugin':arcgisPlugin
+    }
 });
 module.exports = comm;

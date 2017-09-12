@@ -1,7 +1,6 @@
 <div class="viewContent">
-    <mt-header title="问题上报"></mt-header>
     <main-view></main-view>
-    <mt-tabbar v-model="selected">
+    <mt-tabbar v-show="!showUpLoadBtn" v-model="selected">
         <mt-tab-item v-for="item in footerArr" :id="item.id">
             <img slot="icon" :src="item.img">
             {{ item.text }}

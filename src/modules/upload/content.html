@@ -1,3 +1,8 @@
 <div class="mainContent">
+   <mt-header title="问题上报"></mt-header>
     <div id="mainMap" style="height: 100%;;width: 100%;"></div>
+    <div class="upLoadBtn" v-show="showUpLoadBtn"  @click="updateNew">
+      <img src="../../img/icon/icon-upload-white.png" alt="">
+      <span class="upload-text">上报问题</span>
+   </div>
 </div>

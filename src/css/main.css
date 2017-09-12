@@ -5,7 +5,6 @@
 @import "./modules/loaders.css";
 @import "./modules/rightPanel.css";
 @import "./modules/plugin.css";
-@import "./modules/order.css";
 @import "./modules/monitor.css";
 @import "./modules/statistics.css";
 @import "./modules/cescInfoWindow.css";
@@ -16,13 +15,9 @@
 @import "./modules/reservior.css";
 @import "./modules/reserviorHistory.css";
 @import "./modules/flexMapLegend.css";
-@import "./modules/noticeBox.css";
 @import "./modules/appSearch.css";
-@import "./modules/carMonitor.css";
 @import "./maps/jquery-jvectormap-2.0.3.css";
-@import "./modules/appCarPlayback.css";
-@import "./modules/appNav.css";
-@import "./modules/mainContent.css";
+@import "./modules/upLoad.css";
 :root {
     --base-color:#105ba3;
 }
