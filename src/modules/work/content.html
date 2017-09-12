@@ -1,4 +1,14 @@
 <div class="mainContent">
    <mt-header title="日常工作"></mt-header>
    <h1>日常工作</h1>
+   <el-upload
+           action="https://jsonplaceholder.typicode.com/posts/"
+           list-type="picture-card"
+           :on-preview="handlePictureCardPreview"
+           :on-remove="handleRemove">
+      <i class="el-icon-plus"></i>
+   </el-upload>
+   <el-dialog v-model="dialogVisible" size="tiny">
+      <img width="100%" :src="dialogImageUrl" alt="">
+   </el-dialog>
 </div>

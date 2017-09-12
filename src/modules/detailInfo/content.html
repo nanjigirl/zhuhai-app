@@ -4,32 +4,69 @@
       <mt-button slot="right" @click="returnMain">取消</mt-button>
    </mt-header>
    <div>
-      <!--<a class="mint-cell cell-input">-->
-         <!--<div class="mint-cell-wrapper">-->
-            <!--<div class="mint-cell-title">-->
-               <!--<span class="mint-cell-text">常见问题:</span>-->
-               <!---->
-            <!--</div>-->
-            <!--<div class="mint-cell-value">-->
-               <!--<el-button type="primary" size="small">小型按钮</el-button>-->
-            <!--</div>-->
-         <!--</div>-->
-      <!--</a>-->
-      <mt-cell>
-         <mt-field label="问题类型" placeholder="请输入问题"></mt-field>
-         <div class="cell-right">
-            <el-button type="primary" size="small">设为常见问题</el-button>
+      <yd-cell-group>
+         <yd-cell-item>
+            <span slot="left">问题类型：</span>
+            <input slot="right" type="text" placeholder="请输入问题">
+            <el-button slot="right" type="primary" size="small">设为常见问题</el-button>
+         </yd-cell-item>
+         <yd-cell-item>
+            <span slot="left">地点：</span>
+            <input slot="right" type="text" placeholder="海珠区南边路">
+            <span slot="right" class="locationBtn"><img src="../../img/icon/icon-location.png" width="24" height="24"><span>重新定位</span></span>
+         </yd-cell-item>
+         <yd-cell-item>
+            <span slot="left">工量估算：</span>
+            <input slot="right" type="text" placeholder="请输入">
+         </yd-cell-item>
+      </yd-cell-group>
+      <a class="mint-cell cell-top cell-sp">
+         <div class="mint-cell-wrapper">
+            <div class="mint-cell-title">
+               <img src="../../img/icon/icon-detail.png" width="24" height="24">
+               <span class="mint-cell-text">问题详情描述</span>
+            </div>
          </div>
-      </mt-cell>
-      <mt-cell>
-         <mt-field label="地点" placeholder="海珠区南边路"></mt-field>
-         <div class="cell-right">
-            <span class="locationBtn"><img src="../../img/icon/icon-location.png" width="24" height="24"><span>重新定位</span></span>
+      </a>
+      <yd-cell-group>
+         <div class="yd-cell-item cell-item-sp">
+            <div class="yd-cell-right">
+               <div class="yd-textarea">
+                  <textarea placeholder="请输入您的银行卡卡号和密码"></textarea>
+               </div>
+            </div>
          </div>
-      </mt-cell>
+         <div class="yd-cell-item">
+            <el-upload slot="left"
+                       class="avatar-uploader"
+                       action="https://jsonplaceholder.typicode.com/posts/"
+                       list-type="picture-card"
+                       :on-preview="handlePictureCardPreview"
+                       :on-remove="handleRemove">
+               <i class="el-icon-plus"></i>
+            </el-upload>
+            <el-dialog v-model="dialogVisible" size="tiny">
+               <img width="100%" :src="dialogImageUrl" alt="">
+            </el-dialog>
+         </div>
+      </yd-cell-group>
+      a class="mint-cell cell-top cell-sp">
+      <div class="mint-cell-wrapper">
+         <div class="mint-cell-title">
+            <img src="../../img/icon/icon-detail.png" width="24" height="24">
+            <span class="mint-cell-text">特别说明</span>
+         </div>
+      </div>
+      </a>
    </div>
-   <div class="upLoadBtn">
-      <img src="../../img/icon/icon-add.png" alt="">
-      <span class="upload-text">上报新问题</span>
+   <div class="btnBox clearfix">
+      <div class="leftBtn pull-left">
+         <img src="../../img/icon/icon-save.png" alt="">
+         <span class="upload-text">保存问题</span>
+      </div>
+      <div class="rightBtn pull-left">
+         <img src="../../img/icon/icon-upload-white.png" alt="">
+         <span class="upload-text">上报问题</span>
+      </div>
    </div>
 </div>

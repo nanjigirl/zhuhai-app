@@ -6,7 +6,8 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            message: 'Vue Module Seed'
+            dialogImageUrl: '',
+            dialogVisible: false
         }
     },
     methods: {
@@ -17,8 +18,12 @@ var comm = Vue.extend({
                 showCancelButton: true
             });
         },
-        test:function(){
-            alert(1);
+        handleRemove(file, fileList) {
+            console.log(file, fileList);
+        },
+        handlePictureCardPreview(file) {
+            this.dialogImageUrl = file.url;
+            this.dialogVisible = true;
         }
     },
     mounted: function () {

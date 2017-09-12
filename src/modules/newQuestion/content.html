@@ -11,9 +11,12 @@
             </div>
          </div>
       </a>
-      <mt-cell v-for="item in updateNewArr" :title=item.title>
-         <el-button type="primary" size="small" @click="openDetail(item.title)">快速上报</el-button>
-      </mt-cell>
+      <yd-cell-group>
+         <yd-cell-item v-for="item in updateNewArr">
+            <span slot="left">{{item.title}}</span>
+            <el-button slot="right" type="primary" size="small" @click="openDetail(item.title)">快速上报</el-button>
+         </yd-cell-item>
+      </yd-cell-group>
    </div>
    <div class="upLoadBtn">
       <img src="../../img/icon/icon-add.png" alt="">

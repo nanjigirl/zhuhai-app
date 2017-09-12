@@ -34,6 +34,7 @@ var comm = Vue.extend({
                     duration: 5000
                 });
                 this.showUpLoadBtn = true;
+                eventHelper.emit('openUploadBtn');
             }
         }.bind(this));
     },
