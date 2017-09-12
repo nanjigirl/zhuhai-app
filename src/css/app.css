@@ -4,12 +4,14 @@ html, body {
     height: 100%;
     overflow: auto;
 }
-body{
-    scrollbar-base-color:#105ba3;
-    scrollbar-track-color:#F5F5F5;
+
+body {
+    scrollbar-base-color: #105ba3;
+    scrollbar-track-color: #F5F5F5;
     scrollbar-shadow-color: #1a5f17;
 
 }
+
 body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, p, pre, code, form, fieldset, legend, input, button, textarea, blockquote, th, td {
     margin: 0;
     padding: 0;
@@ -77,13 +79,15 @@ li {
 .navFix .nav_menu {
     height: 100%;
 }
-.titleBackground{
+
+.titleBackground {
     background-color: #ededed;
     background-size: 7em 6em;
     border-right: 1px solid black !important;
     height: 6.8em;
     border-bottom: 3px solid black !important;
 }
+
 scrollbar {
     width: 8px;
     height: 8px;
@@ -95,12 +99,15 @@ scrollbar {
     height: 8px;
     background-color: #105ba3;
 }
-.no-margin{
-    margin:0 !important;
+
+.no-margin {
+    margin: 0 !important;
 }
-.el-button.table-btn{
-    padding:0 15px;
+
+.el-button.table-btn {
+    padding: 0 15px;
 }
+
 /*定义滚动条轨道 内阴影+圆角*/
 ::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
@@ -113,3 +120,6 @@ scrollbar {
     background-color: #105ba3;
 }
 
+.map .logo-sm {
+    display: none !important;
+}

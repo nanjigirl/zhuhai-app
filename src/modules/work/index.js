@@ -10,6 +10,13 @@ var comm = Vue.extend({
         }
     },
     methods: {
+        click:function () {
+            this.$messagebox({
+                title: '提示',
+                message: '确定执行此操作?',
+                showCancelButton: true
+            });
+        },
         test:function(){
             alert(1);
         }

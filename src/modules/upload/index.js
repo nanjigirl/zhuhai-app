@@ -22,8 +22,19 @@ var comm = Vue.extend({
         eventHelper.on('openUploadBtn',function(){
             this.showUpLoadBtn = true;
         }.bind(this));
-        eventHelper.on('closeUploadBtn',function(){
-            this.showUpLoadBtn = false;
+        this.map = mapHelper.getArcGISTiledMap('mainMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
+        this.map.on('load', function () {
+            mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, 'img/dirtyPipe.png', {facilityType: 'CP'});
+        }.bind(this));
+        this.map.on('click', function (evt) {
+            if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
+                this.$toast({
+                    message: '提示',
+                    position: 'middle',
+                    duration: 5000
+                });
+                this.showUpLoadBtn = true;
+            }
         }.bind(this));
     },
     components: {
