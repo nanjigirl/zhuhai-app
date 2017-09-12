@@ -1,0 +1,12 @@
+.uploadContent .addNew {
+    position: absolute;
+    right: 0;
+}
+
+.uploadContent .first {
+    top: 10%;
+}
+
+.uploadContent .second {
+    top: 20%;
+}

@@ -1,8 +1,10 @@
-<div class="mainContent">
+<div class="mainContent uploadContent">
    <mt-header title="问题上报"></mt-header>
     <div id="mainMap" style="height: 100%;;width: 100%;"></div>
     <div class="upLoadBtn" v-show="showUpLoadBtn"  @click="updateNew">
       <img src="../../img/icon/icon-upload-white.png" alt="">
       <span class="upload-text">上报问题</span>
    </div>
+    <el-button type="primary" icon="edit" class="addNew first" @click="addNewPoint"></el-button>
+    <el-button type="primary" icon="search" class="addNew second" @click="query"></el-button>
 </div>
