@@ -1,14 +1,15 @@
 <div class="mainContent">
-   <mt-header title="日常工作"></mt-header>
-   <h1>日常工作</h1>
-   <el-upload
-           action="https://jsonplaceholder.typicode.com/posts/"
-           list-type="picture-card"
-           :on-preview="handlePictureCardPreview"
-           :on-remove="handleRemove">
-      <i class="el-icon-plus"></i>
-   </el-upload>
-   <el-dialog v-model="dialogVisible" size="tiny">
-      <img width="100%" :src="dialogImageUrl" alt="">
-   </el-dialog>
+   <div class="work-top">
+      <img src="../../img/work-bannar.png" alt="">
+      <div class="cesc-tabbar">
+         <div class="tab-item" v-for="item in topNavArr">
+            <img class="tab-img" :src="item.img">
+            <p class="tab-text">{{item.text}}</p>
+         </div>
+         <!--<div class="tab-item">-->
+            <!--<img class="tab-img" src="../../img/icon/icon-upload-white.png">-->
+            <!--<p class="tab-text"></p>-->
+         <!--</div>-->
+      </div>
+   </div>
 </div>

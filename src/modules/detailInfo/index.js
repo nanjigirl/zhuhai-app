@@ -1,6 +1,9 @@
 var template = require('./content.html');
 var eventHelper = require('../../utils/eventHelper');
 var serviceHelper = require('services/serviceHelper');
+//加载地图组件
+var arcgisPlugin = require('modules/arcgisPlugin');
+var mapHelper = require('utils/mapHelper');
 
 // 定义组件
 var comm = Vue.extend({
@@ -30,10 +33,27 @@ var comm = Vue.extend({
                 method:this.selectPhotolibrary
             }
             ],
-            sheetVisible:false
+            sheetVisible:false,
+            reqMsg: '',
+            setBtn: false,
+            dialogImageUrl: '',
+            dialogVisible: false,
+            questionTitle: '',
+            isLocated: false
         }
     },
     methods: {
+        init: function () {
+            this.isLocated = false;
+            this.questionTitle = '';
+            this.setBtn = false;
+        },
+        returnMain: function () {
+            eventHelper.emit('returnBack');
+        },
+        addNewItem: function () {
+            eventHelper.emit('setNormalQues', this.questionTitle);
+        },
         showDelOperation:function (index,event) {
             var that = this;
             this.uploadImgs[index].showDelOperation = true;
@@ -91,10 +111,41 @@ var comm = Vue.extend({
         handlePictureCardPreview(file) {
             this.facilityImageUri = file.url;
             this.dialogVisible = true;
+        },
+        locatePosition: function () {
+            this.isLocated = true;
+        },
+        openRecord: function () {
+            var self = this;
+            this.$toast({
+                message: '正在识别语音',
+                position: 'middle',
+                duration: 1000
+            });
+            cordova.plugins.TransformVoiceToText.transform("aaa", function (msg) {
+                self.reqMsg = self.reqMsg + msg;
+            }, function (err) {
+                self.reqMsg = self.reqMsg + err;
+            });
         }
     },
     mounted: function () {
+        eventHelper.on('openDetailInfo', function (title) {
+            if (!!title) {
+                this.init();
+                this.questionTitle = title;
+            } else {
+                this.init();
+                this.setBtn = true;
+            }
+        }.bind(this));
+        this.map = mapHelper.getArcGISTiledMap('locateMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
+        this.map.on('load', function () {
+            mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, 'img/dirtyPipe.png', {facilityType: 'CP'});
+        }.bind(this));
     },
-    components: {}
+    components: {
+        'arcgis-plugin': arcgisPlugin
+    }
 });
 module.exports = comm;

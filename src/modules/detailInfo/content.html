@@ -8,17 +8,18 @@
       <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
       <mt-button slot="right" @click="returnMain">取消</mt-button>
    </mt-header>
-   <div>
+   <div class="content">
+      <div id="locateMap" v-show="isLocated" style="height: 200px;;width: 100%;"></div>
       <yd-cell-group>
          <yd-cell-item>
             <span slot="left">问题类型：</span>
-            <input slot="right" type="text" placeholder="请输入问题">
-            <el-button slot="right" type="primary" size="small">设为常见问题</el-button>
+            <input slot="right" type="text" placeholder="请输入问题" v-model="questionTitle">
+            <el-button slot="right" v-show="setBtn" type="primary" size="small" @click="addNewItem">设为常见问题</el-button>
          </yd-cell-item>
          <yd-cell-item>
             <span slot="left">地点：</span>
-            <input slot="right" type="text" placeholder="海珠区南边路">
-            <span slot="right" class="locationBtn"><img src="../../img/icon/icon-location.png" width="24" height="24"><span>重新定位</span></span>
+            <input slot="right" type="text" placeholder="请输入地址">
+            <span slot="right" class="locationBtn" @click="locatePosition"><img src="../../img/icon/icon-location.png" width="24" height="24"><span>重新定位</span></span>
          </yd-cell-item>
          <yd-cell-item>
             <span slot="left">工量估算：</span>
@@ -58,11 +59,19 @@
       <a class="mint-cell cell-top cell-sp">
       <div class="mint-cell-wrapper">
          <div class="mint-cell-title">
-            <img src="../../img/icon/icon-detail.png" width="24" height="24">
+            <img src="../../img/icon/icon-instruction.png" width="24" height="24">
             <span class="mint-cell-text">特别说明</span>
          </div>
       </div>
       </a>
+      <yd-cell-group>
+         <div class="yd-cell-item">
+           <div class="recordBox" @click="openRecord">
+              <img src="../../img/icon/icon-record.png">
+              <span class="record-text">长按录音</span>
+           </div>
+         </div>
+      </yd-cell-group>
    </div>
    <div class="btnBox clearfix">
       <div class="leftBtn pull-left">
