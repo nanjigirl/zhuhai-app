@@ -9,24 +9,25 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            setBtn:false,
+            reqMsg: '',
+            setBtn: false,
             dialogImageUrl: '',
             dialogVisible: false,
-            questionTitle:'',
-            isLocated:false
+            questionTitle: '',
+            isLocated: false
         }
     },
     methods: {
-        init:function(){
+        init: function () {
             this.isLocated = false;
             this.questionTitle = '';
             this.setBtn = false;
         },
-        returnMain:function(){
+        returnMain: function () {
             eventHelper.emit('returnBack');
         },
-        addNewItem:function(){
-            eventHelper.emit('setNormalQues',this.questionTitle);
+        addNewItem: function () {
+            eventHelper.emit('setNormalQues', this.questionTitle);
         },
         handleRemove(file, fileList) {
             console.log(file, fileList);
@@ -35,19 +36,29 @@ var comm = Vue.extend({
             this.dialogImageUrl = file.url;
             this.dialogVisible = true;
         },
-        locatePosition:function(){
+        locatePosition: function () {
             this.isLocated = true;
         },
-        openRecord:function(){
-            console.log(123);
+        openRecord: function () {
+            var self = this;
+            this.$toast({
+                message: '正在识别语音',
+                position: 'middle',
+                duration: 1000
+            });
+            cordova.plugins.TransformVoiceToText.transform("aaa", function (msg) {
+                self.reqMsg = self.reqMsg + msg;
+            }, function (err) {
+                self.reqMsg = self.reqMsg + err;
+            });
         }
     },
     mounted: function () {
-        eventHelper.on('openDetailInfo',function(title){
-            if(!!title){
+        eventHelper.on('openDetailInfo', function (title) {
+            if (!!title) {
                 this.init();
                 this.questionTitle = title;
-            }else{
+            } else {
                 this.init();
                 this.setBtn = true;
             }
