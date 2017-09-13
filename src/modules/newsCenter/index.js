@@ -1,6 +1,6 @@
 var template = require('./content.html');
 var eventHelper = require('../../utils/eventHelper');
-var detailInfo = require('modules/detailInfo');
+var newsDetail = require('modules/newsDetail');
 
 
 // 定义组件
@@ -8,48 +8,52 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            showDetailInfo:false,
-            updateNewArr:[
+            showNewsDetail:false,
+            newsList:[
                 {
-                    id:1,
-                    title:'管线老化'
+                    title:'市委常委谢晓丹赴白云、花都两区调研河涌合治理工作',
+                    imgHtml:'<img src="img/cropper/cropper.jpg">' +
+                    '<img src="img/cropper/cropper.jpg">' +
+                    '<img src="img/cropper/cropper.jpg">',
+                    date:'2017-08-31',
+                    num:26,
+                    count:18
                 },{
-                    id:2,
-                    title:'管线衔接有误'
+                    title:'市委常委谢晓丹赴白云、花都两区调研河涌合治理工作',
+                    imgHtml:'<img src="img/cropper/cropper.jpg">' +
+                    '<img src="img/cropper/cropper.jpg">' +
+                    '<img src="img/cropper/cropper.jpg">',
+                    date:'2017-08-31',
+                    num:26,
+                    count:18
                 },{
-                    id:3,
-                    title:'爆管'
-                },{
-                    id:4,
-                    title:'管道断裂'
+                    title:'市委常委谢晓丹赴白云、花都两区调研河涌合治理工作',
+                    imgHtml:'<img src="img/cropper/cropper.jpg">' +
+                    '<img src="img/cropper/cropper.jpg">' +
+                    '<img src="img/cropper/cropper.jpg">',
+                    date:'2017-08-31',
+                    num:26,
+                    count:18
                 }
             ]
         }
     },
     methods: {
-        returnMain:function(){
-            eventHelper.emit('change-menu','upload');
-            eventHelper.emit('closeUploadBtn');
+        returnHome:function(){
+            eventHelper.emit('openSub');
         },
-        openDetail:function(title){
-            this.showDetailInfo = true;
-            eventHelper.emit('openDetailInfo',title);
+        openNewsInfo:function(id){
+            this.showNewsDetail = true;
+            eventHelper.emit('openDetail',id);
         }
     },
     mounted: function () {
-        eventHelper.on('returnBack',function(){
-            this.showDetailInfo = false;
-        }.bind(this));
-        eventHelper.on('setNormalQues',function(itemTitle){
-            var itemId = this.updateNewArr.length + 1;
-            this.updateNewArr.push({
-                id:itemId,
-                title:itemTitle
-            });
+        eventHelper.on('returnNewsHome',function(){
+            this.showNewsDetail = false;
         }.bind(this));
     },
     components: {
-        'detail-info':detailInfo
+        'news-detail':newsDetail
     }
 });
 module.exports = comm;

@@ -10,6 +10,7 @@ var comm = Vue.extend({
             selected:'work',
             showUpLoadBtn:false,
             showMain:true,
+            showSubId:'',
             footerArr:[
                 {
                     id:'work',
@@ -80,8 +81,13 @@ var comm = Vue.extend({
             this.showUpLoadBtn = false;
         }.bind(this));
         eventHelper.on('openSub',function(subId){
-            console.log(subId);
-        });
+            if(this.showMain){
+                this.showMain = false;
+                this.showSubId = subId;
+            }else{
+                this.showMain = true;
+            }
+        }.bind(this));
     },
     components: {
         'main-view':mainView,

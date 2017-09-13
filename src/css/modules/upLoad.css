@@ -236,3 +236,25 @@
     max-height:45%;
     overflow: auto;
 }
+.newsBox{
+    background: #fff;
+    margin-bottom:0.1rem;
+    padding:0.3rem 0.3rem 0.2rem;
+}
+.newsTitle{
+    font-size:1.5em;
+}
+.newsImgBox{
+    margin:0.2rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.newsImgBox>img{
+    width: 32.5%;
+    display: inline-block;
+}
+.news-bottom{
+    color: #999;
+    font-size:1.2em;
+}

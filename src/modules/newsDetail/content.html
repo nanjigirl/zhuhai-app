@@ -1,0 +1,17 @@
+<div class="mainContent">
+   <mt-header title="新闻动态">
+      <mt-button icon="back" slot="left" @click="returnParent">返回</mt-button>
+   </mt-header>
+   <div class="newsBody">
+      <div class="newsBox">
+         <p class="newsTitle">{{title}}</p>
+         <div class="news-bottom">
+            {{date}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="el-icon-message"></i>&nbsp;&nbsp;{{num}}&nbsp;&nbsp;&nbsp;<i class="el-icon-message"></i>&nbsp;&nbsp;{{count}}
+         </div>
+         <div class="newsContent" v-for="item in content">
+            <img v-if="item.text" :src="content.img" alt="">
+            <p v-if="!item.text" class="newsText">{{item.text}}</p>
+         </div>
+      </div>
+   </div>
+</div>
