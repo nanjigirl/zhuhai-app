@@ -6,10 +6,38 @@
             <img class="tab-img" :src="item.img">
             <p class="tab-text">{{item.text}}</p>
          </div>
-         <!--<div class="tab-item">-->
-            <!--<img class="tab-img" src="../../img/icon/icon-upload-white.png">-->
-            <!--<p class="tab-text"></p>-->
-         <!--</div>-->
       </div>
+   </div>
+   <div class="work-body">
+      <div class="cesc-tabbar listBg">
+         <div class="tab-item" v-for="item in contentList" @click="showSub(item.id)">
+            <img class="tab-img" :src="item.img">
+            <p class="tab-text">{{item.text}}</p>
+         </div>
+      </div>
+      <a class="mint-cell cell-top">
+         <div class="mint-cell-wrapper">
+            <div class="mint-cell-title">
+               <span class="mint-cell-text">他人上报</span>
+               <span class="pull-right el-icon-arrow-right"></span>
+            </div>
+         </div>
+      </a>
+      <yd-cell-group>
+         <yd-cell-item>
+            <span slot="left">问题类型：爆管</span>
+         </yd-cell-item>
+         <yd-cell-item>
+            <div slot="left" class="info-subText">
+               <p class="item-text">地点：海珠区南边路</p>
+               <p class="item-text">工量估算：需要重新更换管道</p>
+            </div>
+         </yd-cell-item>
+         <yd-cell-item>
+            <div slot="left" class="info-bottom">
+               2017-9-2&nbsp;&nbsp;&nbsp;上报人：许军&nbsp;&nbsp;&nbsp;<i class="el-icon-message"></i>32&nbsp;&nbsp;&nbsp;<i class="el-icon-message"></i>15
+            </div>
+         </yd-cell-item>
+      </yd-cell-group>
    </div>
 </div>

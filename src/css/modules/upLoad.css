@@ -178,7 +178,7 @@
     border-radius: 0.15rem;
     overflow: hidden;
     background: #fff;
-    border: 1px solid #d9d9d9;
+    border: 1px solid #F5F5F5;
     margin-bottom: 0.2rem;
 }
 .work-top{
@@ -193,6 +193,19 @@
     align-items:center;
     justify-content: space-between;
 }
+.listBg{
+    background: #fff;
+    margin-top:0.1rem;
+}
+.listBg .tab-item{
+    border-right:1px solid #F5F5F5;
+}
+.listBg .tab-item:last-child{
+    border-right:none;
+}
+.listBg .tab-text{
+    color: #666;
+}
 .tab-item{
     width:25%;
     text-align: center;
@@ -206,4 +219,20 @@
 .tab-text{
     font-size:1.2em;
     color:#fff;
+}
+.item-text{
+    margin: 0.2rem 0;
+    font-size:1em;
+    color: #666;
+}
+.info-bottom{
+    font-size:0.8em;
+    color: #999;
+}
+.mint-tabbar{
+    z-index: 10;
+}
+.work-body{
+    max-height:45%;
+    overflow: auto;
 }

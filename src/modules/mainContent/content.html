@@ -1,9 +1,12 @@
 <div class="viewContent">
-    <main-view></main-view>
-    <mt-tabbar v-show="!showUpLoadBtn" v-model="selected">
-        <mt-tab-item v-for="item in footerArr" :id="item.id">
-            <img slot="icon" :src="item.img">
-            {{ item.text }}
-        </mt-tab-item>
-    </mt-tabbar>
+    <div class="mainContent" v-if="showMain">
+        <main-view></main-view>
+        <mt-tabbar v-show="!showUpLoadBtn" v-model="selected">
+            <mt-tab-item v-for="item in footerArr" :id="item.id">
+                <img slot="icon" :src="item.img">
+                {{ item.text }}
+            </mt-tab-item>
+        </mt-tabbar>
+    </div>
+    <news-center v-if="!showMain && showSubId === 'xwdt'"></news-center>
 </div>

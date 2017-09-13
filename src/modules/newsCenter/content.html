@@ -1,0 +1,28 @@
+<div class="mainContent">
+   <div class="mainContent" v-show="!showDetailInfo">
+      <mt-header title="上报问题">
+         <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
+      </mt-header>
+      <div>
+         <a class="mint-cell cell-top">
+            <div class="mint-cell-wrapper">
+               <div class="mint-cell-title">
+                  <img src="../../img/icon/icon-question.png" width="24" height="24">
+                  <span class="mint-cell-text">常见问题</span>
+               </div>
+            </div>
+         </a>
+         <yd-cell-group>
+            <yd-cell-item v-for="item in updateNewArr">
+               <span slot="left">{{item.title}}</span>
+               <el-button slot="right" type="primary" size="small" @click="openDetail(item.title)">快速上报</el-button>
+            </yd-cell-item>
+         </yd-cell-group>
+      </div>
+      <div class="upLoadBtn">
+         <img src="../../img/icon/icon-add.png" alt="">
+         <span class="upload-text" @click="openDetail('')">上报新问题</span>
+      </div>
+   </div>
+   <detail-info v-show="showDetailInfo"></detail-info>
+</div>

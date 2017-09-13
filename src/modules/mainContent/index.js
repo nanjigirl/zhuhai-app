@@ -1,5 +1,6 @@
 var template = require('./content.html');
 var mainView = require('modules/mainView');
+var newsCenter = require('modules/newsCenter');
 
 // 定义组件
 var comm = Vue.extend({
@@ -8,6 +9,7 @@ var comm = Vue.extend({
         return {
             selected:'work',
             showUpLoadBtn:false,
+            showMain:true,
             footerArr:[
                 {
                     id:'work',
@@ -77,9 +79,13 @@ var comm = Vue.extend({
         eventHelper.on('closeUploadBtn',function(){
             this.showUpLoadBtn = false;
         }.bind(this));
+        eventHelper.on('openSub',function(subId){
+            console.log(subId);
+        });
     },
     components: {
-        'main-view':mainView
+        'main-view':mainView,
+        'news-center':newsCenter
     }
 });
 module.exports = comm;
