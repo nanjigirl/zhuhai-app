@@ -12,16 +12,7 @@ var comm = Vue.extend({
         return {
             delOperation:false,
             uploadImgs:[
-                {
-                    facilityImageUri:'./img/cropper/cropper.jpg',
-                    showDelOperation:false
-                },{
-                    facilityImageUri:'./img/cropper/cropper.jpg',
-                    showDelOperation:false
-                },{
-                    facilityImageUri:'./img/reportPic.jpg',
-                    showDelOperation:false
-                },
+
             ],
             status:'',
             facilityTitle:'',
