@@ -17,6 +17,11 @@ var comm = Vue.extend({
         }
     },
     methods: {
+        init:function(){
+            this.isLocated = false;
+            this.questionTitle = '';
+            this.setBtn = false;
+        },
         returnMain:function(){
             eventHelper.emit('returnBack');
         },
@@ -32,17 +37,18 @@ var comm = Vue.extend({
         },
         locatePosition:function(){
             this.isLocated = true;
+        },
+        openRecord:function(){
+            console.log(123);
         }
     },
     mounted: function () {
         eventHelper.on('openDetailInfo',function(title){
             if(!!title){
+                this.init();
                 this.questionTitle = title;
-                this.setBtn = false;
-                this.isLocated = false;
             }else{
-                this.isLocated = false;
-                this.questionTitle = '';
+                this.init();
                 this.setBtn = true;
             }
         }.bind(this));

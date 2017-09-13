@@ -6,25 +6,29 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            dialogImageUrl: '',
-            dialogVisible: false
+            topNavArr:[
+                {
+                    id:'wtsb',
+                    img:'img/icon/icon-upload-white.png',
+                    text:'问题上报'
+                },{
+                    id:'wdsb',
+                    img:'img/icon/icon-upload-white.png',
+                    text:'我的上报'
+                },{
+                    id:'bdcg',
+                    img:'img/icon/icon-upload-white.png',
+                    text:'本地草稿'
+                },{
+                    id:'trsb',
+                    img:'img/icon/icon-upload-white.png',
+                    text:'他人上报'
+                }
+            ]
         }
     },
     methods: {
-        click:function () {
-            this.$messagebox({
-                title: '提示',
-                message: '确定执行此操作?',
-                showCancelButton: true
-            });
-        },
-        handleRemove(file, fileList) {
-            console.log(file, fileList);
-        },
-        handlePictureCardPreview(file) {
-            this.dialogImageUrl = file.url;
-            this.dialogVisible = true;
-        }
+
     },
     mounted: function () {
     },

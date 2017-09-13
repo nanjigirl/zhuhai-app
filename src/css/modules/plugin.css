@@ -1,5 +1,5 @@
 .mainView{
-    height: calc(100% - 8em);
+    height: calc(100% - 55px);
     width: 100%;
 }
 .mapContainer{

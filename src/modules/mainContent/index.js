@@ -40,7 +40,7 @@ var comm = Vue.extend({
                         case 'upload':
                             value.img = 'img/icon/highLight-upload.png';
                             break;
-                        case 'data':
+                        case 'analyze':
                             value.img = 'img/icon/highLight-data.png';
                             break;
                         case 'user':
@@ -56,7 +56,7 @@ var comm = Vue.extend({
                         case 'upload':
                             value.img = 'img/icon/icon-upload.png';
                             break;
-                        case 'data':
+                        case 'analyze':
                             value.img = 'img/icon/icon-data.png';
                             break;
                         case 'user':
