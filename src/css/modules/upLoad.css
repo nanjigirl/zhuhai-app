@@ -250,6 +250,9 @@
     align-items: center;
     justify-content: space-between;
 }
+.bigSize{
+    font-size:1.8em;
+}
 .newsImgBox>img{
     width: 32.5%;
     display: inline-block;
@@ -257,4 +260,16 @@
 .news-bottom{
     color: #999;
     font-size:1.2em;
+}
+.newsContent>img{
+    width:100%;
+    margin:0.3rem 0;
+}
+.newsText{
+    font-size:1.5em;
+    color: #666;
+    margin-bottom:0.5rem;
+}
+.yd-textarea textarea{
+    height:auto!important;
 }

@@ -8,7 +8,7 @@ var comm = Vue.extend({
     data: function () {
         return {
             title:'',
-            content:'',
+            content:[],
             date:'',
             num:0,
             count:0,
