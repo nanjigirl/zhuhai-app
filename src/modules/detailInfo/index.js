@@ -88,7 +88,8 @@ var comm = Vue.extend({
             var self = this;
             navigator.camera.getPicture(function (imageUri) {
                 self.uploadImgs.push({
-                        facilityImageUri:imageUri
+                        facilityImageUri:imageUri,
+                        showDelOperation:false
                     });
             }, function (error) {
                 self.facilityTitle = error;
