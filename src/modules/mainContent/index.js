@@ -14,19 +14,19 @@ var comm = Vue.extend({
             footerArr:[
                 {
                     id:'work',
-                    img:'img/icon/highLight-work.png',
+                    img:'./img/icon/highLight-work.png',
                     text:'日常工作'
                 },{
                     id:'upload',
-                    img:'img/icon/icon-upload.png',
+                    img:'./img/icon/icon-upload.png',
                     text:'问题上传'
                 },{
                     id:'analyze',
-                    img:'img/icon/icon-data.png',
+                    img:'./img/icon/icon-data.png',
                     text:'数据分析'
                 },{
                     id:'user',
-                    img:'img/icon/icon-user.png',
+                    img:'./img/icon/icon-user.png',
                     text:'我的'
                 }
             ]
