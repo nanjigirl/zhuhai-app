@@ -307,3 +307,6 @@ img[src='']{
 .yd-textarea textarea{
     height:auto!important;
 }
+textarea:focus{
+    outline: none;
+}
