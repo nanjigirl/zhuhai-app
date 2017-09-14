@@ -1,32 +1,56 @@
 <div class="mainContent">
-   <div class="user-top">
-      <mt-header title="本地草稿">
-         <mt-button icon="back" slot="left" @click="returnHome">返回</mt-button>
-         <div slot="right">
-            <span>8月<i class="el-icon-caret-bottom"></i></span>
-            今日
-         </div>
-      </mt-header>
-   </div>
-   <div class="user-content">
-      <div class="draftBox clearfix" v-for="item in draftList">
-         <div class="draf-date pull-left">
-            <p class="date-text date-top">{{item.month}}</p>
-            <p class="date-text date-bottom">{{item.year}}</p>
-         </div>
-         <div class="draf-content pull-right">
-            <div class="password-box" v-for="subItem in item.content">
-               <yd-cell-item>
-                  <span slot="left">问题类型：{{subItem.title}}</span>
-               </yd-cell-item>
-               <yd-cell-item>
-                  <div slot="left" class="info-subText">
-                     <p class="item-text">地点：{{subItem.address}}</p>
-                     <p class="item-text">解决方案：{{subItem.solution}}</p>
-                  </div>
-               </yd-cell-item>
+    <div class="user-top">
+        <header class="mint-header">
+            <div class="mint-header-button is-left">
+                <button class="mint-button mint-button--default mint-button--normal">
+                    <span class="mint-button-icon"><i class="mintui mintui-back"></i></span>
+                    <label class="mint-button-text">返回</label>
+                </button>
             </div>
-         </div>
-      </div>
-   </div>
+            <div class="mint-header-title">
+                <el-checkbox-group v-model="uploadCheck" size="small">
+                    <el-checkbox-button v-for="item in uploads" :label="item" :key="item">{{item}}</el-checkbox-button>
+                </el-checkbox-group>
+            </div>
+            <div class="mint-header-button is-right">
+                <div>
+                    <span>8月<i class="el-icon-caret-bottom"></i></span>
+                    今日
+                </div>
+            </div>
+        </header>
+        <mt-header title="我的上报">
+            <div slot="left">
+                <mt-button icon="back" @click="returnHome">返回</mt-button>
+                <!--<el-checkbox-group v-model="uploadCheck" size="small">-->
+                <!--<el-checkbox-button v-for="item in uploads" :label="item" :key="item">{{item}}</el-checkbox-button>-->
+                <!--</el-checkbox-group>-->
+            </div>
+            <div slot="right">
+                <span>8月<i class="el-icon-caret-bottom"></i></span>
+                今日
+            </div>
+        </mt-header>
+    </div>
+    <div class="user-content">
+        <div class="draftBox clearfix" v-for="item in draftList">
+            <div class="draf-date pull-left">
+                <p class="date-text date-top">{{item.month}}</p>
+                <p class="date-text date-bottom">{{item.year}}</p>
+            </div>
+            <div class="draf-content pull-right">
+                <div class="password-box" v-for="subItem in item.content">
+                    <yd-cell-item>
+                        <span slot="left">问题类型：{{subItem.title}}</span>
+                    </yd-cell-item>
+                    <yd-cell-item>
+                        <div slot="left" class="info-subText">
+                            <p class="item-text">地点：{{subItem.address}}</p>
+                            <p class="item-text">解决方案：{{subItem.solution}}</p>
+                        </div>
+                    </yd-cell-item>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

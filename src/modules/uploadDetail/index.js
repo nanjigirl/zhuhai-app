@@ -7,6 +7,8 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            uploadCheck: ['我的上报'],
+            uploads:['我的上报','他人上报'],
             draftList:[
                 {
                     month:'09/02',
@@ -51,7 +53,10 @@ var comm = Vue.extend({
         }
     },
     mounted: function () {
+        eventHelper.on('openUploadDetail',function(id){
+            console.log(id);
 
+        }.bind(this));
     },
     components: {
 

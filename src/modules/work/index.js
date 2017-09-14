@@ -13,7 +13,7 @@ var comm = Vue.extend({
                     text:'问题上报'
                 },{
                     id:'wdsb',
-                    img:'img/icon/icon-upload-white.png',
+                    img:'img/icon/icon-history.png',
                     text:'我的上报'
                 },{
                     id:'bdcg',

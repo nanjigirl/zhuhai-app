@@ -90,6 +90,9 @@ var comm = Vue.extend({
             }else{
                 this.showMain = true;
             }
+            if(subId === 'wdsb'|| subId === 'trsb'){
+                eventHelper.emit('openUploadDetail',subId);
+            }
         }.bind(this));
     },
     components: {
