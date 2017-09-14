@@ -1,0 +1,32 @@
+<div class="mainContent">
+   <mt-header title="详情">
+      <mt-button icon="back" slot="left" @click="returnHome">返回</mt-button>
+   </mt-header>
+   <div class="newsBody commentBody">
+      <div class="newsBox">
+         <p class="newsTitle">问题类型：{{content.title}}</p>
+         <div class="news-bottom">
+            {{content.date}}&nbsp;&nbsp;&nbsp;&nbsp;上报人：{{content.people}}
+         </div>
+      </div>
+      <div class="commentContent">
+         <yd-cell-item>
+            <div slot="left" class="info-subText">
+               <p class="item-text">地点：{{content.address}}</p>
+               <p class="item-text">解决方案：{{content.solution}}</p>
+               <p class="item-text">描述：{{content.describe}}</p>
+            </div>
+         </yd-cell-item>
+         <img class="commentImg" :src="content.img">
+      </div>
+      <div class="commentBottom clearfix">
+         <div class="pull-left">
+            <i class="icon iconfont icon-huihua"></i>&nbsp;&nbsp;{{content.num}}&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-dianzan"></i>&nbsp;&nbsp;{{content.count}}
+         </div>
+         <div class="pull-right writeInput clearfix">
+            <span class="icon iconfont icon-Artboard pull-left writeIcon"></span>
+            <yd-input class="pull-left" placeholder="我要评论"></yd-input>
+         </div>
+      </div>
+   </div>
+</div>

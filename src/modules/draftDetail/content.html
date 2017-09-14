@@ -1,0 +1,45 @@
+<div class="mainContent">
+   <div class="user-top">
+      <mt-header title="本地草稿">
+         <mt-button icon="back" slot="left" @click="returnHome">返回</mt-button>
+         <div slot="right">
+            <span>8月<i class="el-icon-caret-bottom"></i></span>
+            今日
+         </div>
+      </mt-header>
+   </div>
+   <div class="user-content">
+      <div class="draftBox clearfix" v-for="(item,index) in draftList">
+         <div class="draf-date pull-left">
+            <p class="date-text date-top">{{item.month}}</p>
+            <p class="date-text date-bottom">{{item.year}}</p>
+         </div>
+         <div class="draf-content pull-right">
+            <div class="password-box" v-for="(subItem,subIndex) in item.content">
+               <yd-cell-item>
+                  <span slot="left">问题类型：{{subItem.title}}</span>
+                  <span slot="right" class="icon iconfont icon-lajitong" @click="deteleItem(index,subIndex)"></span>
+               </yd-cell-item>
+               <yd-cell-item>
+                  <div slot="left" class="info-subText">
+                     <p class="item-text">地点：{{subItem.address}}</p>
+                     <p class="item-text">解决方案：{{subItem.solution}}</p>
+                  </div>
+               </yd-cell-item>
+               <yd-cell-item>
+                  <div slot="right" class="cell-btn-group">
+                     <div class="cell-btn btn-edit">
+                        <i class="icon iconfont icon-bianji"></i>
+                        <span>编辑</span>
+                     </div>
+                     <div class="cell-btn btn-upload">
+                        <i class="icon iconfont icon-quote"></i>
+                        <span>上报</span>
+                     </div>
+                  </div>
+               </yd-cell-item>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>

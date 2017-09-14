@@ -104,7 +104,7 @@ var comm = Vue.extend({
             this.dialogVisible = true;
         },
         locatePosition: function () {
-            this.isLocated = true;
+            this.isLocated = !this.isLocated;
         },
         openRecord: function () {
             var self = this;

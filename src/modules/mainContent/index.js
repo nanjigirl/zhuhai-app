@@ -1,6 +1,9 @@
 var template = require('./content.html');
 var mainView = require('modules/mainView');
 var newsCenter = require('modules/newsCenter');
+var comment = require('modules/comment');
+var draftDetail = require('modules/draftDetail');
+var uploadDetail = require('modules/uploadDetail');
 
 // 定义组件
 var comm = Vue.extend({
@@ -19,7 +22,7 @@ var comm = Vue.extend({
                 },{
                     id:'upload',
                     img:'./img/icon/icon-upload.png',
-                    text:'问题上传'
+                    text:'问题上报'
                 },{
                     id:'analyze',
                     img:'./img/icon/icon-data.png',
@@ -91,7 +94,10 @@ var comm = Vue.extend({
     },
     components: {
         'main-view':mainView,
-        'news-center':newsCenter
+        'news-center':newsCenter,
+        'comment':comment,
+        'draft-detail':draftDetail,
+        'upload-detail':uploadDetail
     }
 });
 module.exports = comm;

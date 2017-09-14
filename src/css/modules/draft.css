@@ -1,0 +1,49 @@
+.draftBox{
+    width:100%;
+}
+.draf-date{
+    width:1.2rem;
+    border-radius:0.1rem;
+    overflow: hidden;
+    margin-right:0.2rem;
+}
+.date-text{
+    width:100%;
+    height:50%;
+    text-align: center;
+    line-height: 100%;
+    padding:0.1rem 0;
+}
+.draf-content{
+    width:calc(100% - 1.4rem);
+}
+.date-top{
+    background: #26a2ff;
+    color: #fff;
+}
+.date-bottom{
+    background: #fff;
+    color:#26a2ff;
+}
+.cell-btn{
+    text-align: center;
+    color: #fff;
+    font-size: 1.1em;
+    border-radius: 0.1rem;
+    float: left;
+    padding: 0.05rem 0.3rem;
+}
+.cell-btn>i{
+    font-size:1.2em;
+    vertical-align: middle;
+}
+.btn-edit{
+    background: #26a2ff;
+    margin-right: 0.1rem;
+}
+.btn-upload{
+    background: #ECB000;
+}
+.icon-lajitong{
+    font-size:1.4em;
+}

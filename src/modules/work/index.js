@@ -43,11 +43,37 @@ var comm = Vue.extend({
                     img:'img/icon/icon-law.png',
                     text:'政策法规'
                 }
+            ],
+            questionList:[
+                {
+                    title:'管道埋深不达标',
+                    address:'海珠区南边路',
+                    solution:'需要重新填埋管道',
+                    people:'许军',
+                    date:'2017-9-2',
+                    num:32,
+                    count:15,
+                    describe:'管道埋的深度不达标',
+                    img:'img/cropper/cropper.jpg'
+                },{
+                    title:'爆管',
+                    address:'海珠区南边路',
+                    solution:'需要重新更换管道',
+                    people:'许军',
+                    date:'2017-8-31',
+                    num:26,
+                    count:18,
+                    describe:'管道埋的深度不达标',
+                    img:'img/cropper/cropper.jpg'
+                }
             ]
         }
     },
     methods: {
-        showSub:function(subId){
+        showSub:function(subId,content){
+            if(!!content){
+                eventHelper.emit('openComment',content);
+            }
             eventHelper.emit('openSub',subId);
         }
     },

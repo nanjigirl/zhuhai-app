@@ -2,7 +2,7 @@
    <div class="work-top">
       <img src="../../img/work-bannar.png" alt="">
       <div class="cesc-tabbar">
-         <div class="tab-item" v-for="item in topNavArr">
+         <div class="tab-item" v-for="item in topNavArr" @click="showSub(item.id)">
             <img class="tab-img" :src="item.img">
             <p class="tab-text">{{item.text}}</p>
          </div>
@@ -23,19 +23,19 @@
             </div>
          </div>
       </a>
-      <yd-cell-group>
+      <yd-cell-group v-for="(item,index) in questionList">
          <yd-cell-item>
-            <span slot="left">问题类型：爆管</span>
+            <span slot="left">问题类型：{{item.title}}</span>
          </yd-cell-item>
          <yd-cell-item>
             <div slot="left" class="info-subText">
-               <p class="item-text">地点：海珠区南边路</p>
-               <p class="item-text">工量估算：需要重新更换管道</p>
+               <p class="item-text">地点：{{item.address}}</p>
+               <p class="item-text">解决方案：{{item.solution}}</p>
             </div>
          </yd-cell-item>
          <yd-cell-item>
             <div slot="left" class="info-bottom">
-               2017-9-2&nbsp;&nbsp;&nbsp;上报人：许军&nbsp;&nbsp;&nbsp;<i class="el-icon-message"></i>32&nbsp;&nbsp;&nbsp;<i class="el-icon-message"></i>15
+               {{item.date}}&nbsp;&nbsp;&nbsp;&nbsp;上报人：{{item.people}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-huihua" @click="showSub('comment',item)"></i>&nbsp;&nbsp;{{item.num}}&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-dianzan"></i>&nbsp;&nbsp;{{item.count}}
             </div>
          </yd-cell-item>
       </yd-cell-group>
