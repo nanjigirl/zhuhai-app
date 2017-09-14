@@ -41,6 +41,7 @@ var comm = Vue.extend({
         },
         returnMain: function () {
             eventHelper.emit('returnBack');
+            eventHelper.emit('change-menu','new-question');
         },
         addNewItem: function () {
             eventHelper.emit('setNormalQues', this.questionTitle);
@@ -92,9 +93,6 @@ var comm = Vue.extend({
             }, function (error) {
                 self.facilityTitle = error;
             }, cameraOptions);
-        },
-        returnMain:function(){
-            eventHelper.emit('change-menu','new-question');
         },
         handleRemove(file, fileList) {
             console.log(file, fileList);
