@@ -267,7 +267,6 @@ img[src='']{
     z-index: 10;
 }
 .work-body{
-    max-height:45%;
     overflow: auto;
 }
 .newsBox{
