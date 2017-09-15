@@ -55,7 +55,11 @@ var comm = Vue.extend({
     mounted: function () {
         eventHelper.on('openUploadDetail',function(id){
             console.log(id);
-
+            if(id === 'wdsb'){
+                this.uploadCheck = ['我的上报']
+            }else if(id === 'trsb'){
+                this.uploadCheck = ['他人上报']
+            }
         }.bind(this));
     },
     components: {

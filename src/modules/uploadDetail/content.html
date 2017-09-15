@@ -1,7 +1,7 @@
 <div class="mainContent">
     <div class="user-top">
         <header class="mint-header">
-            <div class="mint-header-button is-left">
+            <div class="mint-header-button is-left" @click="returnHome">
                 <button class="mint-button mint-button--default mint-button--normal">
                     <span class="mint-button-icon"><i class="mintui mintui-back"></i></span>
                     <label class="mint-button-text">返回</label>
@@ -19,18 +19,6 @@
                 </div>
             </div>
         </header>
-        <mt-header title="我的上报">
-            <div slot="left">
-                <mt-button icon="back" @click="returnHome">返回</mt-button>
-                <!--<el-checkbox-group v-model="uploadCheck" size="small">-->
-                <!--<el-checkbox-button v-for="item in uploads" :label="item" :key="item">{{item}}</el-checkbox-button>-->
-                <!--</el-checkbox-group>-->
-            </div>
-            <div slot="right">
-                <span>8月<i class="el-icon-caret-bottom"></i></span>
-                今日
-            </div>
-        </mt-header>
     </div>
     <div class="user-content">
         <div class="draftBox clearfix" v-for="item in draftList">
