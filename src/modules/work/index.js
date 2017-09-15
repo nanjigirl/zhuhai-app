@@ -8,7 +8,7 @@ var comm = Vue.extend({
         return {
             topNavArr:[
                 {
-                    id:'wtsb',
+                    id:'upload',
                     img:'img/icon/icon-upload-white.png',
                     text:'问题上报'
                 },{
@@ -74,7 +74,12 @@ var comm = Vue.extend({
             if(!!content){
                 eventHelper.emit('openComment',content);
             }
-            eventHelper.emit('openSub',subId);
+            if(subId === 'upload'){
+                eventHelper.emit('change-menu',subId);
+                eventHelper.emit('toggleTabClass',subId);
+            }else{
+                eventHelper.emit('openSub',subId);
+            }
         }
     },
     mounted: function () {

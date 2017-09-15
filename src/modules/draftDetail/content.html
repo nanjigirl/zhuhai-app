@@ -1,12 +1,13 @@
 <div class="mainContent">
-   <div class="user-top">
+   <div class="user-top draft-top">
       <mt-header title="本地草稿">
          <mt-button icon="back" slot="left" @click="returnHome">返回</mt-button>
-         <div slot="right">
+         <div slot="right" @click="expandDate">
             <span>8月<i class="el-icon-caret-bottom"></i></span>
             今日
          </div>
       </mt-header>
+      <div class="date-expand" v-show="showDateExpand"></div>
    </div>
    <div class="user-content">
       <div class="draftBox clearfix" v-for="(item,index) in draftList">

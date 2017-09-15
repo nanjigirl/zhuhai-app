@@ -94,6 +94,9 @@ var comm = Vue.extend({
                 eventHelper.emit('openUploadDetail',subId);
             }
         }.bind(this));
+        eventHelper.on('toggleTabClass',function(subId){
+            this.selected = subId;
+        }.bind(this));
     },
     components: {
         'main-view':mainView,

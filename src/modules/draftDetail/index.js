@@ -7,6 +7,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            showDateExpand:false,
             draftList:[
                 {
                     month:'09/02',
@@ -58,6 +59,9 @@ var comm = Vue.extend({
                     }
                 })
             });
+        },
+        expandDate:function(){
+            this.showDateExpand = !this.showDateExpand;
         }
     },
     mounted: function () {

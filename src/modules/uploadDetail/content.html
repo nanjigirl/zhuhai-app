@@ -1,5 +1,5 @@
 <div class="mainContent">
-    <div class="user-top">
+    <div class="user-top draft-top">
         <header class="mint-header">
             <div class="mint-header-button is-left" @click="returnHome">
                 <button class="mint-button mint-button--default mint-button--normal">
@@ -8,9 +8,10 @@
                 </button>
             </div>
             <div class="mint-header-title">
-                <el-checkbox-group v-model="uploadCheck" size="small">
-                    <el-checkbox-button v-for="item in uploads" :label="item" :key="item">{{item}}</el-checkbox-button>
-                </el-checkbox-group>
+                <el-radio-group v-model="uploadCheck" size="small" fill="#0481BB" @change="toggleData">
+                    <el-radio-button label="我的上报"></el-radio-button>
+                    <el-radio-button label="他人上报"></el-radio-button>
+                </el-radio-group>
             </div>
             <div class="mint-header-button is-right">
                 <div>
@@ -19,6 +20,7 @@
                 </div>
             </div>
         </header>
+        <div class="date-expand" v-show="showDateExpand"></div>
     </div>
     <div class="user-content">
         <div class="draftBox clearfix" v-for="item in draftList">
@@ -35,6 +37,11 @@
                         <div slot="left" class="info-subText">
                             <p class="item-text">地点：{{subItem.address}}</p>
                             <p class="item-text">解决方案：{{subItem.solution}}</p>
+                        </div>
+                    </yd-cell-item>
+                    <yd-cell-item v-if="showType">
+                        <div slot="left" class="info-bottom">
+                            {{subItem.date}}&nbsp;&nbsp;&nbsp;&nbsp;上报人：{{subItem.people}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-huihua" @click="showSub('comment',item)"></i>&nbsp;&nbsp;{{subItem.num}}&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-dianzan"></i>&nbsp;&nbsp;{{subItem.count}}
                         </div>
                     </yd-cell-item>
                 </div>
