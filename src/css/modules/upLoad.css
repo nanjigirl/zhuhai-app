@@ -1,3 +1,53 @@
+.map-work-top{
+    background: #059EE4;
+}
+.search-container{
+    width: 100%;
+    padding:0 .5rem;
+    position: relative;
+}
+.search-container .yd-cell-item{
+    padding-left: 2rem;
+}
+.tab-item-flex{
+    flex:2;
+    text-align: center;
+    padding: 0.25rem 0px;
+}
+.has-border.cesc-tabbar{
+    border-top:1px solid #058FD3;
+    margin-top: .5rem;
+}
+.uploadContent .first.addNew{
+    top:32%;
+}
+.uploadContent .second.addNew{
+    top:39%;
+}
+.has-border.cesc-tabbar .tab-item-flex{
+    border-right:1px solid #058FD3;;
+}
+.search-container .inner-input{
+    font-size: .32rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -0.16rem;
+    z-index: 999;
+    color: #666;
+    left: 2rem;
+}
+.search-container .yd-cell-right input[type=text]{
+    height: .8rem;
+    color:#ddd;
+    font-size: .32rem;
+}
+.bg-white-radius{
+    background: #fff;
+    -webkit-border-radius:.5rem;
+    -moz-border-radius:.5rem;
+    border-radius:.5rem;
+    padding-left: 2rem;
+}
 .upload-img-area{
     padding-top: .24rem;
     padding-bottom: .24rem;

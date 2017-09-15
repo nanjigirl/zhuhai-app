@@ -10,7 +10,23 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            showUpLoadBtn: false
+            searchInput:'',
+            showUpLoadBtn: false,
+            topNavArr:[
+                {
+                    id:'wdsb',
+                    img:'img/icon/icon-history.png',
+                    text:'我的上报'
+                },{
+                    id:'bdcg',
+                    img:'img/icon/icon-draft.png',
+                    text:'本地草稿'
+                },{
+                    id:'trsb',
+                    img:'img/icon/icon-report.png',
+                    text:'他人上报'
+                }
+            ],
         }
     },
     methods: {
