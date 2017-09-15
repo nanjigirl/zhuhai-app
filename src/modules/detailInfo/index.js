@@ -35,6 +35,13 @@ var comm = Vue.extend({
         }
     },
     methods: {
+        uploadQuestion:function () {
+            this.$toast({
+                message:'提交成功！！'
+            });
+            eventHelper.emit('change-menu','upload');
+            eventHelper.emit('closeUploadBtn');
+        },
         init: function () {
             this.isLocated = false;
             this.questionTitle = '';

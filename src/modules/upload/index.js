@@ -72,11 +72,6 @@ var comm = Vue.extend({
         }.bind(this));
         this.map.on('click', function (evt) {
             if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
-                this.$toast({
-                    message: '提示',
-                    position: 'middle',
-                    duration: 5000
-                });
                 this.showUpLoadBtn = true;
                 eventHelper.emit('openUploadBtn');
             } else if (!!this.isAddingPoint) {
