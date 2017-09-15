@@ -91,6 +91,7 @@ var comm = Vue.extend({
             }else if(id === 'trsb'){
                 this.uploadCheck = '他人上报'
             }
+            console.log(this.uploadCheck);
         }.bind(this));
     },
     components: {

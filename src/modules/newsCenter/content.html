@@ -6,9 +6,9 @@
       <div class="newsBody">
          <div class="newsBox" v-for="(item,index) in newsList" @click="openNewsInfo(index)">
             <p class="newsTitle">{{item.title}}</p>
-            <div class="newsImgBox" v-html="item.imgHtml"></div>
+            <!--<div class="newsImgBox" v-html="item.imgHtml"></div>-->
             <div class="news-bottom">
-               {{item.date}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="el-icon-message"></i>&nbsp;&nbsp;{{item.num}}&nbsp;&nbsp;&nbsp;<i class="el-icon-message"></i>&nbsp;&nbsp;{{item.count}}
+               {{item.date}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-huihua"></i>&nbsp;&nbsp;{{item.num}}&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-dianzan"></i>&nbsp;&nbsp;{{item.count}}
             </div>
          </div>
       </div>
