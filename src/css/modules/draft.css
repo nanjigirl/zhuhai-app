@@ -47,3 +47,16 @@
 .icon-lajitong{
     font-size:1.4em;
 }
+.draft-top{
+    height:auto;
+}
+.date-expand{
+    width: 100%;
+    height:3rem;
+}
+.el-radio-group label{
+    margin-bottom:0;
+}
+.mint-tabbar.is-fixed{
+    z-index:10!important;
+}
