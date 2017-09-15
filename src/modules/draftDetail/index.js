@@ -56,6 +56,9 @@ var comm = Vue.extend({
                 self.draftList.forEach(function(value,index){
                     if(index === parentIndex){
                         self.draftList[parentIndex].content.splice(subIndex,1);
+                        if(self.draftList[parentIndex].content.length ===0){
+                            self.draftList.splice(parentIndex,1);
+                        }
                     }
                 })
             });
