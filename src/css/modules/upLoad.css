@@ -1,6 +1,12 @@
 #mainMap{
     position: fixed;
 }
+.mainContent{
+    background: rgb(242,242,242);
+}
+.app-body .el-message-box{
+    width: 100%;
+}
 .map-work-top{
     background: #26a2ff;
     position: fixed;
