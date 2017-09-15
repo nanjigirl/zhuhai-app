@@ -54,7 +54,7 @@ var comm = Vue.extend({
                     num:32,
                     count:15,
                     describe:'管道埋的深度不达标',
-                    img:'img/cropper/cropper.jpg'
+                    img:'img/pipe.png'
                 },{
                     title:'爆管',
                     address:'海珠区南边路',
@@ -64,7 +64,7 @@ var comm = Vue.extend({
                     num:26,
                     count:18,
                     describe:'管道埋的深度不达标',
-                    img:'img/cropper/cropper.jpg'
+                    img:'img/pipe.png'
                 }
             ]
         }

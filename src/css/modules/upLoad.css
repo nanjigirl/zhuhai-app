@@ -336,6 +336,7 @@ img[src='']{
 }
 .work-body{
     overflow: auto;
+    margin-bottom:55px;
 }
 .newsBox{
     background: #fff;
@@ -402,7 +403,7 @@ textarea:focus{
     height: 1rem;
     line-height: 1rem;
     background: #f2f2f2;
-    position: absolute;
+    position: fixed;
     bottom:0;
     padding:0 0.5rem;
     color: #999;
@@ -423,7 +424,7 @@ textarea:focus{
     font-size:1.3em;
 }
 .writeInput .yd-input{
-    width:80%;
+    width:1.7rem;
 }
 .writeIcon{
     position: relative;
