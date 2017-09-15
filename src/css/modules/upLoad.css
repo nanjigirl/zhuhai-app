@@ -1,5 +1,9 @@
 .map-work-top{
-    background: #059EE4;
+    background: #26a2ff;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
 }
 .search-container{
     width: 100%;
@@ -19,10 +23,10 @@
     margin-top: .5rem;
 }
 .uploadContent .first.addNew{
-    top:32%;
+    top:34%;
 }
 .uploadContent .second.addNew{
-    top:39%;
+    top:41%;
 }
 .has-border.cesc-tabbar .tab-item-flex{
     border-right:1px solid #058FD3;;
@@ -94,7 +98,7 @@ img[src='']{
 .btnBox{
     width: 100%;
     height: 55px;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     z-index: 10;
 }
@@ -361,8 +365,11 @@ img[src='']{
     color: #666;
     margin-bottom:0.5rem;
 }
-.yd-textarea textarea{
-    height:auto!important;
+.mainContent{
+    overflow-y: hidden;
+}
+.desc-item-container .yd-textarea textarea{
+    height: 3.5rem;
 }
 textarea:focus{
     outline: none;
