@@ -10,6 +10,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            reportQuestion:'./img/icon/icon-cloud.png',
             delOperation:false,
             uploadImgs:[
 

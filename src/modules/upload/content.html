@@ -1,8 +1,22 @@
 <div class="mainContent uploadContent">
-   <mt-header title="问题上报" fixed></mt-header>
+    <div class="map-work-top">
+        <mt-header title="问题上报" fixed></mt-header>
+        <div class="search-container">
+            <i class="el-icon-search inner-input"></i>
+            <yd-cell-item class="bg-white-radius">
+                <yd-input slot="right" v-model="searchInput" placeholder="请输入雨水井编号或位置"></yd-input>
+            </yd-cell-item>
+        </div>
+        <div class="cesc-tabbar has-border">
+            <div class="tab-item-flex" v-for="item in topNavArr" @click="showSub(item.id)">
+                <img class="tab-img" :src="item.img">
+                <p class="tab-text">{{item.text}}</p>
+            </div>
+        </div>
+    </div>
     <div id="mainMap" style="height: 100%;;width: 100%;"></div>
     <div class="upLoadBtn" v-show="showUpLoadBtn"  @click="updateNew">
-      <img src="../../img/icon/icon-cloud.png" alt="">
+      <img :src="reportQuestion" alt="">
       <span class="upload-text">上报问题</span>
    </div>
     <el-button type="primary" icon="edit" class="addNew first" @click="addNewPoint"></el-button>

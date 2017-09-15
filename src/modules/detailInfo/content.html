@@ -36,10 +36,10 @@
          </div>
       </a>
       <yd-cell-group>
-         <div class="yd-cell-item cell-item-sp">
+         <div class="yd-cell-item cell-item-sp desc-item-container">
             <div class="yd-cell-right">
                <div class="yd-textarea">
-                  <textarea placeholder="添加文字说明" rows="14">{{reqMsg}}</textarea>
+                  <textarea placeholder="添加文字说明" rows="14" v-model="reqMsg"></textarea>
                </div>
             </div>
          </div>
@@ -74,13 +74,13 @@
          <!--</div>-->
       <!--</yd-cell-group>-->
    </div>
-   <div class="btnBox">
+   <div class="btnBox clearfix">
       <div class="leftBtn">
          <img src="../../img/icon/icon-save.png" alt="">
          <span class="upload-text">保存问题</span>
       </div>
       <div class="rightBtn">
-         <img src="../../img/icon/icon-cloud.png" alt="">
+         <img :src="reportQuestion" alt="">
          <span class="upload-text">上报问题</span>
       </div>
    </div>
