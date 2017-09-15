@@ -47,6 +47,17 @@ var comm = Vue.extend({
                 duration: 1000
             });
         },
+        showSub:function(subId,content){
+            if(!!content){
+                eventHelper.emit('openComment',content);
+            }
+            if(subId === 'upload'){
+                eventHelper.emit('change-menu',subId);
+                eventHelper.emit('toggleTabClass',subId);
+            }else{
+                eventHelper.emit('openSub',subId);
+            }
+        },
         updateNew: function () {
             eventHelper.emit('change-menu', 'new-question');
         }

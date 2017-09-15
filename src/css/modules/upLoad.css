@@ -216,7 +216,8 @@ img[src='']{
     color: #A3A3A3!important;
 }
 .content{
-    max-height:100%;
+    margin-top:40px;
+    margin-bottom:55px;
     overflow: auto;
 }
 .user-top{

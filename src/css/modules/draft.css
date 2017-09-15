@@ -60,3 +60,6 @@
 .mint-tabbar.is-fixed{
     z-index:10!important;
 }
+.mint-header.is-fixed{
+    z-index:50!important;
+}
