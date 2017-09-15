@@ -34,11 +34,11 @@
     </div>
     <div class="user-content">
         <div class="draftBox clearfix" v-for="item in draftList">
-            <div class="draf-date pull-left">
+            <div class="draf-date float-left">
                 <p class="date-text date-top">{{item.month}}</p>
                 <p class="date-text date-bottom">{{item.year}}</p>
             </div>
-            <div class="draf-content pull-right">
+            <div class="draf-content float-right">
                 <div class="password-box" v-for="subItem in item.content">
                     <yd-cell-item>
                         <span slot="left">问题类型：{{subItem.title}}</span>

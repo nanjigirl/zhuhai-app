@@ -48,8 +48,15 @@ img[src='']{
     bottom: 0;
     z-index: 10;
 }
+.float-left{
+    float: left;
+}
+.float-right{
+    float: right;
+}
 .leftBtn,.rightBtn{
-    width:48%;
+    width:50%;
+    float:left;
     height:100%;
     line-height: 55px;
     text-align: center;
@@ -268,7 +275,6 @@ img[src='']{
 }
 .work-body{
     max-height:45%;
-    overflow: auto;
 }
 .newsBox{
     background: #fff;
