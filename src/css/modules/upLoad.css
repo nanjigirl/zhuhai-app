@@ -210,6 +210,7 @@ img[src='']{
 .user-content{
     width: 100%;
     padding: 0.5rem 0.2rem;
+    margin-top:40px;
 }
 .password-box{
     border-radius: 0.15rem;

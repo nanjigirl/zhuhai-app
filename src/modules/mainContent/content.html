@@ -8,8 +8,8 @@
             </mt-tab-item>
         </mt-tabbar>
     </div>
-    <news-center v-show="!showMain && showSubId === 'xwdt'"></news-center>
-    <comment v-show="!showMain && showSubId === 'comment'"></comment>
-    <draft-detail v-show="!showMain && showSubId === 'bdcg'"></draft-detail>
-    <upload-detail v-show="!showMain && showSubId === 'wdsb' || showSubId === 'trsb'"></upload-detail>
+    <news-center v-if="!showMain" v-show="showSubId === 'xwdt'"></news-center>
+    <comment v-if="!showMain" v-show="showSubId === 'comment'"></comment>
+    <draft-detail v-if="!showMain" v-show="showSubId === 'bdcg'"></draft-detail>
+    <upload-detail v-if="!showMain" v-show="showSubId === 'wdsb' || showSubId === 'trsb'"></upload-detail>
 </div>
