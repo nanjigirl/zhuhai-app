@@ -35,11 +35,16 @@ var comm = Vue.extend({
         }
     },
     methods: {
+        saveQuestion:function(){
+           this.$toast({
+               message:'保存成功！！'
+           });
+        },
         uploadQuestion:function () {
             this.$toast({
                 message:'提交成功！！'
             });
-            eventHelper.emit('change-menu','upload');
+            eventHelper.emit('openSub');
             eventHelper.emit('closeUploadBtn');
         },
         init: function () {

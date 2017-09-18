@@ -19,6 +19,13 @@
       <img :src="reportQuestion" alt="">
       <span class="upload-text">上报问题</span>
    </div>
+    <el-dialog title="设施种类" :visible.sync="dialogFormVisible" size="large">
+        <mt-radio
+                align="right"
+                v-model="value"
+                :options="options">
+        </mt-radio>
+    </el-dialog>
     <el-button type="primary" icon="edit" class="addNew first" @click="addNewPoint"></el-button>
     <el-button type="primary" icon="search" class="addNew second" @click="query"></el-button>
 </div>

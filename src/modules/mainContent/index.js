@@ -4,6 +4,7 @@ var newsCenter = require('modules/newsCenter');
 var comment = require('modules/comment');
 var draftDetail = require('modules/draftDetail');
 var uploadDetail = require('modules/uploadDetail');
+var newQuestion = require('modules/newQuestion');
 
 // 定义组件
 var comm = Vue.extend({
@@ -86,7 +87,14 @@ var comm = Vue.extend({
         eventHelper.on('openSub',function(subId){
             if(this.showMain){
                 this.showMain = false;
-                this.showSubId = subId;
+                if(!!subId.type){
+                    this.showSubId = subId.type;
+                    if(subId.type === 'sbwt'){
+                        eventHelper.emit('uploadList',subId.val);
+                    }
+                }else{
+                    this.showSubId = subId;
+                }
             }else{
                 this.showMain = true;
             }
@@ -103,7 +111,8 @@ var comm = Vue.extend({
         'news-center':newsCenter,
         'comment':comment,
         'draft-detail':draftDetail,
-        'upload-detail':uploadDetail
+        'upload-detail':uploadDetail,
+        'new-question':newQuestion
     }
 });
 module.exports = comm;
