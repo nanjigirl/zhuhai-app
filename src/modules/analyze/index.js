@@ -27,7 +27,7 @@ var comm = Vue.extend({
             // },
             series : [
                 {
-                    name: '访问来源',
+                    name: '巡查类型',
                     type: 'pie',
                     radius : '50%',
                     center: ['50%', '50%'],
