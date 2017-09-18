@@ -275,6 +275,22 @@ define(function () {
             graphic.attributes = attribute;
             map.graphics.add(graphic);
         },
+        addPointAndName: function (map, x, y, imgURL, iconWidth,iconHeight,hideName,attribute) {
+            var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, iconWidth, iconWidth);
+            var point = new Point(x, y);
+            var graphic = new Graphic(point, pictureMarkerSymbol);
+            graphic.attributes = attribute;
+            var textSymbol = new TextSymbol();
+            textSymbol.setText('起点');
+            textSymbol.setColor(new Color('#0000FF'));
+            textSymbol.setFont("8pt");
+            textSymbol.setOffset(0, -20);
+            map.graphics.add(graphic);
+            var graphic1 = new Graphic(point, textSymbol);
+            if(!!hideName){
+                map.graphics.add(graphic1);
+            }
+        },
         drawPolygon: function (map, points, isNew, lineColor, lineWidth, attributes) {
             var no = generateNo();
             var polygonJson = {
@@ -431,9 +447,8 @@ define(function () {
             leftMap.on('load', function () {
                 //  this.setCenter(50739.47246461394, 27957.80609813794, rightMap);
                 console.log('load');
-                setTimeout(function () {
-                    this.setCenter(39371.45542396836, 29472.417159148874, leftMap, 15);
-                }.bind(this), 1000);
+                this.setCenter(39371.45542396836, 29472.417159148874, leftMap, 15);
+
             }.bind(this));
             return leftMap;
         },
