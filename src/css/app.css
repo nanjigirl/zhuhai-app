@@ -57,8 +57,7 @@ li {
 }
 
 .el-dialog__body {
-    border-top: 2px solid #E9E9E9;
-    margin-top: 1em;
+    padding: 5px 20px;
 }
 
 .pageContent {
