@@ -30,7 +30,7 @@ var comm = Vue.extend({
             for(var i=0;i<lineArr.length-1;i++){console.log(1);
                 mapHelper.drawLine(this.map, [lineArr[i].x,lineArr[i].y ], [lineArr[i+1].x,lineArr[i+1].y],5,'#f00');
             }
-            mapHelper.addPointAndHover(this.map, 44290.52374238852, 28800.580122891788, './img/icon/qidian.png',20,20, {facilityType: 'tupian'});
+            mapHelper.addPointAndName(this.map, 44290.52374238852, 28800.580122891788, './img/icon/qidian.png',20,20,true,{facilityType: 'tupian'});
         }.bind(this));
 
     },

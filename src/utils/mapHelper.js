@@ -268,14 +268,14 @@ define(function () {
             map.addLayer(graLayer);
             return graLayer;
         },
-        addPoint: function (map, x, y, imgURL, iconWidth,iconHeight,attribute) {
+        addPoint: function (map, x, y, imgURL, iconWidth,iconHeight,hideName,attribute) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, iconWidth, iconWidth);
             var point = new Point(x, y);
             var graphic = new Graphic(point, pictureMarkerSymbol);
             graphic.attributes = attribute;
             map.graphics.add(graphic);
         },
-        addPointAndHover: function (map, x, y, imgURL, iconWidth,iconHeight,attribute) {
+        addPointAndName: function (map, x, y, imgURL, iconWidth,iconHeight,hideName,attribute) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, iconWidth, iconWidth);
             var point = new Point(x, y);
             var graphic = new Graphic(point, pictureMarkerSymbol);
@@ -287,12 +287,9 @@ define(function () {
             textSymbol.setOffset(0, -20);
             map.graphics.add(graphic);
             var graphic1 = new Graphic(point, textSymbol);
-            map.graphics.on('mouse-over',function (event) {
+            if(!!hideName){
                 map.graphics.add(graphic1);
-            });
-            map.graphics.on('mouse-out',function (event) {
-                map.graphics.remove(graphic1);
-            });
+            }
         },
         drawPolygon: function (map, points, isNew, lineColor, lineWidth, attributes) {
             var no = generateNo();
