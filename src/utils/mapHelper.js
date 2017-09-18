@@ -447,9 +447,8 @@ define(function () {
             leftMap.on('load', function () {
                 //  this.setCenter(50739.47246461394, 27957.80609813794, rightMap);
                 console.log('load');
-                setTimeout(function () {
-                    this.setCenter(39371.45542396836, 29472.417159148874, leftMap, 15);
-                }.bind(this), 1000);
+                this.setCenter(39371.45542396836, 29472.417159148874, leftMap, 15);
+
             }.bind(this));
             return leftMap;
         },

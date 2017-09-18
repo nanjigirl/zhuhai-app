@@ -151,6 +151,7 @@ var comm = Vue.extend({
     methods: {
         returnMain:function(){
             eventHelper.emit('openSub');
+            eventHelper.emit('change-menu','upload');
             eventHelper.emit('closeUploadBtn');
         },
         openDetail:function(title){

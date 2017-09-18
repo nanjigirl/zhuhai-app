@@ -7,7 +7,8 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            message: 'Vue Module Seed'
+            message: 'Vue Module Seed',
+            currentDate:new Date().toLocaleDateString(),
         }
     },
     methods: {},
@@ -24,9 +25,7 @@ var comm = Vue.extend({
                 console.log(event);
         });
         this.map.on('load', function (event) {
-            setTimeout(function () {
-                mapHelper.setCenter(44407.60210154524, 28578.197386459644,this.map,8);
-            }.bind(this),1500);
+            mapHelper.setCenter(44407.60210154524, 28578.197386459644,this.map,7);
             for(var i=0;i<lineArr.length-1;i++){
                 mapHelper.drawLine(this.map, [lineArr[i].x,lineArr[i].y ], [lineArr[i+1].x,lineArr[i+1].y],5,'#f00');
             }
