@@ -12,5 +12,9 @@
     color: #26a2ff;
     background:#fff;
     border-bottom:1px solid #FF8C00;
-
+    position: relative;
+}
+.title-date{
+    position: absolute;
+    right: .2rem;
 }

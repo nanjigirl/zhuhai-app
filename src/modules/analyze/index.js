@@ -7,7 +7,8 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            message: 'Vue Module Seed'
+            message: 'Vue Module Seed',
+            currentDate:new Date().toLocaleDateString(),
         }
     },
     methods: {},
