@@ -8,7 +8,6 @@ var work= require('modules/work');
 var upload= require('modules/upload');
 var analyze= require('modules/analyze');
 var user= require('modules/user');
-var newQuestion= require('modules/newQuestion');
 var detailInfo= require('modules/detailInfo');
 //加载地图组件
 var arcgisDraw = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
@@ -19,7 +18,6 @@ var components = {
     'upload':upload,
     'analyze':analyze,
     'user':user,
-    'new-question':newQuestion,
     'detail-info':detailInfo
 };
 //components = $.extend(components, moduleController);

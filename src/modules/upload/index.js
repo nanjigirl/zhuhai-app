@@ -10,24 +10,36 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            reportQuestion:'./img/icon/icon-cloud.png',
-            searchInput:'',
+            dialogFormVisible: false,
+            value: '',
+            options: ['路面', '雨水口', '各类检查井', '管道、渠箱', '边沟', '倒虹管', '排放口', '闸门、阀门、拍门'],
+            reportQuestion: './img/icon/icon-cloud.png',
+            searchInput: '',
             showUpLoadBtn: false,
-            topNavArr:[
+            topNavArr: [
                 {
-                    id:'wdsb',
-                    img:'img/icon/icon-history.png',
-                    text:'我的上报'
-                },{
-                    id:'bdcg',
-                    img:'img/icon/icon-draft.png',
-                    text:'本地草稿'
-                },{
-                    id:'trsb',
-                    img:'img/icon/icon-report.png',
-                    text:'他人上报'
+                    id: 'wdsb',
+                    img: 'img/icon/icon-history.png',
+                    text: '我的上报'
+                }, {
+                    id: 'bdcg',
+                    img: 'img/icon/icon-draft.png',
+                    text: '本地草稿'
+                }, {
+                    id: 'trsb',
+                    img: 'img/icon/icon-report.png',
+                    text: '他人上报'
                 }
             ],
+        }
+    },
+    watch: {
+        value:function(val){
+            if(!!val){
+                eventHelper.emit('openSub', {type:'sbwt',val:val});
+                this.dialogFormVisible = false;
+                //eventHelper.emit('uploadList',val);
+            }
         }
     },
     methods: {
@@ -47,19 +59,20 @@ var comm = Vue.extend({
                 duration: 1000
             });
         },
-        showSub:function(subId,content){
-            if(!!content){
-                eventHelper.emit('openComment',content);
+        showSub: function (subId, content) {
+            if (!!content) {
+                eventHelper.emit('openComment', content);
             }
-            if(subId === 'upload'){
-                eventHelper.emit('change-menu',subId);
-                eventHelper.emit('toggleTabClass',subId);
-            }else{
-                eventHelper.emit('openSub',subId);
+            if (subId === 'upload') {
+                eventHelper.emit('change-menu', subId);
+                eventHelper.emit('toggleTabClass', subId);
+            } else {
+                eventHelper.emit('openSub', subId);
             }
         },
         updateNew: function () {
-            eventHelper.emit('change-menu', 'new-question');
+            this.value = '';
+            this.dialogFormVisible = true;
         }
     },
     mounted: function () {
