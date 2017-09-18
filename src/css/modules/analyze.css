@@ -1,9 +1,17 @@
-.analyze-box{
+.analyze-box-top{
     margin-top:40px;
     width: 100%;
     height:50%;
     text-align: center;
     border:1px solid #FF8C00;
+}
+.analyze-box-bottom{
+    width: 100%;
+    height:50%;
+    text-align: center;
+    border-left:1px solid #FF8C00;
+    border-right:1px solid #FF8C00;
+    border-bottom:1px solid #FF8C00;
 }
 .analyze-title{
     height: 30px;
