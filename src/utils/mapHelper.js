@@ -268,12 +268,31 @@ define(function () {
             map.addLayer(graLayer);
             return graLayer;
         },
-        addPoint: function (map, x, y, imgURL, attribute) {
-            var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, 15, 15);
+        addPoint: function (map, x, y, imgURL, iconWidth,iconHeight,attribute) {
+            var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, iconWidth, iconWidth);
             var point = new Point(x, y);
             var graphic = new Graphic(point, pictureMarkerSymbol);
             graphic.attributes = attribute;
             map.graphics.add(graphic);
+        },
+        addPointAndHover: function (map, x, y, imgURL, iconWidth,iconHeight,attribute) {
+            var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, iconWidth, iconWidth);
+            var point = new Point(x, y);
+            var graphic = new Graphic(point, pictureMarkerSymbol);
+            graphic.attributes = attribute;
+            var textSymbol = new TextSymbol();
+            textSymbol.setText('起点');
+            textSymbol.setColor(new Color('#0000FF'));
+            textSymbol.setFont("8pt");
+            textSymbol.setOffset(0, -20);
+            map.graphics.add(graphic);
+            var graphic1 = new Graphic(point, textSymbol);
+            map.graphics.on('mouse-over',function (event) {
+                map.graphics.add(graphic1);
+            });
+            map.graphics.on('mouse-out',function (event) {
+                map.graphics.remove(graphic1);
+            });
         },
         drawPolygon: function (map, points, isNew, lineColor, lineWidth, attributes) {
             var no = generateNo();

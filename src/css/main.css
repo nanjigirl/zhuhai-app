@@ -18,6 +18,7 @@
 @import "./modules/appSearch.css";
 @import "./maps/jquery-jvectormap-2.0.3.css";
 @import "./modules/upLoad.css";
+@import "./modules/analyze.css";
 @import "./modules/draft.css";
 @import "./modules/content.css";
 :root {
