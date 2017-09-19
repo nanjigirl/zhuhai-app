@@ -2,8 +2,9 @@
     <div class="mainContent" v-show="showMain">
         <main-view></main-view>
         <mt-tabbar v-show="!showUpLoadBtn" v-model="selected" fixed>
-            <mt-tab-item v-for="item in footerArr" :id="item.id">
-                <img slot="icon" :src="item.img">
+            <mt-tab-item v-for="(item,index) in footerArr" :id="item.id">
+                <!--<img slot="icon" :src="item.img">-->
+                <i class="icon iconfont iconSize" :class="item.class"></i>
                 {{ item.text }}
             </mt-tab-item>
         </mt-tabbar>

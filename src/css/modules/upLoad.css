@@ -270,7 +270,7 @@ img[src=''] {
 
 .recordBox {
     width: 30%;
-    padding: 0.5rem 0;
+    padding: 0.1rem 0;
     text-align: center;
     margin: 0 auto;
 }
@@ -484,7 +484,7 @@ img[src=''] {
 }
 
 .desc-item-container .yd-textarea textarea {
-    height: 3.5rem;
+    height: 2.7rem;
 }
 
 textarea:focus {
@@ -600,4 +600,12 @@ textarea:focus {
 }
 .color-yhsc{
     color:#2E980A;
+}
+.iconSize{
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: auto;
+    line-height: 1;
+    font-size: 2.4em;
 }

@@ -19,60 +19,30 @@ var comm = Vue.extend({
             footerArr:[
                 {
                     id:'work',
-                    img:'./img/icon/highLight-work.png',
+                    // img:'./img/icon/highLight-work.png',
+                    class:'icon-gongzuo',
                     text:'日常工作'
                 },{
                     id:'upload',
-                    img:'./img/icon/icon-upload.png',
+                    // img:'./img/icon/icon-upload.png',
+                    class:'icon-quote',
                     text:'问题上报'
                 },{
                     id:'analyze',
-                    img:'./img/icon/icon-data.png',
+                    // img:'./img/icon/icon-data.png',
+                    class:'icon-shuju',
                     text:'数据分析'
                 },{
                     id:'user',
-                    img:'./img/icon/icon-user.png',
+                    // img:'./img/icon/icon-user.png',
+                    class:'icon-wode',
                     text:'我的'
                 }
             ]
         }
     },
     watch:{
-        selected:function(data,oldData){
-            this.footerArr.forEach(function(value){
-                if(value.id === data){
-                    switch(value.id){
-                        case 'work':
-                            value.img = 'img/icon/highLight-work.png';
-                            break;
-                        case 'upload':
-                            value.img = 'img/icon/highLight-upload.png';
-                            break;
-                        case 'analyze':
-                            value.img = 'img/icon/highLight-data.png';
-                            break;
-                        case 'user':
-                            value.img = 'img/icon/highLight-user.png';
-                            break;
-                    }
-                }
-                if(value.id === oldData){
-                    switch(value.id){
-                        case 'work':
-                            value.img = 'img/icon/icon-work.png';
-                            break;
-                        case 'upload':
-                            value.img = 'img/icon/icon-upload.png';
-                            break;
-                        case 'analyze':
-                            value.img = 'img/icon/icon-data.png';
-                            break;
-                        case 'user':
-                            value.img = 'img/icon/icon-user.png';
-                            break;
-                    }
-                }
-            }.bind(this));
+        selected:function(data){
             eventHelper.emit('change-menu',data);
         }
     },
