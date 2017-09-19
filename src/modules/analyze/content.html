@@ -1,16 +1,18 @@
 <div class="mainContent">
    <mt-header title="数据分析" fixed></mt-header>
-   <div class="analyze-box-top">
-      <div class="analyze-title">
-         <span>我的巡查记录</span>
-         <span class="title-date">{{currentDate}}</span>
+   <div class="content">
+      <div class="analyze-box-top">
+         <div class="analyze-title">
+            <span>我的巡查记录</span>
+            <span class="title-date">{{currentDate}}</span>
+         </div>
+         <div id="xunChaMap" style="width: 100%;height: calc(100% - 30px);"></div>
       </div>
-      <div id="xunChaMap" style="width: 100%;height: calc(100% - 30px);"></div>
-   </div>
-   <div class="analyze-box-bottom">
-      <div class="analyze-title">
-         <span>数据统计</span>
+      <div class="analyze-box-bottom">
+         <div class="analyze-title">
+            <span>数据统计</span>
+         </div>
+         <div id="xunChaEcharts" style="width: 100%;height: calc(100% - 30px);"></div>
       </div>
-      <div id="xunChaEcharts" style="width: 100%;height: calc(100% - 30px);"></div>
    </div>
 </div>

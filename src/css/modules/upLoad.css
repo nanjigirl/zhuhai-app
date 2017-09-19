@@ -213,9 +213,9 @@ img[src=''] {
     margin-top: -0.35rem;
 }
 
-.cell-top .mint-cell-title > img {
+.cell-top .mint-cell-title > i {
     vertical-align: middle;
-    display: inline-block;
+    font-size:1.3em;
 }
 
 .cell-right {
@@ -408,6 +408,8 @@ img[src=''] {
     width: 0.8rem;
     height: 0.8rem;
     display: inline-block;
+    font-size:3em;
+    line-height: 1;
 }
 
 .tab-text {
