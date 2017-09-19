@@ -26,6 +26,12 @@
                 :options="options">
         </mt-radio>
     </el-dialog>
-    <el-button type="primary" icon="edit" class="addNew first" @click="addNewPoint"></el-button>
-    <el-button type="primary" icon="search" class="addNew second" @click="query"></el-button>
+    <div class="opration-btn-group">
+        <el-button type="primary" icon="edit" @click="addNewPoint"></el-button>
+        <el-button type="primary" icon="search" @click="query"></el-button>
+        <button class="el-button el-button--primary" @click="locate">
+            <i class="glyphicon glyphicon-record iconBg" ></i>
+        </button>
+
+    </div>
 </div>

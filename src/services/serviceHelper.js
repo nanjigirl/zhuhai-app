@@ -20,6 +20,7 @@ define(['config'], function (config) {
         getCarHistoryCount:basicUrl+'/truck/getTruckHistoryTrackCount',
         getMonitorDetailMsg:basicUrl+'/facility/getOneFacilityInfo',
         getFacilityLists:basicUrl+'/facility/filterFacility',
+        formatLocation: basicUrl + '/coordTrans/wgs84ToGz',
     }
     return {
         setToken: function (token) {

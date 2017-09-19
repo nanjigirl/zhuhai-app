@@ -46,7 +46,16 @@
 .uploadContent .second.addNew {
     top: 41%;
 }
-
+.opration-btn-group{
+    position: absolute;
+    top:32%;
+    right:0;
+}
+.opration-btn-group button{
+    display: block;
+    margin:0 0 10px 0 !important;
+    position: relative;
+}
 .has-border.cesc-tabbar .tab-item-flex {
     border-right: 1px solid #fff;;
 }
@@ -173,7 +182,14 @@ img[src=''] {
     position: absolute;
     bottom: 0;
 }
-
+.returnBtn {
+    width: 100%;
+    height: 40px;
+    background: #ECB000;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+}
 .upLoadBtn > img, .leftBtn > img, .rightBtn > img {
     width: 2.2em;
     height: 2.2em;
@@ -271,6 +287,8 @@ img[src=''] {
 }
 
 .content {
+    width: 100%;
+    height: calc(100% - 50px);
     margin-top: 40px;
     margin-bottom: 55px;
     overflow: auto;
@@ -559,4 +577,8 @@ textarea:focus {
 
 .newsBody {
     margin-top: 40px;
+}
+.location-map{
+    width: 100%;
+    height:100%;
 }
