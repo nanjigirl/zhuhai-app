@@ -11,6 +11,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            address:'',
             reportQuestion:'./img/icon/icon-cloud.png',
             delOperation:false,
             uploadImgs:[],
@@ -188,6 +189,9 @@ var comm = Vue.extend({
         },
     },
     mounted: function () {
+        eventHelper.on('get-current-address',function (address) {
+            this.address = address;
+        }.bind(this));
         eventHelper.on('returnDetail',function(){
             this.showApproval = false;
         }.bind(this));
