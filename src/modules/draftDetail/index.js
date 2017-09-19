@@ -52,15 +52,18 @@ var comm = Vue.extend({
         },
         deteleItem:function(parentIndex,subIndex){
             var self = this;
-            this.$confirm('确定删除该条记录?').then(action => {
-                self.draftList.forEach(function(value,index){
-                    if(index === parentIndex){
-                        self.draftList[parentIndex].content.splice(subIndex,1);
-                        if(self.draftList[parentIndex].content.length ===0){
-                            self.draftList.splice(parentIndex,1);
+            this.$dialog.confirm({
+                mes: '确定删除该条记录?！',
+                opts: () => {
+                    self.draftList.forEach(function(value,index){
+                        if(index === parentIndex){
+                            self.draftList[parentIndex].content.splice(subIndex,1);
+                            if(self.draftList[parentIndex].content.length ===0){
+                                self.draftList.splice(parentIndex,1);
+                            }
                         }
-                    }
-                })
+                    })
+                }
             });
         },
         expandDate:function(){

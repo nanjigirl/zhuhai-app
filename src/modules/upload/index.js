@@ -130,7 +130,7 @@ var comm = Vue.extend({
             console.log(event);
              if (!!this.isAddingPoint) {
                 var marker = new AMap.Marker({
-                    icon:"./img/dirtyPipe.png",
+                    icon:"./img/icon/pipe.png",
                     position:new AMap.LngLat(event.lnglat.lng,event.lnglat.lat),
                     extData:{
                         facilityType:'CP'
