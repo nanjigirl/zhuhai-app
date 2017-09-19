@@ -58,6 +58,7 @@ var comm = Vue.extend({
                     icon:"./img/icon/position.png",
                     position:new AMap.LngLat(position.coords.longitude, position.coords.latitude),
                 });
+                marker.setMap(self.map);
                 self.locationStatus = '定位成功!'
                 setTimeout(function () {
                     self.locationTips = false;
@@ -114,7 +115,7 @@ var comm = Vue.extend({
                 center: [113.333542,23.122644]
             });
         self.marker = new AMap.Marker({
-            icon:"./img/dirtyPipe.png",
+            icon: "./img/icon/pipe.png",
             position:new AMap.LngLat(113.333542,23.122644),
             extData:{
                 facilityType:'CP'
