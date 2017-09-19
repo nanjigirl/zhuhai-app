@@ -64,7 +64,7 @@ var comm = Vue.extend({
                     num: 26,
                     count: 18,
                     describe: '井盖丢失',
-                    img: 'img/detail-jgds.jpg'
+                    img: 'img/detail-jgds.png'
                 }
             ]
         }

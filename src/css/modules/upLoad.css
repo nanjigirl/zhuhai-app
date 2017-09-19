@@ -288,7 +288,6 @@ img[src=''] {
 
 .content {
     width: 100%;
-    height: calc(100% - 50px);
     margin-top: 40px;
     margin-bottom: 55px;
     overflow: auto;
@@ -533,7 +532,7 @@ textarea:focus {
 
 .commentImg {
     width: 90%;
-    margin: auto;
+    margin: 0 auto 0.3rem;
     border-radius: 0.2rem;
 }
 
@@ -546,6 +545,7 @@ textarea:focus {
     bottom: 0;
     padding: 0 0.5rem;
     color: #999;
+    z-index:10;
 }
 
 .commentContent .yd-cell-item:not(:last-child):after {
