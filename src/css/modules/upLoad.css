@@ -35,7 +35,7 @@
 }
 
 .has-border.cesc-tabbar {
-    border-top: 1px solid #058FD3;
+    border-top: 1px solid #fff;
     margin-top: .5rem;
 }
 
@@ -48,9 +48,11 @@
 }
 
 .has-border.cesc-tabbar .tab-item-flex {
-    border-right: 1px solid #058FD3;;
+    border-right: 1px solid #fff;;
 }
-
+.has-border.cesc-tabbar .tab-item-flex:last-child{
+    border:none;
+}
 .search-container .inner-input {
     font-size: .32rem;
     position: absolute;

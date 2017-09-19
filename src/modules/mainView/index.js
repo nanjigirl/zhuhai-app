@@ -64,7 +64,7 @@ var comm = Vue.extend({
             this.map = map;
         }.bind(this));
 
-        this.currentView = 'work';
+        this.currentView = 'upload';
         eventHelper.on('change-menu', function (model) {
             this.changeView(model);
         }.bind(this));
