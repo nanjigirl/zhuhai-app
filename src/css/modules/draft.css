@@ -63,3 +63,66 @@
 .mint-header.is-fixed{
     z-index:50!important;
 }
+.entranceBox{
+    width: 100%;
+    padding-top: 40px;
+    height: calc(100% + 50px);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-between;
+    justify-content: space-between;
+    background: #fff;
+}
+.entranceBox>li{
+    width: 50%;
+    height: 25%;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+}
+.entranceBox>li:nth-child(2n){
+    border-right:none;
+}
+.entranceBox>li:last-child,.entranceBox>li:nth-last-child(2){
+    border-bottom:none;
+}
+.entranceBox>li>a{
+    width:100%;
+    height:100%;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    /*color: #fff;*/
+}
+.entranceBox>li span{
+    font-size:5em;
+}
+.entranceBox .entranceText{
+    width: 100%;
+    font-size: 1.2em;
+}
+.color-orange{
+    color: #FF8A66;
+}
+.color-purple{
+    color: #93A7FF;
+}
+.color-blue{
+    color: #50CEE6;
+}
+.color-deepPurple{
+    color: #CF94DA;
+}
+.color-yellow{
+    color:#FFC000;
+}
+.color-green{
+    color:#9AD055;
+}
+.color-lightBlue{
+    color:#90C4FF;
+}
+.color-red{
+    color: #F26295;
+}

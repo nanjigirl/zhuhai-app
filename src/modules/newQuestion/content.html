@@ -3,11 +3,11 @@
       <mt-header title="上报问题" fixed>
          <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
       </mt-header>
-      <div>
+      <div class="content">
          <a class="mint-cell cell-top">
             <div class="mint-cell-wrapper">
                <div class="mint-cell-title">
-                  <img src="../../img/icon/icon-question.png" width="24" height="24">
+                  <i class="icon iconfont icon-prompt"></i>
                   <span class="mint-cell-text">常见问题</span>
                </div>
             </div>
@@ -15,7 +15,7 @@
          <yd-cell-group>
             <yd-cell-item v-for="item in updateNewArr">
                <span slot="left">{{item.title}}</span>
-               <el-button slot="right" type="primary" size="small" @click="openDetail(item.title)">快速上报</el-button>
+               <el-button slot="right" type="primary" size="small" @click="openDetail(item)">快速上报</el-button>
             </yd-cell-item>
          </yd-cell-group>
       </div>

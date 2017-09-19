@@ -2,7 +2,7 @@
    <mt-header title="详情" fixed>
       <mt-button icon="back" slot="left" @click="returnHome">返回</mt-button>
    </mt-header>
-   <div class="newsBody commentBody">
+   <div class="content commentBody">
       <div class="newsBox">
          <p class="newsTitle">问题类型：{{content.title}}</p>
          <div class="news-bottom">
@@ -18,16 +18,21 @@
             </div>
          </yd-cell-item>
          <img class="commentImg" :src="content.img">
-         <div class="userComment">
-            <div class="commentTitle">评论</div>
-          <div class="userCommentBody">
-             <p style="color: blue;">黄振宇：</p>
-             <p>该管老化严重,需要进行更换</p>
-             <div class="pull-left">
-                <i class="icon iconfont icon-huihua"></i>&nbsp;&nbsp;{{content.num}}&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-yanjing"></i>&nbsp;&nbsp;{{content.count}}
-             </div>
-          </div>
-         </div>
+         <a class="mint-cell cell-top">
+            <div class="mint-cell-wrapper">
+               <div class="mint-cell-title">
+                  <i class="icon iconfont icon-Artboard"></i>
+                  <span class="mint-cell-text">评论</span>
+               </div>
+            </div>
+         </a>
+         <yd-timeline>
+            <yd-timeline-item v-for="item in commentArr">
+               <p class="clearfix">{{item.people}}<span class="pull-right"><i class="icon iconfont icon-huihua"></i>&nbsp;&nbsp;{{item.num}}&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-yanjing"></i>&nbsp;&nbsp;{{item.count}}</span></p>
+               <p style="margin-top: 10px;">{{item.describe}}</p>
+               <p style="margin-top: 10px;">{{item.date}}</p>
+            </yd-timeline-item>
+         </yd-timeline>
       </div>
       <div class="commentBottom clearfix">
          <div class="pull-left">

@@ -1,0 +1,16 @@
+<div class="mainContent">
+   <div class="mainContent" v-show="!showQuestion">
+      <mt-header title="上报问题" fixed>
+         <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
+      </mt-header>
+      <ul class="entranceBox">
+         <li v-for="item in quesList" @click="openQuestion(item.val)">
+            <a :class="item.bgClass">
+               <span class="icon iconfont" :class="item.class"></span>
+               <p class="entranceText">{{item.type}}</p>
+            </a>
+         </li>
+      </ul>
+   </div>
+   <new-question v-show="showQuestion"></new-question>
+</div>

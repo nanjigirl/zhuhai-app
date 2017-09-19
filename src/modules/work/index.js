@@ -28,43 +28,43 @@ var comm = Vue.extend({
             contentList: [
                 {
                     id: 'xwdt',
-                    img: 'img/icon/icon-news.png',
-                    text: '新闻动态'
+                    class:'icon-news color-news',
+                    text: '新闻中心'
                 }, {
                     id: 'zdgz',
-                    img: 'img/icon/icon-care.png',
-                    text: '重点关注'
+                    class:'icon-dongtai color-dongtai',
+                    text: '工作动态'
                 }, {
                     id: 'tszs',
-                    img: 'img/icon/icon-mountain.png',
-                    text: '他山之石'
+                    class:'icon-gonggao color-gonggao',
+                    text: '通知公告'
                 }, {
                     id: 'zcfg',
-                    img: 'img/icon/icon-law.png',
-                    text: '政策法规'
+                    class:'icon-yonghushouce color-yhsc',
+                    text: '用户手册'
                 }
             ],
             questionList: [
                 {
-                    title: '管道埋深不达标',
-                    address: '海珠区南边路',
-                    solution: '需要重新填埋管道',
+                    title: '污水溢流',
+                    address: '海珠区南边路1918智能产业园对面',
+                    solution: '专项检测',
                     people: '许军',
                     date: '2017-9-2',
                     num: 32,
                     count: 15,
-                    describe: '管道埋的深度不达标',
-                    img: 'img/pipe.png'
+                    describe: '污水溢流',
+                    img: 'img/detail-wsyl.jpg'
                 }, {
-                    title: '爆管',
-                    address: '海珠区南边路',
-                    solution: '需要重新更换管道',
-                    people: '许军',
+                    title: '井盖丢失',
+                    address: '海珠区昌岗中路广州银行',
+                    solution: '维修',
+                    people: '陈红',
                     date: '2017-8-31',
                     num: 26,
                     count: 18,
-                    describe: '管道埋的深度不达标',
-                    img: 'img/pipe.png'
+                    describe: '井盖丢失',
+                    img: 'img/detail-jgds.jpg'
                 }
             ]
         }

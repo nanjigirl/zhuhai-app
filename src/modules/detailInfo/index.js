@@ -30,7 +30,7 @@ var comm = Vue.extend({
             setBtn: false,
             dialogImageUrl: '',
             dialogVisible: false,
-            questionTitle: '',
+            infoArr:[],
             isLocated: false
         }
     },
@@ -45,11 +45,14 @@ var comm = Vue.extend({
                 message:'提交成功！！'
             });
             eventHelper.emit('openSub');
+            eventHelper.emit('change-menu','upload');
             eventHelper.emit('closeUploadBtn');
+            eventHelper.emit('returnBack');
+            eventHelper.emit('closeQuestion');
         },
         init: function () {
             this.isLocated = false;
-            this.questionTitle = '';
+            this.infoArr = [];
             this.setBtn = false;
         },
         returnMain: function () {
@@ -57,7 +60,7 @@ var comm = Vue.extend({
             eventHelper.emit('change-menu','new-question');
         },
         addNewItem: function () {
-            eventHelper.emit('setNormalQues', this.questionTitle);
+            eventHelper.emit('setNormalQues', this.infoArr);
         },
         showDelOperation:function (index,event) {
             var that = this;
@@ -133,10 +136,10 @@ var comm = Vue.extend({
         }
     },
     mounted: function () {
-        eventHelper.on('openDetailInfo', function (title) {
-            if (!!title) {
+        eventHelper.on('openDetailInfo', function (val) {
+            if (!!val) {
                 this.init();
-                this.questionTitle = title;
+                this.infoArr = val;
             } else {
                 this.init();
                 this.setBtn = true;

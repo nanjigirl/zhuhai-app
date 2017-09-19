@@ -11,8 +11,6 @@ var comm = Vue.extend({
     data: function () {
         return {
             dialogFormVisible: false,
-            value: '',
-            options: ['路面', '雨水口', '各类检查井', '管道、渠箱', '边沟', '倒虹管', '排放口', '闸门、阀门、拍门'],
             reportQuestion: './img/icon/icon-cloud.png',
             searchInput: '',
             showUpLoadBtn: false,
@@ -33,15 +31,15 @@ var comm = Vue.extend({
             ],
         }
     },
-    watch: {
-        value:function(val){
-            if(!!val){
-                eventHelper.emit('openSub', {type:'sbwt',val:val});
-                this.dialogFormVisible = false;
-                //eventHelper.emit('uploadList',val);
-            }
-        }
-    },
+    // watch: {
+    //     value:function(val){
+    //         if(!!val){
+    //             eventHelper.emit('openSub', {type:'sbwt',val:val});
+    //             this.dialogFormVisible = false;
+    //             //eventHelper.emit('uploadList',val);
+    //         }
+    //     }
+    // },
     methods: {
         addNewPoint: function () {
             this.$toast({
@@ -71,8 +69,7 @@ var comm = Vue.extend({
             }
         },
         updateNew: function () {
-            this.value = '';
-            this.dialogFormVisible = true;
+            this.showSub('entrance');
         }
     },
     mounted: function () {

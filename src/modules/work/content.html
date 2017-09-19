@@ -11,7 +11,7 @@
    <div class="work-body">
       <div class="cesc-tabbar listBg">
          <div class="tab-item" v-for="item in contentList" @click="showSub(item.id)">
-            <img class="tab-img" :src="item.img">
+            <span class="icon iconfont tab-img" :class="item.class"></span>
             <p class="tab-text">{{item.text}}</p>
          </div>
       </div>

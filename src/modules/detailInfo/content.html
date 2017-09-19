@@ -13,7 +13,7 @@
       <yd-cell-group>
          <yd-cell-item>
             <span slot="left">问题类型：</span>
-            <input slot="right" type="text" placeholder="请输入问题" v-model="questionTitle">
+            <input slot="right" type="text" placeholder="请输入问题" v-model="infoArr.title">
             <el-button slot="right" v-show="setBtn" type="primary" size="small" @click="addNewItem">设为常见问题</el-button>
          </yd-cell-item>
          <yd-cell-item>
@@ -23,15 +23,15 @@
          </yd-cell-item>
          <yd-cell-item>
             <span slot="left">解决方案：</span>
-            <input slot="right" type="text" placeholder="请输入">
+            <input slot="right" type="text" placeholder="请输入" v-model="infoArr.solution">
          </yd-cell-item>
       </yd-cell-group>
       <a class="mint-cell cell-top cell-sp">
          <div class="mint-cell-wrapper">
             <div class="mint-cell-title">
-               <img src="../../img/icon/icon-detail.png" width="24" height="24">
+               <i class="icon iconfont icon-miaoshuxiangqing"></i>
                <span class="mint-cell-text">问题详情描述</span>
-               <img class="pull-right" @click="openRecord" src="../../img/icon/icon-record.png" width="24" height="24">
+               <!--<img class="pull-right" @click="openRecord" src="../../img/icon/icon-record.png" width="24" height="24">-->
             </div>
          </div>
       </a>
@@ -39,10 +39,26 @@
          <div class="yd-cell-item cell-item-sp desc-item-container">
             <div class="yd-cell-right">
                <div class="yd-textarea">
-                  <textarea placeholder="添加文字说明" rows="14" v-model="reqMsg"></textarea>
+                  <textarea placeholder="添加文字说明" rows="5" v-model="reqMsg"></textarea>
                </div>
             </div>
          </div>
+         <div class="yd-cell-item">
+            <div class="recordBox" @click="openRecord">
+               <img src="../../img/icon/icon-record.png">
+               <span class="record-text">长按录音</span>
+            </div>
+         </div>
+      </yd-cell-group>
+      <a class="mint-cell cell-top cell-sp">
+         <div class="mint-cell-wrapper">
+            <div class="mint-cell-title">
+               <i class="icon iconfont icon-tupian"></i>
+               <span class="mint-cell-text">拍照上传</span>
+            </div>
+         </div>
+      </a>
+      <yd-cell-group>
          <div class="yd-cell-item clearfix">
             <div class="upload-img-area">
                <div class="image-container" v-for="(uploadImg,index) in uploadImgs">
@@ -57,22 +73,6 @@
             </div>
          </div>
       </yd-cell-group>
-      <!--<a class="mint-cell cell-top cell-sp">-->
-         <!--<div class="mint-cell-wrapper">-->
-            <!--<div class="mint-cell-title">-->
-               <!--<img src="../../img/icon/icon-instruction.png" width="24" height="24">-->
-               <!--<span class="mint-cell-text">特别说明</span>-->
-            <!--</div>-->
-         <!--</div>-->
-      <!--</a>-->
-      <!--<yd-cell-group>-->
-         <!--<div class="yd-cell-item">-->
-           <!--<div class="recordBox" @click="openRecord">-->
-              <!--<img src="../../img/icon/icon-record.png">-->
-              <!--<span class="record-text">长按录音</span>-->
-           <!--</div>-->
-         <!--</div>-->
-      <!--</yd-cell-group>-->
    </div>
    <div class="btnBox clearfix">
       <div class="leftBtn" @click="saveQuestion">
