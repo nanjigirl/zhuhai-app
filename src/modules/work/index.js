@@ -6,6 +6,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            workBannerImg:'./img/work-bannar.png',
             topNavArr: [
                 {
                     id: 'upload',
