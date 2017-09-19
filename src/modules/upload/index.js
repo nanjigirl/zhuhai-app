@@ -10,6 +10,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            locationTips:false,
             locationStatus:'',
             dialogFormVisible: false,
             value: '',
@@ -50,6 +51,7 @@ var comm = Vue.extend({
                 this.currentLocation.clear();
             }
             self.location = '正在定位....';
+            self.locationTips = true;
             self.locationStatus = '正在定位...';
             navigator.geolocation.getCurrentPosition(function (position) {
                 self.location = position.coords.latitude + ',' + position.coords.longitude;
@@ -59,9 +61,15 @@ var comm = Vue.extend({
                     self.currentLocation = mapHelper.addPoint(self.map, newX, newY, './img/icon/position.png',{});
                 }.bind(this));
                 self.locationStatus = '定位成功!'
+                setTimeout(function () {
+                    self.locationTips = false;
+                },2000);
             }, function (error) {
                 self.location = error.message;
                 self.locationStatus = '定位失败!';
+                setTimeout(function () {
+                    self.locationTips = false;
+                },2000);
             });
 
         },

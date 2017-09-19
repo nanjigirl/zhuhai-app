@@ -51,7 +51,7 @@
     top:32%;
     right:0;
 }
-.opration-btn-group button{
+.opration-btn-group .el-button{
     display: block;
     margin:0 0 10px 0 !important;
     position: relative;
@@ -581,4 +581,9 @@ textarea:focus {
 .location-map{
     width: 100%;
     height:100%;
+}
+.location-show .el-popover{
+    left: -158px;
+    top: 6px;
+    color: #333;
 }
