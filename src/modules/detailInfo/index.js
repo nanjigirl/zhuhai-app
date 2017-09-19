@@ -135,6 +135,7 @@ var comm = Vue.extend({
         },
         locatePosition: function () {
             this.isLocated = !this.isLocated;
+            eventHelper.emit('create-amap');
         },
         openRecord: function () {
             this.voicesheetVisible=true;
@@ -194,10 +195,26 @@ var comm = Vue.extend({
                 this.setBtn = true;
             }
         }.bind(this));
-        this.map = mapHelper.getArcGISTiledMap('locateMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
-        this.map.on('load', function () {
-            mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, 'img/dirtyPipe.png', {facilityType: 'CP'});
+        eventHelper.on('create-amap',function () {
+            this.map = new AMap.Map('locateMap',
+                {
+                    resizeEnable: true,
+                    zoom:16,
+                    center: [113.333542,23.122644]
+                });
+            this.marker = new AMap.Marker({
+                icon:"./img/dirtyPipe.png",
+                position:new AMap.LngLat(113.333542,23.122644),
+                extData:{
+                    facilityType:'CP'
+                }
+            });
+            this.marker.setMap(this.map);
         }.bind(this));
+        // this.map = mapHelper.getArcGISTiledMap('locateMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
+        // this.map.on('load', function () {
+        //     mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, 'img/dirtyPipe.png', {facilityType: 'CP'});
+        // }.bind(this));
     },
     components: {
         'arcgis-plugin': arcgisPlugin
