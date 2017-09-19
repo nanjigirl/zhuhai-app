@@ -1,6 +1,7 @@
 var template = require('./content.html');
 var eventHelper = require('../../utils/eventHelper');
 var serviceHelper = require('services/serviceHelper');
+var approval = require('modules/approval');
 //加载地图组件
 var arcgisPlugin = require('modules/arcgisPlugin');
 var mapHelper = require('utils/mapHelper');
@@ -12,9 +13,7 @@ var comm = Vue.extend({
         return {
             reportQuestion:'./img/icon/icon-cloud.png',
             delOperation:false,
-            uploadImgs:[
-
-            ],
+            uploadImgs:[],
             status:'',
             facilityTitle:'',
             actions:[{
@@ -26,7 +25,6 @@ var comm = Vue.extend({
             }
             ],
             sheetVisible:false,
-
             voiceActions:[{
                 name:'普通话',
                 method:this.useLocalism1
@@ -39,16 +37,21 @@ var comm = Vue.extend({
             },
             ],
             voicesheetVisible:false,
-
             reqMsg: '',
             setBtn: false,
             dialogImageUrl: '',
             dialogVisible: false,
             infoArr:[],
-            isLocated: false
+            isLocated: false,
+            showApproval:false,
+            showCheckList:false,
+            checkList:[]
         }
     },
     methods: {
+        relateSp:function(){
+            this.showApproval = true;
+        },
         saveQuestion:function(){
            this.$toast({
                message:'保存成功！！'
@@ -72,7 +75,6 @@ var comm = Vue.extend({
         },
         returnMain: function () {
             eventHelper.emit('returnBack');
-            eventHelper.emit('change-menu','new-question');
         },
         addNewItem: function () {
             eventHelper.emit('setNormalQues', this.infoArr);
@@ -186,6 +188,9 @@ var comm = Vue.extend({
         },
     },
     mounted: function () {
+        eventHelper.on('returnDetail',function(){
+            this.showApproval = false;
+        }.bind(this));
         eventHelper.on('openDetailInfo', function (val) {
             if (!!val) {
                 this.init();
@@ -211,13 +216,14 @@ var comm = Vue.extend({
             });
             this.marker.setMap(this.map);
         }.bind(this));
-        // this.map = mapHelper.getArcGISTiledMap('locateMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
-        // this.map.on('load', function () {
-        //     mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, 'img/dirtyPipe.png', {facilityType: 'CP'});
-        // }.bind(this));
+        eventHelper.on('loadApproval',function(approvalList){
+            this.showCheckList = true;
+            this.checkList = approvalList;
+        }.bind(this));
     },
     components: {
-        'arcgis-plugin': arcgisPlugin
+        'arcgis-plugin': arcgisPlugin,
+        'approval':approval
     }
 });
 module.exports = comm;
