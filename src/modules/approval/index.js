@@ -11,7 +11,8 @@ var comm = Vue.extend({
             approvalList:[
                 {
                     title:'排水设计咨询意见审批',
-                    check:'选项一',
+                    check:'',
+                    open:true,
                     subList:[
                         '海珠区南边路38号自编3号',
                         '海珠区鹤洞大桥以南，南边路以西（原广州锌片厂）',
@@ -22,18 +23,22 @@ var comm = Vue.extend({
                 },{
                     title:'施工临时排水许可批准',
                     check:'',
+                    open:false,
                     subList:[]
                 },{
                     title:'排水接驳意见审批',
                     check:'',
+                    open:false,
                     subList:[]
                 },{
                     title:'水质检测审批',
                     check:'',
+                    open:false,
                     subList:[]
                 },{
                     title:'排水许可审批',
                     check:'',
+                    open:false,
                     subList:[]
                 }
             ]

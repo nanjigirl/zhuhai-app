@@ -3,14 +3,18 @@
       <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
       <mt-button slot="right" @click="returnMain">取消</mt-button>
    </mt-header>
-   <div class="content">
-      <yd-accordion accordion>
-         <yd-accordion-item v-for="item in approvalList" :title="item.title">
+   <div class="content checkRadio">
+      <yd-accordion>
+         <yd-accordion-item v-for="item in approvalList" :title="item.title" :open="item.open">
             <mt-radio
+                    v-show="!!item.subList.length"
                     align="right"
                     v-model="item.check"
                     :options="item.subList">
             </mt-radio>
+            <div style="padding: .24rem;text-align:center;" v-show="!item.subList.length">
+               无数据
+            </div>
          </yd-accordion-item>
       </yd-accordion>
    </div>
