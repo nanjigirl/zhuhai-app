@@ -32,14 +32,14 @@ var comm = Vue.extend({
                     radius : '50%',
                     center: ['50%', '50%'],
                     data:[
-                        {value:650, name:'路面'},
-                        {value:310, name:'雨水口'},
-                        {value:234, name:'各类检查井'},
-                        {value:135, name:'管道、渠箱'},
-                        {value:224, name:'边沟'},
-                        {value:335, name:'倒虹管'},
-                        {value:333, name:'排放口'},
-                        {value:312, name:'闸门、阀门、拍门'}
+                        {value:3, name:'路面'},
+                        {value:1, name:'雨水口'},
+                        // {value:234, name:'各类检查井'},
+                        // {value:135, name:'管道、渠箱'},
+                        // {value:224, name:'边沟'},
+                        // {value:335, name:'倒虹管'},
+                        // {value:333, name:'排放口'},
+                        // {value:312, name:'闸门、阀门、拍门'}
                     ],
                     itemStyle: {
                         emphasis: {
