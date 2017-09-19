@@ -1,6 +1,6 @@
 <div class="mainContent">
    <div class="work-top">
-      <img src="../../img/work-bannar.png" alt="">
+      <img :src="workBannerImg" alt="">
       <div class="cesc-tabbar">
          <div class="tab-item" v-for="item in topNavArr" @click="showSub(item.id)">
             <img class="tab-img" :src="item.img">

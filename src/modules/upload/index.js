@@ -4,7 +4,6 @@ var moduleController = require('controllers/moduleController');
 //加载地图组件
 var arcgisPlugin = require('modules/arcgisPlugin');
 var mapHelper = require('utils/mapHelper');
-var mapController = require('controllers/mapController');
 // 定义组件
 var comm = Vue.extend({
     template: template,
@@ -54,10 +53,11 @@ var comm = Vue.extend({
             navigator.geolocation.getCurrentPosition(function (position) {
                 self.location = position.coords.latitude + ',' + position.coords.longitude;
                 self.centerPoint = [position.coords.latitude, position.coords.longitude];
-                mapController.formatLocation(position.coords.longitude, position.coords.latitude, function (newX, newY) {
-                    mapHelper.setCenter(newX, newY, self.map, 10);
-                    self.currentLocation = mapHelper.addPoint(self.map, newX, newY, './img/icon/position.png',{});
-                }.bind(this));
+                self.map.setZoomAndCenter(14, [position.coords.longitude, position.coords.latitude]);
+                var marker = new AMap.Marker({
+                    icon:"./img/icon/position.png",
+                    position:new AMap.LngLat(position.coords.longitude, position.coords.latitude),
+                });
                 self.locationStatus = '定位成功!'
                 setTimeout(function () {
                     self.locationTips = false;
@@ -103,22 +103,59 @@ var comm = Vue.extend({
         }
     },
     mounted: function () {
+        var self =this;
         eventHelper.on('openUploadBtn', function () {
             this.showUpLoadBtn = true;
         }.bind(this));
-        this.map = mapHelper.getArcGISTiledMap('mainMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
-        this.map.on('load', function () {
-            mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, './img/dirtyPipe.png', {facilityType: 'CP'});
-        }.bind(this));
-        this.map.on('click', function (evt) {
-            if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
-                this.showUpLoadBtn = true;
-                eventHelper.emit('openUploadBtn');
-            } else if (!!this.isAddingPoint) {
-                mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, './img/dirtyPipe.png', {facilityType: 'CP'});
-                this.isAddingPoint = false;
+        self.map = new AMap.Map('mainMap',
+            {
+                resizeEnable: true,
+                zoom:16,
+                center: [113.333542,23.122644]
+            });
+        self.marker = new AMap.Marker({
+            icon:"./img/dirtyPipe.png",
+            position:new AMap.LngLat(113.333542,23.122644),
+            extData:{
+                facilityType:'CP'
             }
+        });
+        self.marker.setMap(self.map);  //在地图上添加点
+        self.marker.on('click',function (event) {
+            this.showUpLoadBtn = true;
+            eventHelper.emit('openUploadBtn');
+        });
+        self.map.on('click',function (event) {
+            console.log(event);
+             if (!!this.isAddingPoint) {
+                var marker = new AMap.Marker({
+                    icon:"./img/dirtyPipe.png",
+                    position:new AMap.LngLat(event.lnglat.lng,event.lnglat.lat),
+                    extData:{
+                        facilityType:'CP'
+                    }
+                });
+                marker.setMap(self.map);
+                this.isAddingPoint = false;
+                 marker.on('click',function (event) {
+                     this.showUpLoadBtn = true;
+                     eventHelper.emit('openUploadBtn');
+                 });
+             }
         }.bind(this));
+        // this.map = mapHelper.getArcGISTiledMap('mainMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
+        // this.map.on('load', function () {
+        //   mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, './img/dirtyPipe.png', {facilityType: 'CP'});
+        // }.bind(this));
+        // this.map.on('click', function (evt) {
+        //     if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
+        //         this.showUpLoadBtn = true;
+        //         eventHelper.emit('openUploadBtn');
+        //     } else if (!!this.isAddingPoint) {
+        //         mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, './img/dirtyPipe.png', {facilityType: 'CP'});
+        //         this.isAddingPoint = false;
+        //     }
+        // }.bind(this));
     },
     components: {
         'arcgis-plugin': arcgisPlugin
