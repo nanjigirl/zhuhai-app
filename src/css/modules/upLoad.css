@@ -51,7 +51,7 @@
     top:32%;
     right:0;
 }
-.opration-btn-group button{
+.opration-btn-group .el-button{
     display: block;
     margin:0 0 10px 0 !important;
     position: relative;
@@ -213,9 +213,9 @@ img[src=''] {
     margin-top: -0.35rem;
 }
 
-.cell-top .mint-cell-title > i{
-    font-size: 1.5em;
+.cell-top .mint-cell-title > img {
     vertical-align: middle;
+    display: inline-block;
 }
 
 .cell-right {
@@ -270,7 +270,7 @@ img[src=''] {
 
 .recordBox {
     width: 30%;
-    padding: 0.06rem 0;
+    padding: 0.5rem 0;
     text-align: center;
     margin: 0 auto;
 }
@@ -287,6 +287,8 @@ img[src=''] {
 }
 
 .content {
+    width: 100%;
+    height: calc(100% - 50px);
     margin-top: 40px;
     margin-bottom: 55px;
     overflow: auto;
@@ -404,10 +406,8 @@ img[src=''] {
 
 .tab-img {
     width: 0.8rem;
-    height:  0.8rem;
+    height: 0.8rem;
     display: inline-block;
-    font-size: 3.2em;
-    line-height: 1;
 }
 
 .tab-text {
@@ -483,7 +483,7 @@ img[src=''] {
 }
 
 .desc-item-container .yd-textarea textarea {
-    height: 2.8rem;
+    height: 3.5rem;
 }
 
 textarea:focus {
@@ -491,6 +491,7 @@ textarea:focus {
 }
 
 .commentBody {
+    min-height: calc(100% - 40px);
     background: #fff;
 }
 
@@ -530,7 +531,7 @@ textarea:focus {
 
 .commentImg {
     width: 90%;
-    margin: 0 auto 0.3rem;
+    margin: auto;
     border-radius: 0.2rem;
 }
 
@@ -543,7 +544,6 @@ textarea:focus {
     bottom: 0;
     padding: 0 0.5rem;
     color: #999;
-    z-index:10;
 }
 
 .commentContent .yd-cell-item:not(:last-child):after {
@@ -581,6 +581,11 @@ textarea:focus {
 .location-map{
     width: 100%;
     height:100%;
+}
+.location-show .el-popover{
+    left: -158px;
+    top: 6px;
+    color: #333;
 }
 .color-news{
     color: #019CE1;

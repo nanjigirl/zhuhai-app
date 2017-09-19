@@ -29,8 +29,13 @@
     <div class="opration-btn-group">
         <el-button type="primary" icon="edit" @click="addNewPoint"></el-button>
         <el-button type="primary" icon="search" @click="query"></el-button>
-        <button class="el-button el-button--primary" @click="locate">
+        <div class="el-button el-button--primary location-show" @click="locate">
             <i class="glyphicon glyphicon-record iconBg" ></i>
-        </button>
+            <div class="el-popover" x-placement="left" v-show="locationTips">
+                {{locationStatus}}
+                <div x-arrow="" class="popper__arrow" style="top: 4px;">
+                </div>
+            </div>
+        </div>
     </div>
 </div>
