@@ -208,7 +208,7 @@ var comm = Vue.extend({
                     center: [113.333542,23.122644]
                 });
             this.marker = new AMap.Marker({
-                icon:"./img/dirtyPipe.png",
+                icon:"./img/icon/pipe.png",
                 position:new AMap.LngLat(113.333542,23.122644),
                 extData:{
                     facilityType:'CP'
