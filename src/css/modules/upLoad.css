@@ -35,7 +35,7 @@
 }
 
 .has-border.cesc-tabbar {
-    border-top: 1px solid #058FD3;
+    border-top: 1px solid #fff;
     margin-top: .5rem;
 }
 
@@ -46,11 +46,22 @@
 .uploadContent .second.addNew {
     top: 41%;
 }
-
-.has-border.cesc-tabbar .tab-item-flex {
-    border-right: 1px solid #058FD3;;
+.opration-btn-group{
+    position: absolute;
+    top:32%;
+    right:0;
 }
-
+.opration-btn-group button{
+    display: block;
+    margin:0 0 10px 0 !important;
+    position: relative;
+}
+.has-border.cesc-tabbar .tab-item-flex {
+    border-right: 1px solid #fff;;
+}
+.has-border.cesc-tabbar .tab-item-flex:last-child{
+    border:none;
+}
 .search-container .inner-input {
     font-size: .32rem;
     position: absolute;
@@ -171,7 +182,14 @@ img[src=''] {
     position: absolute;
     bottom: 0;
 }
-
+.returnBtn {
+    width: 100%;
+    height: 40px;
+    background: #ECB000;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+}
 .upLoadBtn > img, .leftBtn > img, .rightBtn > img {
     width: 2.2em;
     height: 2.2em;
@@ -559,6 +577,10 @@ textarea:focus {
 
 .newsBody {
     margin-top: 40px;
+}
+.location-map{
+    width: 100%;
+    height:100%;
 }
 .color-news{
     color: #019CE1;

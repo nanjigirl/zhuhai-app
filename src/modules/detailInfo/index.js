@@ -26,6 +26,20 @@ var comm = Vue.extend({
             }
             ],
             sheetVisible:false,
+
+            voiceActions:[{
+                name:'普通话',
+                method:this.useLocalism1
+            },{
+                name:'粤语',
+                method:this.useLocalism2
+            },{
+                name:'四川话',
+                method:this.useLocalism3
+            },
+            ],
+            voicesheetVisible:false,
+
             reqMsg: '',
             setBtn: false,
             dialogImageUrl: '',
@@ -41,6 +55,7 @@ var comm = Vue.extend({
            });
         },
         uploadQuestion:function () {
+            reqMsg='';
             this.$toast({
                 message:'提交成功！！'
             });
@@ -122,18 +137,52 @@ var comm = Vue.extend({
             this.isLocated = !this.isLocated;
         },
         openRecord: function () {
+            this.voicesheetVisible=true;
+        },
+
+        //普通话：mandarin 粤 语：cantonese 四川话：lmz
+        useLocalism1:function () {
+            this.voicesheetVisible=false;
             var self = this;
             this.$toast({
                 message: '正在识别语音',
                 position: 'middle',
                 duration: 1000
             });
-            cordova.plugins.TransformVoiceToText.transform("aaa", function (msg) {
+            cordova.plugins.TransformVoiceToText.transform("mandarin", function (msg) {
                 self.reqMsg = self.reqMsg + msg;
             }, function (err) {
                 self.reqMsg = self.reqMsg + err;
             });
-        }
+        },
+        useLocalism2:function () {
+            this.voicesheetVisible=false;
+            var self = this;
+            this.$toast({
+                message: '正在识别语音',
+                position: 'middle',
+                duration: 1000
+            });
+            cordova.plugins.TransformVoiceToText.transform("cantonese", function (msg) {
+                self.reqMsg = self.reqMsg + msg;
+            }, function (err) {
+                self.reqMsg = self.reqMsg + err;
+            });
+        },
+        useLocalism3:function () {
+            this.voicesheetVisible=false;
+            var self = this;
+            this.$toast({
+                message: '正在识别语音',
+                position: 'middle',
+                duration: 1000
+            });
+            cordova.plugins.TransformVoiceToText.transform("lmz", function (msg) {
+                self.reqMsg = self.reqMsg + msg;
+            }, function (err) {
+                self.reqMsg = self.reqMsg + err;
+            });
+        },
     },
     mounted: function () {
         eventHelper.on('openDetailInfo', function (val) {

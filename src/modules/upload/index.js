@@ -4,12 +4,13 @@ var moduleController = require('controllers/moduleController');
 //加载地图组件
 var arcgisPlugin = require('modules/arcgisPlugin');
 var mapHelper = require('utils/mapHelper');
-
+var mapController = require('controllers/mapController');
 // 定义组件
 var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            locationStatus:'',
             dialogFormVisible: false,
             reportQuestion: './img/icon/icon-cloud.png',
             searchInput: '',
@@ -41,6 +42,27 @@ var comm = Vue.extend({
     //     }
     // },
     methods: {
+        locate: function () {
+            var self = this;
+            if (!!this.currentLocation) {
+                this.currentLocation.clear();
+            }
+            self.location = '正在定位....';
+            self.locationStatus = '正在定位...';
+            navigator.geolocation.getCurrentPosition(function (position) {
+                self.location = position.coords.latitude + ',' + position.coords.longitude;
+                self.centerPoint = [position.coords.latitude, position.coords.longitude];
+                mapController.formatLocation(position.coords.longitude, position.coords.latitude, function (newX, newY) {
+                    mapHelper.setCenter(newX, newY, self.map, 10);
+                    self.currentLocation = mapHelper.addPoint(self.map, newX, newY, './img/icon/position.png',{});
+                }.bind(this));
+                self.locationStatus = '定位成功!'
+            }, function (error) {
+                self.location = error.message;
+                self.locationStatus = '定位失败!';
+            });
+
+        },
         addNewPoint: function () {
             this.$toast({
                 message: '请点击问题点',

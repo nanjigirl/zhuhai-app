@@ -12,7 +12,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            selected:'work',
+            selected:'upload',
             showUpLoadBtn:false,
             showMain:true,
             showSubId:'',

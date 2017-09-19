@@ -1,9 +1,13 @@
-.analyze-box{
+.analyze-box-top{
     margin-top:40px;
     width: 100%;
     height:50%;
     text-align: center;
-    border:1px solid #FF8C00;
+}
+.analyze-box-bottom{
+    width: 100%;
+    height:50%;
+    text-align: center;
 }
 .analyze-title{
     height: 30px;
@@ -11,7 +15,6 @@
     text-align: center;
     color: #26a2ff;
     background:#fff;
-    border-bottom:1px solid #FF8C00;
     position: relative;
 }
 .title-date{

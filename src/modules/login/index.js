@@ -30,17 +30,18 @@ var comm = Vue.extend({
         }
     },
     mounted: function () {
+        this.login();
         // var cache = window.sessionStorage.getItem('cescToken');
-        var cache = '1234567';
-        if (!!cache) {
-            this.$nextTick(function () {
-                loginCtrl.setToken(cache);
-                eventHelper.emit('loading-end');
-                eventHelper.emit('loginSuccess', cache);
-                console.log('Login Success:', cache);
-                this.loginComplete = true;
-            }.bind(this));
-        }
+        // var cache = '1234567';
+        // if (!!cache) {
+        //     this.$nextTick(function () {
+        //         loginCtrl.setToken(cache);
+        //         eventHelper.emit('loading-end');
+        //         eventHelper.emit('loginSuccess', cache);
+        //         console.log('Login Success:', cache);
+        //         this.loginComplete = true;
+        //     }.bind(this));
+        // }
         /* if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0) {
          $('input:not(input[type=submit])').each(function(){
          var outHtml = this.outerHTML;
