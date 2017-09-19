@@ -84,7 +84,11 @@ var comm = Vue.extend({
                             var address = result.regeocode.addressComponent;
                             this.location = x + ',' + y;
                             self.address = address.city + address.district + address.township + address.street + address.streetNumber;
-                            eventHelper.emit('get-current-address',self.address);
+                            var item ={};
+                            item.address = self.address;
+                            item.x = x;
+                            item.y = y;
+                            eventHelper.emit('get-current-address',item);
                             console.log(self.address)
                         } else {
                             this.location = '无法获取地址';
