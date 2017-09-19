@@ -1,99 +1,118 @@
 <div class="mainContent">
-   <mt-actionsheet
-           :actions="actions"
-           v-model="sheetVisible"
-           :closeOnClickModal="false">
-   </mt-actionsheet>
-   <mt-actionsheet
-           :actions="voiceActions"
-           v-model="voicesheetVisible"
-           >
-   </mt-actionsheet>
-   <mt-header title="新增问题" fixed>
-      <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
-      <mt-button slot="right" @click="returnMain">取消</mt-button>
-   </mt-header>
-   <div class="content">
-       <div class="location-map"  v-show="isLocated">
-           <div id="locateMap" style="height:calc(100% - 40px);width: 100%;"></div>
-           <div class="returnBtn" @click="isLocated = false">
+   <div class="mainContent" v-show="!showApproval">
+      <mt-actionsheet
+              :actions="actions"
+              v-model="sheetVisible"
+              :closeOnClickModal="false">
+      </mt-actionsheet>
+      <mt-actionsheet
+              :actions="voiceActions"
+              v-model="voicesheetVisible"
+      >
+      </mt-actionsheet>
+      <mt-header title="新增问题" fixed>
+         <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
+         <mt-button slot="right" @click="returnMain">取消</mt-button>
+      </mt-header>
+      <div class="content">
+         <div class="location-map"  v-show="isLocated">
+            <div id="locateMap" style="height:calc(100% - 40px);width: 100%;"></div>
+            <div class="returnBtn" @click="isLocated = false">
                <span class="upload-text">返回</span>
-           </div>
-       </div>
-       <div v-show="!isLocated">
-          <yd-cell-group>
-             <yd-cell-item>
-                <span slot="left">问题类型：</span>
-                <input slot="right" type="text" placeholder="请输入问题" v-model="infoArr.title">
-                <el-button slot="right" v-show="setBtn" type="primary" size="small" @click="addNewItem">设为常见问题</el-button>
-             </yd-cell-item>
-             <yd-cell-item>
-                <span slot="left">地点：</span>
-                <input slot="right" type="text" placeholder="请输入地址">
-                <span slot="right" class="locationBtn" @click="locatePosition"><img src="../../img/icon/icon-location.png" width="24" height="24"><span>重新定位</span></span>
-             </yd-cell-item>
-             <yd-cell-item>
-                <span slot="left">解决方案：</span>
-                <input slot="right" type="text" placeholder="请输入" v-model="infoArr.solution">
-             </yd-cell-item>
-          </yd-cell-group>
-          <a class="mint-cell cell-top cell-sp">
-             <div class="mint-cell-wrapper">
-                <div class="mint-cell-title">
-                   <i class="icon iconfont icon-miaoshuxiangqing"></i>
-                   <span class="mint-cell-text">问题详情描述</span>
-                   <!--<img class="pull-right" @click="openRecord" src="../../img/icon/icon-record.png" width="24" height="24">-->
-                </div>
-             </div>
-          </a>
-          <yd-cell-group>
-             <div class="yd-cell-item cell-item-sp desc-item-container">
-                <div class="yd-cell-right">
-                   <div class="yd-textarea">
-                      <textarea placeholder="添加文字说明" rows="5" v-model="reqMsg"></textarea>
-                   </div>
-                </div>
-             </div>
-             <div class="yd-cell-item">
-                <div class="recordBox" @click="openRecord">
-                   <img src="../../img/icon/icon-record.png">
-                   <span class="record-text">长按录音</span>
-                </div>
-             </div>
-          </yd-cell-group>
-          <a class="mint-cell cell-top cell-sp">
-             <div class="mint-cell-wrapper">
-                <div class="mint-cell-title">
-                   <i class="icon iconfont icon-tupian"></i>
-                   <span class="mint-cell-text">拍照上传</span>
-                </div>
-             </div>
-          </a>
-          <yd-cell-group>
-             <div class="yd-cell-item clearfix">
-                <div class="upload-img-area">
-                   <div class="image-container" v-for="(uploadImg,index) in uploadImgs">
-                      <img :src="uploadImg.facilityImageUri" @click="showDelOperation(index)">
-                      <span class="el-upload-list__item-actions upload-mask" v-show="uploadImg.showDelOperation">
+            </div>
+         </div>
+         <div v-show="!isLocated">
+            <yd-cell-group>
+               <yd-cell-item>
+                  <span slot="left">问题类型：</span>
+                  <input slot="right" type="text" placeholder="请输入问题" v-model="infoArr.title">
+                  <el-button slot="right" v-show="setBtn" type="primary" size="small" @click="addNewItem">设为常见问题</el-button>
+               </yd-cell-item>
+               <yd-cell-item>
+                  <span slot="left">地点：</span>
+                  <input slot="right" type="text" placeholder="请输入地址">
+                  <span slot="right" class="locationBtn" @click="locatePosition"><img src="../../img/icon/icon-location.png" width="24" height="24"><span>重新定位</span></span>
+               </yd-cell-item>
+               <yd-cell-item>
+                  <span slot="left">解决方案：</span>
+                  <input slot="right" type="text" placeholder="请输入" v-model="infoArr.solution">
+               </yd-cell-item>
+               <yd-cell-item>
+                  <span slot="left">关联审批</span>
+                  <el-button slot="right" type="primary" size="small" @click="relateSp">关联审批</el-button>
+               </yd-cell-item>
+               <yd-cell-item v-show="showCheckList">
+                  <div slot="left" class="info-subText">
+                     <p class="item-text" v-for="item in checkList">
+                        <span>{{item.title}}</span>
+                     </p>
+                  </div>
+                  <div slot="right" class="info-subText">
+                     <p class="item-text" v-for="item in checkList">
+                        <i class="icon iconfont" :class="[item.check?'icon-correct':'icon-guanbi']"></i>
+                     </p>
+                  </div>
+               </yd-cell-item>
+            </yd-cell-group>
+            <a class="mint-cell cell-top cell-sp">
+               <div class="mint-cell-wrapper">
+                  <div class="mint-cell-title">
+                     <i class="icon iconfont icon-miaoshuxiangqing"></i>
+                     <span class="mint-cell-text">问题详情描述</span>
+                     <!--<img class="pull-right" @click="openRecord" src="../../img/icon/icon-record.png" width="24" height="24">-->
+                  </div>
+               </div>
+            </a>
+            <yd-cell-group>
+               <div class="yd-cell-item cell-item-sp desc-item-container">
+                  <div class="yd-cell-right">
+                     <div class="yd-textarea">
+                        <textarea placeholder="添加文字说明" rows="5" v-model="reqMsg"></textarea>
+                     </div>
+                  </div>
+               </div>
+               <div class="yd-cell-item">
+                  <div class="recordBox" @click="openRecord">
+                     <img src="../../img/icon/icon-record.png">
+                     <span class="record-text">长按录音</span>
+                  </div>
+               </div>
+            </yd-cell-group>
+            <a class="mint-cell cell-top cell-sp">
+               <div class="mint-cell-wrapper">
+                  <div class="mint-cell-title">
+                     <i class="icon iconfont icon-tupian"></i>
+                     <span class="mint-cell-text">拍照上传</span>
+                  </div>
+               </div>
+            </a>
+            <yd-cell-group>
+               <div class="yd-cell-item clearfix">
+                  <div class="upload-img-area">
+                     <div class="image-container" v-for="(uploadImg,index) in uploadImgs">
+                        <img :src="uploadImg.facilityImageUri" @click="showDelOperation(index)">
+                        <span class="el-upload-list__item-actions upload-mask" v-show="uploadImg.showDelOperation">
                             <i class="el-icon-delete mgt-20"  @click="deleteFacilityImage(index)"></i>
                       </span>
-                   </div>
-                   <div class="el-upload el-upload--picture-card" @click="openActionSheet" v-show="uploadImgs.length<6">
-                      <i class="el-icon-plus"></i>
-                   </div>
-                </div>
-             </div>
-          </yd-cell-group>
-     </div>
-   </div>
-   <div class="btnBox clearfix">
-      <div class="leftBtn" @click="saveQuestion">
-         <img src="../../img/icon/icon-save.png" alt="">
-         <span class="upload-text">保存问题</span>
+                     </div>
+                     <div class="el-upload el-upload--picture-card" @click="openActionSheet" v-show="uploadImgs.length<6">
+                        <i class="el-icon-plus"></i>
+                     </div>
+                  </div>
+               </div>
+            </yd-cell-group>
+         </div>
       </div>
-      <div class="rightBtn" @click="uploadQuestion">
-         <img :src="reportQuestion" alt="">
-         <span class="upload-text">上报问题</span>
+      <div class="btnBox clearfix">
+         <div class="leftBtn" @click="saveQuestion">
+            <img src="../../img/icon/icon-save.png" alt="">
+            <span class="upload-text">保存问题</span>
+         </div>
+         <div class="rightBtn" @click="uploadQuestion">
+            <img :src="reportQuestion" alt="">
+            <span class="upload-text">上报问题</span>
+         </div>
       </div>
    </div>
+   <approval v-show="showApproval"></approval>
 </div>
