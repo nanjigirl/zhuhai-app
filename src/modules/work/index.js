@@ -33,8 +33,8 @@ var comm = Vue.extend({
                     text: '新闻中心'
                 }, {
                     id: 'zdgz',
-                    class:'icon-dongtai color-dongtai',
-                    text: '工作动态'
+                    class:'icon-falvfagui color-dongtai',
+                    text: '法律法规'
                 }, {
                     id: 'tszs',
                     class:'icon-gonggao color-gonggao',
