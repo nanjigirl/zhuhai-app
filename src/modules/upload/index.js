@@ -9,8 +9,8 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            locationTips:false,
-            locationStatus:'',
+            locationTips: false,
+            locationStatus: '',
             dialogFormVisible: false,
             reportQuestion: './img/icon/icon-cloud.png',
             searchInput: '',
@@ -53,7 +53,7 @@ var comm = Vue.extend({
                     buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
                     zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
                     buttonPosition: 'LT',
-                    showButton:false,
+                    showButton: false,
                 });
                 // self.map.addControl(geolocation);
                 geolocation.getCurrentPosition();
@@ -62,34 +62,34 @@ var comm = Vue.extend({
                 });
                 AMap.event.addListener(geolocation, 'error', function () {
                     self.locationStatus = '定位失败!';
-                        setTimeout(function () {
-                            self.locationTips = false;
-                        },2000);
+                    setTimeout(function () {
+                        self.locationTips = false;
+                    }, 2000);
 
                 }.bind(this));      //返回定位出错信息
                 AMap.event.addListener(geolocation, 'complete', function (data) {
                     var x = data.position.getLng();
                     var y = data.position.getLat();
-                    geocoder.getAddress([x,y], function (status, result) {
+                    geocoder.getAddress([x, y], function (status, result) {
                         if (status == 'complete') {
                             self.map.setZoomAndCenter(16, [x, y]);
                             var marker = new AMap.Marker({
-                                icon:"./img/icon/position.png",
-                                position:new AMap.LngLat(x, y),
+                                icon: "./img/icon/position.png",
+                                position: new AMap.LngLat(x, y),
                             });
                             marker.setMap(self.map);
                             self.locationStatus = '定位成功!'
                             setTimeout(function () {
                                 self.locationTips = false;
-                            },2000);
+                            }, 2000);
                             var address = result.regeocode.addressComponent;
                             this.location = x + ',' + y;
                             self.address = address.city + address.district + address.township + address.street + address.streetNumber;
-                            var item ={};
+                            var item = {};
                             item.address = self.address;
                             item.x = x;
                             item.y = y;
-                            eventHelper.emit('get-current-address',item);
+                            eventHelper.emit('get-current-address', item);
                             console.log(self.address)
                         } else {
                             this.location = '无法获取地址';
@@ -131,11 +131,14 @@ var comm = Vue.extend({
         }
     },
     mounted: function () {
-        var self =this;
+        var self = this;
         eventHelper.on('openUploadBtn', function () {
             this.showUpLoadBtn = true;
         }.bind(this));
-        self.map = mapHelper.initGaoDeServer('mainMap',113.333542,23.122644,16);
+        self.map = mapHelper.initGaoDeServer('mainMap', '', 113.333542, 23.122644, 14);
+        /*     setTimeout(function () {
+         mapHelper.setCenter(113.333542,23.122644,self.map,10);
+         },1000);*/
         // self.map = new AMap.Map('mainMap',
         //     {
         //         resizeEnable: true,
@@ -160,37 +163,37 @@ var comm = Vue.extend({
         //     getTileUrl: 'http://112.74.51.12:6080/arcgis/rest/services/gzpsfacility_GaoDe_WGS/MapServer'
         // });
         // mapServerLayer.setMap(self.map);
-        self.map.on('click',function (event) {
-            console.log(event);
-             if (!!this.isAddingPoint) {
-                var marker = new AMap.Marker({
-                    icon:"./img/icon/pipe.png",
-                    position:new AMap.LngLat(event.lnglat.lng,event.lnglat.lat),
-                    extData:{
-                        facilityType:'CP'
-                    }
-                });
-                marker.setMap(self.map);
-                this.isAddingPoint = false;
-                 marker.on('click',function (event) {
-                     this.showUpLoadBtn = true;
-                     eventHelper.emit('openUploadBtn');
-                 });
-             }
-        }.bind(this));
+        /*        self.map.on('click',function (event) {
+         console.log(event);
+         if (!!this.isAddingPoint) {
+         var marker = new AMap.Marker({
+         icon:"./img/icon/pipe.png",
+         position:new AMap.LngLat(event.lnglat.lng,event.lnglat.lat),
+         extData:{
+         facilityType:'CP'
+         }
+         });
+         marker.setMap(self.map);
+         this.isAddingPoint = false;
+         marker.on('click',function (event) {
+         this.showUpLoadBtn = true;
+         eventHelper.emit('openUploadBtn');
+         });
+         }
+         }.bind(this));*/
         // this.map = mapHelper.getArcGISTiledMap('mainMap', 'http://10.194.148.18:6080/arcgis/rest/services/guangzhoumap_gz/MapServer');
         // this.map.on('load', function () {
         //   mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, './img/dirtyPipe.png', {facilityType: 'CP'});
         // }.bind(this));
-        // this.map.on('click', function (evt) {
-        //     if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
-        //         this.showUpLoadBtn = true;
-        //         eventHelper.emit('openUploadBtn');
-        //     } else if (!!this.isAddingPoint) {
-        //         mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, './img/dirtyPipe.png', {facilityType: 'CP'});
-        //         this.isAddingPoint = false;
-        //     }
-        // }.bind(this));
+        this.map.on('click', function (evt) {
+            if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
+                this.showUpLoadBtn = true;
+                eventHelper.emit('openUploadBtn');
+            } else if (!!this.isAddingPoint) {
+                mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, './img/dirtyPipe.png', {facilityType: 'CP'});
+                this.isAddingPoint = false;
+            }
+        }.bind(this));
     },
     components: {
         'arcgis-plugin': arcgisPlugin

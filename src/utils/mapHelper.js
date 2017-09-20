@@ -33,25 +33,21 @@ define(function () {
         /**
          * 天地图WMTS
          **/
-        initGaoDeServer: function (container,layerURL, centerX, centerY, zoom) {//传入地图图层服务路径以及中心点位置
+        initGaoDeServer: function (container, layerURL, centerX, centerY, zoom) {//传入地图图层服务路径以及中心点位置
             map = new Map(container, {
                 center: [centerX, centerY],
                 zoom: zoom
             });
-            window.cesc.map = map;
-            var basemap = new GaoDeLayer();//基本地图图层
-            //var tomcatLayer = new TomcatLayer({url:'http://172.17.5.150:8080/shenzhen/ArcgisServerTiles/_alllayers'});
-            //console.log(tomcatLayer);
-            //map.addLayer(tomcatLayer);
-            //console.log(basemap);
-            map.addLayer(basemap);
-            // /
-            // var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6, id: '1234'});
-            // map.addLayer(labels);
             map.on('click', function (event) {
                 console.log(event);
             });
-            map.on('update-end', function () {
+            var basemap = new GaoDeLayer();//基本地图图层
+            map.addLayer(basemap);
+
+            var pipeLayer = new ArcGISDynamicMapServiceLayer('http://112.74.51.12:6080/arcgis/rest/services/gzpsfacility_GaoDe_WGS/MapServer');
+            map.addLayer(pipeLayer);
+
+            map.on('load', function () {
                 console.log('地图加载完毕！');
             });
             return map;
@@ -267,12 +263,12 @@ define(function () {
         },
         addPoint: function (map, x, y, imgURL, attribute) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, 15, 15);
-            var point = new Point(x, y);
+            var point = new Point(x, y, {"wkid": 3857});
             var graphic = new Graphic(point, pictureMarkerSymbol);
             graphic.attributes = attribute;
             map.graphics.add(graphic);
         },
-        addPointAndName: function (map, x, y, imgURL, iconWidth,iconHeight,hideName,attribute) {
+        addPointAndName: function (map, x, y, imgURL, iconWidth, iconHeight, hideName, attribute) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, iconWidth, iconWidth);
             var point = new Point(x, y);
             var graphic = new Graphic(point, pictureMarkerSymbol);
@@ -284,7 +280,7 @@ define(function () {
             textSymbol.setOffset(0, -20);
             map.graphics.add(graphic);
             var graphic1 = new Graphic(point, textSymbol);
-            if(!!hideName){
+            if (!!hideName) {
                 map.graphics.add(graphic1);
             }
         },
