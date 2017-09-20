@@ -49,7 +49,7 @@ var comm = Vue.extend({
                             title:'违章占压',
                             solution:'执法'
                         },{
-                            title:'接管',
+                            title:'无证施工',
                             solution:'执法'
                         },{
                             title:'井壁结垢',
@@ -86,7 +86,7 @@ var comm = Vue.extend({
                             title:'违章占压',
                             solution:'执法'
                         },{
-                            title:'接管',
+                            title:'无证施工',
                             solution:'执法'
                         },{
                             title:'井壁结垢',
@@ -130,7 +130,7 @@ var comm = Vue.extend({
                             title:'违章占压',
                             solution:'执法'
                         },{
-                            title:'接管',
+                            title:'无证施工',
                             solution:'执法'
                         },{
                             title:'边坡稳定',
