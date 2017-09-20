@@ -1,0 +1,15 @@
+<div class="mainContent">
+   <mt-header title="法律法规" fixed>
+      <mt-button icon="back" slot="left" @click="returnHome">返回</mt-button>
+   </mt-header>
+   <div class="newsBody">
+      <div class="newsBox">
+         <ul class="law-box" v-for="law in laws">
+            <li class="law-title">{{law.title}}</li>
+            <li class="desc-title">{{law.desc}}</li>
+            <li class="law-content">{{law.content}}</li>
+         </ul>
+
+      </div>
+   </div>
+</div>

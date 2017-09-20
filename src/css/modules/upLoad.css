@@ -609,3 +609,20 @@ textarea:focus {
     line-height: 1;
     font-size: 2.4em;
 }
+.law-title{
+    font-size: .3rem;
+    line-height: 30px;
+    border-bottom: 1px solid #ddd;
+}
+.law-box + .law-box{
+    margin-top:15px;
+}
+.desc-title{
+    padding: 10px;
+    font-weight: bold;
+    color: rgb(38,162,255);
+}
+.law-content{
+    text-align: justify;
+    text-indent: 2em;
+}

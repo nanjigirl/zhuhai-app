@@ -6,6 +6,7 @@ var draftDetail = require('modules/draftDetail');
 var uploadDetail = require('modules/uploadDetail');
 var entrance = require('modules/entrance');
 var newQuestion = require('modules/newQuestion');
+var law = require('modules/law');
 
 // 定义组件
 var comm = Vue.extend({
@@ -77,7 +78,8 @@ var comm = Vue.extend({
         'draft-detail':draftDetail,
         'upload-detail':uploadDetail,
         'entrance':entrance,
-        'new-question':newQuestion
+        'new-question':newQuestion,
+        'law':law
     }
 });
 module.exports = comm;

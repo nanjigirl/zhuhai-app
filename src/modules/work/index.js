@@ -34,7 +34,7 @@ var comm = Vue.extend({
                 }, {
                     id: 'zdgz',
                     class:'icon-dongtai color-dongtai',
-                    text: '工作动态'
+                    text: '法律法规'
                 }, {
                     id: 'tszs',
                     class:'icon-gonggao color-gonggao',
@@ -78,7 +78,7 @@ var comm = Vue.extend({
             if (subId === 'upload') {
                 eventHelper.emit('change-menu', subId);
                 eventHelper.emit('toggleTabClass', subId);
-            } else if (subId === 'zcfg' || subId === 'tszs' || subId === 'zdgz') {
+            } else if (subId === 'zcfg' || subId === 'tszs') {
                 return;
             } else {
                 eventHelper.emit('openSub', subId);

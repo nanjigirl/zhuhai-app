@@ -10,6 +10,7 @@
         </mt-tabbar>
     </div>
     <news-center v-show="!showMain && showSubId === 'xwdt'"></news-center>
+    <law v-show="!showMain && showSubId === 'zdgz'"></law>
     <comment v-show="!showMain && showSubId === 'comment'"></comment>
     <draft-detail v-show="!showMain && showSubId === 'bdcg'"></draft-detail>
     <upload-detail v-show="!showMain && showSubId === 'wdsb' || !showMain && showSubId === 'trsb'"></upload-detail>
