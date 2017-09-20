@@ -622,6 +622,10 @@ textarea:focus {
     font-weight: bold;
     color: rgb(38,162,255);
 }
+.desc-title1{
+    font-weight: bold;
+    color: rgb(38,162,255);
+}
 .law-content{
     text-align: justify;
     text-indent: 2em;
