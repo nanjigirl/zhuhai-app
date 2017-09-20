@@ -185,15 +185,15 @@ var comm = Vue.extend({
         // this.map.on('load', function () {
         //   mapHelper.addPoint(this.map, 39366.73260040782, 29446.950962383147, './img/dirtyPipe.png', {facilityType: 'CP'});
         // }.bind(this));
-        // this.map.on('click', function (evt) {
-        //     if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
-        //         this.showUpLoadBtn = true;
-        //         eventHelper.emit('openUploadBtn');
-        //     } else if (!!this.isAddingPoint) {
-        //         mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, './img/dirtyPipe.png', {facilityType: 'CP'});
-        //         this.isAddingPoint = false;
-        //     }
-        // }.bind(this));
+        this.map.on('click', function (evt) {
+            if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
+                this.showUpLoadBtn = true;
+                eventHelper.emit('openUploadBtn');
+            } else if (!!this.isAddingPoint) {
+                mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, './img/dirtyPipe.png', {facilityType: 'CP'});
+                this.isAddingPoint = false;
+            }
+        }.bind(this));
     },
     components: {
         'arcgis-plugin': arcgisPlugin
