@@ -5,6 +5,7 @@ define(function () {
         ArcGISDynamicMapServiceLayer = cesc.require('esri/layers/ArcGISDynamicMapServiceLayer'),
         TDTAnnoLayer = require('modules/arcgisPlugin/plugin/arcgisExpand/TDTAnnoLayer'),
         TDTLayer = require('modules/arcgisPlugin/plugin/arcgisExpand/TDTLayer'),
+        GaoDeLayer = require('modules/arcgisPlugin/plugin/arcgisExpand/gaodeLayer'),
         Point = cesc.require('esri/geometry/Point'),
         Extent = cesc.require("esri/geometry/Extent"),
         SpatialReference = cesc.require('esri/SpatialReference'),
@@ -32,30 +33,26 @@ define(function () {
         /**
          * 天地图WMTS
          **/
-        initTDWmtsServer: function (layerURL, centerX, centerY, zoom) {//传入地图图层服务路径以及中心点位置
-            map = new Map("mapDiv", {
+        initGaoDeServer: function (container,layerURL, centerX, centerY, zoom) {//传入地图图层服务路径以及中心点位置
+            map = new Map(container, {
                 center: [centerX, centerY],
                 zoom: zoom
             });
             window.cesc.map = map;
-            var basemap = new TDTLayer();//基本地图图层
+            var basemap = new GaoDeLayer();//基本地图图层
             //var tomcatLayer = new TomcatLayer({url:'http://172.17.5.150:8080/shenzhen/ArcgisServerTiles/_alllayers'});
             //console.log(tomcatLayer);
             //map.addLayer(tomcatLayer);
             //console.log(basemap);
             map.addLayer(basemap);
-            var annolayer = new TDTAnnoLayer();//文字注解图层
-            map.addLayer(annolayer);
-            var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6, id: '1234'});
-            map.addLayer(labels);
+            // /
+            // var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6, id: '1234'});
+            // map.addLayer(labels);
             map.on('click', function (event) {
                 console.log(event);
             });
             map.on('update-end', function () {
                 console.log('地图加载完毕！');
-            });
-            labels.on('update-end', function () {
-                console.log('地图图层加载完毕！');
             });
             return map;
         },

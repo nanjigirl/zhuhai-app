@@ -135,24 +135,31 @@ var comm = Vue.extend({
         eventHelper.on('openUploadBtn', function () {
             this.showUpLoadBtn = true;
         }.bind(this));
-        self.map = new AMap.Map('mainMap',
-            {
-                resizeEnable: true,
-                zoom:16,
-                center: [113.333542,23.122644]
-            });
-        self.marker = new AMap.Marker({
-            icon: "./img/icon/pipe.png",
-            position:new AMap.LngLat(113.333542,23.122644),
-            extData:{
-                facilityType:'CP'
-            }
-        });
-        self.marker.setMap(self.map);  //在地图上添加点
-        self.marker.on('click',function (event) {
-            this.showUpLoadBtn = true;
-            eventHelper.emit('openUploadBtn');
-        });
+        self.map = mapHelper.initGaoDeServer('mainMap',113.333542,23.122644,16);
+        // self.map = new AMap.Map('mainMap',
+        //     {
+        //         resizeEnable: true,
+        //         zoom:16,
+        //         center: [113.333542,23.122644]
+        //     });
+        // self.marker = new AMap.Marker({
+        //     icon: "./img/icon/pipe.png",
+        //     position:new AMap.LngLat(113.333542,23.122644),
+        //     extData:{
+        //         facilityType:'CP'
+        //     }
+        // });
+        // self.marker.setMap(self.map);  //在地图上添加点
+        // self.marker.on('click',function (event) {
+        //     this.showUpLoadBtn = true;
+        //     eventHelper.emit('openUploadBtn');
+        // });
+
+        // var mapServerLayer = new AMap.TileLayer({
+        //     zIndex:2,
+        //     getTileUrl: 'http://112.74.51.12:6080/arcgis/rest/services/gzpsfacility_GaoDe_WGS/MapServer'
+        // });
+        // mapServerLayer.setMap(self.map);
         self.map.on('click',function (event) {
             console.log(event);
              if (!!this.isAddingPoint) {
