@@ -8,7 +8,8 @@ var entrance = require('modules/entrance');
 var newQuestion = require('modules/newQuestion');
 var law = require('modules/law');
 const waterQualityInfo = require('modules/waterQualityInfo');
-
+const riversList = require('modules/riversList');
+const hezhangList = require('modules/hezhangList');
 // 定义组件
 var comm = Vue.extend({
     template: template,
@@ -81,7 +82,9 @@ var comm = Vue.extend({
         'entrance':entrance,
         'new-question':newQuestion,
         'law':law,
-        'water-quality-info':waterQualityInfo
+        'water-quality-info':waterQualityInfo,
+        'riversList':riversList,
+        'hezhangList':hezhangList,
     }
 });
 module.exports = comm;

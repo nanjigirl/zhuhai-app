@@ -47,7 +47,15 @@ var comm = Vue.extend({
                     id: 'szxx',
                     class:'icon-shuizhixinxi color-szxx',
                     text: '水质信息'
-                }
+                },{
+                    id: 'hhml',
+                    class:'icon-hehuminglu color-news',
+                    text: '河湖名录'
+                }, {
+                    id: 'hzml',
+                    class:'icon-hzcard color-dongtai',
+                    text: '河长名录'
+                },
             ],
             questionList: [
                 {

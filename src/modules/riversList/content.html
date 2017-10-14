@@ -1,0 +1,34 @@
+<div class="mainContent">
+   <div class="mainContent" v-show="!showRiversListSecond">
+      <mt-header title="河湖名录" fixed>
+         <mt-button icon="back" slot="left" @click="returnHome">返回</mt-button>
+      </mt-header>
+      <div class="newsBody cesc-mb-form clearfix">
+         <div class="cesc-hh">
+            <yd-cell-group>
+               <yd-cell-item>
+                  <yd-input slot="right" v-model="hzName" max="20" placeholder="河涌信息"></yd-input>
+               </yd-cell-item>
+            </yd-cell-group>
+            <el-select v-model="gzArea" placeholder="请选择区">
+               <el-option
+                       v-for="item in gzAreas"
+                       :key="item.value"
+                       :label="item.label"
+                       :value="item.value">
+               </el-option>
+            </el-select>
+            <yd-button-group>
+               <yd-button size="large">查询</yd-button>
+            </yd-button-group>
+         </div>
+         <div class="river-list" v-for="(item,index) in riversList" @click="openrRiversListInfo(item,index)">
+            <div class="data-list-msg">
+               <p class="riverTitle">{{item.title}}</p>
+               <p class="riverTitle float-right">{{item.area}}&nbsp;<i class="el-icon-arrow-right"></i></p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <rivers-list-second v-show="showRiversListSecond"></rivers-list-second>
+</div>

@@ -1,0 +1,16 @@
+<div class="mainContent">
+   <div class="mainContent" v-show="!showRiversListDetail">
+      <mt-header title="河段列表" fixed>
+         <mt-button icon="back" slot="left" @click="returnParent">返回</mt-button>
+      </mt-header>
+      <div class="water-info-body">
+         <div class="river-list" v-for="(item,index) in riversSecondList" @click="openrRiversListDetail(item,index)">
+            <div class="data-list-msg">
+               <p class="riverTitle">{{item.title}}</p>
+               <p class="riverTitle float-right">{{item.area}}&nbsp;<i class="el-icon-arrow-right"></i></p>
+            </div>
+         </div>
+      </div>
+   </div>
+   <rivers-list-detail v-if="showRiversListDetail"></rivers-list-detail>
+</div>
