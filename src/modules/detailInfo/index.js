@@ -102,7 +102,14 @@ var
             },
             uploadQuestion: function () {
                 if (!!window.cesc.currentReportPoint) {
-                    caseService.createCase(this.infoArr.title, this.infoArr.solution, 'department', 'userName', '', window.cesc.currentReportPoint.x, window.cesc.currentReportPoint.y, this.address, function () {
+                    /*this.uploadImgs.forEach(function (img) {
+                     this.uploadImg(img.facilityImageUri);
+                     }.bind(this));*/
+                    caseService.createCase(this.infoArr.title, this.infoArr.solution, this.reqMsg, 'userName', '', window.cesc.currentReportPoint.x, window.cesc.currentReportPoint.y, this.address + ':' + this.reqMsg, function (data) {
+                        var bizID = data.data;
+                        this.uploadImgs.forEach(function (img) {
+                            this.uploadImg(bizID, img.facilityImageUri);
+                        }.bind(this));
                         this.$toast({
                             message: '提交成功！！'
                         });
@@ -114,7 +121,9 @@ var
                         this.reqMsg = '';
                     }.bind(this));
                 } else {
-
+                    this.$toast({
+                        message: '无法获取问题点！'
+                    });
                 }
 
             },
@@ -184,6 +193,33 @@ var
             handlePictureCardPreview(file) {
                 this.facilityImageUri = file.url;
                 this.dialogVisible = true;
+            },
+            uploadImg: function (featureId, facilityImageUri) {
+                if (!!navigator && !!FileTransfer) {
+                    var options = new FileUploadOptions();
+                    var params = {
+                        bizType: 'case',
+                        bizId: featureId,
+                        token: serviceHelper.getToken()
+                    };
+                    options.fileKey = "file_data";
+                    options.params = params;
+                    window.resolveLocalFileSystemURL(facilityImageUri, function success(fileEntry) {
+                        var ft = new FileTransfer();
+                        //上传地址
+                        var SERVER = serviceHelper.getBasicPath() + '/uploadFile/batchUploadFile';
+                        ft.upload(facilityImageUri, encodeURI(SERVER), function (error) {
+                            // self.district = JSON.stringify(error);
+
+                        }, function (error) {
+                            // self.district = JSON.stringify(error);
+                        }, options);
+                    }, function () {
+                        // If don't get the FileEntry (which may happen when testing
+                        // on some emulators), copy to a new FileEntry.
+                        //  createNewFileEntry(imgUri);
+                    });
+                }
             },
             locatePosition: function () {
                 var self = this;
