@@ -31,7 +31,7 @@ define(function () {
     }
     return {
         /**
-         * 天地图WMTS
+         * 高德地图WMTS
          **/
         initGaoDeServer: function (container, layerURL, centerX, centerY, zoom) {//传入地图图层服务路径以及中心点位置
             map = new Map(container, {

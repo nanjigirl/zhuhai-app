@@ -7,6 +7,7 @@ var uploadDetail = require('modules/uploadDetail');
 var entrance = require('modules/entrance');
 var newQuestion = require('modules/newQuestion');
 var law = require('modules/law');
+const waterQualityInfo = require('modules/waterQualityInfo');
 
 // 定义组件
 var comm = Vue.extend({
@@ -79,7 +80,8 @@ var comm = Vue.extend({
         'upload-detail':uploadDetail,
         'entrance':entrance,
         'new-question':newQuestion,
-        'law':law
+        'law':law,
+        'water-quality-info':waterQualityInfo
     }
 });
 module.exports = comm;

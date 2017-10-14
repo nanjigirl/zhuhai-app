@@ -379,6 +379,100 @@ img[src=''] {
     align-items: center;
     justify-content: space-between;
 }
+.cesc-tabbar.has-padding{
+    padding:0 5px;
+}
+.cesc-right-bottom-tip{
+    background: #fff;
+    float: right;
+    color: 	#0000FF;
+    padding-right:.5rem;
+}
+.blue-font{
+    color: 	#0000FF;
+}
+.cesc-left-bottom-tip{
+    background: #fff;
+    padding-bottom: .3rem;
+    border-bottom: 2px solid #ccc;
+    color: 	#aaa;
+    padding-left:.5rem;
+}
+.data-list-level,.data-list-msg{
+    display: inline-block;
+    vertical-align: middle;
+}
+.data-list-level{
+    width: .5rem;
+    height: .5rem;
+    border-radius: .5rem;
+    color: #fff;
+    line-height: .5rem;
+    text-align: center;
+}
+.data-list-level.level-num-2{
+    background:#1E90FF;
+}
+.data-list-level.level-num-1{
+    background:#00BFFF ;
+}
+.data-list-level.level-num-3{
+    background:#00FF7F;
+}
+.data-list-level.level-num-4{
+    background:#3CB371;
+}
+.data-list-level.level-num-5{
+     background:#FFA500;
+ }
+.data-list-level.level-num-danger{
+    background:	#B22222;
+}
+.level-group{
+    width: 25%;
+    text-align: center;
+    padding: 0.25rem 0;
+}
+.level-first-processbar,.level-second-processbar,.level-third-processbar,.level-forth-processbar,.level-fifth-processbar,.level-danger-processbar{
+    height: 10px;
+}
+.level-first{
+    color: 	#00BFFF;
+}
+.level-first-processbar{
+    background:#00BFFF ;
+}
+.level-second{
+    color: 	#1E90FF;
+}
+.level-second-processbar{
+    background:#1E90FF;
+}
+.level-third{
+    color:#00FF7F;
+}
+.level-third-processbar{
+    background:#00FF7F;
+}
+.level-forth{
+    color:	#3CB371;
+}
+.level-forth-processbar{
+    background:#3CB371;
+}
+.level-fifth{
+    color:	#FFA500;
+}
+.level-fifth-processbar{
+    background:#FFA500;
+}
+.level-danger{
+    color:	#B22222;
+}
+.level-danger-processbar{
+    background:	#B22222;
+}
+
 
 .listBg {
     background: #fff;
@@ -600,6 +694,9 @@ textarea:focus {
 }
 .color-yhsc{
     color:#2E980A;
+}
+.color-szxx{
+    color:#00BFFF;
 }
 .iconSize{
     width: 30px;

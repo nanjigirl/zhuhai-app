@@ -1,0 +1,75 @@
+<div class="mainContent">
+   <mt-header :title="waterInfo.waterInfoTitle" fixed>
+      <mt-button icon="back" slot="left" @click="returnParent">返回</mt-button>
+   </mt-header>
+   <div class="water-info-body">
+      <div class="app-header-msg clearfix">
+         <div class="float-left">
+            <p class="font-big blue">{{waterInfo.waterInfoTitle}}</p>
+            <p class="">行政区:{{waterInfo.waterInfoArea}}</p>
+         </div>
+         <div class="data-list-level" :class="waterInfo.waterLevel.levelNum">
+            {{waterInfo.waterLevel.level}}
+         </div>
+      </div>
+      <div class="header-sub-title">
+         {{waterInfo.waterInfoTitle}}监测点（{{waterInfo.waterInfoTime}}）
+      </div>
+      <div class="water-info-desc clearfix">
+         <div class="water-info-msg ">
+            <p>
+               <span>DO</span>
+               <span class="data-value">{{waterInfo.do1}}</span>
+            </p>
+            <p>溶解氧</p>
+         </div>
+         <div class="water-info-msg">
+            <p>
+               <span>COD</span>
+               <span class="data-value">{{waterInfo.cod}}</span>
+            </p>
+            <p>化学需氧量</p>
+         </div>
+      </div>
+      <div class="water-info-desc clearfix">
+         <div class="water-info-msg ">
+            <p>
+               <span>NH3-N</span>
+               <span class="data-value">{{waterInfo.nh3}}</span>
+            </p>
+            <p>氨氮</p>
+         </div>
+         <div class="water-info-msg">
+            <p>
+               <span>TP</span>
+               <span class="data-value">{{waterInfo.tp}}</span>
+            </p>
+            <p>总磷</p>
+         </div>
+      </div>
+      <yd-tab>
+         <yd-tab-panel label="D0">
+            <div  id="doCharts" class="water-info-charts" style="width: 6rem;height: 4rem;"></div>
+         </yd-tab-panel>
+         <yd-tab-panel label="COD">
+            <div id="codCharts" class="water-info-charts" style="width: 6rem;height: 4rem;"></div>
+         </yd-tab-panel>
+         <yd-tab-panel label="NH3-N">
+            <div id="nh3Charts" class="water-info-charts" style="width: 6rem;height: 4rem;"></div>
+         </yd-tab-panel>
+         <yd-tab-panel label="TP">
+            <div id="tpCharts" class="water-info-charts" style="width: 6rem;height: 4rem;"></div>
+         </yd-tab-panel>
+      </yd-tab>
+      <!--<div class="newsBox">-->
+         <!--<p class="newsTitle bigSize">{{title}}</p>-->
+         <!--<div class="news-bottom">-->
+            <!--{{date}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-huihua"></i>&nbsp;&nbsp;{{num}}&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-yanjing"></i>&nbsp;&nbsp;{{count}}-->
+         <!--</div>-->
+         <!--<div class="newsContent" v-for="item in content">-->
+            <!--<img v-if="item.img" :src="item.img" alt="">-->
+            <!--<p v-if="!item.img" class="newsText">{{item.text}}</p>-->
+         <!--</div>-->
+      <!--</div>-->
+   </div>
+</div>

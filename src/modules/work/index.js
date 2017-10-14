@@ -6,7 +6,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
-            workBannerImg:'./img/work-bannar.png',
+            workBannerImg:'./img/Banner.jpg',
             topNavArr: [
                 {
                     id: 'upload',
@@ -43,6 +43,10 @@ var comm = Vue.extend({
                     id: 'zcfg',
                     class:'icon-yonghushouce color-yhsc',
                     text: '用户手册'
+                }, {
+                    id: 'szxx',
+                    class:'icon-shuizhixinxi color-szxx',
+                    text: '水质信息'
                 }
             ],
             questionList: [

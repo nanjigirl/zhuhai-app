@@ -46,58 +46,64 @@ var comm = Vue.extend({
             var self = this;
             self.locationTips = true;
             self.locationStatus = '正在定位...';
-            AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.OverView', 'AMap.Geocoder', 'AMap.Geolocation'], function () {
-                var geolocation = new AMap.Geolocation({
-                    // enableHighAccuracy: true,//是否使用高精度定位，默认:true
-                    timeout: 10000,          //超过10秒后停止定位，默认：无穷大
-                    buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
-                    zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
-                    buttonPosition: 'LT',
-                    showButton: false,
-                });
-                // self.map.addControl(geolocation);
-                geolocation.getCurrentPosition();
-                var geocoder = new AMap.Geocoder({
-                    city: "020"//城市，默认：“全国”
-                });
-                AMap.event.addListener(geolocation, 'error', function () {
-                    self.locationStatus = '定位失败!';
-                    setTimeout(function () {
-                        self.locationTips = false;
-                    }, 2000);
-
-                }.bind(this));      //返回定位出错信息
-                AMap.event.addListener(geolocation, 'complete', function (data) {
-                    var x = data.position.getLng();
-                    var y = data.position.getLat();
-                    geocoder.getAddress([x, y], function (status, result) {
-                        if (status == 'complete') {
-                            self.map.setZoomAndCenter(16, [x, y]);
-                            var marker = new AMap.Marker({
-                                icon: "./img/icon/position.png",
-                                position: new AMap.LngLat(x, y),
-                            });
-                            marker.setMap(self.map);
-                            self.locationStatus = '定位成功!'
-                            setTimeout(function () {
-                                self.locationTips = false;
-                            }, 2000);
-                            var address = result.regeocode.addressComponent;
-                            this.location = x + ',' + y;
-                            self.address = address.city + address.district + address.township + address.street + address.streetNumber;
-                            var item = {};
-                            item.address = self.address;
-                            item.x = x;
-                            item.y = y;
-                            eventHelper.emit('get-current-address', item);
-                            console.log(self.address)
-                        } else {
-                            this.location = '无法获取地址';
-                        }
-                    }.bind(this));
-                }.bind(this));//返回定位信息
-
-            }.bind(this));
+            self.locationStatus = '定位成功!'
+            setTimeout(function () {
+                self.locationTips = false;
+            }, 2000);
+            mapHelper.setCenter(12617394.253328346,2649676.0639445554,self.map,18);
+            mapHelper.addPoint(self.map,12617394.253328346,2649676.0639445554,"./img/icon/position.png",{});
+            // AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.OverView', 'AMap.Geocoder', 'AMap.Geolocation'], function () {
+            //     var geolocation = new AMap.Geolocation({
+            //         // enableHighAccuracy: true,//是否使用高精度定位，默认:true
+            //         timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+            //         buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+            //         zoomToAccuracy: true,      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+            //         buttonPosition: 'LT',
+            //         showButton: false,
+            //     });
+            //     // self.map.addControl(geolocation);
+            //     geolocation.getCurrentPosition();
+            //     var geocoder = new AMap.Geocoder({
+            //         city: "020"//城市，默认：“全国”
+            //     });
+            //     AMap.event.addListener(geolocation, 'error', function () {
+            //         self.locationStatus = '定位失败!';
+            //         setTimeout(function () {
+            //             self.locationTips = false;
+            //         }, 2000);
+            //
+            //     }.bind(this));      //返回定位出错信息
+            //     AMap.event.addListener(geolocation, 'complete', function (data) {
+            //         var x = data.position.getLng();
+            //         var y = data.position.getLat();
+            //         geocoder.getAddress([x, y], function (status, result) {
+            //             if (status == 'complete') {
+            //                 self.map.setZoomAndCenter(16, [x, y]);
+            //                 var marker = new AMap.Marker({
+            //                     icon: "./img/icon/position.png",
+            //                     position: new AMap.LngLat(x, y),
+            //                 });
+            //                 marker.setMap(self.map);
+            //                 self.locationStatus = '定位成功!'
+            //                 setTimeout(function () {
+            //                     self.locationTips = false;
+            //                 }, 2000);
+            //                 var address = result.regeocode.addressComponent;
+            //                 this.location = x + ',' + y;
+            //                 self.address = address.city + address.district + address.township + address.street + address.streetNumber;
+            //                 var item = {};
+            //                 item.address = self.address;
+            //                 item.x = x;
+            //                 item.y = y;
+            //                 eventHelper.emit('get-current-address', item);
+            //                 console.log(self.address)
+            //             } else {
+            //                 this.location = '无法获取地址';
+            //             }
+            //         }.bind(this));
+            //     }.bind(this));//返回定位信息
+            //
+            // }.bind(this));
         },
         addNewPoint: function () {
             this.$toast({

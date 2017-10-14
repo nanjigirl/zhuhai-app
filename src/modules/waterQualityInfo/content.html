@@ -1,0 +1,75 @@
+<div class="mainContent">
+   <div class="mainContent" v-show="!showWaterInfoDetail">
+      <mt-header title="水质信息" fixed>
+         <mt-button icon="back" slot="left" @click="returnHome">返回</mt-button>
+      </mt-header>
+      <div class="newsBody cesc-mb-form clearfix">
+         <div>
+            <yd-cell-group>
+               <yd-cell-item>
+                  <yd-input slot="right" v-model="hzName" max="20" placeholder="河涌名称"></yd-input>
+               </yd-cell-item>
+               <yd-cell-item>
+                  <yd-input slot="right" v-model="testTime" max="20" placeholder="检测时间" readonly  @click.native="openDatePicker"></yd-input>
+                  <!--<yd-datetime  ref="datetime" type="date" v-model="datetime2" slot="right" v-show="false" :confirm="selectPicker"></yd-datetime>-->
+               </yd-cell-item>
+            </yd-cell-group>
+            <mt-datetime-picker
+                    ref="picker"
+                    type="date"
+                    v-model="pickerValue"
+                    @confirm="handleConfirm"
+                    year-format="{value} 年"
+                    month-format="{value} 月"
+                    date-format="{value} 日">
+            </mt-datetime-picker>
+            <yd-button-group>
+               <yd-button size="large">查询</yd-button>
+            </yd-button-group>
+         </div>
+         <div class="clearfix" style="background: #fff">
+            <div class="cesc-tabbar listBg has-padding">
+               <div class="level-group">
+                  <div class="level-first">Ⅰ</div>
+                  <div class="level-first-processbar"></div>
+               </div>
+               <div class="level-group">
+                  <div class="level-second">Ⅱ</div>
+                  <div class="level-second-processbar"></div>
+               </div>
+               <div class="level-group">
+                  <div class="level-third">Ⅲ</div>
+                  <div class="level-third-processbar" ></div>
+               </div>
+               <div class="level-group">
+                  <div class="level-forth">Ⅳ</div>
+                  <div class="level-forth-processbar"></div>
+               </div>
+               <div class="level-group">
+                  <div class="level-fifth">Ⅴ</div>
+                  <div class="level-fifth-processbar"></div>
+               </div>
+               <div class="level-group">
+                  <div class="level-danger">劣Ⅴ</div>
+                  <div class="level-danger-processbar"></div>
+               </div>
+            </div>
+            <div class="cesc-right-bottom-tip">水质类别说明</div>
+         </div>
+         <div class="cesc-left-bottom-tip">数据来源:广州市环保局</div>
+         <div class="newsBox" v-for="(item,index) in newsList" @click="openWaterInfo(item,index)">
+            <div class="data-list-level" :class="item.levelNum">
+               {{item.level}}
+            </div>
+            <div class="data-list-msg">
+               <p class="newsTitle">{{item.title}}</p>
+               <div class="news-bottom">
+                  <span class="cesc-sm-label-title">检测时间：</span><span class="blue-font">{{item.date}}</span>&nbsp;&nbsp;&nbsp;&nbsp;<span class="cesc-sm-label-title">行政区：</span><span class="blue-font">{{item.area}}</span>
+               </div>
+            </div>
+
+         </div>
+      </div>
+   </div>
+   <water-info-detail v-show="showWaterInfoDetail"></water-info-detail>
+</div>

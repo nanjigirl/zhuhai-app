@@ -21,6 +21,7 @@
 @import "./modules/analyze.css";
 @import "./modules/draft.css";
 @import "./modules/content.css";
+@import "./modules/waterInfo.css";
 :root {
     --base-color:#105ba3;
 }
