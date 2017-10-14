@@ -56,7 +56,7 @@ var comm = Vue.extend({
         xunChaEcharts.setOption(option);
         var xunChaMap = new AMap.Map('xunChaMap', {
             resizeEnable: true,
-            center: [113.336224, 23.14706],
+            center: [117.842869, 37.170617],
             zoom: 16
         });
         xunChaMap.on('click',function (evt) {
@@ -96,15 +96,15 @@ var comm = Vue.extend({
         polyline.setMap(xunChaMap);
         var marker = new AMap.Marker({
             icon:"./img/icon/qidian.png",
-            position:new AMap.LngLat(113.33616,23.146813),
+            position:new AMap.LngLat(117.842869,37.170617),
             extData:{
                 facilityType:'CP'
             }
         });
-        marker.setLabel({
-            offset: new AMap.Pixel(15, 15),
-            content: "起点"
-        });
+        // marker.setLabel({
+        //     offset: new AMap.Pixel(15, 15),
+        //     // content: "起点"
+        // });
         marker.setMap(xunChaMap);
         // var lineArr = [
         //     {x:44843.37172308447,y:31504.230321858864},

@@ -1,5 +1,5 @@
 <div class="mainContent">
-   <div class="mainContent" v-show="!showQuestion">
+   <div class="mainContent" v-show="false">
       <mt-header title="上报问题" fixed>
          <mt-button icon="back" slot="left" @click="returnMain">返回</mt-button>
       </mt-header>
@@ -12,5 +12,5 @@
          </li>
       </ul>
    </div>
-   <new-question v-show="showQuestion"></new-question>
+   <new-question v-show="!showQuestion"></new-question>
 </div>
