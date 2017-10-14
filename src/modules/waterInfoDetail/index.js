@@ -100,7 +100,8 @@ var comm = Vue.extend({
                 },
                 legend: {
                     data:['溶氧量(mg/L)'],
-                    left:'0'
+                    left:'0',
+                    top:'15%'
                 },
                 grid: {
                     left: '3%',
@@ -145,7 +146,8 @@ var comm = Vue.extend({
                 },
                 legend: {
                     data:['化学需氧量(mg/L)'],
-                    left:'0'
+                    left:'0',
+                    top:'15%'
                 },
                 grid: {
                     left: '3%',
@@ -190,7 +192,8 @@ var comm = Vue.extend({
                 },
                 legend: {
                     data:['氨氮(mg/L)'],
-                    left:'0'
+                    left:'0',
+                    top:'15%'
                 },
                 grid: {
                     left: '3%',
@@ -235,7 +238,8 @@ var comm = Vue.extend({
                 },
                 legend: {
                     data:['总磷(mg/L)'],
-                    left:'0'
+                    left:'0',
+                    top:'15%'
                 },
                 grid: {
                     left: '3%',
