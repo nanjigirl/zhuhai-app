@@ -7,6 +7,7 @@ var comm = Vue.extend({
     template: template,
     data: function () {
         return {
+            activeColor:'#20a0ff',
             title:'',
             waterInfo:{
                 waterInfoTitle:'',
