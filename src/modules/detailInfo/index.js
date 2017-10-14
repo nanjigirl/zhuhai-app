@@ -105,8 +105,7 @@ var
                     /*this.uploadImgs.forEach(function (img) {
                      this.uploadImg(img.facilityImageUri);
                      }.bind(this));*/
-                    caseService.createCase(this.infoArr.title, this.infoArr.solution, this.reqMsg, 'userName', '', window.cesc.currentReportPoint.x, window.cesc.currentReportPoint.y, this.address + ':' + this.reqMsg, function (data) {
-                        var bizID = data.data;
+                    caseService.createCase(this.infoArr.title, this.infoArr.solution, this.reqMsg, 'userName', '', window.cesc.currentReportPoint.x, window.cesc.currentReportPoint.y, this.address + ':' + this.reqMsg, function (bizID) {
                         this.uploadImgs.forEach(function (img) {
                             this.uploadImg(bizID, img.facilityImageUri);
                         }.bind(this));
