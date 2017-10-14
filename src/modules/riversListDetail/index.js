@@ -42,7 +42,7 @@ var comm = Vue.extend({
             count:0,
             newsDetail:[
                 {
-                    title:'市委常委谢晓丹赴白云、花都两区调研河涌合治理工作',
+                    title:'县政协召开十四届三次常委会议',
                     content:[
                         // {
                         //     img:'img/cropper/cropper.jpg'

@@ -197,7 +197,7 @@ var
                 if (!!navigator && !!FileTransfer) {
                     var options = new FileUploadOptions();
                     var params = {
-                        bizType: 'case',
+                        bizType: 'Facility',
                         bizId: featureId,
                         token: serviceHelper.getToken()
                     };

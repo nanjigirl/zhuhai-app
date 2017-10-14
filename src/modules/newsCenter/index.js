@@ -11,23 +11,23 @@ var comm = Vue.extend({
             showNewsDetail:false,
             newsList:[
                 {
-                    title:'广州在省内首推“掌上治水”',
+                    title:'县政协召开十四届三次常委会议',
                     // imgHtml:'<img src="img/cropper/cropper.jpg">' +
                     // '<img src="img/cropper/cropper.jpg">' +
                     // '<img src="img/cropper/cropper.jpg">',
-                    date:'2017-09-15',
+                    date:'2017-10-15',
                     num:26,
                     count:18
                 },{
-                    title:'白云湖管理处加强暑期野泳预防治理，未成年人溺水事故零报告',
+                    title:'县委办公室　县政府办公室关于印发《高青县全面实行河长制实施方案》的通知',
                     // imgHtml:'<img src="img/cropper/cropper.jpg">' +
                     // '<img src="img/cropper/cropper.jpg">' +
                     // '<img src="img/cropper/cropper.jpg">',
-                    date:'2017-09-13',
+                    date:'2017-09-02',
                     num:26,
                     count:18
                 },{
-                    title:'市人大组织暗访流溪河流域黄埔区九龙镇水环境治理工作',
+                    title:'全县政务信息资源目录编制工作正式启动',
                     // imgHtml:'<img src="img/cropper/cropper.jpg">' +
                     // '<img src="img/cropper/cropper.jpg">' +
                     // '<img src="img/cropper/cropper.jpg">',
