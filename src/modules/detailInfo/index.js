@@ -305,10 +305,9 @@ var
         },
         mounted: function () {
             eventHelper.on('get-current-address', function (item) {
-                this.address = item.address;
-                this.x = item.x;
-                this.y = item.y;
-                this.defaultLocate = true;
+                if (item.info == 'OK') {
+                    this.address = item.regeocode.formattedAddress;
+                }
             }.bind(this));
             eventHelper.on('returnDetail', function () {
                 this.showApproval = false;
@@ -316,7 +315,7 @@ var
             eventHelper.on('openDetailInfo', function (val) {
                 if (!!val) {
                     this.init();
-                    this.infoArr = val;
+                    this.infoArr = $.extend({}, val);
                 } else {
                     this.init();
                     this.setBtn = true;

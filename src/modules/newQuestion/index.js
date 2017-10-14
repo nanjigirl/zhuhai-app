@@ -12,22 +12,22 @@ var comm = Vue.extend({
             //10.14新增
             updateNewArr:[{
                 title:'工业废水排放',
-                solution:'专项检测'
+                solution:'下发环卫部门整改'
             },{
                 title:'养殖污染',
-                solution:'专项检测'
+                solution:'下发环卫部门整改'
             },{
                 title:'排水设施',
                 solution:'专项检测'
             },{
                 title:'违法建设',
-                solution:'专项检测'
+                solution:'下发城管部门整改'
             },{
                 title:'建筑废弃物',
-                solution:'专项检测'
+                solution:'下发环卫部门整改'
             },{
                 title:'堆场码头',
-                solution:'专项检测'
+                solution:'下发城管部门整改'
             },{
                 title:'工程维护',
                 solution:'专项检测'

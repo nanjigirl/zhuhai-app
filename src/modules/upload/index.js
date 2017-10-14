@@ -138,6 +138,7 @@ var comm = Vue.extend({
         }
     },
     mounted: function () {
+        var mapObj = new AMap.Map('iCenter');
         var self = this;
         eventHelper.on('openUploadBtn', function () {
             this.showUpLoadBtn = true;
@@ -198,6 +199,22 @@ var comm = Vue.extend({
                 this.showUpLoadBtn = true;
                 window.cesc.currentReportPoint = evt.mapPoint;
                 eventHelper.emit('openUploadBtn');
+                var x = evt.mapPoint.x;
+                var y = evt.mapPoint.y;
+                var geocoder;
+                var lnglatXY = new AMap.LngLat(x, y);
+                mapObj.plugin(["AMap.Geocoder"], function () {
+                    var MGeocoder = new AMap.Geocoder({
+                        radius: 1000,
+                        extensions: "all"
+                    });
+                    //返回地理编码结果
+                    AMap.event.addListener(MGeocoder, "complete", function (data) {
+                       eventHelper.emit('get-current-address',data)
+                    });
+                    //逆地理编码
+                    MGeocoder.getAddress(lnglatXY);
+                });
             } else if (!!this.isAddingPoint) {
                 mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, './img/dirtyPipe.png', {facilityType: 'CP'});
                 this.isAddingPoint = false;
