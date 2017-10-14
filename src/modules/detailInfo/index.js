@@ -169,8 +169,8 @@ var
                     sourceType: sourceType,             //从哪里选择图片：PHOTOLIBRARY=0，相机拍照=1，SAVEDPHOTOALBUM=2。0和1其实都是本地图库
                     allowEdit: false,                                        //在选择之前允许修改截图
                     encodingType: Camera.EncodingType.JPEG,                   //保存的图片格式： JPEG = 0, PNG = 1
-                    targetWidth: 800,                                        //照片宽度
-                    targetHeight: 600,                                       //照片高度
+                    targetWidth: 600,                                        //照片宽度
+                    targetHeight: 350,                                       //照片高度
                     mediaType: 0,                                             //可选媒体类型：圖片=0，只允许选择图片將返回指定DestinationType的参数。 視頻格式=1，允许选择视频，最终返回 FILE_URI。ALLMEDIA= 2，允许所有媒体类型的选择。
                     cameraDirection: 0,                                       //枪后摄像头类型：Back= 0,Front-facing = 1
                     popoverOptions: CameraPopoverOptions,
@@ -243,11 +243,11 @@ var
                         {
                             resizeEnable: true,
                             zoom: 16,
-                            center: [113.333542, 23.122644]
+                            center: [117.81401031277977, 37.16232143616774]
                         });
                     this.marker = new AMap.Marker({
                         icon: "./img/icon/pipe.png",
-                        position: new AMap.LngLat(113.333542, 23.122644),
+                        position: new AMap.LngLat(117.81401031277977, 37.16232143616774),
                         extData: {
                             facilityType: 'CP'
                         }
