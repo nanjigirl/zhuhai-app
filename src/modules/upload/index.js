@@ -51,8 +51,8 @@ var comm = Vue.extend({
             setTimeout(function () {
                 self.locationTips = false;
             }, 2000);
-            mapHelper.setCenter(12617394.253328346, 2649676.0639445554, self.map, 18);
-            mapHelper.addPoint(self.map, 12617394.253328346, 2649676.0639445554, "./img/icon/position.png", {});
+            mapHelper.setCenter(117.81823210976921, 37.15700529790023, self.map, 18);
+            mapHelper.addPoint(self.map, 117.81823210976921, 37.15700529790023, "./img/icon/position.png", {});
             // AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.OverView', 'AMap.Geocoder', 'AMap.Geolocation'], function () {
             //     var geolocation = new AMap.Geolocation({
             //         // enableHighAccuracy: true,//是否使用高精度定位，默认:true
