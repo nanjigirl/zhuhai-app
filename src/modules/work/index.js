@@ -59,25 +59,25 @@ var comm = Vue.extend({
             ],
             questionList: [
                 {
-                    title: '污水溢流',
-                    address: '海珠区南边路1918智能产业园对面',
+                    title: '工业废水排放',
+                    address: '高青县芦湖公园',
                     solution: '专项检测',
                     people: '许军',
                     date: '2017-9-2',
                     num: 32,
                     count: 15,
-                    describe: '污水溢流',
-                    img: 'img/detail-wsyl.jpg'
+                    describe: '工业废水排放',
+                    img: 'img/detail-jgds.png'
                 }, {
-                    title: '井盖丢失',
-                    address: '海珠区昌岗中路广州银行',
-                    solution: '维修',
+                    title: '建筑废弃物',
+                    address: '高青县金都花园西门',
+                    solution: '清理',
                     people: '陈红',
                     date: '2017-8-31',
                     num: 26,
                     count: 18,
-                    describe: '井盖丢失',
-                    img: 'img/detail-jgds.png'
+                    describe: '建筑废弃物',
+                    img: 'img/detail-wsyl.jpg'
                 }
             ]
         }
