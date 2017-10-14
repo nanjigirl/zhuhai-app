@@ -8,12 +8,43 @@ var comm = Vue.extend({
     data: function () {
         return {
             showDetailInfo:false,
-            updateNewArr:{}
+            // updateNewArr:{}
+            //10.14新增
+            updateNewArr:[{
+                title:'工业废水排放',
+                solution:'专项检测'
+            },{
+                title:'养殖污染',
+                solution:'专项检测'
+            },{
+                title:'排水设施',
+                solution:'专项检测'
+            },{
+                title:'违法建设',
+                solution:'专项检测'
+            },{
+                title:'建筑废弃物',
+                solution:'专项检测'
+            },{
+                title:'堆场码头',
+                solution:'专项检测'
+            },{
+                title:'工程维护',
+                solution:'专项检测'
+            },{
+                title:'其他',
+                solution:'专项检测'
+            },]
         }
     },
     methods: {
         returnMain:function(){
-            eventHelper.emit('closeQuestion');
+            // eventHelper.emit('closeQuestion');
+            //10.14新增
+            eventHelper.emit('openSub');
+            eventHelper.emit('change-menu','upload');
+            eventHelper.emit('closeUploadBtn');
+
         },
         openDetail:function(val){
             this.showDetailInfo = true;
@@ -25,7 +56,6 @@ var comm = Vue.extend({
             this.showDetailInfo = false;
         }.bind(this));
         eventHelper.on('setNormalQues',function(val){
-            debugger;
             this.updateNewArr.push(val);
         }.bind(this));
         eventHelper.on('uploadList',function(val){
