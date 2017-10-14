@@ -9,19 +9,19 @@ var comm = Vue.extend({
         return {
             riversListDetail:[
                 {
-                    people:'区河长：吴黎明',
-                    area:'天河区',
-                    job:'政协副主席',
+                    people:'河长：王其凯',
+                    area:'黑里寨镇',
+                    job:'书记',
                     phone:'13825126213'
                 },{
-                    people:'区河长：卢柳金',
-                    area:'天河区 黄阁镇',
-                    job:'党委委员、副镇长',
+                    people:'河长：吴涛',
+                    area:'黑里寨镇',
+                    job:'镇长',
                     phone:'13825126212'
                 },{
-                    people:'区河长：李胜芬',
-                    area:'天河区',
-                    job:'政协副主席',
+                    people:'河长：蔡亮',
+                    area:'黑里寨镇',
+                    job:'副书记',
                     phone:'13825126414'
                 },
             ],

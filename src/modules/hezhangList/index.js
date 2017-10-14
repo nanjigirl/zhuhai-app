@@ -10,60 +10,57 @@ var comm = Vue.extend({
         return {
             riversListDetail:[
                 {
-                    people:'区河长：吴黎明',
-                    area:'天河区',
-                    job:'政协副主席',
+                    people:'河长：王其凯',
+                    area:'黑里寨镇',
+                    job:'书记',
                     phone:'13825126213'
                 },{
-                    people:'区河长：卢柳金',
-                    area:'天河区 黄阁镇',
-                    job:'党委委员、副镇长',
+                    people:'河长：吴涛',
+                    area:'黑里寨镇',
+                    job:'镇长',
                     phone:'13825126212'
                 },{
-                    people:'区河长：李胜芬',
-                    area:'天河区',
-                    job:'政协副主席',
+                    people:'河长：蔡亮',
+                    area:'黑里寨镇',
+                    job:'副书记',
                     phone:'13825126414'
                 },
             ],
             gzAreas: [{
-                value: '天河区',
-                label: '天河区'
+                value: '高青县 ',
+                label: '高青县'
             }, {
-                value: '白云区',
-                label: '白云区'
+                value: '木李镇',
+                label: '木李镇'
             }, {
-                value: '黄浦区',
-                label: '黄浦区'
+                value: '田镇街道',
+                label: '田镇街道'
             }, {
-                value: '番禺区',
-                label: '番禺区'
+                value: '高城镇',
+                label: '高城镇'
             }, {
-                value: '南沙区',
-                label: '南沙区'
+                value: '常家镇',
+                label: '常家镇'
             }, {
-                value: '海珠区',
-                label: '海珠区'
+                value: '芦湖街道',
+                label: '芦湖街道'
             }, {
-                value: '荔湾区',
-                label: '荔湾区'
+                value: '唐坊镇',
+                label: '唐坊镇'
             }, {
-                value: '花都区',
-                label: '花都区'
+                value: '青城镇',
+                label: '青城镇'
             }, {
-                value: '越秀区',
-                label: '越秀区'
+                value: '花沟镇',
+                label: '花沟镇'
             }, {
-                value: '从化区',
-                label: '从化区'
-            }, {
-                value: '增城区',
-                label: '增城区'
+                value: '黑里寨镇',
+                label: '黑里寨镇'
             }, {
                 value: '全部',
                 label: '全部'
             }],
-            gzArea: '天河区',
+            gzArea: '高青县',
             hzName:'',
             testTime:'',
             datetime2:'',

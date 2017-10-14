@@ -44,9 +44,12 @@ var comm = Vue.extend({
             this.showRiversListDetail = false;
         }.bind(this));
         eventHelper.on('openrRiversListInfo',function(riverList){
+            this.riversSecondList.splice(0,this.riversSecondList.length);
             riverList.item.children.forEach(function (item) {
-                this.riversSecondList.title = item.title;
-                this.riversSecondList.area = item.area;
+                this.riversSecondList.push({
+                    title:item.title,
+                    area :item.area
+                })
             }.bind(this));
         }.bind(this));
     },

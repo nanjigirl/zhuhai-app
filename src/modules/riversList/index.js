@@ -9,154 +9,109 @@ var comm = Vue.extend({
     data: function () {
         return {
             gzAreas: [{
-                value: '天河区',
-                label: '天河区'
+                value: '高青县 ',
+                label: '高青县'
             }, {
-                value: '白云区',
-                label: '白云区'
+                value: '木李镇',
+                label: '木李镇'
             }, {
-                value: '黄浦区',
-                label: '黄浦区'
+                value: '田镇街道',
+                label: '田镇街道'
             }, {
-                value: '番禺区',
-                label: '番禺区'
+                value: '高城镇',
+                label: '高城镇'
             }, {
-                value: '南沙区',
-                label: '南沙区'
+                value: '常家镇',
+                label: '常家镇'
             }, {
-                value: '海珠区',
-                label: '海珠区'
+                value: '芦湖街道',
+                label: '芦湖街道'
             }, {
-                value: '荔湾区',
-                label: '荔湾区'
+                value: '唐坊镇',
+                label: '唐坊镇'
             }, {
-                value: '花都区',
-                label: '花都区'
+                value: '青城镇',
+                label: '青城镇'
             }, {
-                value: '越秀区',
-                label: '越秀区'
+                value: '花沟镇',
+                label: '花沟镇'
             }, {
-                value: '从化区',
-                label: '从化区'
-            }, {
-                value: '增城区',
-                label: '增城区'
+                value: '黑里寨镇',
+                label: '黑里寨镇'
             }, {
                 value: '全部',
                 label: '全部'
             }],
-            gzArea: '天河区',
+            gzArea: '高青县',
             hzName:'',
             testTime:'',
             datetime2:'',
             showRiversListSecond:false,
             riversList:[
                 {
-                    title:'流溪河（太平）',
-                    area:'天河区',
+                    title:'黄河',
+                    area:'高青县',
                     children:[
                         {
                             title:'金坑水',
-                            area:'丁龙围水库'
+                            area:'常家镇'
                         },{
                             title:'东边坑',
-                            area:'东边坑鱼塘'
+                            area:'木李镇'
+                        },{
+                            title:'芦湖街道（左岸）',
+                            area:'芦湖街道'
+                        },
+                    ]
+                },{
+                    title:'小清河',
+                    area:'高青县',
+                    children:[
+                        {
+                            title:'黑里寨镇（右岸）',
+                            area:'黑里寨镇'
+                        },{
+                            title:'花沟镇（右岸）',
+                            area:'花沟镇'
+                        },{
+                            title:'高城镇（左岸）',
+                            area:'高城镇'
+                        },
+                    ]
+                },{
+                    title:'支脉河',
+                    area:'高青县',
+                    children:[
+                        {
+                            title:'金坑水',
+                            area:'花沟镇'
+                        },{
+                            title:'东边坑',
+                            area:'田镇街道'
                         },{
                             title:'黄浦区（左岸）',
-                            area:'乌涌（天河段）'
+                            area:'高城镇'
                         },
                     ]
                 },{
-                    title:'西福河',
-                    area:'天河区',
+                    title:'北支新河',
+                    area:'高青县',
                     children:[
                         {
-                            title:'金坑水1',
-                            area:'丁龙围水库'
+                            title:'黑里寨镇（左岸）',
+                            area:'黑里寨镇 '
                         },{
-                            title:'东边坑1',
-                            area:'东边坑鱼塘'
+                            title:'青城镇（左岸）',
+                            area:'青城镇'
                         },{
-                            title:'黄浦区（左岸）1',
-                            area:'乌涌（天河段）'
+                            title:'花沟镇（左岸）',
+                            area:'花沟镇'
+                        },{
+                            title:'常家镇（左岸）',
+                            area:'常家镇'
                         },
                     ]
-                },{
-                    title:'金洲涌',
-                    area:'天河区',
-                    children:[
-                        {
-                            title:'金坑水2',
-                            area:'丁龙围水库'
-                        },{
-                            title:'东边坑2',
-                            area:'东边坑鱼塘'
-                        },{
-                            title:'黄浦区（左岸）2',
-                            area:'乌涌（天河段）'
-                        },
-                    ]
-                },{
-                    title:'东大湖',
-                    area:'天河区',
-                    children:[
-                        {
-                            title:'金坑水3',
-                            area:'丁龙围水库'
-                        },{
-                            title:'东边坑3',
-                            area:'东边坑鱼塘'
-                        },{
-                            title:'黄浦区（左岸）3',
-                            area:'乌涌（天河段）'
-                        },
-                    ]
-                },{
-                    title:'乌涌（天河段）',
-                    area:'天河区',
-                    children:[
-                        {
-                            title:'金坑水4',
-                            area:'丁龙围水库'
-                        },{
-                            title:'东边坑4',
-                            area:'东边坑鱼塘'
-                        },{
-                            title:'黄浦区（左岸）4',
-                            area:'乌涌（天河段）'
-                        },
-                    ]
-                },{
-                    title:'乌蛇坑',
-                    area:'天河区',
-                    children:[
-                        {
-                            title:'金坑水5',
-                            area:'丁龙围水库'
-                        },{
-                            title:'东边坑5',
-                            area:'东边坑鱼塘'
-                        },{
-                            title:'黄浦区（左岸）5',
-                            area:'乌涌（天河段）'
-                        },
-                    ]
-                },{
-                    title:'农科院鱼塘',
-                    area:'天河区',
-                    children:[
-                        {
-                            title:'金坑水6',
-                            area:'丁龙围水库'
-                        },{
-                            title:'东边坑6',
-                            area:'东边坑鱼塘'
-                        },{
-                            title:'黄浦区（左岸）6',
-                            area:'乌涌（天河段）'
-                        },
-                    ]
-                }
+                },
             ]
         }
     },
