@@ -22,10 +22,10 @@ define(function () {
         /**
          * 天地图WMTS
          **/
-        tdWmtsServer: function (layerURL, centerX, centerY) {
+        tdWmtsServer: function (container, layerURL, centerX, centerY) {
             //注意！！！！！！
             //以下保存了地图外网和内网两种配置，与内外网有关的代码都有注释是内网或外网，如果要使用内网地图就把内网的注释代码释放并屏蔽掉外网，反之亦然
-            map = new Map("mapDiv", {
+            map = new Map(container, {
                 //内网
                 // center: [117.82120, 37.17079],
                 // zoom: 13
@@ -52,12 +52,14 @@ define(function () {
             //外网
             var annolayer = new TDTAnnoLayer();
             map.addLayer(annolayer);
+            if (!!layerURL) {
+                var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6});
 
-            var labels = new ArcGISDynamicMapServiceLayer(layerURL, {opacity: 0.6});
+            }
             //   map.addLayer(labels); 海绵体
             map.on('click', function (event) {
                 console.log(event);
-                if(event.graphic.attributes.id === 'graphic'){
+                if (!!event.graphic && event.graphic.attributes.id === 'graphic') {
                     eventHelper.emit('openUploadBtn');
                 }
             });
@@ -70,7 +72,7 @@ define(function () {
                 var icon = item.icon;
                 var fid = legend.id;
                 item.fid = fid;
-                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol,Font, graLayer, item.x, item.y, icon, item, legend.facilityTypeName);
+                deviceModel.createSymbol(Color, PictureMarkerSymbol, Point, Graphic, TextSymbol, Font, graLayer, item.x, item.y, icon, item, legend.facilityTypeName);
                 //创建地图上图标
                 //deviceModel.ssjkCreatePoint(map, item.id, 'f' + item.id, item.name, item.type, item.x, item.y, '', icon, '22', '22', legend.facilityTypeName, item);
             });

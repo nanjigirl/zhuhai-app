@@ -3,6 +3,7 @@ var eventHelper = require('../../utils/eventHelper');
 var moduleController = require('controllers/moduleController');
 //加载地图组件
 var arcgisPlugin = require('modules/arcgisPlugin');
+var arcgisHelper = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 var mapHelper = require('utils/mapHelper');
 // 定义组件
 var comm = Vue.extend({
@@ -50,8 +51,8 @@ var comm = Vue.extend({
             setTimeout(function () {
                 self.locationTips = false;
             }, 2000);
-            mapHelper.setCenter(12617394.253328346,2649676.0639445554,self.map,18);
-            mapHelper.addPoint(self.map,12617394.253328346,2649676.0639445554,"./img/icon/position.png",{});
+            mapHelper.setCenter(12617394.253328346, 2649676.0639445554, self.map, 18);
+            mapHelper.addPoint(self.map, 12617394.253328346, 2649676.0639445554, "./img/icon/position.png", {});
             // AMap.plugin(['AMap.ToolBar', 'AMap.Scale', 'AMap.OverView', 'AMap.Geocoder', 'AMap.Geolocation'], function () {
             //     var geolocation = new AMap.Geolocation({
             //         // enableHighAccuracy: true,//是否使用高精度定位，默认:true
@@ -141,7 +142,8 @@ var comm = Vue.extend({
         eventHelper.on('openUploadBtn', function () {
             this.showUpLoadBtn = true;
         }.bind(this));
-        self.map = mapHelper.initGaoDeServer('mainMap', '', 113.333542, 23.122644, 14);
+        //self.map = mapHelper.initGaoDeServer('mainMap', '', 113.333542, 23.122644, 14);
+        self.map = arcgisHelper.tdWmtsServer('mainMap', '', 117.82812946103415, 37.16944001889327, 14);
         /*     setTimeout(function () {
          mapHelper.setCenter(113.333542,23.122644,self.map,10);
          },1000);*/
@@ -194,6 +196,7 @@ var comm = Vue.extend({
         this.map.on('click', function (evt) {
             if (!!evt.graphic && evt.graphic.attributes.facilityType == 'CP') {
                 this.showUpLoadBtn = true;
+                window.cesc.currentReportPoint = evt.mapPoint;
                 eventHelper.emit('openUploadBtn');
             } else if (!!this.isAddingPoint) {
                 mapHelper.addPoint(this.map, evt.mapPoint.x, evt.mapPoint.y, './img/dirtyPipe.png', {facilityType: 'CP'});

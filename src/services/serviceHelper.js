@@ -4,6 +4,7 @@ define(['config'], function (config) {
     var serviceEndpoint = {
         basicPath: basicUrl,
         login: basicUrl + '/login/loginValid',
+        createCase:basicUrl+'/case/createCase',
         userMenu: basicUrl + '/user/getMenu',
         makeOrder: basicUrl + '/orders/save',
         queryMenu: basicUrl + '/orders/menu',

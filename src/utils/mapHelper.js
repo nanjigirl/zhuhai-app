@@ -263,7 +263,7 @@ define(function () {
         },
         addPoint: function (map, x, y, imgURL, attribute) {
             var pictureMarkerSymbol = new PictureMarkerSymbol(imgURL, 15, 15);
-            var point = new Point(x, y, {"wkid": 3857});
+            var point = new Point(x, y);
             var graphic = new Graphic(point, pictureMarkerSymbol);
             graphic.attributes = attribute;
             map.graphics.add(graphic);
