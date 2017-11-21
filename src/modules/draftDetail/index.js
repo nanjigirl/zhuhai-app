@@ -14,13 +14,15 @@ var comm = Vue.extend({
                     year:'2017',
                     content:[
                         {
-                            title:'管道埋深不达标',
-                            address:'海珠区南边路',
-                            solution:'需要重新填埋管道'
+                            img:'./img/factoryImg/deviceImg-sg.png',
+                            title:'栅格前后液位差异常',
+                            deviceName:'2#细栅格',
+                            inspectorTime:'2017-11-16 12:22:22'
                         },{
-                            title:'爆管',
-                            address:'海珠区南边路',
-                            solution:'需要重新更换管道'
+                            img:'./img/factoryImg/deviceImg-pzk.png',
+                            title:'排渣口异常',
+                            deviceName:'2#细栅格',
+                            inspectorTime:'2017-11-16 12:20:15'
                         }
                     ]
                 },
@@ -29,17 +31,15 @@ var comm = Vue.extend({
                     year:'2017',
                     content:[
                         {
-                            title:'管道埋深不达标',
-                            address:'海珠区南边路',
-                            solution:'需要重新填埋管道'
+                            img:'./img/factoryImg/deviceImg-sg.png',
+                            title:'栅格前后液位差异常',
+                            deviceName:'2#细栅格',
+                            inspectorTime:'2017-11-16 12:22:22'
                         },{
-                            title:'爆管',
-                            address:'海珠区南边路',
-                            solution:'需要重新更换管道'
-                        },{
-                            title:'爆管',
-                            address:'海珠区南边路',
-                            solution:'需要重新更换管道'
+                            img:'./img/factoryImg/deviceImg-pzk.png',
+                            title:'排渣口异常',
+                            deviceName:'2#细栅格',
+                            inspectorTime:'2017-11-16 12:20:15'
                         }
                     ]
                 }
@@ -48,7 +48,7 @@ var comm = Vue.extend({
     },
     methods: {
         returnHome:function(){
-            eventHelper.emit('openSub');
+            eventHelper.emit('change-menu','user');
         },
         deteleItem:function(parentIndex,subIndex){
             var self = this;

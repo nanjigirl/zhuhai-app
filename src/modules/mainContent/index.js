@@ -52,12 +52,6 @@ var comm = Vue.extend({
     methods: {
     },
     mounted: function () {
-        eventHelper.on('openUploadBtn',function(){
-            this.showUpLoadBtn = true;
-        }.bind(this));
-        eventHelper.on('closeUploadBtn',function(){
-            this.showUpLoadBtn = false;
-        }.bind(this));
         eventHelper.on('openSub',function(subId){
             if(this.showMain){
                 this.showMain = false;
@@ -75,16 +69,6 @@ var comm = Vue.extend({
     },
     components: {
         'main-view':mainView,
-        'news-center':newsCenter,
-        'comment':comment,
-        'draft-detail':draftDetail,
-        'upload-detail':uploadDetail,
-        'entrance':entrance,
-        'new-question':newQuestion,
-        'law':law,
-        'water-quality-info':waterQualityInfo,
-        'riversList':riversList,
-        'hezhangList':hezhangList,
     }
 });
 module.exports = comm;

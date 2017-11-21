@@ -1,13 +1,6 @@
 <div class="viewContent">
     <div class="mainContent" v-show="showMain">
         <main-view></main-view>
-        <mt-tabbar v-show="!showUpLoadBtn" v-model="selected" fixed>
-            <mt-tab-item v-for="(item,index) in footerArr" :id="item.id">
-                <!--<img slot="icon" :src="item.img">-->
-                <i class="icon iconfont iconSize" :class="item.class"></i>
-                {{ item.text }}
-            </mt-tab-item>
-        </mt-tabbar>
     </div>
     <news-center v-show="!showMain && showSubId === 'xwdt'"></news-center>
     <law v-show="!showMain && showSubId === 'zdgz'"></law>

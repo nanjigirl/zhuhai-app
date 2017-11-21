@@ -5,43 +5,36 @@ var eventHelper = require('../../utils/eventHelper');
 var comm = Vue.extend({
     template: template,
     data: function () {
-        return {
-            ruleForm10: {
-                name: '',
-                sex: '',
-                eMail: '',
-                telphone: '',
-                date: ''
-            },
-            password: '123456',
-            userName: 'eadmin',
-            loginComplete: false
-        }
+        return {}
     },
     methods: {
-        login: function () {
+        login: function (cache) {
             eventHelper.emit('loading-start');
-            loginCtrl.login(this.userName, this.password, function (token) {
-                eventHelper.emit('loading-end');
-                eventHelper.emit('loginSuccess', token);
-                console.log('Login Success:', token);
-                this.loginComplete = true;
-            }.bind(this));
+            var userName = $('#userName').val();
+            var password = $('#password').val();
+            if(!!cache){
+                loginCtrl.setToken(cache);
+                eventHelper.emit('loginSuccess', cache);
+            }else{
+                loginCtrl.login(userName, password, function (token) {
+                    eventHelper.emit('loginSuccess', token);
+                    console.log('Login Success:', token);
+                }.bind(this), function (error) {
+                    $('#app').hide();
+                    $('#loginPanel').show();
+                    eventHelper.emit('loading-end');
+                    this.$message.error('密码错误');
+                }.bind(this));
+            }
+            this.loginComplete = true;
+            eventHelper.emit('loading-end');
         }
     },
     mounted: function () {
-        // this.login();
         var cache = window.sessionStorage.getItem('cescToken');
-        var cache = '1234567';
-        if (!!cache) {
-            this.$nextTick(function () {
-                loginCtrl.setToken(cache);
-                eventHelper.emit('loading-end');
-                eventHelper.emit('loginSuccess', cache);
-                console.log('Login Success:', cache);
-                this.loginComplete = true;
-            }.bind(this));
-        }
+        eventHelper.on('startLogin', function () {
+            this.login(cache);
+        }.bind(this));
         /* if (navigator.userAgent.toLowerCase().indexOf("chrome") >= 0) {
          $('input:not(input[type=submit])').each(function(){
          var outHtml = this.outerHTML;

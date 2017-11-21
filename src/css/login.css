@@ -1,0 +1,81 @@
+html, body {
+    width: 100%;
+    height: 100%;
+}
+
+.app-body,.mainContent{
+    background: #15181f;
+}
+.bg-login {
+    width: 100%;
+    height: 100%;
+}
+
+.logo {
+    text-align: center;
+    color: #44d800;
+    margin:15% 0 20%;
+}
+.logo > .logoTitle{
+    font-size: 2.3em;
+    font-weight: bold;
+    margin-top: -15px;
+}
+
+.srk-login {
+    padding: 0 20px;
+}
+
+.srk-login .srk {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #dadada;
+    border-radius: 40px;
+    color:#fff;
+    margin: 20px auto;
+    font-size: 16px;
+    padding:0 20px 0 50px;
+    display: flex;
+    align-items: center;
+}
+.user{
+    background: url('../img/login/user.png')no-repeat 20px center/32px 32px;
+}
+.password{
+    background: url('../img/login/password.png')no-repeat 20px center/32px 32px;
+}
+.srk > input{
+    height:inherit;
+    flex:1;
+    background: transparent;
+    text-align: center;
+}
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    background-color: transparent!important;
+}
+input{
+    border-width: 0;
+}
+
+.btn-login a {
+    display: block;
+    margin: 0 auto;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 40px;
+    background: #2c9b19;
+    color: #fff;
+    text-align: center;
+    font-size: 16px;
+}
+#app {
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}

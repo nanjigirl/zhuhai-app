@@ -22,6 +22,9 @@ define(['config'], function (config) {
         getMonitorDetailMsg:basicUrl+'/facility/getOneFacilityInfo',
         getFacilityLists:basicUrl+'/facility/filterFacility',
         formatLocation: basicUrl + '/coordTrans/wgs84ToGz',
+        getNewProblemDetail:basicUrl + '/psWaterPurifyProblem/problemDetailWithFileNew',
+        getProblemDetail:basicUrl + '/psWaterPurifyProblem/problemDetailWithFile',
+        saveReportFile:basicUrl + '/psWaterPurifyProblem/reportProblem'
     }
     return {
         setToken: function (token) {

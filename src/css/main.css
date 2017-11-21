@@ -1,7 +1,6 @@
 @import "./app.css";
 @import "./custom.css";
 @import "./iconfont/iconfont.css";
-@import "./modules/login.css";
 @import "./modules/loaders.css";
 @import "./modules/rightPanel.css";
 @import "./modules/plugin.css";
@@ -23,6 +22,9 @@
 @import "./modules/content.css";
 @import "./modules/waterInfo.css";
 @import "./modules/hehu.css";
+@import "./modules/user.css";
+@import "./modules/baseTheme.css";
+@import "./modules/routingInspection.css";
 :root {
     --base-color:#105ba3;
 }

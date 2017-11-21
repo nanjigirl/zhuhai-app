@@ -2,47 +2,14 @@
    <div class="user-top">
       <div class="user-label">
          <img class="user-img" src="../../img/cropper/cropper.jpg" alt="" width="48" height="48">
-         <span class="user-info">
-               <p class="user-name">余朝华</p>
-               <p class="user-badge">市河长办</p>
-            </span>
+         <p class="user-name">张三</p>
       </div>
-      <div class="register-label" :class="{locationBtn:(!isRegister)}" @click="dailyRegister">{{regText}}</div>
+      <div class="register-label" @click="dailyRegister">{{regText}}</div>
    </div>
-   <div class="user-content" v-show="!isSignIn">
-      <div class="password-box">
-         <yd-cell-item>
-            <input slot="right" type="password" placeholder="当前密码">
-         </yd-cell-item>
-         <yd-cell-item>
-            <input slot="right" type="password" placeholder="新密码">
-         </yd-cell-item>
-         <yd-cell-item>
-            <input slot="right" type="password" placeholder="再次输入新密码">
-         </yd-cell-item>
+   <div class="user-content">
+      <div class="col-item" v-for="item in menuArr" @click="openSubItem(item.id)">
+         <i class="icon iconfont" :class="item.class"></i>
+         <p class="menuText">{{item.text}}</p>
       </div>
-      <button class="yd-btn-block yd-btn-warning" @click="signIn">确定</button>
-   </div>
-   <div class="user-content" v-show="isSignIn">
-      <div class="password-box">
-         <yd-cell-item arrow>
-            <span slot="left">我的上报&nbsp;&nbsp;<yd-badge>12</yd-badge></span>
-         </yd-cell-item>
-         <yd-cell-item arrow>
-            <span slot="left">本地草稿箱&nbsp;&nbsp;<yd-badge type="danger">10</yd-badge></span>
-         </yd-cell-item>
-      </div>
-      <div class="password-box">
-         <yd-cell-item arrow>
-            <span slot="left">修改密码</span>
-         </yd-cell-item>
-      </div>
-      <div class="password-box">
-         <yd-cell-item arrow>
-            <span slot="left">软件版本</span>
-            <span slot="right">已是最新版本&nbsp;&nbsp;&nbsp;&nbsp;v1.0</span>
-         </yd-cell-item>
-      </div>
-      <button class="yd-btn-block yd-btn-danger" @click="signOut">退出</button>
    </div>
 </div>

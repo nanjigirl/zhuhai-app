@@ -1,47 +1,32 @@
 <div class="mainContent">
-    <div class="user-top draft-top">
-        <header class="mint-header is-fixed">
-            <div class="mint-header-button is-left" @click="returnHome">
-                <button class="mint-button mint-button--default mint-button--normal">
-                    <span class="mint-button-icon"><i class="mintui mintui-back"></i></span>
-                    <label class="mint-button-text">返回</label>
-                </button>
+    <div class="draft-top">
+        <mt-header title="我的上报" fixed>
+            <mt-button icon="back" slot="left" @click="returnHome"></mt-button>
+            <div slot="right" @click="expandDate">
+                <span>8月<i class="el-icon-caret-bottom"></i></span>
+                今日
             </div>
-            <div class="mint-header-title">
-                <el-radio-group v-model="uploadCheck" size="small" fill="#0481BB" @change="toggleData">
-                    <el-radio-button label="我的上报"></el-radio-button>
-                    <el-radio-button label="他人上报"></el-radio-button>
-                </el-radio-group>
-            </div>
-            <div class="mint-header-button is-right">
-                <div>
-                    <span @click="expandDate">8月<i class="el-icon-caret-bottom"></i></span>
-                    今日
-                </div>
-            </div>
-        </header>
+        </mt-header>
         <div class="date-expand" v-show="showDateExpand"></div>
     </div>
-    <div class="user-content">
+    <div class="draft-content">
         <div class="draftBox clearfix" v-for="item in draftList">
             <div class="draf-date float-left">
                 <p class="date-text date-top">{{item.month}}</p>
                 <p class="date-text date-bottom">{{item.year}}</p>
             </div>
             <div class="draf-content float-right">
-                <div class="password-box" v-for="subItem in item.content">
+                <div class="password-box" v-for="(subItem,subIndex) in item.content">
                     <yd-cell-item>
-                        <span slot="left">问题类型：{{subItem.title}}</span>
+                        <div slot="left" class="darkText">
+                            <img :src="subItem.img" alt="">
+                            {{subItem.title}}
+                        </div>
                     </yd-cell-item>
                     <yd-cell-item>
                         <div slot="left" class="info-subText">
-                            <p class="item-text">地点：{{subItem.address}}</p>
-                            <p class="item-text">解决方案：{{subItem.solution}}</p>
-                        </div>
-                    </yd-cell-item>
-                    <yd-cell-item v-if="showType">
-                        <div slot="left" class="info-bottom">
-                            {{subItem.date}}&nbsp;&nbsp;&nbsp;&nbsp;上报人：{{subItem.people}}&nbsp;&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-huihua" @click="showSub('comment',item)"></i>&nbsp;&nbsp;{{subItem.num}}&nbsp;&nbsp;&nbsp;<i class="icon iconfont icon-yanjing"></i>&nbsp;&nbsp;{{subItem.count}}
+                            <p class="item-text">设备：{{subItem.deviceName}}</p>
+                            <p class="item-text">巡检时间：{{subItem.inspectorTime}}</p>
                         </div>
                     </yd-cell-item>
                 </div>

@@ -4,21 +4,23 @@ var eventHelper = require('../../utils/eventHelper');
 var moduleController = require('controllers/moduleController');
 var serviceHelper = require('../../services/serviceHelper');
 //引入组件
-var work= require('modules/work');
-var upload= require('modules/upload');
-var analyze= require('modules/analyze');
 var user= require('modules/user');
-var detailInfo= require('modules/detailInfo');
+var routingInspection= require('modules/routingInspection');
+var draftDetail= require('modules/draftDetail');
+var uploadDetail= require('modules/uploadDetail');
+var myMessage= require('modules/myMessage');
+var districtInfo= require('modules/districtInfo');
 //加载地图组件
 var arcgisDraw = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
 var mapHelper = require('utils/mapHelper');
 //注册组件
 var components = {
-    'work': work,
-    'upload':upload,
-    'analyze':analyze,
     'user':user,
-    'detail-info':detailInfo
+    'routing-inspection':routingInspection,
+    'draft-detail':draftDetail,
+    'upload-detail':uploadDetail,
+    'my-message':myMessage,
+    'district-info':districtInfo
 };
 //components = $.extend(components, moduleController);
 var userTemplate = '';
@@ -64,7 +66,7 @@ var comm = Vue.extend({
             this.map = map;
         }.bind(this));
 
-        this.currentView = 'upload';
+        this.currentView = 'user';
         eventHelper.on('change-menu', function (model) {
             this.changeView(model);
         }.bind(this));

@@ -1,0 +1,55 @@
+.darkTheme .mint-header{
+    background-color: #2C9B19;
+    height: 3.5em;
+}
+.darkTheme .mint-header > h1{
+    font-size:1.5em;
+}
+.darkTheme .mintui-back{
+    font-size:1.5em;
+}
+.darkTheme .dark-title .mint-header{
+    background-color: #000;
+}
+.darkTheme .date-top{
+    background: #2C9B19;
+}
+.darkTheme .date-bottom{
+    color: #2C9B19;
+}
+.darkTheme .btn-edit{
+    color: #27B1B1;
+    background: transparent;
+    border: 1px solid #27b1b1;
+}
+.darkTheme .btn-upload{
+    color: #2C9B19;
+    background: transparent;
+    border: 1px solid #2C9B19;
+}
+.darkTheme .cell-btn{
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+    height:0.54rem;
+}
+.darkTheme .cell-btn > i{
+    font-size: 1.5em;
+}
+.darkTheme .iconStyle{
+    font-size:1.5em;
+    color: #969696;
+}
+.darkTheme .password-box{
+    background: #1b1e27;
+    border:none;
+}
+.darkTheme .password-box .darkText{
+    color: #fefefe;
+}
+.darkTheme .yd-cell-item:not(:last-child):after{
+    border-color: #2d2d2f;
+}
+.darkTheme .item-text{
+    color: #949494;
+}

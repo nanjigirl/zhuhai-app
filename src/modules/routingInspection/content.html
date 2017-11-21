@@ -1,0 +1,26 @@
+<div class="mainContent">
+   <div class="mainContent" v-show="!showDistrictInfo">
+      <div class="draft-top dark-title">
+         <mt-header title="巡检" fixed>
+            <mt-button icon="back" slot="left" @click="returnHome"></mt-button>
+         </mt-header>
+      </div>
+      <div class="draft-content no-gap">
+         <div class="inspectionItem messageItem" v-for="item in inspectionList" @click="openDistrictInfo(item)">
+            <div v-if="item.status === 0" class="undoBox">
+               <span>{{item.text}}</span>
+            </div>
+            <div v-if="item.status === 1" class="doneBox">
+               <span>{{item.text}}</span><i class="normalIcon"></i>
+            </div>
+            <div v-else-if="item.status === 2" class="doneBox">
+               <span>{{item.text}}</span><i class="errorIcon"></i>
+            </div>
+            <div v-else-if="item.status === 3" class="isdoBox">
+               <span>{{item.text}}</span><i class="icon iconfont icon-kaishi1"></i>
+            </div>
+         </div>
+      </div>
+   </div>
+   <district-info ref="districtInfo" v-show="showDistrictInfo"></district-info>
+</div>

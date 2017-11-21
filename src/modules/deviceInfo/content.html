@@ -1,0 +1,41 @@
+<div class="mainContent">
+   <div class="mainContent" v-show="!showUpload">
+      <div class="draft-top dark-title">
+         <mt-header :title="mainTitle" fixed>
+            <mt-button icon="back" slot="left" @click="returnLast"></mt-button>
+         </mt-header>
+      </div>
+      <div class="draft-content no-gap">
+         <div class="baseInfoBox">
+            <div class="messageItem deviceItem">
+               <span>设备名称</span><span>{{deviceBaseInfo.deviceName}}</span>
+            </div>
+            <div class="messageItem deviceItem">
+               <span>设备型号</span><span>{{deviceBaseInfo.deviceType}}</span>
+            </div>
+            <div class="messageItem deviceItem">
+               <span>类型</span><span>{{deviceBaseInfo.type}}</span>
+            </div>
+         </div>
+         <div class="deviceBox" v-for="(item,index) in inspectList">
+            <div class="messageItem deviceItem" v-if="!!item.text">
+               <span>{{item.text}}</span><i class="icon iconfont icon-xinxi1"></i>
+               <span class="uploadBadge" v-if="item.status === '2'" @click="openUpload">{{uploadText}}</span>
+               <el-switch
+                       :class="[{errorRadio:item.status === '2'}, 'normalRadio']"
+                       v-model="item.status"
+                       on-color="#000000"
+                       off-color="#000000"
+                       on-icon-class="errorColor"
+                       off-icon-class="normalColor"
+                       on-value="2"
+                       off-value="1"
+                       @change="changeStatus(item)">
+               </el-switch>
+            </div>
+            <div class="itemTitle" v-if="!item.text">{{item.title}}</div>
+         </div>
+      </div>
+   </div>
+   <upload-info ref="uploadDetail" v-show="showUpload"></upload-info>
+</div>

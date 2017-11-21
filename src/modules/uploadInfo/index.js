@@ -54,7 +54,7 @@ var
             return {
                 defaultLocate: false,
                 address: '',
-                reportQuestion: './img/icon/icon-cloud.png',
+                deviceName:'',
                 delOperation: false,
                 uploadImgs: [],
                 status: '',
@@ -92,6 +92,9 @@ var
             }
         },
         methods: {
+            returnLast:function(){
+                this.$parent.$emit('returnToLast');
+            },
             relateSp: function () {
                 this.showApproval = true;
             },
@@ -304,6 +307,9 @@ var
             },
         },
         mounted: function () {
+            this.$on('openUploadInfo',function(item){
+               this.deviceName =  item.text;
+            });
             eventHelper.on('get-current-address', function (item) {
                 if (item.info == 'OK') {
                     this.address = item.regeocode.formattedAddress;

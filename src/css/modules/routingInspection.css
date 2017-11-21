@@ -1,0 +1,192 @@
+.inspectionItem{
+    border:none;
+    padding:5px 20px;
+}
+.inspectionItem > div{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+.errorIcon,.normalIcon,.icon-kaishi1{
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    text-align: center;
+    line-height: 32px;
+}
+.errorIcon{
+    background: url(../images/error.png)no-repeat top left /100% 100%;
+}
+.normalIcon{
+    background: url(../images/normal.png)no-repeat top left /100% 100%;
+}
+.inspectionItem > div{
+    border-radius:8em;
+    padding:0.6em 1.2em;
+}
+.doneBox{
+    border:2px solid #66f028;
+    color: #66f028;
+}
+.isdoBox{
+    border:2px solid #00ffff;
+    color: #00ffff;
+}
+.undoBox{
+    border:2px solid #666;
+    color: #666;
+}
+.undoBox > span{
+    display: block;
+    height: 32px;
+    line-height: 32px;
+}
+.no-gap{
+    padding:0;
+}
+.messageItem{
+    padding:1em;
+    font-size:1.3em;
+    color: #fff;
+    border-bottom:1px solid #2d2d2f;
+}
+.baseInfoBox{
+    margin-bottom:10px;
+}
+.deviceItem{
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1B1E27;
+    border-bottom:1px solid #171A21;
+}
+.deviceItem > i{
+    flex:1;
+    padding-left:10px;
+}
+.itemTitle{
+    color: #00ffff;
+    padding:0.5em 1em;
+    font-size:1.2em;
+}
+.normalColor{
+    color: #26A311;
+}
+.normalColor:before{
+    content:'正常';
+}
+.normalRadio .el-switch__button{
+    background: #26A311;
+}
+.errorColor{
+    color: #FFFF00;
+}
+.errorColor:before{
+    content:'异常';
+}
+.errorRadio .el-switch__button{
+    background: #FFFF00;
+}
+.uploadBadge{
+    background:#FFFF00;
+    padding:0.2em 1em;
+    border-radius:1em;
+    margin-right:10px;
+    font-size:12px;
+    color: #333;
+    font-weight: bold;
+}
+.problemTitle{
+    color: #41C609;
+    padding:1em;
+    text-align:center;
+    font-size:1.5em;
+}
+.titleIcon{
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 1em;
+}
+.titleIcon > i {
+    font-size:2em;
+    color: #fff;
+}
+.recordContent{
+    width:100%;
+    padding:10px;
+    background: #1B1E27;
+}
+.recordContent > textarea{
+    width:100%;
+    background: #1B1E27;
+    font:1.3em 'Microsoft YaHei';
+    color:#989898;
+    border:none;
+}
+.recordBtnGroup{
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+}
+.recordBtn{
+    padding: 0.2em 0.5em;
+    border: 1px solid #D2D2D2;
+    border-radius: 5px;
+    color: #D2D2D2;
+    margin-right:10px;
+}
+.descriptionText {
+    color: #989898;
+}
+.upload-img-area{
+    padding-top: .3rem;
+    padding-bottom: .3rem;
+}
+.el-upload--picture-card{
+    background-color: transparent;
+    border:1px dashed #fff;
+    width: 130px;
+    height: 78px;
+}
+
+.leftBtn{
+    background-color: #27B1B1;
+}
+.rightBtn{
+    background-color:#2C9B19;
+}
+.leftBtn,.rightBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.leftBtn > i,.rightBtn > i{
+    font-size:2em;
+    margin-right:0.2em;
+    margin-left:0.2em;
+}
+.darkText .title-text{
+    padding-top: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+.darkText > img{
+    width:40%;
+    margin-right:10px;
+}
+.submitBtn{
+    width: 1.2rem;
+    border-radius: 0.1rem;
+    border: 1px solid #2C9B19;
+    margin-top: 5px;
+    color: #2C9B19;
+    text-align: center;
+}
+.submitBtn > i{
+    font-size:2em;
+}
+.submitBtn > p{
+    margin-top: -0.5em;
+    margin-bottom: 0.5em;
+}

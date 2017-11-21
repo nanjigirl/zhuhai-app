@@ -1,0 +1,12 @@
+<div class="mainContent">
+   <div class="draft-top dark-title">
+      <mt-header title="我的消息" fixed>
+         <mt-button icon="back" slot="left" @click="returnHome"></mt-button>
+      </mt-header>
+   </div>
+   <div class="draft-content no-gap">
+      <div class="messageItem" v-for="item in messageList">
+         系统消息:你已于{{item.date}}完成打卡。
+      </div>
+   </div>
+</div>

@@ -4145,14 +4145,6 @@ a.hiddenanchor {
     outline: none;
 }
 
-#username {
-    background-position: 10px 10px !important;
-}
-
-#password {
-    background-position: 10px -53px !important;
-}
-
 .login_content form div a {
     font-size: 12px;
     margin: 10px 15px 0 0;

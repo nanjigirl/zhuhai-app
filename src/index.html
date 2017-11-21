@@ -12,6 +12,20 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <title>智慧水务在线监测系统</title>
+    <link rel="stylesheet" href="./css/login.css">
+    <script type="text/javascript">
+        function login() {
+            $('#loginPanel').hide();
+            $('#loadingMask').show();
+            $('#app').show();
+            var timmer = setInterval(function () {
+                if (!!window.eventHelper) {
+                    window.eventHelper.emit('startLogin');
+                    clearInterval(timmer);
+                }
+            }, 10);
+        };
+    </script>
     <link rel="stylesheet" href="http://120.77.246.153:9000/element-ui/lib/theme-default/index.css">
     <link rel="stylesheet" href="../vendors/loaders.css">
 
@@ -45,6 +59,21 @@
 </head>
 
 <body class="app-body">
+<div class="bg-login" id="loginPanel">
+    <div class="logo">
+        <img src="./img/login/logo.png" alt="">
+        <p class="logoTitle">生产管理巡检系统</p>
+    </div>
+    <div class="srk-login">
+        <div class="srk user">
+            <input id='userName' type="text" autocomplete="off" placeholder="用户名" value ='eadmin'>
+        </div>
+        <div class="srk password">
+            <input id='password' type="password" autocomplete="off" placeholder="密码">
+        </div>
+        <li class="btn-login"><a onclick="login();">登录</a></li>
+    </div>
+</div>
 <div id="app">
     <div class="loader loaded" id="loadingMask">
         <div class="loader-inner ball-pulse-rise">
@@ -55,14 +84,13 @@
             <div></div>
         </div>
     </div>
-    <app-login v-show="!isLoginSuccess"></app-login>
-
-    <div class="container body" v-show="isLoginSuccess">
+    <div class="container body darkTheme" v-show="isLoginSuccess">
         <!-- page content -->
-        <main-content></main-content>
+        <main-view></main-view>
         <!--<main-view></main-view>-->
         <!-- /page content -->
     </div>
+    <app-login></app-login>
 </div>
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js"></script>
