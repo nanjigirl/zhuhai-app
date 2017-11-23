@@ -12,7 +12,6 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <meta http-equiv="Cache" content="no-cache">
     <title>智慧水务在线监测系统</title>
-    <link rel="stylesheet" href="./css/login.css">
     <script type="text/javascript">
         function login() {
             $('#loginPanel').hide();
@@ -73,6 +72,7 @@
         </div>
         <li class="btn-login"><a onclick="login();">登录</a></li>
     </div>
+    <input type="button" onclick="javascript:start()" value="readRFID">
 </div>
 <div id="app">
     <div class="loader loaded" id="loadingMask">
@@ -124,5 +124,15 @@
 </script> build-->
 <!-- Custom Theme Scripts -->
 <script src="../vendors/custom.js"></script>
+<script type="text/javascript">
+    function start() {
+        alert("start");
+        cordova.plugins.readRFID.readRFID("cantonese",function (msg) {
+            alert("success--->"+msg);
+        },function (err) {
+            alert("err--->"+err);
+        });
+    }
+</script>
 </body>
 </html>

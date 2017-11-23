@@ -11,6 +11,7 @@ var comm = Vue.extend({
             isError:false,
             uploadText:'上报',
             showUpload:false,
+            showRfLabel:true,
             deviceBaseInfo:{
                 deviceName:'循环式钉耙清污机(细格栅)系统',
                 deviceType:'ZGC-1200',
@@ -56,7 +57,14 @@ var comm = Vue.extend({
     },
     mounted: function () {
         this.$on('loadDeviceInfo',function(item){
-           this.mainTitle = item.text;
+            this.mainTitle = '扫描';
+            cordova.plugins.readRFID.readRFID("cantonese",function (msg) {
+                alert("success--->"+msg);
+                this.mainTitle = item.text;
+                this.showRfLabel = false;
+            },function (err) {
+                alert("err--->"+err);
+            }.bind(this));
         });
         this.$on('returnToLast',function(){
             this.showUpload = false;

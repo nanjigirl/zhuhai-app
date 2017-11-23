@@ -1,46 +1,44 @@
 <div class="mainContent">
-    <div class="mainContent" v-show="!showApproval">
-        <mt-actionsheet
-                :actions="actions"
-                v-model="sheetVisible"
-                :closeOnClickModal="false">
-        </mt-actionsheet>
-        <mt-actionsheet
-                :actions="voiceActions"
-                v-model="voicesheetVisible"
-        >
-        </mt-actionsheet>
-        <div class="draft-top dark-title">
-            <mt-header title="问题上报" fixed>
-                <mt-button icon="back" slot="left" @click="returnLast"></mt-button>
-            </mt-header>
+    <mt-actionsheet
+            :actions="actions"
+            v-model="sheetVisible"
+            :closeOnClickModal="false">
+    </mt-actionsheet>
+    <mt-actionsheet
+            :actions="voiceActions"
+            v-model="voicesheetVisible"
+    >
+    </mt-actionsheet>
+    <div class="draft-top dark-title">
+        <mt-header title="问题上报" fixed>
+            <mt-button icon="back" slot="left" @click="returnLast"></mt-button>
+        </mt-header>
+    </div>
+    <div class="draft-content no-gap">
+        <div class="problemTitle">{{deviceName}}</div>
+        <div class="itemTitle titleIcon">
+            <span>详细描述</span>
+            <i class="icon iconfont icon-fenxiang1"></i>
         </div>
-        <div class="draft-content no-gap">
-            <div class="problemTitle">{{deviceName}}</div>
-            <div class="itemTitle titleIcon">
-                <span>详细描述</span>
-                <i class="icon iconfont icon-fenxiang1"></i>
-            </div>
-            <div class="recordContent">
-                <textarea placeholder="输入文字或长按下方按钮语音输入转成文字" rows="10" v-model="reqMsg"></textarea>
-                <div class="recordBtnGroup" @click="openRecord">
-                    <div class="recordBtn">
-                        <i class="icon iconfont icon-luyin"></i>
-                        <span>长按语音输入</span>
-                    </div>
-                    <span class="descriptionText">语音可实时转换成文字</span>
+        <div class="recordContent">
+            <textarea placeholder="输入文字或长按下方按钮语音输入转成文字" rows="10" v-model="reqMsg"></textarea>
+            <div class="recordBtnGroup" @click="openRecord">
+                <div class="recordBtn">
+                    <i class="icon iconfont icon-luyin"></i>
+                    <span>长按语音输入</span>
                 </div>
-                <div class="upload-img-area">
-                    <div class="image-container" v-for="(uploadImg,index) in uploadImgs">
-                        <img :src="uploadImg.facilityImageUri" @click="showDelOperation(index)">
-                        <span class="el-upload-list__item-actions upload-mask" v-show="uploadImg.showDelOperation">
+                <span class="descriptionText">语音可实时转换成文字</span>
+            </div>
+            <div class="upload-img-area">
+                <div class="image-container" v-for="(uploadImg,index) in uploadImgs">
+                    <img :src="uploadImg.facilityImageUri" @click="showDelOperation(index)">
+                    <span class="el-upload-list__item-actions upload-mask" v-show="uploadImg.showDelOperation">
                             <i class="el-icon-delete mgt-20" @click="deleteFacilityImage(index)"></i>
                     </span>
-                    </div>
-                    <div class="el-upload el-upload--picture-card" @click="openActionSheet"
-                         v-show="uploadImgs.length<6">
-                        <i class="icon iconfont icon-paishe"></i>
-                    </div>
+                </div>
+                <div class="el-upload el-upload--picture-card" @click="openActionSheet"
+                     v-show="uploadImgs.length<6">
+                    <i class="icon iconfont icon-paishe"></i>
                 </div>
             </div>
         </div>
@@ -56,5 +54,4 @@
         </div>
     </div>
 </div>
-<approval v-show="showApproval"></approval>
 </div>

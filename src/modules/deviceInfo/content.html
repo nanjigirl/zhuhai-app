@@ -5,7 +5,7 @@
             <mt-button icon="back" slot="left" @click="returnLast"></mt-button>
          </mt-header>
       </div>
-      <div class="draft-content no-gap">
+      <div class="draft-content no-gap" v-show="!showRfLabel">
          <div class="baseInfoBox">
             <div class="messageItem deviceItem">
                <span>设备名称</span><span>{{deviceBaseInfo.deviceName}}</span>
@@ -35,6 +35,10 @@
             </div>
             <div class="itemTitle" v-if="!item.text">{{item.title}}</div>
          </div>
+      </div>
+      <div class="draft-content no-gap qrbg" v-show="showRfLabel">
+         <img src="../../img/QR-bg.png" alt="">
+         <p class="rfLabel">请把移动设备靠近RFID标签</p>
       </div>
    </div>
    <upload-info ref="uploadDetail" v-show="showUpload"></upload-info>

@@ -9,6 +9,7 @@
    <div class="user-content">
       <div class="col-item" v-for="item in menuArr" @click="openSubItem(item.id)">
          <i class="icon iconfont" :class="item.class"></i>
+         <el-badge :value="6" :max="99" class="badgeItem"></el-badge>
          <p class="menuText">{{item.text}}</p>
       </div>
    </div>

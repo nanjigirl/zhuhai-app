@@ -10,9 +10,6 @@ var draftDetail= require('modules/draftDetail');
 var uploadDetail= require('modules/uploadDetail');
 var myMessage= require('modules/myMessage');
 var districtInfo= require('modules/districtInfo');
-//加载地图组件
-var arcgisDraw = require('modules/arcgisPlugin/plugin/arcgisExpand/arcgis-load-map');
-var mapHelper = require('utils/mapHelper');
 //注册组件
 var components = {
     'user':user,

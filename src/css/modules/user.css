@@ -7,7 +7,7 @@
 
 .user-label {
     position: absolute;
-    top: 10%;
+    top: 17%;
     left: 50%;
     transform: translate(-50%, 0);
     text-align: center;
@@ -15,9 +15,9 @@
 
 .user-img {
     display: inline-block;
-    width: 2rem;
+    width: 1.8rem;
     border-radius: 50%;
-    height: 2rem;
+    height: 1.8rem;
     vertical-align: middle;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
 }
@@ -46,7 +46,7 @@
 .user-name {
     font-size: 1.5em;
     color: #fff;
-    margin:0.2em;
+    margin: 0.5em;
 }
 
 .user-badge {
@@ -70,6 +70,7 @@
     border-right: 1px solid #252a35;
     border-bottom: 1px solid #252a35;
     padding: 01.2em 0 3em;
+    position: relative;
 }
 .col-item:nth-child(2n){
     border-right: none;
@@ -90,4 +91,9 @@
     background: #fff;
     border: 1px solid #F5F5F5;
     margin-bottom: 0.2rem;
+}
+.badgeItem{
+    position: absolute;
+    top:2.5em;
+    left:calc(50% + 1em);
 }

@@ -5,6 +5,10 @@ html, body {
 
 .app-body,.mainContent{
     background: #15181f;
+    height:100%;
+}
+.mainView{
+    height: calc(100% - 50px);
 }
 .bg-login {
     width: 100%;
